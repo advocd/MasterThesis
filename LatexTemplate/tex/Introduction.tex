@@ -3,24 +3,84 @@
 \chapter{Einführung}
 \label{chap:einfuehrung}
 
+\todo[inline]{first draft Einführung}
 
+\section{Idee}
+\label{chap:einfuehrung:sec:idee}
+Die grundlegende Idee besteht darin, Informationen (Ressourcen und Aufgaben) mit geografischen Daten zu verknüpfen und diese zu visualisieren um somit die Nutzer\_innen bei den Entscheidungsprozessen zu unterstützen. Des Weiteren muss noch definiert werden welche/welcher Anwendungsfall, im Rahmen der Masterarbeit, umgesetzt werden soll.\\
+\\
+Stichpunkte:
+\begin{itemize}
+\item (Sinnvolle) Filterung von Daten
+\begin{itemize}
+	\item Evtl. Zustands- und oder Modus- abhängige Filterung
+\end{itemize}
+\item Optimierte Darstellungsform
+\begin{itemize}
+	\item Zielführende Darstellung der verknüpften Informationen
+\end{itemize}
+\end{itemize}
 
-\section{Projektbeschreibung}
-\label{sec:projektbeschreibung}
+\section{Hintergrund}
+\label{chap:einfuehrung:sec:hintergrund}
+Als Grundlage für dieses Projekt dient die bereits entwickelte Software „pery“ der Firma Perfany GmbH welche um die unten genannten Anwendungsfälle erweitert werden soll. Pery ist eine webbasierte (Software as a Service) ERP/CRM Lösung mit dem Schwerpunkt auf vernetzte Informationen. 
 
- 
+\section{Usecase}
+Um einen besseres Verständnis für die Umsetzungen zu erlangen wird an der Stelle die Anwendungsszenarien aufgezeigt.
 
-\section{Anforderungen}
-\label{sec:anforderungen}
+\subsection{Usecase I - Enhanced Ticket (\ac{UC}1)}
+Ein wichtiger Bestandteil des (bestehenden) Systems besteht darin Tickets zu verwalten.\footnote{automatische Erstellung, anlegen sowie anderen Mitarbeiter\_innen zuweisen}
+Dieses Feature wird verstärkt von \ac{KMU}’s mit Schwerpunkt auf außendienstlichen Tätigkeiten eingesetzt. 
+Rückmeldungen von diesen Nutzer\_innen Gruppen hat ergeben, dass der Prozess der Ticket Zuteilung an Mitarbeiter\_innen Optimierungspotential hat. \\
+\\
 
+\textbf{Beispiel: IT-Dienstleister}
+\begin{enumerate}
+	\item Kunde des Dienstleisters erstellt neues Ticket
+		\begin{enumerate}
+			\item Geo-Daten werden an das Ticket angefügt
+		\end{enumerate}
+	\item Dispatcher des Dienstleisters reagiert auf Ticket
+		\begin{enumerate}
+			\item Einstufung der Priorität\footnote{Vorschläge durch das System (Stammdaten - Priorität des verknüpften Kunden) – Auswahl basiert auf der Entscheidung des Dispatcher}
+			\item Ressourcen ermitteln:
+			\begin{enumerate}
+				\item Welche/r Mitarbeiter\_in ist verfügbar und geografisch am nächsten (Anfahrtswegoptimierung)\footnote{Fragestellung: Visualisierung der Ergebnisse }
+				\item Ist kein/e Mitarbeiter\_in verfügbar: Vorschläge vom System welcher Mitarbeiter von aktueller Aufgabe abgezogen werden kann (bsp.: interne Aufträge)
+			\end{enumerate}
+			\item Ticket auf Resource zuweisen\footnote{Resource (Mitarbeiter\_in) und Kunde werden informiert}
+		\end{enumerate}
+	\item Zugewiesene/r Mitarbeiter\_in hat Ticket gelöst
+	\begin{enumerate}
+		\item Resourcen wurden vom System auf den Auftrag verbucht
+		\item Ticket wird abgeschlossen
+	\end{enumerate}
+\end{enumerate}
 
-
-
-
-\subsection*{Sicherheit}
-\label{subsec:sicherheit}
-
-
-
+\subsection{Usecase II - On Trip Information (\ac{UC}2)}
+Hierbei handelt es sich um weiteres Feature für die Optimierung von Planung- bzw. Arbeitsvorbereitungs- Prozessen von Außendienst Mitarbeitern. Diese sollen bei der Planung ihrer Route, durch das einblenden zusätzlicher Information, unterstützt werden. \\
+\\
+\todo[inline]{Liste fertig machen und Fußzeilen einbauen}
+\textbf{Beispiel: Außendienst Mitarbeiter\_in}
+\begin{enumerate}
+	\item
+	\begin{enumerate}
+		\item
+	\end{enumerate}
+	\item
+	\begin{enumerate}
+		\item
+		\begin{enumerate}
+			\item
+			\item
+			\item
+		\end{enumerate}
+	\end{enumerate}
+	\item
+	\begin{enumerate}
+		\item
+		\item
+	\end{enumerate}
+\end{enumerate}
 
 \end{document}

@@ -43,6 +43,10 @@
 \usepackage{courier}
 \usepackage{enumitem} % Wird bei (alternativen) Usecase verwendet
 
+% use "disable" as argument for the todonotes package 
+% to switch of all todos and the todolist in the 
+% document. e.g. \usepackage[disable]{todonotes} 
+\usepackage[]{todonotes} 
 
 \makeglossaries
 
@@ -84,8 +88,9 @@
 
 \tableofcontents % add table of contents
 
-%The order of the chapters used
+\listoftodos	% http://mirror.easyname.at/ctan/macros/latex/contrib/todonotes/todonotes.pdf
 
+%The order of the chapters used
 \subfile{./tex/Introduction.tex}
 \subfile{./tex/Stateoftheart.tex}
 \subfile{./tex/Development.tex}
