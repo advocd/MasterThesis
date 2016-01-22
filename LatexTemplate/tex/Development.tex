@@ -1,0 +1,257 @@
+\documentclass[Bachelorarbeit.tex]{subfiles}
+\begin{document}
+\chapter{Entwicklung}
+\label{chap:entwicklung}
+
+Nach Abschluss der \nameref{chap:state_of_the_art}-Analyse wurde in der  \nameref{sec:auswertung} die Entscheidung getroffen, den nativen Ansatz für das Projekt zu wählen.
+Die \nameref{chap:entwicklung} ist in die drei Abschnitte: \nameref{sec:usecases},
+\nameref{sec:design_entwurf} und \nameref{sec:architektur} aufgeteilt. 
+In der ersten Phase der \nameref{chap:entwicklung} werden die  \nameref{sec:usecases} festgelegt. 
+Diese definieren, welche Interaktionen zwischen dem Benutzer und dem System möglich sind und wie das System auf den Input reagiert. In der zweiten Phase des Projektes:  \nameref{sec:design_entwurf}, werden Entscheidungen bezüglich der Benutzeroberfläche getroffen. 
+Anhand dieser Entscheidungen sowie der\nameref{sec:usecases} werden die ersten Mock-ups erstellt.
+Die dritte Phase: \nameref{sec:architektur} bildet den Abschluss diese Kapitels. 
+Darin befinden sich Entscheidungen bezüglich des Aufbaues der Software-Architektur. 
+Dabei bildet die \nameref{sec:architektur} das Fundament für die anschließende \nameref{chap:implementierung}, welche in Kapitel \ref{chap:implementierung} besprochen wird.
+
+
+\begin{comment}
+
+
+\section{Spezifikation}
+
+\begin{itemize} \color{red}
+\item Beschreibung welche Technologien eingesetzt werden
+
+\end{itemize}
+
+\end{comment}
+
+\section{Entwicklungsspezifikationen}
+\label{sec:usecases}
+
+In den \nameref{sec:usecases} wird zum einen die Funktionalität des Programmes festgelegt und zum anderen definiert, wie sich das System in den jeweiligen Zuständen beziehungsweise Situationen verhalten soll. 
+Die \nameref{sec:usecases} sind plattformunabhängig und beschreiben in erster Linie das: "`WIE"' (...etwas abläuft).
+Jede Entwicklungsspezifikation bildet ein definiertes Szenario des Programmablaufes ab.
+Anhand des Szenarios \texttt{Login} wird später (siehe \ref{chap:implementierung}. Kapitel - \nameref{chap:implementierung}) die Architektur des Projektes erläutert.
+Innerhalb eines Szenarios werden die Elemente Ablauf, Vor- und Nachbedingung sowie Auslöser definiert. 
+Der Auslöser gibt an, durch welches Verhalten oder ausgeführte Aktion ein  spezifiziertes Szenario ausgelöst wird. 
+Auslöser können von Eingaben der Benutzer sowie systeminternen Vorkommnissen stammen. 
+Dies kann unter anderem auch der erfolgreiche Abschluss eines anderen Szenarios sein.
+Bei dem Start (Vorbedingung) sowie dem Ende (Nachbedingung) eines Szenarios muss sich das System  in einem konsistenten Zustand befinden. 
+%Dadurch kann, bei einem Abbruch oder Fehler innerhalb des Anwendungsfalles, auf den  letzten konsistenten Zustand gewechselt werden. 
+
+\subsection*{Login-Szenario}
+\label{subsec:usecase1}
+Durch einen Klick wird die Eingabe der Zugangsdaten abgeschlossen und das Login-Szenario gestartet.
+Dabei werden die Daten aus der Eingabemaske ausgelesen, wobei das Passwort in ein nicht-Klartext-Format umgewandelt wird. 
+Ist dieser Vorgang erfolgreich abgeschlossen, wird der Server für die Authentifizierung kontaktiert. \\
+\\
+Sollten die Prüfung der Daten auf der Serverseite positiv verlaufen, so wird für den Client ein Identitätsnachweis erzeugt. 
+Dieser Identitätsnachweis ist mit einer Gültigkeitsdauer versehen und enthält keine Information über den Benutzername oder das Password.  
+Anschließend legt der Server den Identitätsnachweis ab und sendet eine Kopie an den Client.\\
+\\
+Sollte die Prüfung der Daten negativ sein, so übermittelt der Server eine entsprechende Nachricht an den Client. 
+Im Fall einer negativen Rückmeldung informiert das System die Benutzer und bricht das Szenario ab.
+Andernfalls wird, nach Erhalt des Identitätsnachweis, die Startansicht erzeugt, welche wiederum ein eigenes Szenario darstellt.
+
+\begin{comment}
+\subsection*{I - Login}
+%\label{subsec:usecase1}
+
+\subsubsection*{Vorbedingung}
+Der/die BenutzerInn hat seinen/ihren Benutzernamen und Password, in dem Login-Formular eingegeben. 
+
+\subsubsection*{Nachbedingung}
+In dem System ist ein Identitätsnachweis hinterlegt. Dieser Nachweis ist mit einem Ablaufzeitpunkt versehen. 
+
+\subsubsection*{Auslöser}
+Der/die BenutzerInn bestätigt, dass die Eingabe seiner/ihrer Daten abgeschlossen sind.
+
+\subsubsection*{Ablauf}
+Wenn die Eingabe Felder nicht leer sind, werden die Daten aus der Eingabemaske ausgelesen, wobei das Passwort in ein nicht-Klartext-Format umgewandelt wird. 
+Ist dieser Vorgang erfolgreich abgeschlossen wird der Server für die Authentifizierung kontaktiert. \\
+\\
+Sollten die Prüfung der Daten, auf der Serverseite positiv sein, so wird für den Client ein Identitätsnachweis erzeugt. 
+Dieser Identitätsnachweis enthält keine Information über den Benutzername oder das Password und wird mit einer Gültigkeitsdauer versehen.  
+Danach legt der Server den Identitätsnachweis, mit einem Verweis auf die Identität der/des BenutzerInn ab und sendet eine Kopie an den Client.\\
+\\
+Sollte die Prüfung der Daten negativ sein übermittelt der Server eine entsprechende Nachricht an den Client. 
+Im Fall einer negativen Rückmeldung informiert das System die Benutzer und bricht den Anwendungsfall ab.
+Andernfalls - bei Erhalt des Identitätsnachweis - wird der weiterführende Anwendungsfall: \nameref{subsec:usecase2} ausgelöst.
+\end{comment}
+
+
+
+\begin{comment}
+\subsection*{II - Erzeugen der Startansicht}
+\label{subsec:usecase2}
+
+\subsubsection*{Vorbedingung}
+Im System ist ein gültiger Identitätsnachweis hinterlegt.
+
+\subsubsection*{Nachbedingung}
+Den Benutzern wird ihre persönliche Startansicht angezeigt. Diese Besteht aus den zwei Kategorien: "`offene Veranstaltungen"'\footnote{Unter "`offenen Veranstaltungen"' sind Veranstaltungen gemeint die, zum aktuellen Zeitpunkt, noch nicht dokumentiert wurden.} und "`dokumentierten Veranstaltungen"'. 
+Für jede Veranstaltung wird der Name sowie der Startzeitpunkt angezeigt.
+
+\subsubsection*{Auslöser}
+Der  Anwendungsfall: \nameref{subsec:usecase2} wird Systemintern, durch den erfolgreichen Abschluss des Anwendungsfalles: \nameref{subsec:usecase1} ausgelöst.
+
+\subsubsection*{Ablauf}
+Nach dem Einleiten des Anwendungsfalles \nameref{subsec:usecase2} werden nacheinander die Anfragen nach den offenen- sowie dokumentierten Veranstaltungen, an den Server gesendet. 
+An jede Anfrage wird der, im System hinterlegte, Identitätsnachweis angehängt.
+Die Anfragen werden vom Server separat bearbeitet, allerdings ist die Logik jeweils die selbe. Aus diesem Grund werden, an dieser Stelle, die Abläufe der Anfrage zusammengefasst.\\
+\\
+Im ersten Schritt wird der mitgesendete Identitätsnachweis auf seine Gültigkeit geprüft. 
+Dieses Verifizierungsverfahren besteht aus folgenden zwei Teilen. 
+Es wird analysiert, ob der erhaltene Identitätsnachweis, Serverseitig im System, hinterlegt ist. 
+Ist dies der Fall wird - anhand des Ablaufzeitpunktes - geprüft ob der Identitätsnachweis noch gültig ist. 
+Sollten diese Prüfungen negativ ausfallen, wird der Client über die Problematik informiert und gibt diese Information an die Benutzer weiter.
+Der Anwendungsfall wird abgebrochen.\\
+Ist der Prüfungsbescheid positiv fährt der Server mit der Arbeit beim nächsten Schritt fort.\\
+\\
+Der zweite Schritt besteht aus der Autorisierung der Benutzer. Dieser Teil wird vollständig auf der Serverseite durchgeführt.
+Es wird - anhand des Identitätsnachweises - der entsprechende User ausgewählt und geprüft ob dieser über eine Berechtigung, zum dokumentieren von Veranstaltungen, verfügt. 
+Sollte diese Prüfung negativ ausfallen, wird der Client über die Problematik informiert und gibt diese Information an die Benutzer weiter.
+Der Anwendungsfall wird abgebrochen.\\
+Bei positiver Prüfung werden, je nach aktueller Anfrage des Clients, eine Sammlung von offenen beziehungsweise dokumentierten Events geladen, in denen der/die BenutzerInn als "`verantwortliche/r MitarbeiterInn"' markiert ist. An dieser Stelle wird immer eine Sammlung erzeugt, sollten keine Veranstaltungen verfügbar sein so bleibt die Sammlung leer.\\
+\\
+Im dritten Schritt wird die - im zweiten Schritt erzeugte - Sammlung von Veranstaltungen an den Client übermittelt. Dieser bereitet die Daten auf und gleicht bestehende Systeminformationen mit den erhaltenen Daten ab. Anschließend werden die Informationen, in der jeweiligen Kategorie, visuell dargestellt und der Anwendungsfall beendet.
+\newpage
+\end{comment}
+
+\begin{comment}
+\subsection*{III - Veranstaltung dokumentieren}
+
+\subsubsection*{Vorbedingung}
+Der/die BenutzerInn hat eine Veranstaltung ausgewählt und befindet sich in der Dokumentations-Ansicht.
+
+\subsubsection*{Nachbedingung}
+Die ausgewählt Veranstaltung wurde erfolgreich in dem System (Server- und Client-seitig) aktualisiert. 
+
+\subsubsection*{Auslöser}
+Der/die BenutzerInn hat bestätigt das der Dokumentationsvorgang der ausgewählten Veranstaltung abgeschlossen ist.
+
+\subsubsection*{Ablauf}
+Die internen Informationen des Clients werden mit den Daten der zu speichernden Veranstaltung abgeglichen und gegebenenfalls aktualisiert. Zusätzlich wird die Veranstaltung - im System - als "`noch nicht versendet"' markiert.
+Anschließend werden alle Daten der ausgewählten Veranstaltung aufbereitet und der hinterlegte Identitätsnachweis wird an die Anfrage - für den Server - angehängt.\\
+\\
+Im ersten Schritt auf der Server-Seite wird der mitgesendete Identitätsnachweis auf seine Gültigkeit geprüft. 
+Dieses Verifizierungsverfahren besteht aus folgenden zwei Teilen. 
+Es wird analysiert, ob der erhaltene Identitätsnachweis, Serverseitig im System, hinterlegt ist. 
+Ist dies der Fall wird - anhand des Ablaufzeitpunktes - geprüft ob der Identitätsnachweis noch gültig ist. 
+Sollten diese Prüfungen negativ ausfallen, wird der Client über die Problematik informiert und gibt diese Information an die Benutzer weiter.
+Der Anwendungsfall wird abgebrochen.
+Ist der Prüfungsbescheid positiv fährt der Server mit der Arbeit beim nächsten Schritt fort.\\
+\\
+Der zweite Schritt besteht aus der Autorisierung der Benutzer. Dieser Teil wird vollständig auf der Serverseite durchgeführt.
+Es wird - anhand des Identitätsnachweises - der entsprechende User ausgewählt und geprüft ob dieser über eine Berechtigung, zum dokumentieren von Veranstaltungen, verfügt. 
+Sollte diese Prüfung negativ ausfallen, wird der Client über die Problematik informiert und gibt diese Information an die Benutzer weiter.
+Der Anwendungsfall wird abgebrochen.\\
+\\
+Im dritten Schritt, aktualisiert der Server die hinterlegten Informationen der Veranstaltung und sendet eine Bestätigung an den Client.
+Mit Erhalt der Bestätigung des Servers, wird die "`noch nicht versendet"'-Markierung, von der Veranstaltung entfernt.
+Der Anwendungsfall ist abgeschlossen.
+
+
+\newpage
+\end{comment}
+
+
+\section{Design-Entwurf}
+\label{sec:design_entwurf}
+Dieser Abschnitt beschäftigt sich mit dem Design und der Modellierung der Benutzeroberfläche.
+Da die Nutzung des nativen Ansatzes gewählt wurde, sollte sich der Entwurf an den Referenzen der jeweiligen Plattform orientieren.
+In dem Abschnitt \nameref{sub:ziele_der_gestaltung} wurde erläutert, inwiefern die Usability für den Erfolg des Programmes verantwortlich ist. Aus den daraus gewonnen Erkenntnissen wurden drei Ziele für die Gestaltung der Benutzerschnittstelle festgelegt. Um diese weitgehendst zu erfüllen, ist in dem Absatz: \nameref{sub:mockUps} beschrieben, wie ein  \texttt{Paper Prototyping}-Prozess zur Steigerung der Usability durchgeführt werden kann.
+
+\subsection*{Ziele der Gestaltung}
+\label{sub:ziele_der_gestaltung}
+Um die Ziele der Gestaltung definieren zu können muss zuerst analysiert werden, wie die Zielgruppe ihre Wünsche und Erwartungen an die Applikation definiert.\\
+Wie in der \nameref{chap:einfuehrung} erwähnt wurde, besteht die Hauptaufgabe der Applikation in der Dokumentation von Veranstaltungen durch die verantwortlichen BetreuerInnen.
+Um das bestmögliche Ergebnis zu erzielen, sollte die Dokumentation während oder kurz nach der Veranstaltung getätigt werden. 
+Um einen Akzeptanzverlust der Applikation vorzubeugen, muss die Dokumentation schnell und einfach durchgeführt werden können.
+Wenn dies nicht möglich ist, besteht die Gefahr der Rückfälligkeit zu den beschriebenen "`alten Gewohnheiten"'. 
+Daraus kann geschlussfolgert werden, dass der Erfolg im Praxistest von der Usability des Programmes abhängt. 
+Auf der Basis dieser Erkenntnis werden die folgenden Punkte als Grundlage für den weiteren Design-Prozess angenommen: 
+
+\subsubsection*{Ziel: Übersichtlichkeit}
+\label{subsub:ziel_uebersichtlichkeit}
+Eine klare und aufgeräumte Oberfläche ist notwendig, um die Unterstützung der Benutzer zu maximieren. 
+Dazu zählt das Aufteilen der Inhalte in sinnvolle und logische Gruppen unter der Berücksichtigung der Arbeitsabläufe.
+Des weiteren wird auf die Integration eines Corporate Identity-Design in der Oberfläche des Programmes verzichtet.
+
+\subsubsection*{Ziel: Vertraute Umgebung}
+\label{subsub:ziel_vertraute_umgebung}
+Durch das Erzeugen einer vertrauten Umgebung sollen die Nutzer bekannte Elemente ihrer Plattform in der Applikation wiedererkennen.
+Dadurch sollen die Einarbeitungszeiten in die Applikation minimiert, sowie der Wiedererkennungswert von plattformtypischen Elementen wie beispielsweise die Navigation durch das Programm, maximiert werden.
+Es wird versucht, dass die Benutzer jeder Zeit das Gefühl haben, dass sie das Programm vollständig kontrollieren.
+Dadurch soll den Nutzern die Angst genommen werden "`etwas falsches zu machen"'.
+Für die Realisierung dieses Zieles muss sich die Applikation an dem Standartverhalten der jeweiligen Plattform orientieren.
+\newpage
+
+\subsection*{Mock-Ups - Prototyp Entwicklung}
+\label{sub:mockUps}
+Um schon in einem frühen Stadium des Entwicklungsprozesses\\ Rückmeldungen über die Bedienbarkeit des Programmes zu erhalten, empfiehlt es sich, in die Entwicklung von Mock-ups zu investieren.
+Unter Mock-Ups versteht man einen nicht funktionellen Prototypen. 
+Dies bedeutet, dass der Prototyp nicht programmiert, sondern mit einem Bildbearbeitungsprogramm erzeugt wird.
+Dabei wird für jede Ansicht ein eigener Prototyp "`gezeichnet"'. 
+Anschließend werden mit Personen aus der Zielgruppe die einzelnen Szenarios der Applikation simuliert. 
+Während des Testes sollen die NutzerInnen den Ablauf des Programmes, die erwarteten ihrer Ergebnis von Interaktionen sowie ihre Emotionen so detailliert wie möglich kommentieren.  
+Mithilfe des Testes lässt sich feststellen, wie schlüssig die Arbeitsabläufe sind, ob die Funktionalität der Oberfläche verständlich ist und ob die Reaktionen des Programmes mit den Erwartungen der Benutzer übereinstimmen. 
+Der Prozess des \texttt{Paper Prototyping} sollte nicht einmalig, sondern in Form eines iterativen Entwicklungsprozess durchgeführt werden. 
+Dies bedeutet, dass auf der Basis der erhaltenen Rückmeldungen die Mock-Ups optimiert und die Test wiederholt werden.
+Der Test kann als positiv betrachtet werden, wenn die Rückmeldungen der Probanden mit den zuvor definierten Design-Zielen (siehe Abschnitt: \nameref{sub:ziele_der_gestaltung}) übereinstimmen.\\
+\\
+Die Mock-Ups der Beispiel-Applikationen befinden sich im Anhang:  \nameref{chap:diagramme_und_bilder} unter dem Abschnitt: \nameref{sec:mock_ups}. 
+
+\newpage
+
+\section{Architektur}
+\label{sec:architektur}
+
+\subsection*{Plattformunabhängig}
+Dieser Abschnitt beschäftigt sich mit der Frage, welche Teile des Projektes plattformunabhängig entwickelt werden können. 
+Durch die Maximierung des unabhängigen Anteils verringert sich die Entwicklung- und Implementierungs-Dauer.
+Desweiteren wird hierdurch - nach Abschluss der Projektphase - die Wartung und Erweiterbarkeit  deutlich erleichtert.
+
+\subsubsection*{Webserver}
+\label{subsub:webserver}
+Die Entwicklung des \nameref{subsub:webserver} als Backend-System ist vollständig losgelöst von den eingesetzten Plattformen,
+da die Applikationen keinen direkten Zugriff auf das Backend haben.
+Für die Kommunikation zwischen Applikation und Backend wird ausschließlich der \nameref{subsub:webservice} verwendet\footnote{Die Funktionsweise des \nameref{subsub:webservice} wird im Abschnitt: \nameref{subsub:webservice} erklärt.}. 
+Dabei dient der \nameref{subsub:webserver} als Umgebung in die der   \nameref{subsub:webservice} eingebettet ist. Innerhalb dieser Infrastruktur werden zum einen Stammdaten und zum anderen Erfassungsdaten verwaltet.
+Bei den Stammdaten handelt es sich um fixe Daten, die nicht regelmäßig geändert werden.
+Die Erfassungsdaten, wie Veranstaltungen, Besucher-Daten und eingeteilte Mitarbeiter, sind so ausgelegt, dass diese nicht durch unterschiedliche AnwenderInnen veränderbar sind. 
+Diese Daten können ausschließlich durch die verantwortlichen Mitarbeiter verändert werden. Dadurch ist sichergestellt, dass die Daten nicht von verschiedenen Anwendern überschrieben werden können.
+Des weiteren stellt der \nameref{subsub:webserver} dem \nameref{subsub:webservice} eine Fassade für die Durchführung von Datenbank-Operationen zur Verfügung.
+Durch dieses Vorgehen ist der \nameref{subsub:webservice} weitgehendst von dem \nameref{subsub:webserver}  entkoppelt.
+Somit kann der \nameref{subsub:webserver} erweitert werden, ohne dass der \nameref{subsub:webservice} verändert werden muss. 
+Dies ist notwendig, da geplant ist, die Daten des \nameref{subsub:webserver} durch einen Microsoft Exchange-Server zu aktualisieren\footnote{Dieses Feature ist allerdings nicht Bestandteil des aktuellen Projektes sondern soll nur die Notwendigkeit der Erweiterbarkeit demonstrieren.}.
+
+\subsubsection*{Webservice}
+\label{subsub:webservice}
+Der \nameref{subsub:webservice} dient als Schnittstelle zwischen dem Client und dem \nameref{subsub:webserver} und orientiert sich an dem \ac{REST}-Paradigma. 
+Dabei kann jede verfügbare Operation des \nameref{subsub:webservice} über ihre eigene \ac{URL}-Adresse erreicht werden.
+Als Datenformat für die Kommunikation wird \ac{JSON} eingesetzt.
+Da der \nameref{subsub:webservice} Zustandslos ist, werden serverseitig keine Verbindungsdaten dauerhaft gehalten.
+Dies bedeutet, dass der Client bei jeder Anfrage (request) alle benötigten Daten mitsenden muss.
+Die eingehenden Daten werden Mithilfe des \texttt{StringToObjectParser} in die gewünschten Objekte übersetzt.
+Anschließend wird, je nach kontaktierter \ac{URL}, die entsprechende Operation gestartet und die erzeugten Objekte für die Bearbeitung übergeben.
+Nachdem die Operation fertiggestellt ist wird das Ergebnis durch den \texttt{\ac{JSON}-Parser} in eine Zeichenkette umgewandelt. 
+Die erzeugte Nachricht wird anschließend an den Client returniert. \\
+\\
+Durch den Einsatz eines \ac{REST}-ful \nameref{subsub:webservice} kann eine leicht erweiterbare und plattformunabhängig Anbindung an das Backend sichergestellt werden.
+
+\subsection*{Plattformabhängig}
+Da die beiden Systeme Windows Phone und Android nicht kompatible Programmiersprachen einsetzen, ist es notwendig, dass für jede Plattform eine eigenständige Applikation entwickelt wird. 
+Die Entwicklung einer einheitliche Architektur ist auf Grund der unterschiedlichen Entwicklungs-Konzepte beziehungsweise der einzelnen Plattformen\footnote{Beispielsweise das \ac{MVVM}- und Databinding-Konzept von Windows Phone} nur bis zu einem gewissen Grad realisierbar. 
+Allerdings kann definiert werden, dass sich beide Applikation die Logik der einzelnen Szenarios in den "`Usecase-Controllern"' teilen können.
+Diese werden von einem zentralen Applikationsservice ausgelöst und sind so von der Grafischen Oberfläche entkoppelt. 
+Für Operationen von zeitintensiven Aufgaben, wie beispielsweise   Datenbank- oder Webservice-Zugriffen, werden "`asynchrone Tasks"' eingesetzt.
+Diese Tasks laufen nicht innerhalb des Hauptthreads, wodurch das Blockieren der Benutzeroberfläche vermieden wird.
+Für die lokale Datenbank soll SQLite als Datenbank-System eingesetzt werden. 
+Die Aufgabe der lokalen Datenbank besteht darin, die vom Server geladenen Daten für die  spätere Verwendung aufzubewahren. 
+Des weiteren werden dokumentierte Veranstaltungen, welche nicht erfolgreich an den Server übermittelt wurden, in der lokalen Datenbank gesichert.
+
+
+
+\end{document}

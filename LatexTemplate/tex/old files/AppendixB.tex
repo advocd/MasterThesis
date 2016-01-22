@@ -1,0 +1,217 @@
+\documentclass[Bachelorarbeit.tex]{subfiles}
+
+\begin{document}
+\chapter{Befehlssatz ComModbus}
+\label{chap:befehlssatz_comModbus}
+Folgender Befehlssatz wird in der aktuellen Version von ComModbus unterstützt. Der Befehlssatz ist in Operation und Konfigurationen aufgeteilt und kann – bis auf die doppelt Belegung der Buchstaben – beliebig erweitert werden. 
+Für die Verwendung der Buchstaben wurde folgende Notation eingeführt. 
+
+\begin{itemize}
+\item Kleinbuchstaben für Konfigurationen
+\item Großbuchstaben für Operationen 
+\end{itemize}
+
+Die Informationen werden als Parameter – in beliebiger Reihenfolge –  an das Programm bei dessen Aufruf übergeben.
+
+\section{Konfigurationen}
+\label{sec:befehl_konfiguration}
+Die Konfigurationsdaten beschreiben die Energiezähler-spezifischen Informationen, die für die Modbus-Kommunikation notwendig sind. Wenn keine Konfigurationen als Parameter übergeben werden, so werden die Standard-Werte verwendet.
+
+\subsection*{-i (Interface – Hardware-Schnittstelle)}
+
+\begin{verbatim}
+ComModbus -i [Adresse der Hardware-Schnittstelle]
+\end{verbatim}
+Mit dem Konfigurations-Befehl \texttt{ -i [Adresse der Hardware-Schnittstelle]} kann dem Programm ComModbus mitgeteilt werden welche Hardware-Schnittstelle des Masters für die Modbus-Kommunikation verwendet werden soll.\\
+\\
+\textbf{Standard Wert:} \tab \texttt{ComModbus -i /dev/ttyUSB0}
+
+\subsection*{-b (Baud-Rate)}
+\begin{verbatim}
+ComModbus -b [Baudrate]
+\end{verbatim}
+Mit dem Konfigurations-Befehl \texttt{ -b [Baudrate]} kann dem Programm ComModbus mitgeteilt werden welche Baudrate verwendet werden soll. [Baudrate] muss eine natürliche Zahl sein. Die zu verwendende Baudrate kann dem Datenblatt des Energiezählers entnommen werden. Für eine fehlerfreie Kommunikation muss sichergestellt sein, dass sowohl Sender wie auch Empfänger mit der gleichen Baudrate ihre Informationen übertragen.\\
+\\
+\textbf{Standard Wert:} \tab \texttt{ComModbus -b 9600}
+
+\subsection*{-p (Parität)}
+\begin{verbatim}
+ComModbus -p [E, O, N]
+\end{verbatim}
+Mit dem Konfigurations-Befehl \texttt{ -p [E, O, N]} kann dem Programm ComModbus mitgeteilt werden welche Art der Parität verwendet werden soll. Die zu verwendende Parität kann dem Datenblatt des Energiezählers entnommen werden.\\
+\\
+\textbf{Optionen:}
+\begin{itemize}
+\itemsep0em
+\item \textbf{E:} \tab Paritäts-Bit ist gerade (\textbf{E}ven)
+\item \textbf{O:} \tab Paritäts-Bit ist ungerade (\textbf{O}dd)
+\item \textbf{N:} \tab Es wird kein Paritäts-Bit verwendet (\textbf{N}one)
+\end{itemize}
+
+\textbf{Standard Wert:} \tab \texttt{ComModbus -p E}
+
+\subsection*{-d (Daten-Bits)}
+\begin{verbatim}
+ComModbus -d [Anzahl Daten-Bits]
+\end{verbatim}
+Mit dem Konfigurations-Befehl \texttt{-d [Anzahl Daten-Bits] } kann dem Programm ComModbus mitgeteilt werden wie viele Datenbits verwendet werden soll. \texttt{[Daten-Bits]} muss eine natürliche Zahl sein. Die zu verwendende Anzahl der Daten-Bits kann dem Datenblatt des Energiezählers entnommen werden.\\
+\\
+\textbf{Standard Wert:} \tab \texttt{ComModbus -d 8}
+
+\subsection*{-s (Stop-Bits)}
+\begin{verbatim}
+ComModbus -s [Anzahl Stop-Bits]
+\end{verbatim}
+Mit dem Konfigurations-Befehl \texttt{-s [Anzahl Stop-Bits]} kann dem Programm ComModbus mitgeteilt werden wie viele Stop-Bits verwendet werden soll. \texttt{[Stop-Bits]} muss entweder 1 oder 2 sein, wenn kein Paritäts-Bit verwendet wird muss 2 ausgewählt werden ansonsten 1. Die zu verwendende Anzahl der Stop-Bits kann dem Datenblatt des Energiezählers entnommen werden.
+
+\subsection*{-n (slave number)}
+\begin{verbatim}
+ComModbus -n [Adresse]
+\end{verbatim}
+Mit dem Konfigurations-Befehl \texttt{-n [Adresse]} kann dem Programm ComModbus 
+mitgeteilt werden welches Gerät (slave) verwendet werden soll. \texttt{[Adresse]} muss 
+eine natürliche Zahl zwischen 1 und 247 sein\footnote{Die Limitierung stammt von den Energiezählern nicht dem Modbus-Protokoll (siehe Datenblatt).}. Die zu verwendende Adresse muss 
+am Gerät eingestellt oder von diesem abgelesen werden.
+
+\newpage
+
+\section{Operationen}
+
+\subsection*{-R (Register lesen)}
+\begin{verbatim}
+ComModbus -R [Adresse des Registers]
+\end{verbatim}
+\begin{comment}
+Die Adresse des Registers muss als positive Ganzzahl angegeben werden. Es wird 
+der Wert des gewählten Registers ausgelesen. Die Registeradressen sind wie im 
+Datenblatt angegeben zu verwenden. Es werden keine Validierungen des 
+Ergebnisses durchgeführt. Diese Funktion dient in erster Linie Wartungsarbeiten.
+\end{comment}
+Die \texttt{[Adresse des Registers]} muss als positive Ganzzahl angegeben werden. Es wird der Wert des gewählten Registers ausgelesen. Die Registeradressen sind wie im Datenblatt angegeben zu verwenden. Es werden keine Validierungen des 
+Ergebnisses durchgeführt. Diese Funktion dient in erster Linie für Wartungsarbeiten.\\
+
+\subsubsection*{Unterstützte Register}
+\begin{itemize}
+\itemsep0em
+\item Register 1 bis 40 (ALD1)
+\item Register 1 bis 52 (ALE3)
+\end{itemize}
+
+
+\subsubsection*{Beispiel}
+\texttt{ComModbus -R 2}\\
+Gibt den Wert von Register2 aus.
+
+\subsection*{-T (Tarif – in kWh)}
+\begin{verbatim}
+ComModbus – T [a, 1, 2, pa, p1, p2]
+\end{verbatim}
+Mit dem Befehl T – Tarif können die Werte des Tarifes1 und -2 jeweils als partieller
+oder totaler Wert in kWh ausgegeben werden. 
+
+\newpage
+
+\subsubsection*{Optionen}
+\begin{tabular}{ll}\\ 
+ \textbf{a\textsuperscript{ALE3}:} & \tab Gibt die Summe aus Tarif1 (Total) und Tarif2 (Total) aus.\\\\ 
+ \textbf{1:} & \tab Gibt den Wert von Tarif1 (Total) aus.\\ \\ 
+ \textbf{2\textsuperscript{ALE3}:} & \tab Gibt den Wert von Tarif2 (Total) aus.\\ \\ 
+ \textbf{pa\textsuperscript{ALE3}:} & \tab Gibt die Summe aus Tarif1 (Partiell) und Tarif2 (Partiell) aus.\\ \\ 
+ \textbf{p1:} & \tab Gibt den Wert von Tarif1 (Partiell) aus.\\ \\ 
+ \textbf{p2\textsuperscript{ALE3}:} & \tab Gibt den Wert von Tarif2 (Total) aus.\\ \\ 
+\end{tabular}
+\\
+\textsuperscript{ALE3}: Operationen werden ausschließlich von dem dreiphasigen Zähler unterstützt.
+
+\subsubsection*{Beispiel}
+\texttt{ComModbus -T p1}\\
+Gibt den partiellen Wert des Tarifs1 in kWh aus.
+
+
+\subsection*{-P (PRMS – in kW)}
+\begin{verbatim}
+ComModbus -P [a, 1, 2, 3]
+\end{verbatim}
+Mit dem Befehl P – PRMS wird die effektive Wirkleistung auf der jeweiligen Phase 
+beziehungsweise allen drei Phasen in kW ausgegeben.
+
+\subsubsection*{Optionen}
+
+\begin{tabular}{ll}\\ 
+ \textbf{a\textsuperscript{ALE3}:} & \tab Gibt die Summe aus Phase 1 – 3 aus.\\\\ 
+ \textbf{1:} & \tab Gibt den Wert von Phase1 aus.\\ \\ 
+ \textbf{2\textsuperscript{ALE3}:} & \tab Gibt den Wert von Phase2 aus.\\ \\ 
+ \textbf{3\textsuperscript{ALE3}:} & \tab Gibt den Wert von Phase3 aus.\\ \\ 
+\end{tabular}
+\\
+\textsuperscript{ALE3}: Operationen werden ausschließlich von dem dreiphasigen Zähler unterstützt.
+
+\subsubsection*{Beispiel}
+\texttt{ComModbus -P 1}\\
+Gibt den Wert der effektiven Wirkleistung auf der Phase1 in kW aus.
+
+\subsection*{-U (URMS – in V)}
+\begin{verbatim}
+ComModbus -U [1, 2, 3]
+\end{verbatim}
+Mit dem Befehl U – URMS wird die Wirkspannung auf der jeweiligen Phase in Volt 
+ausgegeben.
+
+\subsubsection*{Optionen}
+
+\begin{tabular}{ll}\\ 
+ \textbf{1:} & \tab Gibt den Wert von Phase1 aus.\\ \\ 
+ \textbf{2\textsuperscript{ALE3}:} & \tab Gibt den Wert von Phase2 aus.\\ \\ 
+ \textbf{3\textsuperscript{ALE3}:} & \tab Gibt den Wert von Phase3 aus.\\ \\ 
+\end{tabular}
+\\
+\textsuperscript{ALE3}: Operationen werden ausschließlich von dem dreiphasigen Zähler unterstützt.
+
+\subsubsection{Beispiel}
+\texttt{ComModbus -U 1}\\
+Gibt den Wert der Wirkspannung auf der Phase1 in Volt aus.
+
+\subsection*{-I (IRMS – in A)}
+
+\begin{verbatim}
+ComModbus -I [a, 1, 2, 3]
+\end{verbatim}
+Mit dem Befehl I – IRMS wird der Wert des Wirkstromes auf der jeweiligen Phase 
+beziehungsweise allen drei Phasen in Ampere ausgegeben.
+
+\subsubsection*{Optionen}
+
+\begin{tabular}{ll}\\ 
+ \textbf{a\textsuperscript{ALE3}:} & \tab Gibt die Summe aus Phase 1 – 3 aus.\\\\ 
+ \textbf{1:} & \tab Gibt den Wert von Phase1 aus.\\ \\ 
+ \textbf{2\textsuperscript{ALE3}:} & \tab Gibt den Wert von Phase2 aus.\\ \\ 
+ \textbf{3\textsuperscript{ALE3}:} & \tab Gibt den Wert von Phase3 aus.\\ \\ 
+\end{tabular}
+\\
+\textsuperscript{ALE3}: Operationen werden ausschließlich von dem dreiphasigen Zähler unterstützt.
+
+\subsubsection*{Beispiel}
+\texttt{ComModbus -I 1}\\
+Gibt den Wert des Wirkstromes auf der Phase1 in Ampere aus.
+
+\subsection*{-C (Cos phi)}
+\begin{verbatim}
+ComModbus -C [1, 2, 3]
+\end{verbatim}
+Mit dem Befehl C – cos phi wird der Wirkfaktor auf der jeweiligen Phase
+ausgegeben.
+
+\subsubsection*{Optionen}
+
+\begin{tabular}{ll}\\ 
+ \textbf{1:} & \tab Gibt den Wert von Phase1 aus.\\ \\ 
+ \textbf{2\textsuperscript{ALE3}:} & \tab Gibt den Wert von Phase2 aus.\\ \\ 
+ \textbf{3\textsuperscript{ALE3}:} & \tab Gibt den Wert von Phase3 aus.\\ \\ 
+\end{tabular}
+\\
+\textsuperscript{ALE3}: Operationen werden ausschließlich von dem dreiphasigen Zähler unterstützt.
+
+\subsubsection{Beispiel}
+\texttt{ComModbus -C 1}\\
+Gibt den Wert des Wirkfaktors auf der Phase1 aus.
+\end{document}

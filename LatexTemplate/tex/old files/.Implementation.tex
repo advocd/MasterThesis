@@ -1,0 +1,345 @@
+\documentclass[Bachelorarbeit.tex]{subfiles}
+\begin{document}
+\chapter{Implementierung}
+%\label{chap:analyse}
+\label{chap:implementierung}
+Nachdem im letzten Kapitel das Modell für die Softwarearchitektur definiert wurde (siehe Abb.: \ref{pic:schicht_optimiert}) kann nun - auf dieser aufbauend - die Implementierung geplant und umgesetzt werden. 
+Neben den vorbereitenden Aufgaben wie dem Einrichten der Entwicklungsinfrastruktur wurde als Schwerpunkt in diesem Kapitel die  Implementierung der Kommunikations-Schicht gewählt.
+
+\section{Aufbau der Entwicklungsinfrastruktur}
+\label{sec:aufbau_der_entwicklunsinfrastruktur}
+Anhand der Spezifikation kann die Entwicklungsumgebung eingerichtet werden. 
+Dazu muss unter anderem die Infrastruktur auf dem \nameref{para:gnublin} installiert werden. Zum 
+Aufsetzen der Infrastruktur zählt neben der Installation des Betriebssystems auch 
+das Kompilieren der benötigten Software. Die \nameref{para:libmodbus}-Bibliothek sowie \nameref{para:python}3 
+sind nicht in den Paketquellen enthalten und müssen aus dem Quellcode kompiliert 
+werden.\\
+Das Hardware-Setup besteht aus dem \ac{SOC}, der über einen USB-zu-RS485-Wandler mit den Energiezählern verbunden wird. (siehe Abb.: \ref{pic:labor_aufbau} im Anhang)
+
+\section{Allgemeines Vorgehen bei der Implementierung}
+Um die spätere Weiterentwicklung des Projektes zu erleichtern ist es wichtig, dass die implementierten Schritte zum einen dokumentiert und zum anderen gut verständlich sind. \\
+Wie in der Spezifikation fixiert wurde, werden innerhalb des Projektes zwei Programmiersprachen zum Einsatz kommen. Bis auf die Funktionalität der Modbus-Kommunikation wird die Implementierung in \nameref{para:python}3.1 durchgeführt\footnote{Es wird die Standard Implementierung CPython verwendet.}. Das Kommunikations-Modul wird in "`C"' implementiert.\\ 
+Ein weiteres Ziel besteht darin, nach dem Konzept des \ac{TDD} vorzugehen wodurch die Wartbarkeit und Softwarequalität gesteigert werden soll.\\
+Ein elementares Kriterium des \ac{TDD} basiert auf dem gezielten Einsatz von \texttt{Unit}-Tests. 
+Ein wichtiger Aspekt bei der Entwicklung von \texttt{Unit}-Tests besteht darin, dass der Test vor der Implementierung des Quellcodes geschrieben wird. 
+Bei diesem Vorgehen muss sich der Entwickler im Vorfeld mit dem Funktionsumfang einzelner Strukturen und deren Schnittstellen auseinander setzen. 
+Die einzelnen Module zählen erst dann als vollständig implementiert, wenn die \texttt{Unit}-Tests erfolgreich ausgeführt werden können. 
+Dadurch werden schon in einem frühen Entwicklungsstadium Qualitätsmerkmale wie Beispielsweise wohldefinierte Schnittstellen und zielgerichtete Entwicklung erzielt.\\
+%
+\begin{comment}
+\\Das Resultat der Risikoanalyse hat ergeben, dass die Implementierung der Kommunikation-Schicht am kritischsten eingestuft wird und deshalb als erstes umgesetzt werden sollte. 
+\end{comment}
+ 
+
+\section{Implementierung der Kommunikations-Schicht}
+\label{sec:impl_der_kommunikationsschicht}
+Die Aufgabe der Kommunikations-Schicht besteht darin, den anderen Schichten – in erster Linie der Domänen-Schicht – eine Schnittstelle für die Modbus-Kommunikation zur Verfügung zu stellen. 
+Um dies zu realisieren müssen vorab die Voraussetzungen für die Kommunikation definiert sein.\\
+Dies bedeutet zum einen, abzuklären welche Informationen explizit für die Kommunikation benötigt werden und zum anderen, festzustellen welche Optionen vonseiten des spezifischen Energiezähler-Modelles zur Verfügung gestellt werden.
+
+\newpage
+\subsection{ Energiezähler-spezifische Informationen}
+Für die Initialisierung der Kommunikation werden folgende Energiezähler-spezifischen Daten benötigt:
+\begin{itemize}
+\item Baudrate
+\item Anzahl der Datenbits
+\item Art der Parität
+\item Anzahl der Stop-Bits
+\item Adresse des auszulesenden Gerätes (Slave)
+\end{itemize}
+Die Baudrate gibt die Anzahl der übertragenen Symbole pro Zeiteinheit an und muss bei Sender und Empfänger gleich eingestellt sein. 
+Die Anzahl der Datenbits gibt an wie viele Bits für die \ac{PDU} verwendet werden. 
+\begin{comment}
+Das Stop-bit gibt an ob ein oder zwei Stopbits verwendet werden. 
+\end{comment}
+Es muss ausgewählt werden, ob das Paritäts-Bit gerade oder ungerade ist beziehungsweise nicht benötigt wird. Wenn ein Paritäts-Bit angegeben ist so beträgt die Anzahl der Stop-Bits ein Bit.
+Sollte kein Paritäts-Bit verwendet werden so besteht die Anzahl der Stop-Bits aus zwei Bits. 
+Die Adresse des Slaves ist eine natürliche Zahl inklusive der Null, die angibt welches Zielgerät – das von dem Master verwaltet wird – angesprochen werden soll. 
+Typenspezifische Werte findet man in den Datenblättern der Energiezähler \parencites[siehe:][]{datenblatt_ald1}[und][]{datenblatt_ale3}.\\
+Diese Daten bilden die Grundlage, um eine Verbindung aufzubauen. 
+Dazu  muss noch ergänzend angegeben werden auf welche/s Register zugegriffen wird.
+In diesen Registern werden spezielle Werte des Zielgerätes, wie beispielsweise die aktuelle Spannung, abgelegt.
+Da geplant ist, zwei verschiedene Versionen des Energiezählers einzusetzen, sollten an dieser Stelle die jeweiligen Registerbelegungen betrachtet werden. 
+Während der einphasige Zähler 40 Register besitzt, werden beim dreiphasigen Zähler 52 Register bereitgestellt. 
+\begin{comment}
+Grundsätzlich sind die, bei beiden Zählern verwendeten Register, Register 1 – 40, mit den gleichen Funktionen belegt beziehungsweise bei den einphasigen Zähler unbelegt.
+\end{comment}
+Grundsätzlich sind die Register 1 – 40 mit den gleichen Funktionen belegt beziehungsweise bei dem einphasigen Zähler unbelegt.
+Dieser Umstand basiert zum einen auf der Anzahl der unterstützten Phasen und zum anderen darauf, das der dreiphasige Zähler einen Tarif mehr als der einphasige Zähler verwendet.
+\parencites[vgl:][]{datenblatt_ald1}[und][]{datenblatt_ale3} \\
+Aus diesem Grund muss bei der Kommunikation zum einen sichergestellt sein, welches Modell angesprochen werden soll, zum anderen ob dieses Modell auch über die gewünschte Operation verfügt.
+
+\subsection{Planung des Modbus-Moduls}
+\label{sub:plannung_modbus_modul}
+Für die eigentliche Modbus-Kommunikation via Modbus-RTU wird ein eigenständiges Programm (ComModbus) in der Programmiersprache "`C"' geschrieben. 
+Dieses Programm soll anschließend in das - in \nameref{para:python} geschriebene - Kommunikations-Modul integriert und von jenem verwendet werden.
+\\
+Für die Integration von in "`C"' geschriebenen Programmen gibt es in Python folgende zwei Ansätze:
+\begin{itemize}
+\item \texttt{subprocess}
+\item \texttt{ctypes}
+\end{itemize}
+Mit Hilfe von \texttt{subprocess} kann das Python-Programm zur Laufzeit neue (externe) Prozesse starten und mit den Ein- und Ausgabe-Kanälen des neuen Prozesses gekoppelt werden.
+Durch \texttt{ctypes} hat der Entwickler die Möglichkeit, zur Laufzeit auf dynamische Bibliotheken - die in "`C"' entwickelt wurden - zuzugreifen.\\
+Schlussendlich wurde ComModbus mithilfe von \texttt{subprocess} realisiert. 
+Durch diese Entscheidung ist es möglich, ComModbus auch selbstständig in Form eines Konsolen-Programms oder als Modul in anderen Projekten einzusetzen.
+
+\subsection{Implementierung ComModbus}
+Für die Realisierung des \ac{TDD} muss vor der Implementierung der Funktionsumfang und die Spezifikation für ComModbus definiert werden. 
+
+\subsubsection*{Spezifikation ComModbus}
+\label{subsubsec:spez_comModbus}
+Das Programm ComModbus soll über den Terminal verwendet werden und benötigt keine grafische Oberfläche.
+Die auszuführenden Befehle sollen als Parameter beim Programm-Aufruf übergeben werden. 
+Die Reihenfolge der Parameter kann beliebig sein. 
+Da die Energiezähler-spezifischen Werte relativ statisch sind, werden definierte Standard-Werte verwendet, solange diese nicht durch übergebene Parameter überschrieben werden. 
+Die Ergebnisse sollen vollständig sein. Bei dem Auslesen von Doppelregistern,\footnote{Datensätze die den Speicherbereich eines Registers überschreiten können werden auf zwei Register aufgeteilt um möglichen Over-Flow-Errors vorzubeugen.} sollen die Ergebnisse - vor der Ausgabe - zusammengeführt werden. 
+Es soll immer nur ein Befehl - wie zum Beispiel "lese aktuelle Spannung" - ausgeführt werden. 
+Der implementierte Befehlssatz soll erweiterbar sein. 
+Die Notation der Parameter wird wie folgt definiert. 
+Für Operationen werden Großbuchstaben und für Zähler-spezifische Werte Kleinbuchstaben verwendet.
+
+\subsubsection*{Befehlssatz ComModbus}
+Um den Befehlssatz für ComModbus definieren zu können muss zuerst betrachtet werden, welchen Funktionsumfang die verschiedenen Energiezähler zur Verfügung stellen. Durch die 
+Verwendung von unterschiedlichen Modellen ist der 
+Funktionsumfang teilweise - von Modell zu Modell - abweichend. In der folgenden Übersicht (siehe 
+Tabelle \ref{tab:funkion_zaehler}) wird der Funktionsumfang der verschiedenen Zähler aufgeführt.\footnote{Funktionen die mit 
+einem Stern (*) versehen wurden sind in dreifacher Ausführung – für jede Phase separat – verfügbar. Bei dem Modell ALD1 werden die Funktionen einzig für die erste Phase unterstützt.} 
+
+
+\begin{table} [h]
+\begin{tabular}{|m{25ex}|m{25ex}|m{25ex}|}
+\hline \textbf{Funktionsname} &  \textbf{Beschreibung} & \textbf{Wird von folgenden Modellen unterstützt} \\ 
+\hline 
+\rule[-0ex]{0pt}{2.5ex}Anzahl unterstützte Register & Je nach Modell 40 oder 52 Register & \acs{ALE3} und \acs{ALD1} \\ 
+\hline 
+\rule[-0ex]{0pt}{2.5ex}Zähler T1 total & Energiezähler total Tarif 1 & \acs{ALE3} und \acs{ALD1} \\ 
+\hline Zähler T1 partial  & Energiezähler partial Tarif 1 & \acs{ALE3} und \acs{ALD1} \\ 
+\hline Zähler T2 total  & Energiezähler total Tarif 2  & \acs{ALE3} \\ 
+\hline Zähler T2 partial & Energiezähler partial Tarif 2 & \acs{ALE3} \\ 
+\hline URMS (*) & Wirkspannung der Phase & \acs{ALE3} und \acs{ALD1}  \\ 
+\hline IRMS (*) & Wirkstrom der Phase & \acs{ALE3} und \acs{ALD1}  \\ 
+\hline PRMS (*) & Effektive Wirkleistung der Phase & \acs{ALE3} und \acs{ALD1}  \\ 
+\hline Cos phi (*) & Wirkfaktor der Phase & \acs{ALE3} und \acs{ALD1}  \\ 
+\hline 
+\end{tabular} 
+\caption{Verwendeter Funktionsumfang der Energiezähler ALE3 und ALD1 \parencites[vgl.][]{datenblatt_ald1}[und][]{datenblatt_ale3}}
+\label{tab:funkion_zaehler}
+\end{table}
+\mbox{}\\
+Aus den verfügbaren Funktionen der Energiezähler wird der Befehlssatz für das 
+Programm ComModbus hergeleitet. Der Aufruf der gewünschten Operation wird dem Programm durch die Übergabe des jeweiligen Großbuchstabens kenntlich 
+gemacht. Der definierte Befehlssatz für das Programm ComModbus kann dem Anhang entnommen werden. 
+
+\subsection{Anwendungsfall ComModbus}
+Um den Programmablauf des Programmes ComModbus zu analysieren muss der Standard-Anwendungsfall definiert werden. 
+In den folgenden Absätzen wird der Haupt-Anwendungsfall aufgezeigt, aus welchem der grobe Ablauf des Programmes ersichtlich wird. 
+Die finale Version des implementierten Programmablaufs ist in Form eines UML-Sequenzdiagrammes beigelegt (siehe Abb.: \ref{pic:sequenzdiagramm_comModbus} im Anhang).
+
+\subsubsection*{Akteure}
+Visual Energy und NutzerInnen
+
+\subsubsection*{Vorbedingungen}
+Es wird davon ausgegangen, dass die benötigte Infrastruktur eingerichtet wurde und 
+funktionstüchtig ist (siehe \nameref{sec:aufbau_der_entwicklunsinfrastruktur}).
+
+\subsubsection*{Nachbedingungen}
+ComModbus gibt den ausgelesenen sowie - im Falle eines Doppelregisters - die zusammengeführten Werte in der 
+Konsole aus (siehe: \nameref{subsubsec:spez_comModbus}).
+
+\subsubsection*{Standardablauf}
+\begin{enumerate} %[label=\arabic*.]
+\item Das Programm ComModbus wird mit der gewünschten Operation als
+Parameter aufgerufen.
+\item Die übergebenen Parameter werden analysiert.
+\item \label{uc:3} Zu dem gewünschten Energiezähler wird mithilfe der Parameter und der 
+Standard-Konfiguration eine Verbindung aufgebaut.
+\item Die verwendete Konfiguration wird ausgegeben.
+\item Es wird geprüft ob das Zielgerät die Operation unterstützt.
+\item Es wird der Wert aus dem benötigten Register gelesen.
+\item \label{uc:7} Der ausgelesene Wert wird ausgegeben.
+\end{enumerate}
+
+\subsubsection*{Alternativer Ablauf }
+\begin{enumerate} % Ende des Alternativen Ablauf
+\item[1a] Das Programm wird ohne Parameter gestartet.
+\begin{enumerate}
+\itemsep0em
+\item[1.] Es werden verfügbare Optionen ausgeben.
+\item[2.] Das Programm wird beendet.
+\end{enumerate}
+%
+\item[2a] Es wird eine nicht vorhandene Option als Parameter übergeben.
+\begin{enumerate}
+\itemsep0em
+\item[1.] Es wird die verwendete Option – als Fehler markiert – ausgegeben.
+\item[2.] Es werden verfügbare Optionen ausgeben.
+\item[3.] Das Programm wird beendet.
+\end{enumerate}
+%
+\item[2b] Es wird eine Konfiguration als Parameter übergeben.
+\begin{enumerate}
+\itemsep0em
+\item[1.] Die Standard-Konfiguration wird durch den/die übergebenen Parameter 
+ersetzt.
+\item[2.] Fortfahren bei Schritt\ref{uc:3} des Standartablaufs.
+\end{enumerate}
+%
+\item[2c] Es werden mehrere oder doppelte Operationen übergeben.
+\begin{enumerate}
+\itemsep0em
+\item[1.] Sollte schon eine Operation von dem Programm registriert sein so werden 
+die nächste/nächsten Operationen ignoriert.
+\item[2.] Fortfahren bei Schritt\ref{uc:3} des Standartablaufs.
+\end{enumerate}
+%
+\item[3a] Die Verbindung kann nicht aufgebaut werden.
+\begin{enumerate}
+\itemsep0em
+\item[1.] Analyse des Fehlercodes.
+\item[2.] Ausgabe des Fehlergrundes mit spezifischen Lösungsvorschlag um die 
+Fehlerursache zu beheben.
+\item[3.] Das Programm wird beendet.
+\end{enumerate}
+%
+\item[5a] Das Zielgerät unterstützt die ausgewählte Operation nicht.
+\begin{enumerate}
+\itemsep0em
+\item[1.] Es wird die verwendete Operation – als Fehler markiert – ausgegeben.
+\item[2.] Es werden mögliche Operationen ausgegeben.
+\item[3.] Das Programm wird beendet.
+\end{enumerate}
+%
+\item[6a] Das Register kann nicht gelesen werden.
+\begin{enumerate}
+\itemsep0em
+\item[a.] Startet wiederholten Leseversuch.
+	\begin{enumerate}
+	\itemsep0em
+	\item[1.] Ausgabe der Fehlerbeschreibung.
+	\item[2.] Fortfahren bei Schritt\ref{uc:3} des Standartablaufs.
+	\end{enumerate}
+\item[b.] Register kann trotz mehrmaligen Versuchen nicht gelesen werden.
+	\begin{enumerate}
+	\itemsep0em
+	\item[1.] Ausgabe der Fehlerbeschreibung.
+	\item[2.] Das Programm wird beendet.
+	\end{enumerate}
+\end{enumerate}
+%
+\item[6b] Es wird auf ein Doppelregister zugegriffen.
+\begin{enumerate}
+\itemsep0em
+\item[1.] Das Ergebnis wird auf der Basis der Werte - die von den einzelnen 
+Registern ausgelesen wurden - berechnet.
+\item[2.] Fortfahren bei Schritt\ref{uc:7} des Standartablaufs.
+\end{enumerate}
+%
+\end{enumerate}	% Ende des Alternativen Ablauf
+
+\subsection{Realisierung von ComModbus}
+Der erste Schritt bei dem Implementierungsvorgang ist es, die übergebenen Parameter auszulesen.
+Durch die Verwendung der Funktion \texttt{getopt}, welche in der C-Bibliothek enthalten ist, kann das Auslesen der Übergabeparameter deutlich vereinfacht werden.\footnote{Die Funktion \texttt{getopt} ist in der Methode \texttt{parseOptions} des Programms \texttt{ComModbus} implementiert (siehe Abb.: \ref{pic:sequenzdiagramm_comModbus} im Anhang)} 
+%Der Befehl erkennt Optionen, 
+%an den vorangestellten Minuszeichen (-) sowie die dazugehörigen Parameter, die mit 
+%einem Leerzeichen auf die Option folgen. Die Reihenfolge der Optionen ist irrelevant
+%und können zusammengefasst werden. 
+Folgendes Beispiel bildet einen Aufruf mit Option und Parameter ab:
+\begin{verbatim}
+ComModbus -T 1
+\end{verbatim}
+wobei \texttt{ComModbus} der Name des auszuführenden Programmes, \texttt{-T} die Option und 
+\texttt{1} der Parameter ist.
+Solange es noch unbearbeitete Optionen gibt wird \texttt{getopt} in einer Schleife ausgeführt. 
+Innerhalb dieser Schleife können die Optionen und Argumente in Variablen 
+gespeichert und weiterverarbeitet werden. \\
+Die Weiterverarbeitung wird in ComModbus durch einen \texttt{Switch-Case} abgehandelt. Jeder \texttt{Case} bildet die Business-Logik der jeweiligen Option ab. Durch dieses Vorgehen kann das Programm 
+einfach erweitert werden. Bei Bedarf wird eine neue Option definiert, welche in einem 
+weiterem \texttt{Case} realisiert wird. \\
+Eine ausgewertete Option kann entweder eine Operation, eine 
+Konfiguration oder eine ungültige Eingabe sein. Im Falle einer Konfiguration ersetzt 
+diese die Standard-Konfiguration.\footnote{Siehe Abschnitt  \nameref{sec:befehl_konfiguration} des \nameref{chap:befehlssatz_comModbus} im Anhang} \\
+Wenn eine ungültige Operation übergeben wurde, wird der/die BenutzerInn informiert und das Programm beendet. \\
+Bei einer gültigen Operation wird als erstes geprüft, ob das Programm bereits über eine aktuelle Operationsanweisung verfügt. Bei positiver Prüfung wird die neue Operation ignoriert.\\ 
+Bei negativer Prüfung wird die neue Operation registriert. Diese Schleife  
+wird so lange wiederholt, bis alle Optionen – die als Parameter beim 
+Programmstart übergeben wurden – abgearbeitet sind.\\
+\\
+Anschließend wird überprüft, ob die registrierte Operation von dem gewünschten 
+Gerät unterstützt wird. Sollte keine Unterstützung vorliegen, so wird der/die 
+BenutzerInn informiert und das Programm beendet.\\
+Sobald die Prüfung 
+erfolgreich abgeschlossen ist, wird mit der Kommunikations-Routine fortgefahren. \\
+\\
+Da vor der Modbus-Kommunikation nicht geprüft werden kann, ob der lesende Zugriff auf die benötigten Register möglich ist, wird an dieser Stelle eine Wiederholung implementiert.
+\\
+\begin{comment}
+Es kommt vor, dass für eine Operation mehrere Register  –  zum Beispiel Register 28, 29, 32 und 33  –  benötigt werden.
+\end{comment}
+Es kommt vor, dass für eine Operation mehrere Register benötigt werden. 
+Wenn aus dieser Menge ein  Register  vorübergehend nicht  gelesen  werden  kann,  so  muss  das 
+Programm  mit  einer  Fehlermeldung  abgebrochen werden.\footnote{Eine Ursache wäre der schreibende Zugriff des Zählers auf dieses Register.}  \\
+Der sicherste Weg  der  Vorbeugung  besteht  im  Falle  eines  gesperrten 
+Registers  darin,  den  Lesevorgang  zu  wiederholen.  Um  eine
+Endlosschleife  bei  dieser  Prozedur  zu  vermeiden,  falls das
+Register  längerfristig  nicht  verfügbar  ist,  wurden  die  Wiederholungen 
+limitiert.  
+Sollte  zum  wiederholten  Male  der  lesende Zugriff  nicht erfolgreich sein, so wird das Programm mit einer Fehlermeldung beendet.\\
+\\
+Während des Kommunikations-Ablaufes werden die einzelnen Schritte auf ihre Korrektheit hin überprüft.
+Sollte ein Fehler bei einem Zwischenschritt eingetreten sein so wird unverzüglich das \texttt{error handling} aufgerufen. 
+Die vom \texttt{error handling} generierte spezifische Fehlermeldung wird vor dem Abbruch des Programmes ausgegeben.
+Sollte während einer aktiven Modbus-Verbindung ein Fehler auftreten, so wird vor dem Abbruch des Programmes die Verbindung geschlossen.\\
+\\
+Sollte eine Operation ausgeführt werden, die mehrere Register benötigt, so muss vor der Ausgabe zuerst der Gesamtwert errechnet werden. 
+Bei der Zusammenführung des Gesamtwertes werden entweder zwei oder vier Register\footnote{Was einem-  oder zwei Doppelregistern entspricht} für die Operation verwendet. 
+Bei dem Umgang mit Doppelregistern haben die einzelnen Register unterschiedliche Bedeutungen. 
+Bei den verwendeten Energiezählern ist das Register mit der kleineren Adresse das höherwertigere Register. 
+Jedes Register verfügt über einen  16bit vorzeichenlosen Speicherbereich und kann somit  einen 
+Zahlenbereich von bis  zu  $2^{16}$ (65.536) abbilden. \parencites[vgl.][]{datenblatt_ald1}[und][]{datenblatt_ale3}\\
+\\\\
+Beispiel:\\
+Es  soll  der  totale  Wert  des  Tarifs1  ausgelesen  werden.  Dafür  wird  das 
+Doppelregister mit der Adresse 28 und 29 benötigt.\\
+Die weiteren Werte sind in Tabelle \ref{tab:berrechnung} angegeben.\\
+
+\begin{table}[]
+\begin{tabular}{|p{25ex}|>{\centering\arraybackslash}p{25ex}|}
+\hline 
+\rule[0ex]{0pt}{2.5ex} Register28  & 13 \\ 
+\hline 
+\rule[0ex]{0pt}{2.5ex} Register29 & 60383 \\ 
+\hline 
+\rule[0ex]{0pt}{2.5ex} Multiplikator & $10^{-2}$ (0,01) \\ 
+\hline 
+\rule[0ex]{0pt}{2.5ex} Einheit & kWh \\ 
+\hline 
+\end{tabular} 
+\caption{Werte für die Doppelregisterberechnung}
+\label{tab:berrechnung}
+\end{table}
+\mbox{}\\
+Da das Register mit  der  niedrigen  Speicheradresse  das  höherwertige  Register  ist,  ergibt sich folgende Formel für die Berechnung des Wertes $Tarif1_{total}$:
+
+\[Tarif1_{total} = (Register28 \times Zahlenbereich + Register29) \times Multiplikator \]
+Wenn man nun die spezifischen Werte aus Tabelle \ref{tab:berrechnung} einsetzt so erhält man folgende Gleichung:
+
+\[Tarif1_{total} = (13 \times 65536 + 60.383) \times 0,01 \]
+Daraus ergibt sich, dass der totale Wert von Tarif1 momentan 9123,51 kWH beträgt.
+
+\subsection{Einbindung von ComModbus in der Kommunikationsschicht}
+%Nachdem ComModbus entwickelt wurde, kann mit der Einbindung in der Kommunikationsschicht begonnen werden.
+Um ComModbus in Visual Energy einzubetten muss eine entsprechende Schnittstelle implementiert werden.
+Dafür wurde -  nach dem Vorbild des Fassaden-Patterns - ein eigenes Python-Modul (\texttt{com\_Modbus}) umgesetzt. 
+Das Modul \texttt{com\_Modbus} besitzt für jede verfügbare Operation des Programmes ComModbus eine eigene Python-Methode. 
+Eine Aufgabe der Methoden besteht darin, die - beim Aufruf - erhaltenen Informationen zu verwerten sowie ComModbus via \texttt{subprocess} aufzurufen (siehe Abschnitt: \nameref{sub:plannung_modbus_modul}). 
+Des weiteren sind die Methoden der Fassade auch dafür zuständig, dass die Input- und Output-Daten zwischen Python und "`C"' kompatibel sind.
+Durch diese Lösung kann innerhalb von Visual Energy bequem auf den gesamten Befehlssatz von ComModbus zugegriffen werden.   \\
+\\
+Um die Implementierung nach dem Schema des \ac{TDD} zu realisieren werden vor der Umsetzung des Modules zuerst die Unit-Tests geschrieben. 
+Da das Zusammenspiel zwischen der Kommunikations-Schicht und dem C-Programm ComModbus getestet werden soll, werden bei dem Test vordefinierte (hart-kodierte) Werte für die Konfiguration verwendet. 
+Getestet werden zum einen alle Operationen für den \acs{ALE3} sowie den \acs{ALD1}. Des weiteren werden  auch die Fälle getestet, bei denen die gewählte Operation nicht von dem jeweiligen Energiezähler unterstützt wird.\\
+Nach dem Erstellen der Unit-Tests kann mit der Implementierung der Kommunikations-Schicht begonnen werden. 
+Die Implementierung dieses Moduls zählt als abgeschlossen, wenn alle Unit-Tests erfolgreich durchlaufen wurden.
+
+\end{document}

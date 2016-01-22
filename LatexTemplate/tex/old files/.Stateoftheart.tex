@@ -1,0 +1,349 @@
+\documentclass[../Bachelorarbeit.tex]{subfiles}
+\begin{document}
+\chapter{State of the Art}
+\label{chap:state_of_the_art}
+
+\section{Rahmenbedingungen}
+Eine große Herausforderung des Projektes Visual Energy besteht in der Freiheit bei der Auswahl der Technologien. 
+Diese Freiheit kommt durch die verhältnismäßig geringen Rahmenbedingungen an das Projekt zustande. 
+Für eine besser lesbare Struktur sind die Anforderungen in die Kategorien Soft- und Hardware unterteilt.
+
+\subsection{Hardware-Anforderung}
+Gewisse Hardwarekomponenten wurden vor dem Projektstart explizit definiert, andere wurden nur grob umrissen.
+\\
+Unter den unbedingt zu verwendenden Hardwarekomponenten befinden sich ausschließlich die zwei Energiezähler der Firma Saia-Burgess.
+Dabei handelt es sich zum einem um das dreiphasige Modell: Saia-Burgess \acs{ALE3} \parencite[vgl.][]{datenblatt_ale3} und zum anderem um das einphasige Gerät: Saia-Burgess \acs{ALD1} \parencite[vgl.][]{datenblatt_ald1}.  \\
+Beide Modelle kommunizieren mithilfe des \nameref{subsubsec:modbus} . 
+Als Recheneinheit soll ein \ac{SOC} eingesetzt werden. 
+Diese Bauart zeichnet sich durch die geringe Bauröße, den niedrigen Energieverbrauch sowie die günstigen Anschaffungskosten aus. 
+Ein spezieller Hersteller, beziehungsweise Modell, wurde nicht definiert. 
+Jedoch werden zwei Bedingungen an den \ac{SOC} gestellt. 
+Zum einen muss das Gerät netzwerkfähig sein und zum anderen über 
+eine USB-Schnittstelle verfügen. 
+
+\subsection{Software-Anforderung}
+Die Anforderungen an die Software leiten sich zum größten Teil von den 
+Hardwarekomponenten ab. Durch die Verwendung der Energiezähler \acs{ALE3} und \acs{ALD1} ist 
+die Verwendung des \nameref{subsubsec:modbus} unabdingbar. 
+\begin{comment}
+% redundanter Satz
+Des Weiteren ist das verwendete Betriebssystem teilweise von der gewählten Hardwarearchitektur abhängig.
+\end{comment}
+
+\begin{comment}
+\section{Übersicht der Technologien}
+
+Das Ziel dieses Kapitel ist es, die für das Projekt relevanten Technologien vorzustellen, die sich durch die State of the Art – Recherche heraus kristallisiert haben. 
+Diese bilden die Grundlage für die Auswahl der Technologien, die schlussendlich im Projekt eingesetzt werden.
+\end{comment}
+
+
+\section{Hardware}
+Wie im Kapitel Hardware-Anforderungen schon beschrieben wurde, ist keine genauere Spezifikation für die Hardware des Projektes Visual Energy definiert. 
+Da als Anforderungsprofil entschieden wurde, dass ein \acs{SOC} zum Einsatz kommen soll, werden an dieser Stelle ausschließlich eine Auswahl an relevanten \acs{SOC}' s vorgestellt.
+
+\subsection{Hardware-Schnittstellen}
+Das Anforderungsprofil an die Hardwareschnittstellen ist sehr minimalistisch und lässt sich
+auf exakt zwei Schnittstellen herunterbrechen. Zum einem ist dies die Anbindung an die 
+Energiezähler und zum anderem die Verfügbarkeit einer kabelgebundenen 
+Netzwerkkonnektivität. Für die Realisierung der Bedingung wurden folgende Schnittstellen
+definiert: Ethernet für den Netzwerkzugang und ein handelsüblicher USB-Anschluss für die
+Verbindung zu den Energiezählern.
+
+\subsection{System On A Chip}
+\label{subsubsec:system_on_a_chip}
+Unter einem \ac{SOC} oder Einzelplatinen-Computer versteht man ein funktionsfähiges System, dessen Kernkomponenten ausschließlich auf einer Leiterplatte montiert sind. 
+Durch die einfache Konstruktionsform und das relativ minimalistische Leistungsniveau der Hardwarekomponenten sind Einzelplatinen-Computer günstig in der Anschaffung. 
+Ein weiterer Vorteil - neben dem geringen Preis - stellen die programmierbare Schnittstelle, die sogenannte \acf{GPIO} dar. 
+Über die \ac{GPIO}-Schnittstelle können einzelne Pins als Ein- beziehungsweise Ausgänge definiert werden. 
+Aus diesem Grund eignen sich Einzelplatinen-Computer für den schnellen und kostensparenden Aufbau von Prototypen.
+
+
+\subsubsection*{Raspberry Pi}
+\label{para:raspberry_pi} 
+Der Raspberry Pi wird von der in England als wohltätig eingetragenen Stiftung: „Raspberry Pi Foundation“ mit der Zielsetzung, das Studium der Informatik zu fördern, vertrieben.
+Die Konzeption des Raspberry Pi wurde für eine Ausbildungs- und Entwicklungsplattform ausgelegt. 
+Für die Analyse stand das Modell „Raspberry Pi Modell B“ zur Verfügung. 
+Der Rasperry Pi ist mit einem 700MHz starken \acs{ARM}11-Prozessor und 512MB RAM ausgestattet. 
+\begin{comment}
+Der Raspberry Pi verfügt über reichlich Hardwareschnittstellen.
+\end{comment}
+Neben einer Ethernet-Schnittstelle sind zwei USB-Anschlüsse, ein 3,5mm Klinkenstecker, ein HDMI-Anschluss, 16 \ac{GPIO}-Pins sowie ein Steckplatz für eine SD-Karte, auf der sich das Betriebssystem befindet, vorhanden. 
+Die Stromversorgung erfolgt über den Micro USB-Anschluss.
+Abgesehen von einem USB- und dem Ethernet-Anschluss sind die Schnittstellen für das Projekt nicht weiter relevant. \\
+Leider hat der Raspberry Pi keinen direkten Konsolen-Anschluss für den externen Zugriff. 
+Wenn ein Zugriff auf den Raspberry Pi von einem Entwicklungs-PC aus möglich sein soll, so muss dies über das \ac{SSH}-Protokoll oder über die \ac{GPIO}-Anschlüsse mit einem speziellen Konsolen-Kabel erfolgen. \parencites[vgl.][]{raspberryPi_about}[und][]{raspberryPi_faq}\\
+\textbf{Der Raspberry Pi erfüllt das Anforderungsprofil vollständig.}
+
+\subsubsection*{Gnublin}
+\label{para:gnublin} 
+Das Gnublin Board wurde laut Hersteller als Entwicklungsplattform ausgelegt. 
+Für die Evaluierung stand das Modell: "`Gnublin-LAN"' zur Verfügung. 
+Mit dem 180 MHz \ac{ARM}9-Prozessor und dem 32 MB \ac{SDRAM} hat das Gnublin-Board von den zur Verfügung stehenden \ac{SOC}' s die geringsten Hardwareressourcen. 
+Über den Gnublin Connector können weitere Gnublin-Hardware-Module oder externe Peripherie angeschlossen werden. 
+Der Gnublin bietet den Vorteil, dass die angeschlossenen Module über die Gnublin-\acs{API} leicht und schnell angesprochen werden können. 
+Der Gnublin verfügt über einen integrierten Konsolen-Anschluss der durch einen USB auf RS232-Konverter realisiert wurde. 
+Durch den Konsolen-Anschluss kann man bequem vom Entwicklungs-PC aus auf den Gnublin zugreifen. 
+\parencite[vgl.][]{gnublin_details}\\
+\textbf{Das Gnublin Board erfüllt das Anforderungsprofil vollständig.}
+
+\subsubsection*{IC-Board}
+\label{para:ic-board} 
+Das IC-Board wird von der Firma: „IN-CIRCUIT“ gefertigt und ist als konfigurierbare Plattform konzipiert. Zur Analyse lag folgende Konfiguration vor: als Basis dient das Modell „ADB 4000“
+\parencite[vgl.][]{ic_adb_4000_interface} 
+in der maximalen Ausbaustufe mit einem 8 Zoll Touchdisplay. Der mit 400 MHz getaktete \acs{ARM}9-Prozessor sowie der 128MB starke DDR2 RAM befinden sich auf dem \acf{SODIMM} mit der Bezeichnung „SAM9G45 SODIMM“ 
+\parencite[vgl.][]{ic_SAM9G45_sodimm}.
+Um das Board zu 
+komplettieren, wird das gewählte \ac{SODIMM} in das Entwicklerbord ADB 4000 
+gesteckt. Durch die Austauschbarkeit der Komponenten ist die Konfigurierbarkeit des IC-Boards ausgesprochen gut und kann an die speziellen Einsatzbedürfnisse angepasst 
+werden. Der ADB-4000 verfügt über ein großes Potential an Schnittstellen, es werden hier 
+ausschließlich die Schnittstellen mit Projektrelevanz aufgezählt Neben dem Ethernet-Anschluss verfügt es über vier USB-Ports.
+Ähnlich wie beim Gnublin-Board kann auf den ADB-4000 von einem anderem Rechner aus über ein Konsolen-Kabel zugegriffen werden.
+Bei dem ADB-4000 erfolgt der Zugriff allerdings über einen \ac{UART}-Anschluss.\\
+\textbf{Das IC-Board erfüllt das Anforderungsprofil vollständig.}
+
+\section{Software}
+Das Anforderungsprofil gibt hier ausschließlich die Nutzung des \nameref{subsubsec:modbus}s vor, da
+dies unabdingbar für die Kommunikation mit den Energiezählern ist. Die Auswahl der 
+Software hängt bei diesem Projekt stark von der zuvor ausgewählten Hardware 
+beziehungsweise Hardwarearchitektur ab. Je nach dem, welcher \ac{SOC} verwendet wird, 
+fällt die Wahl des Betriebssystems auf eines der folgenden.
+
+\subsection{Betriebssystem}
+
+\subsubsection*{Android}
+Android ist ein modernes Betriebssystem, das vor allem im „mobile device“-Bereich 
+eingesetzt wird. 
+Die Unterstützung für \ac{ARM}-Prozessoren sowie die Integration von Touchdisplays und der anpassbare quelloffene Code machen Android immer attraktiver für die Bedürfnisse der  embedded-Softwareentwicklung. Das \ac{SODIMM} der Firma IN-CIRCUIT wird standardmäßig mit Android ausgeliefert. 
+
+\subsubsection*{Buildroot}
+\begin{comment}
+Buildroot ist kein Betriebssystem, sondern ein Open Source-Werkzeug, das aus einer Ansammlung von Skripten besteht, die den Entwickler beim Erstellen des Linux-Dateisystems unterstützen.
+\end{comment}
+Buildroot ist kein Betriebssystem, sondern ein Open Source-Werkzeug, das aus einer Ansammlung von Skripten besteht, die den Entwickler beim Erstellen eines angepassten Linux-Abbild (Image) unterstützen.
+ Durch die hohe Konfigurierbarkeit lassen sich minimalisierte 
+beziehungsweise stark optimierte Zielsysteme erzeugen. 
+\begin{comment}
+Die gewünschte Flexibilität sorgt allerdings auch für ein erhöhtes Maß an Komplexität, was sich unter anderem in dem mehrstufigen Entwicklungsprozess bis zum lauffähigen Betriebssystem widerspiegelt.
+\end{comment}
+Die gewünschte Flexibilität sorgt allerdings auch für ein erhöhtes Maß an Komplexität, was sich unter anderem in dem mehrstufigen Entwicklungsprozess bis zum lauffähigen Betriebssystem widerspiegelt.\\
+Die Toolchain, eine Ansammlung von Entwicklungswerkzeugen, um ausführbare Software für ein Zielsystem zu erzeugen, ist eine Grundvoraussetzung. \\
+Für das \nameref{para:ic-board} wird von IN-CIRCUIT eine angepasste und vorkonfigurierte Version von Buildroot angeboten. 
+Die Konfiguration von Buildroot kann über das Terminalprogramm 
+\texttt{menuconfig} angepasst werden. Durch den Aufruf des \texttt{make}-Befehls werden die Images für den Kernel, das \ac{RootFS} und den bootloader erzeugt.
+Nach dem erfolgreichen Erzeugen der Systemabbilder können diese über das \ac{NFS}-Protokoll auf das Gerät übertragen werden. \\
+Zusätzliche Software kann, je nachdem, ob ein Paketmanager beziehungsweise welcher Paketmanager installiert wurde, von diesem bezogen werden. 
+Sollte kein Paketmanager installiert worden sein, so muss benötigte Software manuell aus dem Quellcode und dessen Abhängigkeiten kompiliert werden.
+
+\subsubsection*{Gnublin Debian}
+\label{para:gnublin_debian} 
+Gnublin Debian basiert auf der Debian Version „Squeeze“ (Debian 6), das an die 
+minimalistische Hardware des \nameref{para:gnublin}'s angepasst wurde. 
+\begin{comment}
+Dadurch kann man die Vorteile der Debian Distribution wie zum Beispiel des Package Manager nutzen und hat trotzdem einen geringen Speicher-Footprint. 
+\end{comment}
+Dadurch kann man die Vorteile der Debian Distribution wie zum Beispiel des Package Manager nutzen und hat trotzdem nur ein geringes Speicher-Abbild. 
+Des Weiteren sind zum einen die Treiber für alle verfügbaren Gnublin-Hardware-Module, wie zum Beispiel das \acs{ASCII}-Display, und zum anderen die \nameref{para:gnublin-api} integriert
+\parencite[vgl.][]{gnublin_debian}. \\
+Die Installation von Gnublin Debian erfolgt über eine von „Embedded Projects“ 
+bereitgestellte Software. Für die Installation wird von embedded projects jeweils ein 
+Terminalprogramm sowie ein Programm mit grafischer Oberfläche bereitgestellt. Vor der 
+eigentlichen Installation werden der gewünschte Bootloader, der Kernel und das \ac{RootFS}
+auf der Herstellerseite ausgewählt und heruntergeladen. Mithilfe des 
+Installationsprogramms in der grafischen Oberfläche werden die bezogenen 
+Softwarekomponenten ausgewählt und anschließend auf eine microSD-Karte übertragen.\\
+Für die Installation über das Terminalprogramm muss dieses heruntergeladen werden und 
+mit dem Pfad zur microSD-Karte als \texttt{Argument} im Terminal gestartet werden. Die 
+Programmroutine kümmert sich selbständig um den Bezug und die Installation der 
+benötigten Dateien. Für die Verwendung wird eine funktionierende Python-Umgebung 
+sowie eine Internetverbindung vorausgesetzt.
+\parencite[vgl.][]{gnublin_debian_installer}. \\
+Zusätzliche Software kann wie von Debian gewohnt über den Debian Package Manager 
+beziehungsweise \ac{APT} installiert werden. 
+\begin{comment}
+Gnublin Debian verfügt von Haus aus nicht über eine grafische Benutzerschnittstelle, was für die Zielgruppe, die erfahrene Linux Anwender und Entwickler anspricht, aber kein Problem darstellen sollte.
+\end{comment}
+Gnublin Debian verfügt von Haus aus nicht über eine grafische Benutzerschnittstelle wie Beispielsweise denn "`X.Org Server"'.
+
+
+\subsubsection*{Raspbian}
+Ähnlich wie Gnublin Debian ist Raspbian Debian eine angepasste Distribution auf der 
+Basis von Debian Wheezy. Raspbian ist das offizielle Betriebssystem für den \nameref{para:raspberry_pi}
+und wird von der Raspberry Pi Community entwickelt. In das Betriebssystem sind die 
+Treiber für die Hardwareschnittstellen, wie zum Beispiel HDMI-Anschluss, bereits 
+integriert.\\
+Die Installation erfolgt über eine Netzwerk-Installation. Zuvor wird das Programm für die Netzwerk-Installation auf eine formatierte SD-Karte kopiert. Für die Installation ist eine Internetverbindung via Ethernet notwendig. Durch das Starten des \nameref{para:raspberry_pi} mit der präparierten SD-Karte wird der Installationsdialog gestartet.\\
+Zusätzliche Software kann wie von Debian gewohnt über den Debian Package Manager 
+beziehungsweise \ac{APT} installiert werden. Die Standart Raspbian Installation verfügt über eine grafische Benutzerschnittstelle.
+
+\subsection{Programmierschnittstellen - \acf{API}}
+Eine \acs{API} definiert die Schnittstelle zu einem Softwaresystem. Dieses Softwaresystem kann unter anderem ein selbständiges Programm oder eine Software-Bibliothek sein. Die Nutzung der Schnittstelle ermöglicht es dem Entwickler mit der Software, die die \acs{API} bereitstellt, zu interagieren. Durch den Einsatz von Bibliotheken, auf die über ihre \acs{API} zugegriffen wird, lassen sich wiederkehrende oder aufwendige Probleme, wie zum Beispiel der Zugriff auf eine Datenbank, lösen. 
+
+\subsubsection*{Gnublin-\ac{API}} 
+\label{para:gnublin-api}
+Von der Entwicklerfirma „Embedded Systems“ wird neben dem auf Debian für \ac{ARM}-Prozessoren basierenden Betriebssystem auch eine \acs{API} für den Gnublin angeboten und aktiv weiterentwickelt. 
+\begin{comment}
+Die Gnublin-API bietet dem Entwickler einen einfachen Open Source-Zugang für die Steuerung der Hardwareschnittstellen. 
+\end{comment}
+Die Gnublin-API bietet dem Entwickler - mittels Open Source-Software - einen einfachen Zugang für die Steuerung der Hardwareschnittstellen. 
+Der gut dokumentierte Funktionsumfang reicht von der Kommunikation zu diversen Gnublin-Hardware-Modulen sowie Peripherie über die Schnittstellen \ac{I2C}, \ac{SPI} und \ac{GPIO} bis hin zur Steuerung von Motoren. 
+Zum aktuellen Zeitpunkt kann die Gnublin-API in Python- und "`C++"'-Projekten eingesetzt werden.
+
+\subsection{Modbus-Protokoll}
+\label{subsubsec:modbus} 
+Zu den Anforderungen des Projektes zählte, dass die Kommunikation zwischen dem \ac{SOC} und dem Energiezähler mittels dem Modbus-Protokoll realisiert werden sollte. In diesem Kapitel sollen die Grundlagen des Protokolls erläutert werden.\\
+Das Modbus-Protokoll wurde 1979 von der Firma Modicon (heute Schneider Electric) 
+veröffentlicht. Im April 2004 wurde Modbus frei verfügbar und konnte ab diesem Zeitpunkt ohne Lizenzgebühren verwendet werden. Seit dem Jahr 2004 wird Modbus unter der Federführung von der „Modbus Organization“ und von freiwilligen Entwicklern betreut und erweitert. Laut der Modbus Organization ist das Modbus-Protokoll ein „de facto Standard im industriellen Umfeld“. 
+\parencite[vgl.][]{modbus_faq}. \\
+Das Modbus-Protokoll ist in vier verschiedenen Versionen verfügbar: Modbus-Plus, Modbus-\ac{RTU}, Modbus-\ac{ASCII} und Modbus-\ac{TCP}. \\
+Eine Übersicht darüber, wie die einzelnen Schichten des \acs{ISO}/\acs{OSI}-Models von den Modbus-Versionen RTU und ASCII genutzt werden gibt Tabelle \ref{tab:iso/osi_modbus}.\\
+
+\begin{table}[h]
+\begin{tabular}{|c|c|c|c|} 
+\hline 
+\rule[0ex]{0pt}{2.5ex} \textbf{Schicht} & \textbf{\acs{ISO}/\acs{OSI}} & \textbf{MB–RTU} & \textbf{MB–ASCII} \\ 
+\hline 
+\rule[-0ex]{0pt}{2.5ex} \textbf{7} & Application & \multicolumn{2}{c|}{MODBUS-Application Layer} \\ 
+\hline 
+\rule[-0ex]{0pt}{2.5ex} \textbf{6} & Presentation &  &  \\ 
+\hline 
+\rule[-0ex]{0pt}{2.5ex} \textbf{5} & Session &  &  \\ 
+\hline 
+\rule[-0ex]{0pt}{2.5ex} \textbf{4} & Transport &  &  \\ 
+\hline 
+\rule[-0ex]{0pt}{2.5ex} \textbf{3} & Network & &  \\ 
+\hline 
+\rule[-0ex]{0pt}{2.5ex} \textbf{2} & Data Link & \multicolumn{2}{c|}{Master/Slave} \\ 
+\hline 
+\rule[-0ex]{0pt}{2.5ex} \textbf{1} & Physical & \multicolumn{2}{c|}{RS232/RS485} \\ 
+\hline 
+\end{tabular} 
+\caption{Nutzung der ISO/OSI-Schichten durch Modbus\parencite[vgl.][S. 310 - Tabelle wurde durch Verfasser angepasst]{bussyteme}}
+\label{tab:iso/osi_modbus}
+\end{table}
+
+\subsubsection*{Modbus-\acs{RTU} und Modbus-\acs{ASCII}}
+Modbus-\acs{RTU} und Modbus-\acs{ASCII} arbeiten nach dem Master/Slave-Prinzip. Das bedeutet, dass ein Gerät (Master) ein oder mehrere Geräte (Slave) steuert. Auf das Projekt Visual Energy 
+umgelegt bedeutet das, dass der \ac{SOC} die Rolle des Masters übernimmt und die Werte der
+Energiezähler (Slave) abfragt. Der Unterschied in den Versionen RTU und ASCII liegt in der Codierung der Information. Während in der RTU-Version die Informationen binär übertragen werden, werden die Daten in der ASCII-Version als lesbare ASCII-Zeichen übertragen. Der Vorteil der Lesbarkeit in der ASCII-Version schränkt allerdings den Datendurchsatz deutlich ein. \\
+Bei beiden Modbus-Versionen ist es möglich, dass ein Master mit bis zu 255 Slaves 
+kommuniziert.
+\parencite[vgl.][S. 208]{bussyteme}\\
+Die \ac{PDU} ist bei beiden Modbus-Versionen dieselbe. Die \ac{PDU} besteht 
+aus den vier Feldern: Adresse, Funktionscode, Daten und Prüfsumme. Im Adressfeld ist 
+hinterlegt, welches Gerät (Slave) angesprochen werden soll. Anschließend werden, je 
+nach definiertem Funktionscode, auf dem Zielgerät die gewünschten Operation 
+ausgeführt. Mögliche Operationen wären zum Beispiel das Lesen oder Schreiben von 
+Registern. Die nötigen Informationen zum Durchführen der Operation sind im Datenfeld 
+hinterlegt, eine mögliche Information wäre zum Beispiel, welches Register verwendet werden soll. Bei der RTU-Version kommt ein 16 Bit \ac{CRC} zum Einsatz. In der ASCII-Version wird der \ac{LRC} verwendet. 
+\parencite[vgl.][S. 78 ff]{modbus_dipl_arbeit}
+
+\subsubsection*{Modbus-\acs{RTU}-Frame}
+\label{para:modbus_rtu}
+Der Beginn eines neuen \acs{RTU}-Frames wird durch eine Pause von größer gleich 3.5 
+Zeichen definiert. Die Übertragung des Frames darf nicht länger als 1.5 Zeichen 
+unterbrochen werden, da sonst das Frame vom Empfänger verworfen wird. Die maximale 
+Länge eines \acs{RTU}-Frames beträgt 256 Bytes. Dies errechnet sich wie folgt: ein Byte für die 
+Adresse, ein Byte für den Funktionscode, null bis 252 Bytes für den Datenteil und zwei 
+Bytes für die \acs{CRC}-Prüfsumme. 
+\parencite[vgl.][S. 79]{modbus_dipl_arbeit}
+
+\subsubsection*{Modbus-\acs{ASCII}-Frame}
+Wie schon erwähnt, wird in der \acs{ASCII}-Version der Datenstrom für den Menschen lesbar 
+übertragen, dieser Umstand fordert teilweise die Anpassung des \acs{ASCII}-Frame. Ähnlich wie
+bei dem \acs{RTU}-Frame ist der Beginn und das Ende eines Telegramms definiert und 
+erkennbar. Der \acs{ASCII}-Frame besitzt die zusätzlichen Felder Start und Ende. Der Beginn 
+wird durch ein „Kolon“ (:) und das Ende durch die Steuerzeichen \ac{CR} und \ac{LF} kenntlich gemacht. 
+\parencite[vgl.][S. 80]{modbus_dipl_arbeit}
+
+\subsubsection*{Libmodbus}
+\label{para:libmodbus}
+Libmodbus ist eine in der Programmiersprache „C“ geschriebene Bibliothek, die den 
+Entwicklern den Umgang mit dem \nameref{subsubsec:modbus} erleichtern soll. Anstatt eigene Modbus-Telegramme 
+zu generieren, können Bibliotheksfunktionen verwendet werden, um die gewünschten 
+Operationen, wie zum Beispiel das Auslesen von Registern, durchzuführen. \\
+Da Libmodbus unter der \ac{LGPL} steht, ist die Bibliothek Open Source und somit frei verfügbar. Ein großer Vorteil liegt in der weitläufigen
+Portierung für unter anderem Linux, Mac OS X, FreeBSD und Win32.
+\begin{comment}
+Die Installation unter Linux ist relativ trivial, da die meisten Distributionen die Bibliothek über die Paketquellen anbieten.
+\end{comment}
+Die Installation der Bibliothek kann bei den meisten Linux-Distributionen über die Paketquellen erfolgen. 
+Falls man nicht die Möglichkeit hat, Libmodbus über einen Paketmanager zu 
+beziehen, so kann man die Bibliothek über das Makefile, das dem Quellcode beiliegt, 
+kompilieren. 
+
+\subsection{Programmiersprachen}
+Die Wahl der eingesetzten Programmiersprache kann erhebliche Auswirkung auf die 
+Performance und die Auswahl an verwendbaren Ressourcen haben. Ein weiterer - nicht unerheblicher - Punkt ist die Ziel-Architektur sowie die Systemplattform, auf der die Software-Lösung im späteren Produktionsbetrieb ausgeführt werden soll. 
+Essentielle 
+Fragen an dieser Stelle sind zum Beispiel ob das Produkt plattformunabhängig sein muss,
+beziehungsweise welche Architekturen vom Programm unterstützt werden sollen. \\
+Da die Programmiersprachen „C“ und „Java“ im Studiengang ausführlich behandelt 
+wurden, möchte ich an dieser Stelle die Gelegenheit nutzen, die aufstrebende 
+Programmiersprache „Python“ vorzustellen.
+
+\subsubsection*{Python}
+\label{para:python}
+Python ist eine interpretierte plattformunabhängige dynamische sowie stark typisierte 
+Sprache. Die Version Python0.9 wurde 1991 durch Guido van Rossum veröffentlicht. Seit 
+der Version Python2.1 wird Python von der \ac{PSF} verwaltet und 
+steht als Open Source unter der \ac{PSFL} zur Verfügung.
+\parencites[vgl.][]{python_typed_lang}[][]{python_history}[][]{python_faq}\\
+Grundsätzlich wird von \ac{PSF} empfohlen, bei neuen Projekten, die keine 
+Abhängigkeiten zu bestehenden Python2-Implementierung haben, Python3 einzusetzen. 
+\parencite[vgl.][]{python2_or_python3} \\
+Wie eingangs schon erwähnt ist Python eine interpretierte Sprache. Die Standard Implementierung von Python (CPython) wurde in der Programmiersprache „C“ umgesetzt. 
+Neben CPython bestehen auch Implementierungen in „.NET“ (IronPython) sowie „Java“ 
+(Jython).
+\parencite[vgl.][]{about_python} \\
+Zu den grundlegenden Konzepten von Python zählt die gute Lesbarkeit des Quellcodes. 
+Dies spiegelt sich beispielsweise in der Syntax wieder. Funktionsblöcke müssen durch 
+Einrückungen kenntlich gemacht werden, in Java beispielsweise werden dafür 
+„Akkoladen“ (geschwungene Klammern) verwendet. Der Python Interpreter 
+berücksichtigt Funktionsblöcke ausschließlich, wenn diese eingerückt sind. Folgende 
+Implementierung der
+Fakultätsfunktion demonstriert die Python3 Syntax. \\
+
+% python code
+\lstset{language=Python}
+\begin{lstlisting}
+def fakultaet(x):
+	if x  1:
+		return x * fakultaet ( x - 1 )
+	else:
+		return 1
+\end{lstlisting}
+
+\mbox{}\\
+An  diesem  Code-Beispiel  fällt  die  für  den  Interpreter  wichtige  Formatierung  auf,  die
+wiederum die Lesbarkeit des Quelltextes steigert. Ein weiterer Beitrag zur Verständlichkeit
+des Quellcodes liegt in den simplen Kontrollstrukturen. Python nutzt für Kontrollstrukturen
+keine Klammern wie beispielsweise Java. 
+Ein weiterer Vorteil von Python liegt in den sehr umfangreichen Standardbibliotheken, die 
+in der Python-Terminologie Built-in-Funktionen genannt werden. Built-in-Funktionen 
+müssen nicht importiert werden, der Zugriff darauf erfolgt durch die Verwendung von 
+Schlüsselwörtern. \\
+Ein Kritikpunkt an Python ist die Geschwindigkeit. Es ist bekannt, dass die 
+Implementierung von Python, zum aktuellen Entwicklungsstand, nicht an die Performance 
+von Programmiersprachen wie beispielsweise „C“ heran reicht.
+\parencite[vgl.][]{python_vs_c} \\
+Diese Problematik lässt sich allerdings durch bestimmte Techniken etwas entschärfen. Je 
+nachdem ob das ganze Programm oder ausschließlich ein definierter Bereich als 
+zeitkritisch eingestuft wird, gibt es verschiedene Optimierungsansätze. Sollte das ganze 
+Projekt als zeitkritisch eingestuft werden, so können Steigerungen durch den Einsatz der 
+alternativen Implementierung „PyPy“ erzielt werden. Je nach durchgeführtem Test ist PyPy zwischen 0.16 bis 6.3 mal schneller als CPython.
+\parencite[vgl.][]{pypy_speedtest} \\
+Sollte nur ein gewisser Aufgabenbereich zeitkritisch sein, so besteht die geläufige Praxis 
+darin, den betroffenen Teil in eine performantere Programmiersprache wie zum Beispiel 
+„C“ auszulagern.\\
+Es ist möglich Python-fremde Programme in einem Python-Programm einzubinden. Für 
+die Einbindung stehen die zwei Möglichkeiten: \texttt{subprocess} und \texttt{ctypes} zur Verfügung. 
+Durch subprocess lassen sich neue Prozesse unter Python starten. Das ausführende 
+Python-Programm kann mit den Ein- und Ausgabe-Kanälen des neuen Prozesses 
+gekoppelt werden. \\
+Eine weitere interessante Alternative ist ctypes. Durch ctypes hat der Entwickler die 
+Möglichkeit auf dynamische Bibliotheken, die in „C“ entwickelt wurden, zuzugreifen. 
+\parencite[vgl.][]{ctypes} \\
+
+
+\end{document}

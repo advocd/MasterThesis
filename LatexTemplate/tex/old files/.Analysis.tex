@@ -1,0 +1,132 @@
+\documentclass[Bachelorarbeit.tex]{subfiles}
+\begin{document}
+\chapter{Analyse}
+\section{Auswahl der Technologien}
+\label{sec:auswahl_technologien}
+Dieses Kapitel beschäftigt sich mit der Auswahl der Technologien, die für die 
+Entwicklungsphase des Projektes Visual Energy eingesetzt werden. Die Auswahl der 
+Technologien basiert auf dem Anforderungskatalog des Projektes und der darauf 
+aufbauenden State of the Art-Analyse des letzten Kapitels. Die hier dokumentierte 
+Auswahl ist ausschließlich für die Entwicklungsphase relevant. Es kann durchaus sein, 
+dass es bis zum Erscheinen des fertigen Produktes zu diversen Änderungen in der Soft- 
+und Hardware-Architektur kommen kann.
+
+\subsection{Eingesetzte Hardware}
+\subsubsection*{System On A Chip}
+Das Rückgrat des Projektes wird durch den \ac{SOC} gebildet. 
+\begin{comment}
+Der gewählte \ac{SOC} dient im Soft- sowie auch Hardware-Aspekt als Schnittstelle zum Energiezähler.
+\end{comment}
+Der gewählte \ac{SOC} dient als Soft- sowie auch Hardware-Schnittstelle für den Energiezähler. 
+Zum einen wird das Programm, das die Kommunikation zum Energiezähler steuert, auf dem \ac{SOC} ausgeführt und zum anderen ist der \ac{SOC} physikalisch über eine Netzwerkschnittstelle mit
+dem Energiezähler verbunden. 
+Wie im zweiten Kapitel erwähnt standen der \nameref{para:raspberry_pi}, der \nameref{para:gnublin} und das \nameref{para:ic-board} zur Auswahl. 
+Die Analyse hat ergeben, dass alle Geräte die Anforderungen erfüllen. 
+Bis auf das \nameref{para:ic-board} handelt es sich allerdings bei den Geräten um experimentelle Plattformen. \\
+Trotz der geringen Hardwarekapazitäten hat sich schlussendlich, zumindest für die Dauer der Entwicklungsphase, das \nameref{para:gnublin}-Board durchgesetzt. \\
+\mbox{}\\
+Die Entscheidung wurde auf der Basis folgender Punkte getroffen:
+\begin{itemize}
+\item ausgezeichnete API 
+\item sehr gute Dokumentation und Wiki für Entwickler
+\item hervorragender Support: Emails wurden schnell und hilfreich beantwortet sowie 
+telefonische Erreichbarkeit zu Werkszeiten. 
+\end{itemize}
+
+\subsubsection*{Energiezähler}
+Der Energiezähler ist direkt im Elektroinstallations-Verteiler montiert und misst die 
+verschiedenen elektrischen Parameter. Diese Parameter werden durch das Programm 
+über das \nameref{subsubsec:modbus} ausgelesen. \\
+Für die Energiezähler wurde keine State of the Art-Analyse durchgeführt, da hier im 
+Vorfeld definiert wurde, welcher Hersteller und welche Modelle zum Einsatz kommen. 
+Grundsätzlich sollte allerdings auch die Verwendung von anderen Energiezählern, sofern 
+sie das \nameref{subsubsec:modbus} unterstützen, nach diversen Anpassungen möglich sein.
+\begin{comment}
+Mögliche Anpassungen wären die Adressen der verwendeten Register um die Energie Werte auszulesen, sowie eventuelle Konfiguration wie zum Beispiel die Slaveadresse oder die Baudrate anzupassen.
+\end{comment}
+\footnote{Mögliche Anpassungen müssten beispielsweise bei den Adressen der Register sowie der Baudrate durchgeführt werden.}\\
+Im Projekt Visual Energy kommen von der Firma Saia-Burgess als dreiphasiger Zähler das
+Modell ALE3 und als einphasiger Zähler das Modell ALD1 zum Einsatz.
+
+
+\subsection{Eingesetzte Software}
+\subsubsection*{Betriebssystem}
+Durch die Wahl des \nameref{para:gnublin}' s als \ac{SOC} liegt der Einsatz von \nameref{para:gnublin_debian} als Betriebssystem nahe. Alternativ besteht allerdings auch die 
+Möglichkeit, eine andere Distribution zu verwenden oder gar ein eigenes System selbst zu 
+entwickeln.\\
+Anzumerken ist an dieser Stelle noch, dass das \nameref{para:gnublin_debian}, wie im embedded-Bereich geläufig ist, ohne grafische Oberfläche ausgeliefert wird, um die geringen Geräte-Ressourcen zu schonen.\\
+Durch die Verwendung von \nameref{para:gnublin_debian} besteht die Möglichkeit, bei diesem oder 
+späteren Projekten, die \nameref{para:gnublin-api} zu integrieren.
+
+\subsubsection*{Kommunikation}
+In der ersten Version von Visual Energy besteht die Kommunikation ausschließlich 
+zwischen dem \ac{SOC} und den Energiezählern. 
+Im Moment ist eine weitere Netzwerkkommunikation noch nicht vorgesehen, für spätere Veröffentlichungen aber durchaus denkbar und sinnvoll.\\
+In der aktuellen Planung ist ausschließlich der lesende Zugriff auf die Energiezähler vorgesehen, bei Bedarf lässt sich dies aber auch auf den schreibenden Zugriff ausweiten.\\
+Für die Kommunikation wird die in "C" programmierte Bibliothek \nameref{para:libmodbus} Version3.0.5 eingesetzt. 
+Diese Bibliothek unterstützt die Verwendung des Modbus-RTU-Protokolls für 
+das Projekt ausreichend. \\
+In der aktuellen Version von \nameref{para:gnublin_debian} ist die \nameref{para:libmodbus}-Bibliothek nicht integriert und kann nicht über den Paketmanager bezogen werden.\footnote{Stand: September 2013} Durch die Rücksprache mit Embedded Projects
+stellte sich heraus, daß die \nameref{para:libmodbus} Version3.0.5, wenn diese aus dem Quellcode kompiliert wird, stabil läuft und bereits in der Community verwendet wurde.
+
+\subsubsection*{Programmiersprachen}
+Als primäre Programmiersprache kommt \nameref{para:python} in der dritten 
+Version zum Einsatz. Neben der Möglichkeit der Objekt-Orientierten Softwareentwicklung 
+bietet \nameref{para:python} die Vorteile einer einfachen und leicht lesbaren Syntax. Durch die gute 
+Lesbarkeit des Quelltextes soll eine bessere Wartbarkeit erzielt werden. \\
+Ein weiterer Grund für die Entscheidung besteht in der guten Interoperabilität zwischen 
+Python und anderen Programmiersprachen.\footnote{Ausführliche Informationen befinden sich im  Abschnitt \nameref{para:python}} Dadurch ist die Möglichkeit gegeben, Visual 
+Energy in zukünftigen Projekten beziehungsweise bestehenden Produkten zu integrieren.\\
+Die Kommunikation mit den Energiezählern wird in die Programmiersprache "`C"' ausgelagert. 
+Die Entscheidung der Auslagerung basiert auf der Annahme eine höhere Performance zu erzielen. 
+Ein weiterer Grund besteht in der Verwendung der oben 
+erwähnten Bibliothek \nameref{para:libmodbus}, die in der Programmiersprache "`C"' entwickelt wurde.\\
+In der aktuellen Version der Distribution Gnublin Debian ist Python in der Version2 installiert, die benötigte Version3 lässt sich aber ohne Probleme aus dem Quellcode kompilieren.
+
+\newpage
+
+\section{Spezifikation}
+Die Auswahl der Technologien für das Projekt Visual Energy ist unter anderem das 
+Ergebnis der State of the Art-Analyse des zweiten Zwischenbericht. Ein weiterer 
+Aspekt der Auswahl kam durch die gegebenen Rahmenbedingungen des Projektes 
+zustande. Auf der Basis der ausgewählten Technologien, die an dieser Stelle in 
+tabellarischer Form jeweils für die Hardwarekomponenten (siehe Tabelle \ref{tab:spez_hardware}) sowie die Softwarekomponenten (siehe Tabelle \ref{tab:spez_software}) definiert wurden. Ausgehend von der Spezifikation 
+wird die weitere Entwicklung durchgeführt.\\
+
+\begin{table}[h]
+%\begin{tabular}{|l|l|}
+%\begin{tabular}{|p{40ex}|p{40ex}|}								% beide linksbündig
+\begin{tabular}{|p{40ex}|>{\centering\arraybackslash}p{40ex}|}
+\hline 
+\rule[0ex]{0pt}{2.5ex} \textbf{System on a Chip:}  & Gnublin-LAN \\ 
+\hline 
+\rule[0ex]{0pt}{2.5ex} \textbf{Einphasiger Energiezähler:} & Saia-Burgess ALD1D5FD00A2A00 \\ 
+\hline 
+\rule[0ex]{0pt}{2.5ex} \textbf{Dreiphasiger Energiezähler: } & Saia-Burgess ALE3D5FD10C2A00 \\ 
+\hline 
+\end{tabular} 
+\caption{Spezifikation der Hardwarekomponenten}
+\label{tab:spez_hardware}
+\end{table}
+
+\begin{table}[h]
+%\begin{tabular}{|l|l|}
+%\begin{tabular}{|p{40ex}|p{40ex}|}									% beide linksbündig
+\begin{tabular}{|p{40ex}|>{\centering\arraybackslash}p{40ex}|}
+\hline 
+\rule[0ex]{0pt}{2.5ex} \textbf{Betriebssystem:} & Gnublin Debian \\ 
+\hline 
+\rule[0ex]{0pt}{2.5ex} \textbf{Primäre Programmiersprache:} & Python3.1 \\ 
+\hline 
+\rule[0ex]{0pt}{2.5ex} \textbf{Sekundäre Programmiersprache:} & C gcc \\ 
+\hline 
+\rule[0ex]{0pt}{2.5ex} \textbf{Kommunikationsprotokolle:} & Modbus-RTU \\ 
+\hline 
+\rule[0ex]{0pt}{2.5ex} \textbf{Bibliotheken} & Libmodbus3.0.5 \\ 
+\hline 
+\end{tabular} 
+\caption{Spezifikation der Softwarekomponenten}
+\label{tab:spez_software}
+\end{table}
+
+\end{document}

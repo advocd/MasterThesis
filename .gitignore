@@ -1,0 +1,11 @@
+*.acn
+*.aux
+*.bbl
+*.blg
+*.glo
+*.glsdefs
+*.ist
+*.out
+*.xml
+*.gz
+*.toc
