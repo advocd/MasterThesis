@@ -3,84 +3,24 @@
 \chapter{Einführung}
 \label{chap:einfuehrung}
 
-Die Arbeitsdokumentation stellt für Organisationen einen wichtigen Faktor bei der Qualitätssicherung dar. 
-Um aussagekräftige Analysen erstellen zu können, müssen die gesammelten Daten korrekt und konsistent sein. 
-Leider zeigt die Erfahrung,  dass vor allem im Umfeld von Vereinen und gemeinnützigen Organisationen nur selten einheitlichen Methoden zum Erfassen vorhanden sind und/oder diese nicht sachgemäß verwendet werden. 
-In Zeiten von Smartphones liegt der Gedanke nahe, die aktuelle Technologie zu verwenden um den Arbeitsaufwand der Dokumentation zu minimieren. \\
-\\
-Damit eine breite Masse als Zielgruppe angesprochen werden kann sollte das Programm für die geläufigsten mobilen Betriebssystem verfügbar sein. 
-Im Moment besitzen die beiden konkurrierenden Betriebssystemen Android und iOS die größten Marktanteile im deutschsprachigen Raum. 
-Allerdings versucht Microsoft mit Windows Mobile immer aggressiver Marktanteile zu gewinnen. 
-Da diese Plattformen grundsätzlich nicht miteinander kompatibel sind, muss die Applikation für jedes Betriebssystem eigens implementiert werden. 
-Die Nachteile liegen auf der Hand, neben dem Entwicklungsaufwand wird auch die Wart- und Erweiterbarkeit eingeschränkt.  \\
-\\
-Um diese Problematik zu entschärfen gibt es verschiedene Lösungsansätze. 
-Zum einen kann das Programm in zwei Teile aufgeteilt werden. 
-Bei diesem Vorgehen besteht die Applikation aus einen plattformunabhängigen- und einen plattformspezifischen Teil. 
-Hierbei liegt das Ziel darin, den plattformspezifischen Code so weit wie möglich zu minimieren, wodurch der Grad der Wiederverwertbarkeit für andere Plattformen gesteigert wird. 
-Zum anderen existieren verschiedene Frameworks für die Multiplattform-Entwicklung. 
-Durch den Einsatz dieser Frameworks soll das Programm nur einmal für alle unterstützen Plattformen entwickelt werden. Bei diesem Vorgehen programmiert der Entwickler gegen die plattformunabhängigen Schnittstellen des jeweiligen Frameworks.  \\
-\\
-Grundsätzlich haben beide Ansätze Stärken und Schwächen, welche je nach den Bedürfnissen des Projektes anders zu gewichten sind. 
-Das Ziel dieser Arbeit ist es, die verschiedenen Möglichkeiten zu analysieren und anhand einer Beispiel-Applikation für die Plattformen Android und Windows Phone8 zu implementieren.
-Auf die Berücksichtigung der iOS-Plattform wird in dieser Arbeit verzichtet.
-Diese Entscheidung basiert darauf, dass die Thematik "`Entwicklung für Android- und iOS-Plattformen"' aus der Sicht des Autors bereits häufig in Fachzeitschriften oder dem Internet diskutiert und dokumentiert wurde\footnote{Ein Anzeichen dafür zeigt das Ergebnis einer Internet-Suche. Der Term: "`android and ios cross platform development"' (14.700.000 Treffer) ist wesentlich häufiger zu finden als: "`android and windows phone cross platform development"' (5.270.000 Treffer) }. 
-\\
+
 
 \section{Projektbeschreibung}
 \label{sec:projektbeschreibung}
 
-Im Zuge einer Kooperation mit der \ac{OJAD} soll eine Applikation entwickelt werden, welche das Personal beim Dokumentieren von Veranstaltungen unterstützen soll. 
-Bei dem Projekt soll es sich um eine verteilte Anwendung handeln. 
-Die MitarbeiterInnen haben die Möglichkeit Veranstaltungen - für die Sie verantwortlich sind - mit Hilfe ihrer Smartphones zu dokumentieren. \footnote{Die Kriterien der unterstützten Endgeräte können dem Abschnitt: \nameref{sec:anforderungen} entnommen werden.}
-\\
-Bei der Dokumentation handelt es sich in erster Linie um das erfassen von statistischen BesucherInnen-Werten wie beispielsweise Altersgruppen und Geschlecht. 
-Diese Werte sollen zentral gespeichert werden und als Grundlage für statistische Auswertungen dienen.
-\footnote{Das erzeugen oder erstellen der statistischen Auswertung ist nicht Bestandteil dieser Arbeit beziehungsweise des hier dokumentierten Projektes.}
-\\
-Ein weiterer Aspekt liegt in der Erfassung des Veranstaltungsablaufes. Neben Fotos ist an dieser Stelle auch Platz für Kommentare vorgesehen. 
-Durch die Verwendung der Kommentar-Funktion besteht die Möglichkeit ein persönliches Feedback in die Dokumentation einfließen zu lassen. 
-\newpage
  
 
 \section{Anforderungen}
 \label{sec:anforderungen}
-Ziel dieses Abschnittes ist es, die Rahmenbedingungen für das Projekt zu definieren. 
-Diese Punkte dienen als Grundlage für Entscheidungen welche im späteren Verlauf des Projektes auftreten.
-Um einen gewissen Spielraum für die folgende \nameref{chap:state_of_the_art}-Analyse sowie die
-spätere \nameref{chap:entwicklung} zu ermöglichen, werden an dieser Stelle die Anforderungen nur auf das Nötigste begrenzt.
 
-\subsection*{Applikationen}
-Ziel ist es eine Applikation zu entwickeln welche auf den zwei definierten Smartphone-Plattformen lauffähig ist.
-Auf Wunsch der \ac{OJAD} wurde definiert, dass die Plattformen Windows Phone 8 sowie Android ab der Version 4.0 - Ice Cream Sandwich(\ac{API} 14) verwendet werden sollen.
-In der ersten Phase der Entwicklung, welche in dieser Arbeit dokumentiert wird, soll ein lauffähiger Prototyp für jede Plattform entstehen. 
-Der Abschnitt: \nameref{sec:usecases} des \ref{chap:entwicklung}. Kapitels definiert den Funktionsumfang der Applikation.
-Dieser Prototyp muss noch nicht den Status der Serienreife erreichen, sondern dient der \ac{OJAD} als Ausgangspunkt für die weitere Entwicklung beziehungsweise Integration in ein größeres Projekt. 
 
-\subsection*{Kommunikation}
-Für die Kommunikation zwischen dem Endgerät und dem Server soll die \ac{JSON} eingesetzt werden. Dabei handelt es sich um ein kompaktes Datenformat, welches sich in der Kommunikation mit Webservices etabliert hat. 
-Aus Gründen die im Abschnitt: \nameref{subsec:sicherheit} angeführt werden, wird keine Verschlüsselung wie Beispielsweise \ac{SSL} verwendet.
-
-\subsection*{Webservice}
-Als Schnittstelle zwischen Server und Applikation soll ein Webservice verwendet werden. 
-Dieser wird nach dem \ac{REST}-Konzept realisiert. 
-Durch die Verwendung des \ac{REST}-ful Webservice soll die Applikation Zugriff auf die vom Server bereitgestellten Funktionen erhalten.  
-Desweiteren soll - für beide Plattformen - der gleiche Webservice genutzt werden.
-
-\subsection*{Server}
-Da die Infrastruktur der \ac{OJAD} auf Microsoft-Produkte ausgelegt ist, liegt die Entscheidung nahe, den Server auf diesen Technologien aufzubauen. Für die aktuelle Entwicklung wird eine lokale MS-SQL Datenbank eingesetzt. 
-Als Betriebssystem für den Produktiv-Server wurde ein Windows-Server 2012R2 in der 64-Bit-Version ausgewählt. 
-Dieser verfügt über ein Intel Xeon 2,33 GHz-Prozessor sowie zwei GB-RAM.
 
 
 
 \subsection*{Sicherheit}
 \label{subsec:sicherheit}
 
-Aus Sicht der \ac{OJAD} werden durch die aktuell geplante Funktionalität der Applikation keine sensiblen Daten über das Internet übertragen. 
-Deshalb wird - in Absprach mit der \ac{OJAD} - keine Verschlüsselung für die Kommunikation verwendet.
-In den anfänglichen Gesprächen mit der \ac{OJAD} ist der Wunsch aufgekommen, dass ausschließlich die verantwortlichen MitarbeiterInnen eine ihnen zugeteilte Veranstaltung dokumentieren dürfen. 
-Für diesen Zweck wurden die Sicherheitsziele: Authentifizierung (Pin) sowie Autorisierung (nur verantwortliche MitarbeiterInnen dürfen dokumentieren) definiert.
+
 
 
 \end{document}
