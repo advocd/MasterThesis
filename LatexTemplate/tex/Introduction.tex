@@ -3,10 +3,9 @@
 \chapter{Einführung}
 \label{chap:einfuehrung}
 
-\todo[inline]{first draft Einführung}
-
 \section{Idee}
 \label{chap:einfuehrung:sec:idee}
+
 Die grundlegende Idee besteht darin, Informationen (Ressourcen und Aufgaben) mit geografischen Daten zu verknüpfen und diese zu visualisieren um somit die Nutzer\_innen bei den Entscheidungsprozessen zu unterstützen. Des Weiteren muss noch definiert werden welche/welcher Anwendungsfall, im Rahmen der Masterarbeit, umgesetzt werden soll.\\
 \\
 Stichpunkte:
@@ -27,6 +26,7 @@ Als Grundlage für dieses Projekt dient die bereits entwickelte Software „pery
 
 \section{Usecase}
 Um einen besseres Verständnis für die Umsetzungen zu erlangen wird an der Stelle die Anwendungsszenarien aufgezeigt.
+
 
 \subsection{Usecase I - Enhanced Ticket (\ac{UC}1)}
 Ein wichtiger Bestandteil des (bestehenden) Systems besteht darin Tickets zu verwalten.\footnote{automatische Erstellung, anlegen sowie anderen Mitarbeiter\_innen zuweisen}
@@ -60,26 +60,25 @@ Rückmeldungen von diesen Nutzer\_innen Gruppen hat ergeben, dass der Prozess de
 \subsection{Usecase II - On Trip Information (\ac{UC}2)}
 Hierbei handelt es sich um weiteres Feature für die Optimierung von Planung- bzw. Arbeitsvorbereitungs- Prozessen von Außendienst Mitarbeitern. Diese sollen bei der Planung ihrer Route, durch das einblenden zusätzlicher Information, unterstützt werden. \\
 \\
-\todo[inline]{Liste fertig machen und Fußzeilen einbauen}
 \textbf{Beispiel: Außendienst Mitarbeiter\_in}
 \begin{enumerate}
-	\item
+	\item Mitarbeiter\_in wählt Ziel der Route aus 
 	\begin{enumerate}
-		\item
+		\item Ziel kann Ticket, Kunde oder Adresse sein
 	\end{enumerate}
-	\item
+	\item System zeigt weitere Informationen entlang der Route oder am Ziel an\footnote{Die Auswahl der Informationen soll gefiltert werden können. Eventuell mehrere Filter Ebenen wie Kundenbetreuung oder offene Tickets. Auf Basis der getroffenen Filterebene können anschließend weitere Filter gewählt werden wie beispielsweise: geplanter Zeitaufwand von offenen Ticket, aktueller Betreuung Status, etc. }
 	\begin{enumerate}
-		\item
+		\item Mögliche Informationen:
 		\begin{enumerate}
-			\item
-			\item
-			\item
+			\item Offene Tickets
+			\item Betreuungsstatus von Kunden\footnote{Betreuungstatus: ist ein Schlüssel der sich aus: Betreuungsaufwand, Priorität des Kunden und Dauer seit dem letzten Betreuungstermin zusammensetzt.}
+			\item Evtl. weitere Informationen
 		\end{enumerate}
 	\end{enumerate}
-	\item
+	\item Mitarbeiter\_in wählt zusätzliche Aufgaben aus
 	\begin{enumerate}
-		\item
-		\item
+		\item System weißt das Ticket der/dem Mitarbeiter\_in zu
+		\item Evtl. automatisch weitere Tickets anlegen und der/dem Mitarbeiter\_in zuweist.\footnote{Beispiel: Betreuungstermin – System legt automatisch ein Ticket zur Termins-findung/-vereinbarung mit dem Kunden an und weißt es der/dem Mitarbeiter\_in zu.}
 	\end{enumerate}
 \end{enumerate}
 
