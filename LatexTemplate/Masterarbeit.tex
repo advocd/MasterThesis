@@ -52,15 +52,22 @@
 \usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
 
 
-\newcommand{\unsure}[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
-\newcommand{\change}[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
-\newcommand{\info}[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
-\newcommand{\improvement}[2][1=]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
-\newcommand{\thiswillnotshow}[2][1=]{\todo[disable,#1]{#2}}
+\newcommand{\unsure}[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,inline,#1]{#2}}
+\newcommand{\change}[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,inline,#1]{#2}}
+\newcommand{\info}[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,inline,#1]{#2}}
+\newcommand{\improvement}[2][1=]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,inline,#1]{#2}}
+\newcommand{\todoist}[2][1=]{\todo[linecolor=yellow,backgroundcolor=yellow!25,bordercolor=yellow,inline,#1]{#2}}
 
+\newcommand{\todoUnsure}[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,inline,#1]{#2}}
+\newcommand{\todoChange}[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,inline,#1]{#2}}
+\newcommand{\todoInfo}[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,inline,#1]{#2}}
+\newcommand{\todoImprovement}[2][1=]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,inline,#1]{#2}}
+\newcommand{\todoTodoist}[2][1=]{\todo[linecolor=yellow,backgroundcolor=yellow!25,bordercolor=yellow,inline,#1]{#2}}
 
-\newcommand{\outlines}[1]{\textcolor{Plum}{#1}}
+\newcommand{\ideas}[1]{\begin{quote}\textcolor{Plum}{\textit{``...#1''}}\end{quote}}
 % \renewcommand{\outlines}[1]{} % uncomment this line and outlines are not printed
+
+
 
 \makeglossaries
 
@@ -71,11 +78,13 @@
 \newcommand{\lqou}{"`}
 \newcommand{\rqou}{"'}
 
+\begin{comment}
 \setLanguage{german}
 \setTitle{Title}
 \setAuthor{Martin Münch}
 \setAuthorId{1110247032}
 \setSupervisor{Dipl.-Ing. Armin Simma}
+\end{comment}
 
 % Start of the document itself
 \begin{document}
@@ -98,28 +107,22 @@
 %\statuoryDeclaration
 
 
-\pagenumbering{arabic} %Start page numbering
+
 
 \tableofcontents % add table of contents
 
+\subfile{./tex/Todoist.tex}
 \listoftodos	% http://mirror.easyname.at/ctan/macros/latex/contrib/todonotes/todonotes.pdf
 
+\pagenumbering{arabic} %Start page numbering
 %The order of the chapters used
+
 \subfile{./tex/Introduction.tex}
-\subfile{./tex/Stateoftheart.tex}
+\subfile{./tex/Analyse.tex}
 \subfile{./tex/Development.tex}
 \subfile{./tex/Implementation.tex}
 \subfile{./tex/Evaluation.tex}
 
-%old tex files
-\begin{comment}
-\subfile{./tex/Stateoftheart.tex}
-\subfile{./tex/Analysis.tex}
-\subfile{./tex/Development.tex}
-\subfile{./tex/Implementation.tex}
-%\subfile{./tex/Interpretation.tex}
-%\subfile{./tex/ConclusionSummaryFurtherResearch.tex}
-\end{comment}
 
 \subfile{./util/acronyms.tex}
 
