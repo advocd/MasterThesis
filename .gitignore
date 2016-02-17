@@ -10,3 +10,5 @@
 *.gz
 *.toc
 *.tdo
+*.log
+.DS_Store
