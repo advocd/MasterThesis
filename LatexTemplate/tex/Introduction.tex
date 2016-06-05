@@ -12,10 +12,13 @@ Dabei sollen mit dem Prototypen nicht klassische Probleme der Informatik oder Lo
 \section{Problemstellung}
 \label{chap:einfuehrung:sec:problemstellung}
 
-Bei diversen Gesprächen mit Kunden\_innen trat in regelmäßigen Abständen immer wieder die Nachfrage für eine Softwarelösung, welche die Planung und Organisation von Außendiensttätigkeiten vereinfachen soll auf. 
-Was auf den ersten Blick trivial erscheinen mag, wirkt nach den ersten Überlegungen durchaus interessant, beispielsweise in der ersten Phase (Planung) müssen Routen erstellt werden, die in der Praxis aus diversen Datenquellen oder gar unterschiedlichen Medien stammen. 
+Bei diversen Gesprächen mit Kunden\_innen traten, in regelmäßigen Abständen, immer wieder die Nachfrage für eine Softwarelösung auf, welche die Planung und Organisation von Außendiensttätigkeiten vereinfachen soll. 
+Was auf den ersten Blick trivial erscheinen mag, wirkt nach kurzen Überlegungen durchaus interessant. 
+Beispielsweise in der ersten Phase (Planung) müssen Routen erstellt werden, die in der Praxis aus diversen Datenquellen oder gar unterschiedlichen Medien stammen. 
 Des Weiteren fließen in die Planung, kundenspezifische Erfahrungswerte sowie lokale Ortskenntnisse mit ein.
-Des Weiteren hält die Außendiensttätigkeit noch nach der Planung weitere interessante Herausforderungen bereit, diese reichen von der Unterstützung bei der Durchführung bis hin zu der Nachbearbeitung.
+Zusätzlich hält die Außendiensttätigkeit, auch noch nach der Planung, weitere interessante Herausforderungen bereit, diese reichen von der Unterstützung bei der Durchführung außer Hause,  bis hin zu der Nachbearbeitung bei die neuen Daten ins System eingepflegt werden müssen.
+Anhand dieser vielfältigen und teils komplexen sowie verteilten Informationen sollen möglichst effiziente Routen geplant werden. 
+
 
 \begin{comment}
 Als Grundlage für den Prototypen dient die Software Pery der Firma Perfany GmbH. 
@@ -27,30 +30,45 @@ Wobei der Fokus auf dem Ticket Modul der Software ruht. Dabei ist das Anwendungs
 \label{chap:einfuehrung:sec:idee}
 
 Basierend auf der \nameref{chap:einfuehrung:sec:problemstellung} soll sich an dieser Stelle platz für die ersten eigenen Überlegungen finden. 
-Diese Ideen stellen noch keine endgültige Lösung da, sondern werden progressiv durch kommende Analysen, \nameref{chap:analyse:sec:interviews} und Feedbacks angepasst.\\
+Diese Ideen stellen noch keine endgültige Lösung da, sondern sollen als Orientierung dienen welche progressiv durch kommende Analysen, \nameref{chap:analyse:sec:interviews} und Feedbacks angepasst werden.\\
 \\
-Die grundlegende Idee besteht darin, Informationen (Ressourcen und Aufgaben) mit geografischen Daten zu verknüpfen und diese zu visualisieren um somit die Nutzer\_innen bei den Entscheidungsprozessen zu unterstützen. 
+Die grundlegende Idee besteht darin, Informationen (Ressourcen und Aufgaben) mit geografischen Daten zu verknüpfen und diese zu visualisieren und somit die Nutzer\_innen bei ihren Entscheidungsprozessen zu unterstützen. 
 Dabei soll auf die beiden Bereiche: ``Datenfilterung/-Anreicherung'' sowie ``Darstellungsformen'' besonderes Augenmerk gelegt werden.
 
-\paragraph*{Datenfilterung/-Anreicherung}
-Ein wichtiger Aspekt, für die maximale Unterstützung durch den Prototypen bei der Planung besteht darin, dass die richtigen Informationen, zum richtigen Zeitpunkt am richtigen Ort vorhanden sind. 
-Ein Beispiel für ein sehr wahrscheinlich auftretende Datenanreicherung ist, wie zuvor erwähnt, die Verwendung von geographischen Informationen. 
-Inwiefern es zu dem Filtern beziehungsweise Anreichern der Daten kommt wird sich Anhand der Analyse der Bedürfnisse (siehe Kapitel.: \ref{chap:analyse:sec:interviews} - \nameref{chap:analyse:sec:interviews}) herausstellen.
+\subsection*{Datenfilterung/-Anreicherung}
+Ein wichtiger Aspekt, um die Unterstützung durch den Prototypen, bei der Planung, zu maximieren besteht darin, dass die richtigen Informationen, zum richtigen Zeitpunkt, am richtigen Ort zur Verfügung stehen. 
+Ein Beispiel für die Datenanreicherung ist, wie zuvor erwähnt, die Verwendung von geographischen Informationen und nimmt in dieser Arbeit einen zentralen Punkt ein. 
+Dabei dienen die angereicherten Daten als Grundlage für die Visualisierung.
+Inwiefern es zu dem Filtern beziehungsweise Anreichern der Daten kommt wird sich Anhand der Analyse, über die Bedürfnisse (siehe Kapitel.: \ref{chap:analyse:sec:interviews} - \nameref{chap:analyse:sec:interviews}) der Anwender\_innen, herausstellen.
 
-\paragraph*{Darstellungsformen}
+\subsection*{Darstellungsformen}
 Die Visualisierung der Daten steht in keinster Weise in einer untergeordneten Rolle.
 Erst durch den sinnvollen Einsatz der Darstellung, werden die vorhandenen Daten zu einem wichtigen Indikator bei der Entscheidungsfindung.
 Dabei versucht die Arbeit sich kritisch mit der Optimierung der Darstellung auseinander zusetzen und diese in späteren Versuchen am Prototyp zu evaluieren.
-Ein Beispiel dafür wäre die Kartenansicht.
-Viele Anwendungen setzen Kartenansichten bei der Darstellung von geografischen Daten ein. 
-Diese Arbeit wird sich unter anderem mit der Frage auseinander setzen, welche Planungs-Szenarios beziehungsweise Workflow-Schritte durch eine Karten- und/oder Listenansicht besser unterstützt werden.
+Ein Beispiel dafür wäre die Thematik einer Darstellung im Kartenformat.
+Seit dem Erfolg von Google Maps werden zunehmend Kartenansichten bei der Darstellung von geografischen Daten eingesetzt. 
+Diese Arbeit wird sich unter anderem mit der Frage auseinander setzen, welche Planungs-Szenarios, beziehungsweise Workflow-Schritte, durch eine Karten- und/oder Listenansicht besser unterstützt werden.
 Um dies herauszufinden wird, im späteren Verlauf, eine Analyse mit Hilfe des Prototypen durchgeführt.
-Eine weitere Überlegung besteht darin, die Anwender\_innen selbst entscheiden zu lassen, welche Ansicht sie für welchen Zweck bevorzugen.
+Eine weitere Überlegung besteht darin, die Anwender\_innen selbst entscheiden zu lassen, welche Ansicht sie für welchen Zweck bevorzugen und die Ergebnisse der Analyse als änderbare Standarteinstellung zu verwenden.
 
 
 \section{Hintergrund}
 \label{chap:einfuehrung:sec:hintergrund}
-Als Grundlage für dieses Projekt dient die bereits entwickelte Software „pery“ der Firma Perfany GmbH welche um die unten genannten Anwendungsfälle erweitert werden soll. Pery ist eine webbasierte (Software as a Service) ERP/CRM Lösung mit dem Schwerpunkt auf vernetzte Informationen. 
+Als Grundgerüst für den Prototypen dient die Software „pery“ der Firma Perfany GmbH, welche um die unten genannten Anwendungsfälle erweitert werden soll. 
+Pery ist eine webbasierte (Software as a Service) \ac{ERP} sowie \ac{CRM} Lösung.
+Das Ziel von Pery besteht darin, die eigenen Firmendaten mit einander zu verknüpfen um die alltägliche Arbeit im Büro zu erleichtern.
+Beispielsweise öffnet sich bei den Anwender\_innen ein Popup sobald ein Anruf eingeht. 
+Wenn es sich dabei um einen im System bestehende\_n Kunde\_in handelt kann direkt auf das Popup geklickt werden und eine Partnerübersicht öffnet sich.
+In dieser Partnerübersicht finden sich relvanten Informationen (offene Rechnungen, Stammdaten und vieles mehr) sowie weiterführende Links zu diversen History-Elementen dieser Geschäftsbeziehung.
+Zusätzlich kann, über eine Tastenkombination, eine globale Suche aufgerufen werden um diverse Entitäten anhand von Namen oder Attributswerten zu finden. \\
+\\
+Wie im Abschnitt \nameref{chap:einfuehrung:sec:problemstellung} besprochen werden verschiedenste Informationen für die Planung benötigt die teilweise in verschiedenen Systemen liegen. 
+Für die Lösung des Problems bezüglich den verteilten Daten gibt es Grundsätzlich zwei Ansätze.
+Zum einen würde die Möglichkeit bestehen eine Software zu erstellen, welche sich ihre Daten, über Schnittstellen, aus verschiedensten Quellen\footnote{Diese wären beispielsweise eine externe \ac{API} und/oder Software von Drittanbietern.} holt.
+Zum anderen kann eine bestehende Lösung verwendet werden, die um die gewünschte Funktionalität erweitert wird und somit, nach einer importieren der Daten, die ehemaligen Systeme ablöst. 
+Da Pery über eine gute Vernetzung der Kundendaten verfügt und das Hauptaugenmerk dieser Arbeit, nicht auf die Implementierung der grundlegender Infrastruktur des Prototypen liegt, wird im Rahmen dieser Arbeit der zweite Fall behandelt (erweitern einer bestehenden Lösung).
+
+ 
 
 \section{Usecase}
 
