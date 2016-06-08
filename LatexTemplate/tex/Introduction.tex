@@ -7,7 +7,9 @@ Das Ziel der Arbeit ist zu untersuchen,
 inwiefern die Ergänzung  von Informationen mit geografischen Daten, 
 zu einer Optimierung von Entscheidungen beiträgt und welcher Bedeutung dabei der Darstellungsform zukommt. 
 Für diesen Zweck wird, im Zuge der Arbeit, ein Prototyp entwickelt, der die Anwender\_innen bei der Planung von Außendienstrouten unterstützen soll. 
-Dabei sollen mit dem Prototypen nicht klassische Probleme der Informatik oder Logistik wie Beispielsweise das \textit{travelings salesman problem} gelöst werden. Vielmehr soll den Anwender\_innen ein Werkzeug zur Verfügung gestellt werden, dass ihnen vernetzte Informationen übersichtlich zur Verfügung stellt um sinnvolle Entscheidungen treffen zu können.
+Dabei sollen mit dem Prototypen nicht klassische Probleme der Informatik oder Logistik wie Beispielsweise das \textit{travelings salesman problem} gelöst werden. Vielmehr soll den Anwender\_innen ein Werkzeug zur Verfügung gestellt werden, dass ihnen vernetzte Informationen übersichtlich zur Verfügung stellt um sinnvolle Entscheidungen treffen zu können.\\
+\\
+\improvement[]{Zusammenfassung für das Kapitel \nameref{chap:einfuehrung} schreiben.}
 
 \section{Problemstellung}
 \label{chap:einfuehrung:sec:problemstellung}
@@ -93,13 +95,14 @@ abglöst.\\
 \\
 Babsi Zimmermann, 36 Jahre alt, ist eine aufstrebende Mitarbeiterin in der Firma \textit{Purple Circle} und dort als Verkäuferin angestellt. 
 Die Firma \textit{Purple Circle} mit Sitz in Dornbirn/Österreich sieht ihr Profession im Sondermaschinenbau und hat sich in diesem Marktsegment durch ihre enge Kundenbindung und qualitativ hochwertige Arbeit einen Namen gemacht. 
+\newpage
 
 \paragraph*{Vorbedingungen}
 Im ersten Schritt sollten vor der Planung ungefähre Kriterien für die zur Auswahl stehenden Möglichkeiten definiert sein.
 Diese könnten betriebswirtschaftliche Faktoren, wie Verkaufszahlen oder Umsatz sein, aber auch aus dem Bereich des \ac{CRM} stammen, wie beispielsweise: Dauer seit dem letzten Kundenbesuch.
 Mithilfe der geografischen Informationen lassen sich zusätzlich auch Kriterien wie maximale Entfernungen auswählen
 
-\paragraph*{Planung}
+\paragraph*{Ablauf: Planung}
 Babsi öffnet über das Menü die Planungsansicht und wählt die Firma \textit{Rieden} als als Ausgangspunkt für die Planung aus.
 Kurz darauf zeigt ihr das System weitere Informationen entlang der Route und am Ziel auf einer Karte an.
 Nachdem sie keine dringenden Termine für den Tag hat, entschließt sie sich, die Zeit zu nehmen, Kunden zu besuchen bei denen der letzte Besuch schon längerer Zeit zurückliegt.
@@ -112,31 +115,10 @@ Die Informationen des zweiten Tickets sagen ihr leider nicht soviel, aber das is
 Zurück in der Kartenansicht übernimmt sie auch das zweite Ticket. 
 Dabei fällt ihr auf das in der nähe des zweiten Tickets noch ein roter Kundenmarker ist.
 Mit einem Klick auf den roten Kundenmarker öffnet sich wieder ein Popup und sie erfährt das bei der Firma \textit{ZornTec} schon seit sieben Monaten keine Betreuung mehr stattgefunden hat.
+Als letzten Punkt auf ihrer Planung übernimmt sie noch den Kunden \textit{ZornTec} in ihre Liste. 
+Babsi schließt die Kartenansicht und sieht, anhand der Benachrichtigung, dass vom System schon zwei neue interne Tickets für sie angelegt wurden.
+In diesen Tickets findet sie, neben der freundlichen Erinnerung, einen Termin mit den Ansprechpartnern\_innen der jeweiligen Firmen auszumachen, auch gleich die passenden Kontaktmöglichkeiten von Herrn Müller (Firma \textit{ZornTec}) und Frau Koch (Firma \textit{Rieden}).
 
-
-
-\paragraph*{Ablauf: Planung}
-\textbf{Beispiel: Außendienst Mitarbeiter\_in}
-\begin{enumerate}
-	\item Mitarbeiter\_in wählt Ziel der Route aus 
-	\begin{enumerate}
-		\item Ziel kann Ticket, Kunde oder Adresse sein
-	\end{enumerate}
-	\item System zeigt weitere Informationen entlang der Route oder am Ziel an\footnote{Die Auswahl der Informationen soll gefiltert werden können. Eventuell mehrere Filter Ebenen wie Kundenbetreuung oder offene Tickets. Auf Basis der getroffenen Filterebene können anschließend weitere Filter gewählt werden wie beispielsweise: geplanter Zeitaufwand von offenen Ticket, aktueller Betreuung Status, etc. }
-	\begin{enumerate}
-		\item Mögliche Informationen:
-		\begin{enumerate}
-			\item Offene Tickets
-			\item Betreuungsstatus von Kunden\footnote{Betreuungstatus: ist ein Schlüssel der sich aus: Betreuungsaufwand, Priorität des Kunden und Dauer seit dem letzten Betreuungstermin zusammensetzt.}
-			\item Evtl. weitere Informationen
-		\end{enumerate}
-	\end{enumerate}
-	\item Mitarbeiter\_in wählt zusätzliche Aufgaben aus
-	\begin{enumerate}
-		\item System weißt das Ticket der/dem Mitarbeiter\_in zu
-		\item Evtl. automatisch weitere Tickets anlegen und der/dem Mitarbeiter\_in zuweist.\footnote{Beispiel: Betreuungstermin – System legt automatisch ein Ticket zur Termins-findung/-vereinbarung mit dem Kunden an und weißt es der/dem Mitarbeiter\_in zu.}
-	\end{enumerate}
-\end{enumerate}
 
 \begin{comment}
 
