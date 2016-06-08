@@ -7,7 +7,7 @@ Das Ziel der Arbeit ist zu untersuchen,
 inwiefern die Ergänzung  von Informationen mit geografischen Daten, 
 zu einer Optimierung von Entscheidungen beiträgt und welcher Bedeutung dabei der Darstellungsform zukommt. 
 Für diesen Zweck wird, im Zuge der Arbeit, ein Prototyp entwickelt, der die Anwender\_innen bei der Planung von Außendienstrouten unterstützen soll. 
-Dabei sollen mit dem Prototypen nicht klassische Probleme der Informatik oder Logistik wie Beispielsweise das "travelings salesman problem" gelöst werden. Vielmehr soll den Anwender\_innen ein Werkzeug zur Verfügung gestellt werden, dass ihnen vernetzte Informationen übersichtlich zur Verfügung stellt um sinnvolle Entscheidungen treffen zu können.
+Dabei sollen mit dem Prototypen nicht klassische Probleme der Informatik oder Logistik wie Beispielsweise das \textit{travelings salesman problem} gelöst werden. Vielmehr soll den Anwender\_innen ein Werkzeug zur Verfügung gestellt werden, dass ihnen vernetzte Informationen übersichtlich zur Verfügung stellt um sinnvolle Entscheidungen treffen zu können.
 
 \section{Problemstellung}
 \label{chap:einfuehrung:sec:problemstellung}
@@ -33,7 +33,7 @@ Basierend auf der \nameref{chap:einfuehrung:sec:problemstellung} soll sich an di
 Diese Ideen stellen noch keine endgültige Lösung da, sondern sollen als Orientierung dienen welche progressiv durch kommende Analysen, \nameref{chap:analyse:sec:interviews} und Feedbacks angepasst werden.\\
 \\
 Die grundlegende Idee besteht darin, Informationen (Ressourcen und Aufgaben) mit geografischen Daten zu verknüpfen und diese zu visualisieren und somit die Nutzer\_innen bei ihren Entscheidungsprozessen zu unterstützen. 
-Dabei soll auf die beiden Bereiche: ``Datenfilterung/-Anreicherung'' sowie ``Darstellungsformen'' besonderes Augenmerk gelegt werden.
+Dabei soll auf die beiden Bereiche: \textit{Datenfilterung/-Anreicherung} sowie \textit{Darstellungsformen} besonderes Augenmerk gelegt werden.
 
 \subsection*{Datenfilterung/-Anreicherung}
 Ein wichtiger Aspekt, um die Unterstützung durch den Prototypen, bei der Planung, zu maximieren besteht darin, dass die richtigen Informationen, zum richtigen Zeitpunkt, am richtigen Ort zur Verfügung stehen. 
@@ -54,9 +54,9 @@ Eine weitere Überlegung besteht darin, die Anwender\_innen selbst entscheiden z
 
 \section{Hintergrund}
 \label{chap:einfuehrung:sec:hintergrund}
-Als Grundgerüst für den Prototypen dient die Software „pery“ der Firma Perfany GmbH, welche um die unten genannten Anwendungsfälle erweitert werden soll. 
-Pery ist eine webbasierte (Software as a Service) \ac{ERP} sowie \ac{CRM} Lösung.
-Das Ziel von Pery besteht darin, die eigenen Firmendaten mit einander zu verknüpfen um die alltägliche Arbeit im Büro zu erleichtern.
+Als Grundgerüst für den Prototypen dient die Software \textit{pery} der Firma \textit{Perfany GmbH}, welche um die unten genannten Anwendungsfälle erweitert werden soll. 
+\textit{pery} ist eine webbasierte (Software as a Service) \ac{ERP} sowie \ac{CRM} Lösung.
+Das Ziel von \textit{pery} besteht darin, die eigenen Firmendaten mit einander zu verknüpfen um die alltägliche Arbeit im Büro zu erleichtern.
 Beispielsweise öffnet sich bei den Anwender\_innen ein Popup sobald ein Anruf eingeht. 
 Wenn es sich dabei um einen im System bestehende\_n Kunde\_in handelt kann direkt auf das Popup geklickt werden und eine Partnerübersicht öffnet sich.
 In dieser Partnerübersicht finden sich relvanten Informationen (offene Rechnungen, Stammdaten und vieles mehr) sowie weiterführende Links zu diversen History-Elementen dieser Geschäftsbeziehung.
@@ -67,15 +67,78 @@ Für die Lösung des Problems bezüglich den verteilten Daten gibt es Grundsätz
 Zum einen würde die Möglichkeit bestehen eine Software zu erstellen, welche sich ihre Daten, über Schnittstellen, aus verschiedensten Quellen\footnote{Diese wären beispielsweise eine externe \ac{API} und/oder Software von Drittanbietern.} holt.
 Zum anderen kann eine bestehende Lösung verwendet werden, die um die gewünschte Funktionalität erweitert wird und somit, nach einer importieren der Daten, die ehemaligen Systeme ablöst. 
 Da Pery über eine gute Vernetzung der Kundendaten verfügt und das Hauptaugenmerk dieser Arbeit, nicht auf die Implementierung der grundlegender Infrastruktur des Prototypen liegt, wird im Rahmen dieser Arbeit der zweite Fall behandelt (erweitern einer bestehenden Lösung).
-
- 
-
-\section{Usecase}
-
-\todoImprovement[]{Mehr Storytelling}
-Um einen besseres Verständnis für die Umsetzungen zu erlangen wird an der Stelle die Anwendungsszenarien aufgezeigt.
+\newpage
 
 
+\section{Anwendungsszenario}
+Nachdem in den Abschnitten \nameref{chap:einfuehrung:sec:problemstellung} und \nameref{chap:einfuehrung:sec:idee} erste grundlegende Gedanken umrissen wurden, soll an dieser Stelle aufgezeigt werden, wie möglicherweise die spätere Verwendung des Prototypen ablaufen könnte.
+Anhand des Anwendungsszenarios, lässt sich zum einen, durch die Darstellung an einem Beispiel, dass Konzept besser verstehen und zum anderen, fallen grobe Konzept- oder Logikfehler so schon frühzeitig auf.
+Wie in den vorhergehenden Abschnitten dieses Kapitels schon angedeutet handelt es sich auch in diesem noch nicht um ein fertiges Konzept sondern um eine Grundlage, die im Laufe der Entwicklung weiter angepasst wird.
+
+\subsection{Szenario: On Trip Information }
+Ziel dieses Szenarios ist es, einen speziellen Anwendungsfall für die Verwendung des Prototypens zu konstruieren, anhand dessen später unter anderem evaluiert werden kann, in welcher Form sich die zusätzlichen Informationen (geografischen Daten) auf die Entscheidungsfindung auswirken.
+Bei diesem Fall handelt es sich um eine Optimierung für die Planung und Durchführung von Außendiensteinsätzen. 
+
+\paragraph*{Fiktiver Hintergrund}
+Um das Beispiel realistischer und verständlicher Wirken zu lassen wird die Handlung in einen fiktiven Rahmen eingebettet. 
+Im Verlauf dieser Arbeit wird der fiktive Hintergrund durch detaillierter Personas
+\footnote{
+	Mehr Informationen was eine Persona ist und wie diese zustande gekommen ist: siehe Abs.: \ref{persona} - \nameref{persona}
+	} 
+\footnote{
+	Damit die Persona's realistischer sind, wurde die Entscheidung getroffen,
+	sie auf den gewonnen Erfahrungen der \nameref{chap:analyse:sec:interviews} aufzubauen.
+	} 
+abglöst.\\
+\\
+Babsi Zimmermann, 36 Jahre alt, ist eine aufstrebende Mitarbeiterin in der Firma \textit{Purple Circle} und dort als Verkäuferin angestellt. 
+Die Firma \textit{Purple Circle} mit Sitz in Dornbirn/Österreich sieht ihr Profession im Sondermaschinenbau und hat sich in diesem Marktsegment durch ihre enge Kundenbindung und qualitativ hochwertige Arbeit einen Namen gemacht. 
+
+\paragraph*{Vorbedingungen}
+Im ersten Schritt sollten vor der Planung ungefähre Kriterien für die zur Auswahl stehenden Möglichkeiten definiert sein.
+Diese könnten betriebswirtschaftliche Faktoren, wie Verkaufszahlen oder Umsatz sein, aber auch aus dem Bereich des \ac{CRM} stammen, wie beispielsweise: Dauer seit dem letzten Kundenbesuch.
+Mithilfe der geografischen Informationen lassen sich zusätzlich auch Kriterien wie maximale Entfernungen auswählen
+
+\paragraph*{Planung}
+Babsi öffnet über das Menü die Planungsansicht und wählt die Firma \textit{Rieden} als als Ausgangspunkt für die Planung aus.
+Kurz darauf zeigt ihr das System weitere Informationen entlang der Route und am Ziel auf einer Karte an.
+Nachdem sie keine dringenden Termine für den Tag hat, entschließt sie sich, die Zeit zu nehmen, Kunden zu besuchen bei denen der letzte Besuch schon längerer Zeit zurückliegt.
+Dafür ändert sie dementsprechend die Einstellungen für die Auswahlkriterien auf \textit{Dauer seit letzten Besuch} wodurch die Farbcodierung der Kundenmarker auf der Karte angepasst werden.
+Kurz darauf kommt ihre Mitarbeiterin Sylvia vorbei und bittet Babsi ihr ein paar offene Tickets abzunehmen. 
+Durch die Umstellung der Filterfunktion werden auf ihrer Karte nun zusätzlich die aktuellen Tickets angezeigt.
+Sie sieht das zwei Tickets auf ihrer Route liegen, durch einen klick auf den Marker des ersten Tickets öffnet sich ein Popup über den Marker das ihr den Titel und die Kurzbeschreibung anzeigt. 
+Da sie beim ersten Ticket schon Bescheid weiß, um was es sich handelt, klickt sie direkt im Popup auf den Button und übernimmt es in ihre Auswahlliste.
+Die Informationen des zweiten Tickets sagen ihr leider nicht soviel, aber das ist kein Problem da sie durch einen Klick auf den Titel direkt, in einem neuen Fenster, auf die Übersichtsseite des entsprechenden Tickets gelangt und dort alle Informationen zu dem Ticket sieht die sich im System befinden.
+Zurück in der Kartenansicht übernimmt sie auch das zweite Ticket. 
+Dabei fällt ihr auf das in der nähe des zweiten Tickets noch ein roter Kundenmarker ist.
+Mit einem Klick auf den roten Kundenmarker öffnet sich wieder ein Popup und sie erfährt das bei der Firma \textit{ZornTec} schon seit sieben Monaten keine Betreuung mehr stattgefunden hat.
+
+
+
+\paragraph*{Ablauf: Planung}
+\textbf{Beispiel: Außendienst Mitarbeiter\_in}
+\begin{enumerate}
+	\item Mitarbeiter\_in wählt Ziel der Route aus 
+	\begin{enumerate}
+		\item Ziel kann Ticket, Kunde oder Adresse sein
+	\end{enumerate}
+	\item System zeigt weitere Informationen entlang der Route oder am Ziel an\footnote{Die Auswahl der Informationen soll gefiltert werden können. Eventuell mehrere Filter Ebenen wie Kundenbetreuung oder offene Tickets. Auf Basis der getroffenen Filterebene können anschließend weitere Filter gewählt werden wie beispielsweise: geplanter Zeitaufwand von offenen Ticket, aktueller Betreuung Status, etc. }
+	\begin{enumerate}
+		\item Mögliche Informationen:
+		\begin{enumerate}
+			\item Offene Tickets
+			\item Betreuungsstatus von Kunden\footnote{Betreuungstatus: ist ein Schlüssel der sich aus: Betreuungsaufwand, Priorität des Kunden und Dauer seit dem letzten Betreuungstermin zusammensetzt.}
+			\item Evtl. weitere Informationen
+		\end{enumerate}
+	\end{enumerate}
+	\item Mitarbeiter\_in wählt zusätzliche Aufgaben aus
+	\begin{enumerate}
+		\item System weißt das Ticket der/dem Mitarbeiter\_in zu
+		\item Evtl. automatisch weitere Tickets anlegen und der/dem Mitarbeiter\_in zuweist.\footnote{Beispiel: Betreuungstermin – System legt automatisch ein Ticket zur Termins-findung/-vereinbarung mit dem Kunden an und weißt es der/dem Mitarbeiter\_in zu.}
+	\end{enumerate}
+\end{enumerate}
+
+\begin{comment}
 
 \subsection{Usecase I - Enhanced Ticket (\ac{UC}1)}
 Ein wichtiger Bestandteil des (bestehenden) Systems besteht darin Tickets zu verwalten.\footnote{automatische Erstellung, anlegen sowie anderen Mitarbeiter\_innen zuweisen}
@@ -131,4 +194,7 @@ Hierbei handelt es sich um weiteres Feature für die Optimierung von Planung- bz
 	\end{enumerate}
 \end{enumerate}
 
+\end{comment}
+
 \end{document}
+
