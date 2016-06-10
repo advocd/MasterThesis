@@ -3,12 +3,10 @@
 \chapter{Einführung}
 \label{chap:einfuehrung}
 
-Das Ziel der Arbeit ist zu untersuchen, 
-inwiefern die Ergänzung  von Informationen mit geografischen Daten, 
-zu einer Optimierung von Entscheidungen beiträgt und welcher Bedeutung dabei der Darstellungsform zukommt. 
-Für diesen Zweck wird, im Zuge der Arbeit, ein Prototyp entwickelt, der die Anwender\_innen bei der Planung von Außendienstrouten unterstützen soll. 
-Dabei sollen mit dem Prototypen nicht klassische Probleme der Informatik oder Logistik wie Beispielsweise das \textit{travelings salesman problem} gelöst werden. Vielmehr soll den Anwender\_innen ein Werkzeug zur Verfügung gestellt werden, dass ihnen vernetzte Informationen übersichtlich zur Verfügung stellt um sinnvolle Entscheidungen treffen zu können.\\
-\\
+Das Ziel dieses Kapitels ist es, zum einen die Idee des Projektes zu transportieren und zum anderen den groben Rahmen des Projektes zu skizzieren.
+Dabei handelt es sich in diesem Kapitel, in erste Linie, um die Gedanken des Autor die vor den Umfangreichen Analysen und Recherchen (siehe Kap.: \ref{chap:analyse} - \nameref{chap:analyse}) getätigt wurden.
+Dabei wird die Arbeit, im speziellen die Entwicklung des Prototypen, durch die Erkenntnisse der progressiven Schritte in den jeweiligen Kapiteln stets weiterentwickeln und damit auch die vorausgegangenen Ideen und Konzepte.
+
 \improvement[]{Zusammenfassung für das Kapitel \nameref{chap:einfuehrung} schreiben.}
 
 \section{Problemstellung}
@@ -46,44 +44,49 @@ Inwiefern es zu dem Filtern beziehungsweise Anreichern der Daten kommt wird sich
 \subsection*{Darstellungsformen}
 Die Visualisierung der Daten steht in keinster Weise in einer untergeordneten Rolle.
 Erst durch den sinnvollen Einsatz der Darstellung, werden die vorhandenen Daten zu einem wichtigen Indikator bei der Entscheidungsfindung.
-Dabei versucht die Arbeit sich kritisch mit der Optimierung der Darstellung auseinander zusetzen und diese in späteren Versuchen am Prototyp zu evaluieren.
+Deswegen versucht die Arbeit sich kritisch mit der Optimierung der Darstellung auseinander zusetzen und diese in späteren Versuchen am Prototyp zu evaluieren.
 Ein Beispiel dafür wäre die Thematik einer Darstellung im Kartenformat.
 Seit dem Erfolg von Google Maps werden zunehmend Kartenansichten bei der Darstellung von geografischen Daten eingesetzt. 
-Diese Arbeit wird sich unter anderem mit der Frage auseinander setzen, welche Planungs-Szenarios, beziehungsweise Workflow-Schritte, durch eine Karten- und/oder Listenansicht besser unterstützt werden.
+Des weiteren wird sich die Arbeit unter anderem mit der Frage auseinander setzen, welche Planungs-Szenarios, beziehungsweise Workflow-Schritte, durch eine Karten- und/oder Listenansicht besser unterstützt werden.
+
+\newpage
 Um dies herauszufinden wird, im späteren Verlauf, eine Analyse mit Hilfe des Prototypen durchgeführt.
 Eine weitere Überlegung besteht darin, die Anwender\_innen selbst entscheiden zu lassen, welche Ansicht sie für welchen Zweck bevorzugen und die Ergebnisse der Analyse als änderbare Standarteinstellung zu verwenden.
 
 
 \section{Hintergrund}
 \label{chap:einfuehrung:sec:hintergrund}
-Als Grundgerüst für den Prototypen dient die Software \textit{pery} der Firma \textit{Perfany GmbH}, welche um die unten genannten Anwendungsfälle erweitert werden soll. 
+Als Grundlage für den Prototypen dient die Software \textit{pery} der Firma \textit{Perfany GmbH}, welche um die unten genannten Anwendungsfälle erweitert werden soll. 
 \textit{pery} ist eine webbasierte (Software as a Service) \ac{ERP} sowie \ac{CRM} Lösung.
-Das Ziel von \textit{pery} besteht darin, die eigenen Firmendaten mit einander zu verknüpfen um die alltägliche Arbeit im Büro zu erleichtern.
-Beispielsweise öffnet sich bei den Anwender\_innen ein Popup sobald ein Anruf eingeht. 
-Wenn es sich dabei um einen im System bestehende\_n Kunde\_in handelt kann direkt auf das Popup geklickt werden und eine Partnerübersicht öffnet sich.
-In dieser Partnerübersicht finden sich relvanten Informationen (offene Rechnungen, Stammdaten und vieles mehr) sowie weiterführende Links zu diversen History-Elementen dieser Geschäftsbeziehung.
-Zusätzlich kann, über eine Tastenkombination, eine globale Suche aufgerufen werden um diverse Entitäten anhand von Namen oder Attributswerten zu finden. \\
+Das Ziel von \textit{pery} besteht darin, die eigenen Firmendaten miteinander zu verknüpfen, um die alltägliche Arbeit im Büro zu erleichtern.
+An folgenden Beispiel soll verdeutlicht werden, was mit dem \textit{verknüpfen der Firmendaten} in \textit{pery} gemeint ist.\\
 \\
-Wie im Abschnitt \nameref{chap:einfuehrung:sec:problemstellung} besprochen werden verschiedenste Informationen für die Planung benötigt die teilweise in verschiedenen Systemen liegen. 
+Sobald ein Anruf in der Telefonanlage\footnote{Die Telefonanlage muss mit \textit{pery} kompatibel und eingebunden sein.} eingeht, öffnet sich ein Popup, welches die wichtigsten Informationen des Anrufs anzeigt. 
+Wenn es sich dabei um einen im System bestehende\_n Kunde\_in handelt kann direkt auf das Popup geklickt werden, um eine Partnerübersicht zu öffnen.
+In dieser Partnerübersicht finden sich relevante Kundeninformationen (offene Rechnungen, Stammdaten und vieles mehr) sowie weiterführende Links zu diversen History-Elementen dieser Geschäftsbeziehung.
+Zusätzlich kann, über eine Tastenkombination, eine globale Suche aufgerufen werde,n um diverse Entitäten anhand von Namen oder Attributswerten zu finden. \\
+\\
+Wie im Abschnitt \nameref{chap:einfuehrung:sec:problemstellung} besprochen, werden verschiedenste Informationen für die Planung benötigt die teilweise in verschiedenen Systemen liegen. 
 Für die Lösung des Problems bezüglich den verteilten Daten gibt es Grundsätzlich zwei Ansätze.
-Zum einen würde die Möglichkeit bestehen eine Software zu erstellen, welche sich ihre Daten, über Schnittstellen, aus verschiedensten Quellen\footnote{Diese wären beispielsweise eine externe \ac{API} und/oder Software von Drittanbietern.} holt.
-Zum anderen kann eine bestehende Lösung verwendet werden, die um die gewünschte Funktionalität erweitert wird und somit, nach einer importieren der Daten, die ehemaligen Systeme ablöst. 
-Da Pery über eine gute Vernetzung der Kundendaten verfügt und das Hauptaugenmerk dieser Arbeit, nicht auf die Implementierung der grundlegender Infrastruktur des Prototypen liegt, wird im Rahmen dieser Arbeit der zweite Fall behandelt (erweitern einer bestehenden Lösung).
-\newpage
+Zum einen, besteht die Möglichkeit einen Zwischenschicht zu entwickeln, welche sich ihre Daten, über Schnittstellen, aus verschiedensten Quellen\footnote{Diese wären beispielsweise eine externe \ac{API} und/oder Software von Drittanbietern.} holt und in den Prototypen einpflegt.
+Zum anderen kann, das bestehende System (\textit{pery}) verwendet werden, welches um die gewünschte Funktionalität erweitert wird und somit, nach dem importieren der Daten, aus den zusätzlich in Verwendung befindlichen dritt System, diese ablösen. 
+Da \textit{pery} über eine gute Vernetzung der Kundendaten verfügt und das Hauptaugenmerk dieser Arbeit, nicht auf die Implementierung der grundlegender Infrastruktur des Prototypen liegt, wird im Rahmen dieser Arbeit der zweite Fall behandelt (erweitern einer bestehenden Lösung).
 
 
 \section{Anwendungsszenario}
-Nachdem in den Abschnitten \nameref{chap:einfuehrung:sec:problemstellung} und \nameref{chap:einfuehrung:sec:idee} erste grundlegende Gedanken umrissen wurden, soll an dieser Stelle aufgezeigt werden, wie möglicherweise die spätere Verwendung des Prototypen ablaufen könnte.
-Anhand des Anwendungsszenarios, lässt sich zum einen, durch die Darstellung an einem Beispiel, dass Konzept besser verstehen und zum anderen, fallen grobe Konzept- oder Logikfehler so schon frühzeitig auf.
-Wie in den vorhergehenden Abschnitten dieses Kapitels schon angedeutet handelt es sich auch in diesem noch nicht um ein fertiges Konzept sondern um eine Grundlage, die im Laufe der Entwicklung weiter angepasst wird.
+Nachdem in den Abschnitten \nameref{chap:einfuehrung:sec:problemstellung} und \nameref{chap:einfuehrung:sec:idee} erste grundlegende Gedanken umrissen wurden, soll an dieser Stelle aufgezeigt werden, wie möglicherweise die spätere Verwendung des Prototypen ablaufen könnte und stellt somit eine Zusammenfassung der Erkenntnisse aus diesem Kapitel da.\\
+\\
+Anhand des Anwendungsszenarios, lässt sich durch die Darstellung an einem Beispiel, zum einen, dass Konzept besser verstehen und zum anderen, fallen grobe Konzept- oder Logikfehler so schon frühzeitig auf.
+Wie in den vorhergehenden Abschnitten dieses Kapitels schon angedeutet, handelt es sich noch nicht um ein fertiges Konzept, sondern um eine Grundlage, die im Laufe der Entwicklung weiter angepasst wird.
 
 \subsection{Szenario: On Trip Information }
-Ziel dieses Szenarios ist es, einen speziellen Anwendungsfall für die Verwendung des Prototypens zu konstruieren, anhand dessen später unter anderem evaluiert werden kann, in welcher Form sich die zusätzlichen Informationen (geografischen Daten) auf die Entscheidungsfindung auswirken.
-Bei diesem Fall handelt es sich um eine Optimierung für die Planung und Durchführung von Außendiensteinsätzen. 
+Ziel dieses Szenarios ist es, einen speziellen Anwendungsfall für die Verwendung des Prototypen zu konstruieren. 
+Anhand des Prototypen soll später unter anderem evaluiert werden, in welcher Form sich die zusätzlichen Informationen (geografischen Daten) auf die Entscheidungsfindung auswirken.
+In diesem Fall handelt es sich um eine Optimierung für die Planung und Durchführung von Außendiensteinsätzen. 
 
 \paragraph*{Fiktiver Hintergrund}
-Um das Beispiel realistischer und verständlicher Wirken zu lassen wird die Handlung in einen fiktiven Rahmen eingebettet. 
-Im Verlauf dieser Arbeit wird der fiktive Hintergrund durch detaillierter Personas
+Damit das Beispiel realistischer und verständlicher erscheint, wird die Handlung in einen fiktiven Rahmen eingebettet. 
+Des weiteren soll, im Verlauf dieser Arbeit, der fiktive Hintergrund durch eine detaillierte Persona
 \footnote{
 	Mehr Informationen was eine Persona ist und wie diese zustande gekommen ist: siehe Abs.: \ref{persona} - \nameref{persona}
 	} 
@@ -91,11 +94,12 @@ Im Verlauf dieser Arbeit wird der fiktive Hintergrund durch detaillierter Person
 	Damit die Persona's realistischer sind, wurde die Entscheidung getroffen,
 	sie auf den gewonnen Erfahrungen der \nameref{chap:analyse:sec:interviews} aufzubauen.
 	} 
-abglöst.\\
-\\
-Babsi Zimmermann, 36 Jahre alt, ist eine aufstrebende Mitarbeiterin in der Firma \textit{Purple Circle} und dort als Verkäuferin angestellt. 
-Die Firma \textit{Purple Circle} mit Sitz in Dornbirn/Österreich sieht ihr Profession im Sondermaschinenbau und hat sich in diesem Marktsegment durch ihre enge Kundenbindung und qualitativ hochwertige Arbeit einen Namen gemacht. 
+abglöst werden.
 \newpage
+
+Babsi Zimmermann, 36 Jahre alt, ist eine aufstrebende Mitarbeiterin der Firma \textit{Purple Circle} und dort als Verkäuferin angestellt. 
+Die Firma \textit{Purple Circle}, mit Sitz in Dornbirn/Österreich, sieht ihr Profession im Sondermaschinenbau und hat sich, in diesem Marktsegment, durch ihre enge Kundenbindung und qualitativ hochwertige Arbeit einen Namen gemacht. 
+
 
 \paragraph*{Vorbedingungen}
 Im ersten Schritt sollten vor der Planung ungefähre Kriterien für die zur Auswahl stehenden Möglichkeiten definiert sein.
@@ -103,21 +107,25 @@ Diese könnten betriebswirtschaftliche Faktoren, wie Verkaufszahlen oder Umsatz 
 Mithilfe der geografischen Informationen lassen sich zusätzlich auch Kriterien wie maximale Entfernungen auswählen
 
 \paragraph*{Ablauf: Planung}
-Babsi öffnet über das Menü die Planungsansicht und wählt die Firma \textit{Rieden} als als Ausgangspunkt für die Planung aus.
-Kurz darauf zeigt ihr das System weitere Informationen entlang der Route und am Ziel auf einer Karte an.
-Nachdem sie keine dringenden Termine für den Tag hat, entschließt sie sich, die Zeit zu nehmen, Kunden zu besuchen bei denen der letzte Besuch schon längerer Zeit zurückliegt.
-Dafür ändert sie dementsprechend die Einstellungen für die Auswahlkriterien auf \textit{Dauer seit letzten Besuch} wodurch die Farbcodierung der Kundenmarker auf der Karte angepasst werden.
+Babsi öffnet, über das Menü, die Planungsansicht und wählt die Firma \textit{Rieden} als Ausgangspunkt für die Planung aus.
+Kurz darauf, zeigt ihr das System weitere Informationen, entlang der Route und am Ziel, auf einer Karte an.
+Nachdem sie keine dringenden Termine hat, entschließt sie sich Kunden zu besuchen, bei denen der letzte Besuch schon längerer Zeit zurückliegt (Vorbedingung).
+Dafür ändert sie dementsprechend die Einstellungen für die Auswahlkriterien auf \textit{Dauer seit letzten Besuch} wodurch die Farbcodierung der Kundenmarker auf der Karte angepasst werden.\\
+\\
 Kurz darauf kommt ihre Mitarbeiterin Sylvia vorbei und bittet Babsi ihr ein paar offene Tickets abzunehmen. 
-Durch die Umstellung der Filterfunktion werden auf ihrer Karte nun zusätzlich die aktuellen Tickets angezeigt.
-Sie sieht das zwei Tickets auf ihrer Route liegen, durch einen klick auf den Marker des ersten Tickets öffnet sich ein Popup über den Marker das ihr den Titel und die Kurzbeschreibung anzeigt. 
-Da sie beim ersten Ticket schon Bescheid weiß, um was es sich handelt, klickt sie direkt im Popup auf den Button und übernimmt es in ihre Auswahlliste.
-Die Informationen des zweiten Tickets sagen ihr leider nicht soviel, aber das ist kein Problem da sie durch einen Klick auf den Titel direkt, in einem neuen Fenster, auf die Übersichtsseite des entsprechenden Tickets gelangt und dort alle Informationen zu dem Ticket sieht die sich im System befinden.
+Durch die Umstellung der Filterfunktion, werden auf ihrer Karte nun auch zusätzlich die aktuellen Tickets angezeigt.
+Sie sieht das zwei Tickets auf ihrer Route liegen, durch einen klick auf den Marker des ersten Tickets, öffnet sich ein Popup über dem Marker, dass ihr den Titel und die Kurzbeschreibung anzeigt. 
+Da sie beim ersten Ticket schon weiß um was es sich handelt, klickt sie im Popup auf den Button und übernimmt es dadurch in ihre Auswahlliste.
+Die Informationen des zweiten Tickets sagen ihr leider nicht soviel. 
+Das ist aber kein Problem da sie durch einen Klick auf den Titel direkt auf die Übersichtsseite des entsprechenden Tickets gelangt.
+Dort werden alle Informationen zu dem Ticket angezeigt, die sich im System befinden.
 Zurück in der Kartenansicht übernimmt sie auch das zweite Ticket. 
-Dabei fällt ihr auf das in der nähe des zweiten Tickets noch ein roter Kundenmarker ist.
-Mit einem Klick auf den roten Kundenmarker öffnet sich wieder ein Popup und sie erfährt das bei der Firma \textit{ZornTec} schon seit sieben Monaten keine Betreuung mehr stattgefunden hat.
+Dabei fällt ihr auf, dass in der nähe des zweiten Tickets noch ein roter Kundenmarker ist.
+Mit einem Klick, auf den roten Kundenmarker, öffnet sich wieder ein Popup.
+Sie erfährt, dass bei der Firma \textit{ZornTec} schon seit sieben Monaten keine Betreuung mehr stattgefunden hat.
 Als letzten Punkt auf ihrer Planung übernimmt sie noch den Kunden \textit{ZornTec} in ihre Liste. 
-Babsi schließt die Kartenansicht und sieht, anhand der Benachrichtigung, dass vom System schon zwei neue interne Tickets für sie angelegt wurden.
-In diesen Tickets findet sie, neben der freundlichen Erinnerung, einen Termin mit den Ansprechpartnern\_innen der jeweiligen Firmen auszumachen, auch gleich die passenden Kontaktmöglichkeiten von Herrn Müller (Firma \textit{ZornTec}) und Frau Koch (Firma \textit{Rieden}).
+Nun schließt Babsi die Kartenansicht und sieht, anhand der Benachrichtigung, dass vom System schon zwei neue interne Tickets, für sie angelegt wurden.
+In diesen Tickets findet sie, neben der freundlichen Erinnerung einen Termin mit den Ansprechpartnern\_innen der jeweiligen Firmen auszumachen, auch gleich die passenden Kontaktmöglichkeiten von Herrn Müller (Firma \textit{ZornTec}) und Frau Koch (Firma \textit{Rieden}).
 
 
 \begin{comment}
