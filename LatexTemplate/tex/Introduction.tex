@@ -9,6 +9,24 @@ Dabei wird die Arbeit, im speziellen die Entwicklung des Prototypen, durch die E
 
 \improvement[]{Zusammenfassung für das Kapitel \nameref{chap:einfuehrung} schreiben.}
 
+\section{Hintergrund}
+\label{chap:einfuehrung:sec:hintergrund}
+Als Grundlage für den Prototypen dient die Software \textit{pery} der Firma \textit{Perfany GmbH}, welche um die unten genannten Anwendungsfälle erweitert werden soll. 
+\textit{pery} ist eine webbasierte (Software as a Service) \ac{ERP} sowie \ac{CRM} Lösung.
+Das Ziel von \textit{pery} besteht darin, die eigenen Firmendaten miteinander zu verknüpfen, um die alltägliche Arbeit im Büro zu erleichtern.
+An folgenden Beispiel soll verdeutlicht werden, was mit dem \textit{verknüpfen der Firmendaten} in \textit{pery} gemeint ist.\\
+\\
+Sobald ein Anruf in der Telefonanlage\footnote{Die Telefonanlage muss mit \textit{pery} kompatibel und eingebunden sein.} eingeht, öffnet sich ein Popup, welches die wichtigsten Informationen des Anrufs anzeigt. 
+Wenn es sich dabei um einen im System bestehende\_n Kunde\_in handelt kann direkt auf das Popup geklickt werden, um eine Partnerübersicht zu öffnen.
+In dieser Partnerübersicht finden sich relevante Kundeninformationen (offene Rechnungen, Stammdaten und vieles mehr) sowie weiterführende Links zu diversen History-Elementen dieser Geschäftsbeziehung.
+Zusätzlich kann, über eine Tastenkombination, eine globale Suche aufgerufen werde,n um diverse Entitäten anhand von Namen oder Attributswerten zu finden. \\
+\\
+Wie im Abschnitt \nameref{chap:einfuehrung:sec:problemstellung} besprochen, werden verschiedenste Informationen für die Planung benötigt die teilweise in verschiedenen Systemen liegen. 
+Für die Lösung des Problems bezüglich den verteilten Daten gibt es Grundsätzlich zwei Ansätze.
+Zum einen, besteht die Möglichkeit einen Zwischenschicht zu entwickeln, welche sich ihre Daten, über Schnittstellen, aus verschiedensten Quellen\footnote{Diese wären beispielsweise eine externe \ac{API} und/oder Software von Drittanbietern.} holt und in den Prototypen einpflegt.
+Zum anderen kann, das bestehende System (\textit{pery}) verwendet werden, welches um die gewünschte Funktionalität erweitert wird und somit, nach dem importieren der Daten, aus den zusätzlich in Verwendung befindlichen dritt System, diese ablösen. 
+Da \textit{pery} über eine gute Vernetzung der Kundendaten verfügt und das Hauptaugenmerk dieser Arbeit, nicht auf die Implementierung der grundlegender Infrastruktur des Prototypen liegt, wird im Rahmen dieser Arbeit der zweite Fall behandelt (erweitern einer bestehenden Lösung).
+
 \section{Problemstellung}
 \label{chap:einfuehrung:sec:problemstellung}
 
@@ -52,25 +70,6 @@ Des weiteren wird sich die Arbeit unter anderem mit der Frage auseinander setzen
 \newpage
 Um dies herauszufinden wird, im späteren Verlauf, eine Analyse mit Hilfe des Prototypen durchgeführt.
 Eine weitere Überlegung besteht darin, die Anwender\_innen selbst entscheiden zu lassen, welche Ansicht sie für welchen Zweck bevorzugen und die Ergebnisse der Analyse als änderbare Standarteinstellung zu verwenden.
-
-
-\section{Hintergrund}
-\label{chap:einfuehrung:sec:hintergrund}
-Als Grundlage für den Prototypen dient die Software \textit{pery} der Firma \textit{Perfany GmbH}, welche um die unten genannten Anwendungsfälle erweitert werden soll. 
-\textit{pery} ist eine webbasierte (Software as a Service) \ac{ERP} sowie \ac{CRM} Lösung.
-Das Ziel von \textit{pery} besteht darin, die eigenen Firmendaten miteinander zu verknüpfen, um die alltägliche Arbeit im Büro zu erleichtern.
-An folgenden Beispiel soll verdeutlicht werden, was mit dem \textit{verknüpfen der Firmendaten} in \textit{pery} gemeint ist.\\
-\\
-Sobald ein Anruf in der Telefonanlage\footnote{Die Telefonanlage muss mit \textit{pery} kompatibel und eingebunden sein.} eingeht, öffnet sich ein Popup, welches die wichtigsten Informationen des Anrufs anzeigt. 
-Wenn es sich dabei um einen im System bestehende\_n Kunde\_in handelt kann direkt auf das Popup geklickt werden, um eine Partnerübersicht zu öffnen.
-In dieser Partnerübersicht finden sich relevante Kundeninformationen (offene Rechnungen, Stammdaten und vieles mehr) sowie weiterführende Links zu diversen History-Elementen dieser Geschäftsbeziehung.
-Zusätzlich kann, über eine Tastenkombination, eine globale Suche aufgerufen werde,n um diverse Entitäten anhand von Namen oder Attributswerten zu finden. \\
-\\
-Wie im Abschnitt \nameref{chap:einfuehrung:sec:problemstellung} besprochen, werden verschiedenste Informationen für die Planung benötigt die teilweise in verschiedenen Systemen liegen. 
-Für die Lösung des Problems bezüglich den verteilten Daten gibt es Grundsätzlich zwei Ansätze.
-Zum einen, besteht die Möglichkeit einen Zwischenschicht zu entwickeln, welche sich ihre Daten, über Schnittstellen, aus verschiedensten Quellen\footnote{Diese wären beispielsweise eine externe \ac{API} und/oder Software von Drittanbietern.} holt und in den Prototypen einpflegt.
-Zum anderen kann, das bestehende System (\textit{pery}) verwendet werden, welches um die gewünschte Funktionalität erweitert wird und somit, nach dem importieren der Daten, aus den zusätzlich in Verwendung befindlichen dritt System, diese ablösen. 
-Da \textit{pery} über eine gute Vernetzung der Kundendaten verfügt und das Hauptaugenmerk dieser Arbeit, nicht auf die Implementierung der grundlegender Infrastruktur des Prototypen liegt, wird im Rahmen dieser Arbeit der zweite Fall behandelt (erweitern einer bestehenden Lösung).
 
 
 \section{Anwendungsszenario}
@@ -186,6 +185,8 @@ Hierbei handelt es sich um weiteres Feature für die Optimierung von Planung- bz
 \end{enumerate}
 
 \end{comment}
+
+\section{Abgrenzung}
 
 \end{document}
 
