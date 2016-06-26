@@ -10,22 +10,22 @@ Dabei wird die Arbeit, im speziellen die Entwicklung des Prototypen, durch die E
 
 \section{Motivation und Hintergrund}
 \label{chap:einfuehrung:sec:hintergrund}
-Im Zuge meiner Anstellung bin ich bei der Firma Perfany GmbH als Softwareentwickler 
-Als Grundlage für den Prototypen dient die Software \textit{pery} der Firma \textit{Perfany GmbH}, welche um die unten genannten Anwendungsfälle erweitert werden soll. 
-\textit{pery} ist eine webbasierte (Software as a Service) \ac{ERP} sowie \ac{CRM} Lösung.
-Das Ziel von \textit{pery} besteht darin, die eigenen Firmendaten miteinander zu verknüpfen, um die alltägliche Arbeit im Büro zu erleichtern.
-An folgenden Beispiel soll verdeutlicht werden, was mit dem \textit{verknüpfen der Firmendaten} in \textit{pery} gemeint ist.\\
+Parallel zu meiner Ausbildung im Masterstudiengang habe ich die Möglichkeit, mein erlerntes Wissen bei der Firma Perfany in der Praxis anzuwenden.
+In dieser Tätigkeit entwickle ich unter anderen neue Features für unser Softwareprodukt pery.
+Bei pery handelt es sich um eine webbasierte (Software as a Service) \ac{ERP} sowie \ac{CRM} Lösung.
+Das Ziel von pery besteht darin, die eigenen Firmendaten miteinander zu verknüpfen, um die alltägliche Arbeit im Büro zu erleichtern.
+An folgenden Beispiel soll verdeutlicht werden, was mit dem verknüpfen der Firmendaten in pery gemeint ist.\\
 \\
-Sobald ein Anruf in der Telefonanlage\footnote{Die Telefonanlage muss mit \textit{pery} kompatibel und eingebunden sein.} eingeht, öffnet sich ein Popup, welches die wichtigsten Informationen des Anrufs anzeigt. 
-Wenn es sich dabei um einen im System bestehende\_n Kunde\_in handelt kann direkt auf das Popup geklickt werden, um eine Partnerübersicht zu öffnen.
+Sobald ein Anruf in der Telefonanlage\footnote{Die Telefonanlage muss mit pery kompatibel und eingebunden sein.} eingeht, öffnet sich ein Popup, welches die wichtigsten Informationen des Anrufs anzeigt. 
+Wenn es sich dabei um bestehende Kunden\_in handelt kann direkt auf das Popup geklickt werden, um eine Partnerübersicht zu öffnen.
 In dieser Partnerübersicht finden sich relevante Kundeninformationen (offene Rechnungen, Stammdaten und vieles mehr) sowie weiterführende Links zu diversen History-Elementen dieser Geschäftsbeziehung.
 Zusätzlich kann, über eine Tastenkombination, eine globale Suche aufgerufen werde,n um diverse Entitäten anhand von Namen oder Attributswerten zu finden. \\
 \\
 Wie im Abschnitt \nameref{chap:einfuehrung:sec:problemstellung} besprochen, werden verschiedenste Informationen für die Planung benötigt die teilweise in verschiedenen Systemen liegen. 
 Für die Lösung des Problems bezüglich den verteilten Daten gibt es Grundsätzlich zwei Ansätze.
 Zum einen, besteht die Möglichkeit einen Zwischenschicht zu entwickeln, welche sich ihre Daten, über Schnittstellen, aus verschiedensten Quellen\footnote{Diese wären beispielsweise eine externe \ac{API} und/oder Software von Drittanbietern.} holt und in den Prototypen einpflegt.
-Zum anderen kann, das bestehende System (\textit{pery}) verwendet werden, welches um die gewünschte Funktionalität erweitert wird und somit, nach dem importieren der Daten, aus den zusätzlich in Verwendung befindlichen dritt System, diese ablösen. 
-Da \textit{pery} über eine gute Vernetzung der Kundendaten verfügt und das Hauptaugenmerk dieser Arbeit, nicht auf die Implementierung der grundlegender Infrastruktur des Prototypen liegt, wird im Rahmen dieser Arbeit der zweite Fall behandelt (erweitern einer bestehenden Lösung).
+Zum anderen kann, das bestehende System (pery) verwendet werden, welches um die gewünschte Funktionalität erweitert wird und somit, nach dem importieren der Daten, aus den zusätzlich in Verwendung befindlichen dritt System, diese ablösen. 
+Da pery über eine gute Vernetzung der Kundendaten verfügt und das Hauptaugenmerk dieser Arbeit, nicht auf die Implementierung der grundlegender Infrastruktur des Prototypen liegt, wird im Rahmen dieser Arbeit der zweite Fall behandelt (erweitern einer bestehenden Lösung).
 
 \section{Problemstellung}
 \label{chap:einfuehrung:sec:problemstellung}
@@ -51,7 +51,7 @@ Basierend auf der \nameref{chap:einfuehrung:sec:problemstellung} soll sich an di
 Diese Ideen stellen noch keine endgültige Lösung da, sondern sollen als Orientierung dienen welche progressiv durch kommende Analysen, \nameref{chap:analyse:sec:interviews} und Feedbacks angepasst werden.\\
 \\
 Die grundlegende Idee besteht darin, Informationen (Ressourcen und Aufgaben) mit geografischen Daten zu verknüpfen und diese zu visualisieren und somit die Nutzer\_innen bei ihren Entscheidungsprozessen zu unterstützen. 
-Dabei soll auf die beiden Bereiche: \textit{Datenfilterung/-Anreicherung} sowie \textit{Darstellungsformen} besonderes Augenmerk gelegt werden.
+Dabei soll auf die beiden Bereiche: Datenfilterung/-Anreicherung sowie Darstellungsformen besonderes Augenmerk gelegt werden.
 
 \subsection*{Datenfilterung/-Anreicherung}
 Ein wichtiger Aspekt, um die Unterstützung durch den Prototypen, bei der Planung, zu maximieren besteht darin, dass die richtigen Informationen, zum richtigen Zeitpunkt, am richtigen Ort zur Verfügung stehen. 
@@ -97,8 +97,8 @@ Des weiteren soll, im Verlauf dieser Arbeit, der fiktive Hintergrund durch eine 
 abglöst werden.
 \newpage
 
-Babsi Zimmermann, 36 Jahre alt, ist eine aufstrebende Mitarbeiterin der Firma \textit{Purple Circle} und dort als Verkäuferin angestellt. 
-Die Firma \textit{Purple Circle}, mit Sitz in Dornbirn/Österreich, sieht ihr Profession im Sondermaschinenbau und hat sich, in diesem Marktsegment, durch ihre enge Kundenbindung und qualitativ hochwertige Arbeit einen Namen gemacht. 
+Babsi Zimmermann, 36 Jahre alt, ist eine aufstrebende Mitarbeiterin der Firma Purple Circle und dort als Verkäuferin angestellt. 
+Die Firma Purple Circle, mit Sitz in Dornbirn/Österreich, sieht ihr Profession im Sondermaschinenbau und hat sich, in diesem Marktsegment, durch ihre enge Kundenbindung und qualitativ hochwertige Arbeit einen Namen gemacht. 
 
 
 \paragraph*{Vorbedingungen}
@@ -107,10 +107,10 @@ Diese könnten betriebswirtschaftliche Faktoren, wie Verkaufszahlen oder Umsatz 
 Mithilfe der geografischen Informationen lassen sich zusätzlich auch Kriterien wie maximale Entfernungen auswählen
 
 \paragraph*{Ablauf: Planung}
-Babsi öffnet, über das Menü, die Planungsansicht und wählt die Firma \textit{Rieden} als Ausgangspunkt für die Planung aus.
+Babsi öffnet, über das Menü, die Planungsansicht und wählt die Firma Rieden als Ausgangspunkt für die Planung aus.
 Kurz darauf, zeigt ihr das System weitere Informationen, entlang der Route und am Ziel, auf einer Karte an.
 Nachdem sie keine dringenden Termine hat, entschließt sie sich Kunden zu besuchen, bei denen der letzte Besuch schon längerer Zeit zurückliegt (Vorbedingung).
-Dafür ändert sie dementsprechend die Einstellungen für die Auswahlkriterien auf \textit{Dauer seit letzten Besuch} wodurch die Farbcodierung der Kundenmarker auf der Karte angepasst werden.\\
+Dafür ändert sie dementsprechend die Einstellungen für die Auswahlkriterien auf Dauer seit letzten Besuch wodurch die Farbcodierung der Kundenmarker auf der Karte angepasst werden.\\
 \\
 Kurz darauf kommt ihre Mitarbeiterin Sylvia vorbei und bittet Babsi ihr ein paar offene Tickets abzunehmen. 
 Durch die Umstellung der Filterfunktion, werden auf ihrer Karte nun auch zusätzlich die aktuellen Tickets angezeigt.
@@ -122,10 +122,10 @@ Dort werden alle Informationen zu dem Ticket angezeigt, die sich im System befin
 Zurück in der Kartenansicht übernimmt sie auch das zweite Ticket. 
 Dabei fällt ihr auf, dass in der nähe des zweiten Tickets noch ein roter Kundenmarker ist.
 Mit einem Klick, auf den roten Kundenmarker, öffnet sich wieder ein Popup.
-Sie erfährt, dass bei der Firma \textit{ZornTec} schon seit sieben Monaten keine Betreuung mehr stattgefunden hat.
-Als letzten Punkt auf ihrer Planung übernimmt sie noch den Kunden \textit{ZornTec} in ihre Liste. 
+Sie erfährt, dass bei der Firma ZornTec schon seit sieben Monaten keine Betreuung mehr stattgefunden hat.
+Als letzten Punkt auf ihrer Planung übernimmt sie noch den Kunden ZornTec in ihre Liste. 
 Nun schließt Babsi die Kartenansicht und sieht, anhand der Benachrichtigung, dass vom System schon zwei neue interne Tickets, für sie angelegt wurden.
-In diesen Tickets findet sie, neben der freundlichen Erinnerung einen Termin mit den Ansprechpartnern\_innen der jeweiligen Firmen auszumachen, auch gleich die passenden Kontaktmöglichkeiten von Herrn Müller (Firma \textit{ZornTec}) und Frau Koch (Firma \textit{Rieden}).
+In diesen Tickets findet sie, neben der freundlichen Erinnerung einen Termin mit den Ansprechpartnern\_innen der jeweiligen Firmen auszumachen, auch gleich die passenden Kontaktmöglichkeiten von Herrn Müller (Firma ZornTec) und Frau Koch (Firma Rieden).
 
 
 \begin{comment}
