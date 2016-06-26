@@ -4,14 +4,14 @@
 \label{chap:einfuehrung}
 
 Das Ziel dieses Kapitels ist es, zum einen die Idee des Projektes zu transportieren und zum anderen den groben Rahmen des Projektes zu skizzieren.
-Dabei handelt es sich in diesem Kapitel, in erste Linie, um die Gedanken des Autor die vor den Umfangreichen Analysen und Recherchen (siehe Kap.: \ref{chap:analyse} - \nameref{chap:analyse}) getätigt wurden.
-Dabei wird die Arbeit, im speziellen die Entwicklung des Prototypen, durch die Erkenntnisse der progressiven Schritte in den jeweiligen Kapiteln stets weiterentwickeln und damit auch die vorausgegangenen Ideen und Konzepte.
+Dabei handelt es sich in diesem Kapitel, in erste Linie, um die Gedanken des Autors die vor den umfangreichen Analysen und Recherchen (siehe Kap.: \ref{chap:analyse} - \nameref{chap:analyse}) getätigt wurden.
+Dabei wird die Arbeit, im Speziellen die Entwicklung des Prototypen, durch die Erkenntnisse der progressiven Schritte in den jeweiligen Kapiteln stets weiterentwickeln und damit auch die vorausgegangenen Ideen und Konzepte.
 
 
 \section{Motivation und Hintergrund}
 \label{chap:einfuehrung:sec:hintergrund}
 Parallel zu meiner Ausbildung im Masterstudiengang habe ich die Möglichkeit, mein erlerntes Wissen bei der Firma Perfany in der Praxis anzuwenden.
-In dieser Tätigkeit entwickle ich, unter anderen, neue Features für unser Softwareprodukt pery, welches als Grundgerüst für den Prototypen dient.
+In dieser Tätigkeit entwickle ich, unter anderen, neue Features für unser Softwareprodukt pery, welches als Grundgerüst für den Prototypen dienen soll.
 Bei pery handelt es sich um eine webbasierte (Software as a Service) \ac{ERP} sowie \ac{CRM} Lösung.
 Das Ziel von pery besteht darin, die eigenen Firmendaten miteinander zu verknüpfen, um die alltägliche Arbeit im Büro zu erleichtern.
 An folgenden Beispiel soll verdeutlicht werden, was mit dem verknüpfen der Firmendaten in pery gemeint ist.\\
@@ -32,14 +32,15 @@ Aus diesem Wunsch heraus ist die Idee entstanden, zu untersuchen, inwiefern geog
 Die Problemstellung, stellt den ersten analytischen Schritt der Entwicklung des Prototypen da.
 Hierbei soll hervorgehoben was für mögliche Probleme im aktuellen Ist-Zustand bestehen.
 Stellvertretend für das Thema der Arbeit, bezieht sich die Problemstellung auf den Anwendungsfall zur Planung einer Außendienstroute.
-Selbstverständlich sind durchaus auch andere Szenarios mit geografischen Informationen denkbar, allerdings fokussiert diese Arbeit den oben genannten Fall für die Klärung der zentralen Fragestellung.\\
-\\
-Aus meiner Sicht bestehen folgende drei große Probleme: Komplexität, Wissensmanagement sowie verteilte/isolierte Informationen.
+Selbstverständlich sind durchaus auch andere Szenarios mit geografischen Informationen denkbar, allerdings fokussiert diese Arbeit den oben genannten Fall für die Klärung der zentralen Fragestellung.
+Aus meiner Sicht bestehen folgende drei große Problembereiche: verteilte/isolierte Informationen, Komplexität sowie Wissensmanagement.
+
 \paragraph*{verteilte/isolierte Informationen}
 Die für die Planung relevanten Informationen sind, aufgrund von fehlenden Lösungen, auf verschiedene Systeme oder Medien verteilt und isoliert. 
 Um eine Planung durchzuführen müssen die benötigten Information separat aus den verschiedenen Systemen oder Medien geholt werden.
 Dabei dienen teilweise die Ergebnisse aus einem System als Grundlage für die Suche in weiteren Systemen.
-Dies ist zum einen Aufwendig und Zeitraubend sowie Fehleranfällig da einzelne Informationen bei
+Dies ist zum einen Aufwendig und Zeitraubend sowie Fehleranfällig da einzelne Informationen übersehen werden können.
+\newpage
 
 \paragraph*{Komplexität}
 Verschiedenste kundenspezifische Attribute dienen als Grundlage für die Planung.
@@ -50,7 +51,7 @@ Aufgrund der Komplexität steigt zum einen die Fehleranfälligkeit und zum ander
 \paragraph*{Wissensmanagement}
 In die meisten Planungen fließen kundenspezifische Erfahrungswerte sowie lokale Ortskenntnisse mit ein.
 Dabei besteht das Problem, dass dieses Wissen nicht für dritte\footnote{Ein klassisches Beispiel sind neu Kräfte im Unternehmen und/oder Urlaubsvertretungen} verfügbar ist.
-Mögliche Folgen sind beispielsweise ineffiziente oder gar fehlerhafte Planung sowie ein erhöhtes Zeitaufkommen bei der Planung. 
+Als mögliche Folgen können beispielsweise ineffiziente oder gar fehlerhafte Planung sowie ein erhöhtes Zeitaufkommen bei der Planung entstehen. 
 
 
 \begin{comment}
@@ -66,13 +67,16 @@ Basierend auf der \nameref{chap:einfuehrung:sec:problemstellung} soll sich an di
 Diese Ideen stellen noch keine endgültige Lösung da, sondern sollen als Orientierung dienen welche progressiv durch kommende Analysen, \nameref{chap:analyse:sec:interviews} und Feedbacks angepasst werden.\\
 \\
 Die grundlegende Idee besteht darin, Informationen (Ressourcen und Aufgaben) mit geografischen Daten zu verknüpfen und diese zu visualisieren und somit die Nutzer\_innen bei ihren Entscheidungsprozessen zu unterstützen. 
-Dabei soll auf die beiden Bereiche: Datenfilterung/-Anreicherung sowie Darstellungsformen besonderes Augenmerk gelegt werden.\\
-\\
-Wie im Abschnitt \nameref{chap:einfuehrung:sec:problemstellung} besprochen, werden verschiedenste Informationen für die Planung benötigt die teilweise in verschiedenen Systemen liegen. 
+Dabei liegt das Augenmerk auf den folgenden Bereichen: Datenstruktur, Datenfilterung/-Anreicherung sowie Darstellung, welche aufeinander aufbauend sind. 
+
+
+\subsection*{Datenstruktur}
+Im ersten Schritt sollte eine zielführende Datenstruktur entwickelt werden, welche das Grundgerüst für die beiden anderen Bereiche darstellt und ihre Funktionalität gewährleistet.
+Wie in Abschnitt \nameref{chap:einfuehrung:sec:problemstellung} besprochen, werden verschiedenste Informationen für die Planung benötigt die teilweise in verschiedenen Systemen liegen. 
 Für die Lösung des Problems bezüglich den verteilten Daten gibt es Grundsätzlich zwei Ansätze.
-Zum einen, besteht die Möglichkeit einen Zwischenschicht zu entwickeln, welche sich ihre Daten, über Schnittstellen, aus verschiedensten Quellen\footnote{Diese wären beispielsweise eine externe \ac{API} und/oder Software von Drittanbietern.} holt und in den Prototypen einpflegt.
-Zum anderen kann, das bestehende System (pery) verwendet werden, welches um die gewünschte Funktionalität erweitert wird und somit, nach dem importieren der Daten, aus den zusätzlich in Verwendung befindlichen dritt System, diese ablösen. 
-Da pery über eine gute Vernetzung der Kundendaten verfügt und das Hauptaugenmerk dieser Arbeit, nicht auf die Implementierung der grundlegender Infrastruktur des Prototypen liegt, wird im Rahmen dieser Arbeit der zweite Fall behandelt (erweitern einer bestehenden Lösung).
+Zum einen besteht die Möglichkeit eine Zwischenschicht zu entwickeln, welche sich ihre Daten über Schnittstellen aus verschiedensten Quellen\footnote{Diese wären beispielsweise eine externe \ac{API} und/oder Software von Drittanbietern.} holt und in den Prototypen einpflegt.
+Zum anderen kann das bestehende System (pery), welches um die gewünschte Funktionalität erweitert wird, die bestehenden Drittsystem ablösen. 
+Da pery über eine gute Vernetzung der Kundendaten verfügt und das Hauptaugenmerk dieser Arbeit nicht auf der Implementierung der grundlegenden Infrastruktur des Prototypen liegt, wird im Rahmen dieser Arbeit der zweite Fall behandelt (erweitern einer bestehenden Lösung).
 
 \subsection*{Datenfilterung/-Anreicherung}
 Ein wichtiger Aspekt, um die Unterstützung durch den Prototypen, bei der Planung, zu maximieren besteht darin, dass die richtigen Informationen, zum richtigen Zeitpunkt, am richtigen Ort zur Verfügung stehen. 
@@ -86,9 +90,8 @@ Erst durch den sinnvollen Einsatz der Darstellung, werden die vorhandenen Daten 
 Deswegen versucht die Arbeit sich kritisch mit der Optimierung der Darstellung auseinander zusetzen und diese in späteren Versuchen am Prototyp zu evaluieren.
 Ein Beispiel dafür wäre die Thematik einer Darstellung im Kartenformat.
 Seit dem Erfolg von Google Maps werden zunehmend Kartenansichten bei der Darstellung von geografischen Daten eingesetzt. 
-Des weiteren wird sich die Arbeit unter anderem mit der Frage auseinander setzen, welche Planungs-Szenarios, beziehungsweise Workflow-Schritte, durch eine Karten- und/oder Listenansicht besser unterstützt werden.
-
-\newpage
+Des weiteren wird sich die Arbeit unter anderem mit der Frage auseinander setzen, welche Planungs-Szenarios, beziehungsweise Workflow-Schritte, durch eine Karten- und/oder Listenansicht besser unterstützt werden.\\
+\\
 Um dies herauszufinden wird, im späteren Verlauf, eine Analyse mit Hilfe des Prototypen durchgeführt.
 Eine weitere Überlegung besteht darin, die Anwender\_innen selbst entscheiden zu lassen, welche Ansicht sie für welchen Zweck bevorzugen und die Ergebnisse der Analyse als änderbare Standarteinstellung zu verwenden.
 
@@ -103,49 +106,36 @@ Wie in den vorhergehenden Abschnitten dieses Kapitels schon angedeutet, handelt 
 \subsection{Szenario: On Trip Information }
 Ziel dieses Szenarios ist es, einen speziellen Anwendungsfall für die Verwendung des Prototypen zu konstruieren. 
 Anhand des Prototypen soll später unter anderem evaluiert werden, in welcher Form sich die zusätzlichen Informationen (geografischen Daten) auf die Entscheidungsfindung auswirken.
-In diesem Fall handelt es sich um eine Optimierung für die Planung und Durchführung von Außendiensteinsätzen. 
-
-\paragraph*{Fiktiver Hintergrund}
-Damit das Beispiel realistischer und verständlicher erscheint, wird die Handlung in einen fiktiven Rahmen eingebettet. 
-Des weiteren soll, im Verlauf dieser Arbeit, der fiktive Hintergrund durch eine detaillierte Persona
-\footnote{
-	Mehr Informationen was eine Persona ist und wie diese zustande gekommen ist: siehe Abs.: \ref{persona} - \nameref{persona}
-	} 
-\footnote{
-	Damit die Persona's realistischer sind, wurde die Entscheidung getroffen,
-	sie auf den gewonnen Erfahrungen der \nameref{chap:analyse:sec:interviews} aufzubauen.
-	} 
-abglöst werden.
-\newpage
+In diesem Fall handelt es sich um eine Optimierung für die Planung und Durchführung von Außendiensteinsätzen.
+Damit das Beispiel realistischer und verständlicher erscheint, wird die Handlung in folgenden fiktiven Rahmen eingebettet:\\
 
 Babsi Zimmermann, 36 Jahre alt, ist eine aufstrebende Mitarbeiterin der Firma Purple Circle und dort als Verkäuferin angestellt. 
-Die Firma Purple Circle, mit Sitz in Dornbirn/Österreich, sieht ihr Profession im Sondermaschinenbau und hat sich, in diesem Marktsegment, durch ihre enge Kundenbindung und qualitativ hochwertige Arbeit einen Namen gemacht. 
+Die Firma Purple Circle, mit Sitz in Dornbirn/Österreich, sieht ihre Profession im Sondermaschinenbau und hat sich in diesem Marktsegment durch ihre enge Kundenbindung und qualitativ hochwertige Arbeit einen Namen gemacht. 
 
 
 \paragraph*{Vorbedingungen}
 Im ersten Schritt sollten vor der Planung ungefähre Kriterien für die zur Auswahl stehenden Möglichkeiten definiert sein.
-Diese könnten betriebswirtschaftliche Faktoren, wie Verkaufszahlen oder Umsatz sein, aber auch aus dem Bereich des \ac{CRM} stammen, wie beispielsweise: Dauer seit dem letzten Kundenbesuch.
+Diese könnten betriebswirtschaftliche Faktoren, wie Verkaufszahlen oder Umsatz sein, aber auch aus dem Bereich des \ac{CRM} stammen, wie beispielsweise die Dauer seit dem letzten Kundenbesuch.
 Mithilfe der geografischen Informationen lassen sich zusätzlich auch Kriterien wie maximale Entfernungen auswählen
 
-\paragraph*{Ablauf: Planung}
+\paragraph*{Ablauf Planung}
 Babsi öffnet, über das Menü, die Planungsansicht und wählt die Firma Rieden als Ausgangspunkt für die Planung aus.
-Kurz darauf, zeigt ihr das System weitere Informationen, entlang der Route und am Ziel, auf einer Karte an.
+Kurz darauf, zeigt ihr das System weitere Informationen entlang der Route und am Ziel auf einer Karte an.
 Nachdem sie keine dringenden Termine hat, entschließt sie sich Kunden zu besuchen, bei denen der letzte Besuch schon längerer Zeit zurückliegt (Vorbedingung).
-Dafür ändert sie dementsprechend die Einstellungen für die Auswahlkriterien auf Dauer seit letzten Besuch wodurch die Farbcodierung der Kundenmarker auf der Karte angepasst werden.\\
+Dafür ändert sie dementsprechend die Einstellungen für die Auswahlkriterien auf Dauer seit letzten Besuch, wodurch die Farbcodierung der Kundenmarker auf der Karte angepasst werden.\\
 \\
 Kurz darauf kommt ihre Mitarbeiterin Sylvia vorbei und bittet Babsi ihr ein paar offene Tickets abzunehmen. 
 Durch die Umstellung der Filterfunktion, werden auf ihrer Karte nun auch zusätzlich die aktuellen Tickets angezeigt.
-Sie sieht das zwei Tickets auf ihrer Route liegen, durch einen klick auf den Marker des ersten Tickets, öffnet sich ein Popup über dem Marker, dass ihr den Titel und die Kurzbeschreibung anzeigt. 
-Da sie beim ersten Ticket schon weiß um was es sich handelt, klickt sie im Popup auf den Button und übernimmt es dadurch in ihre Auswahlliste.
+Sie sieht das zwei Tickets auf ihrer Route liegen, und öffnet die jeweiligen Kurzinformationen welche ihr den Titel und die Kurzbeschreibung der einzelnen Tickets anzeigt. 
+Da sie beim ersten Ticket schon weiß um was es sich handelt, übernimmt sie es in ihre Auswahlliste.
 Die Informationen des zweiten Tickets sagen ihr leider nicht soviel. 
-Das ist aber kein Problem da sie durch einen Klick auf den Titel direkt auf die Übersichtsseite des entsprechenden Tickets gelangt.
-Dort werden alle Informationen zu dem Ticket angezeigt, die sich im System befinden.
+Das ist aber kein Problem, sie ruft direkt die Übersichtsseite des entsprechenden Tickets auf.
+In der Übersicht werden ihr alle Informationen zu dem Ticket angezeigt, die sich im System befinden.
 Zurück in der Kartenansicht übernimmt sie auch das zweite Ticket. 
-Dabei fällt ihr auf, dass in der nähe des zweiten Tickets noch ein roter Kundenmarker ist.
-Mit einem Klick, auf den roten Kundenmarker, öffnet sich wieder ein Popup.
-Sie erfährt, dass bei der Firma ZornTec schon seit sieben Monaten keine Betreuung mehr stattgefunden hat.
+Dabei fällt ihr auf, dass in der Nähe des zweiten Tickets noch ein roter Kundenmarker ist.
+Sie öffnet die erweiterte Übersicht für den roten Marker und erfährt, dass bei der Firma ZornTec schon seit sieben Monaten keine Betreuung mehr stattgefunden hat.
 Als letzten Punkt auf ihrer Planung übernimmt sie noch den Kunden ZornTec in ihre Liste. 
-Nun schließt Babsi die Kartenansicht und sieht, anhand der Benachrichtigung, dass vom System schon zwei neue interne Tickets, für sie angelegt wurden.
+Nun schließt Babsi die Kartenansicht und sieht anhand der Benachrichtigung, dass vom System schon zwei neue interne Tickets für sie angelegt wurden.
 In diesen Tickets findet sie, neben der freundlichen Erinnerung einen Termin mit den Ansprechpartnern\_innen der jeweiligen Firmen auszumachen, auch gleich die passenden Kontaktmöglichkeiten von Herrn Müller (Firma ZornTec) und Frau Koch (Firma Rieden).
 
 
@@ -209,12 +199,13 @@ Hierbei handelt es sich um weiteres Feature für die Optimierung von Planung- bz
 
 \section{Abgrenzung}
 Wie dieses Kapitel gezeigt hat, bietet der gewählte Themenschwerpunkt ein reichhaltiges Betätigungsfeld aus dem sich diverse Funktionalitäten ableiten lassen. 
-Um das Ziel der Arbeit nicht aus den Augen zu verlieren, wird abschließend noch definiert, welche Eigenschaften, für den ersten Entwurf, des Prototypen ausgeschlossen werden und dementsprechend auch nicht in dieser Arbeit behandelt werden. 
+Um das Ziel der Arbeit nicht aus den Augen zu verlieren, wird abschließend noch definiert welche Eigenschaften, für den ersten Entwurf, des Prototypen ausgeschlossen werden und dementsprechend auch nicht in dieser Arbeit behandelt werden. 
 Dieser Schritt ist notwendig um eine klare Fokussierung zu setzen sowie Missverständnisse auszuräumen.
-Explizit handelt es sich dabei unter anderem um folgende drei Punkte:
+Explizit handelt es sich dabei um folgende drei Punkte:\\
+\\
 \begin{enumerate}
 	\item Kein Routenplaner
-	\item[] Der Prototyp unterstützt nicht die Routenplanung im herkömmlichen Sinne die schnellste Route von A nach B zu finden wie dies Navigationssystem oder Webservice wie Beispielsweise Google Maps tun.
+	\item[] Der Prototyp unterstützt nicht die Routenplanung im herkömmlichen Sinne die schnellste Route von A nach B zu finden, wie dies Navigationssystem oder Webservice wie Beispielsweise Google Maps tun.
 	\item Keine Mobile Anwendung
 	\item [] Im ersten Schritt ist keine spezielle Implementierung oder Unterstützung für mobile Endgeräte (Smartphones) angedacht. Die Anwendung beschränkt sich ausschließlich auf die Nutzung in einem Webbrowser. Dabei werden folgende Webbrowser unterstützt: Google Chrome, Mozilla Firefox\footnote{Diese Spezifikation werden durch Pery definiert in welches der Prototyp integriert ist.}
 	\item Keine automatische Planung
