@@ -149,12 +149,20 @@ Da die Aussagen bei den Gesprächen vermutlich sehr unterschiedlich ausfallen we
 	\end{enumerate}
 	\item Probleme und Engpässe des Planungs-Workflows:
 	\begin{itemize}
-		\item Urlaubsvertretungen
+		\item Vertretungen durch anderes Personal
+		\begin{itemize}
+			\item Eventuell fehlende lokale Ortskenntnis\footnote{Beispielsweise bei abgelegenen Gebieten}
+			\item Sonderfälle und Änderungen werden nicht immer ordentlich dokumentiert (Taschenkalender). Wodurch teilweise Verwirrung bezüglich den geplannten Terminen entsteht wenn keine saubere Übergabe stattgefunden hat.  
+		\end{itemize}
 		\item neuer Kundenkontakt: muss Eingeschoben werden (siehe: \ref{interview1:sonderfall})
+		\begin{itemize}
+			\item Fehlende Übersicht wann und wo der Termin eingeschoben werden soll.
+		\end{itemize}
 	\end{itemize}
 	\item Gewünschte Verbesserung (aus Domänen-Sicht):
 	\begin{itemize}
-		\item[] Optimierung der Route durch Kartenansicht
+		\item[] Optimierung der Route durch Kartenansicht sowie die Möglichkeit Routen im System zu verwalten.
+	
 	\end{itemize}
 \end{enumerate}
 \newpage
@@ -231,13 +239,16 @@ Da die Aussagen bei den Gesprächen vermutlich sehr unterschiedlich ausfallen we
 	\end{enumerate}
 	\item Probleme und Engpässe des Planungs-Workflows:
 	\begin{itemize}
-		\item Effizienzsteigerung - Außendienstler soll beim Kunden sein und nicht im Büro am planen
-		\item Mit bestehenden Softwarelösungen: entweder Umsatzdaten oder \ac{GIS} 
+		\item Effizienzsteigerung - Außendienstpersonal soll beim Kunden sein und nicht im Büro am planen
+		\item Mit bestehenden Softwarelösungen: entweder Firmendaten (beispielsweise Umsatzdaten) oder \ac{GIS} 
+		\item Filterung auf Basis von Postleitzahlen relativ Umständlichen und nicht immer Zielführend effektiv\footnote{Aufeinander folgende Postleitzahlen sind nicht immer benachbart.}
+		\item Fehlende Übersicht bei den Kundenstandorten für die Planung. Gefilterte Kunden müssen exportiert und in Google Maps übertragen werden.
+		\item Bei spontanen Änderungen vor Ort fehlt die Übersicht welcher Kunde in der Nähe ist. Alternative Kunden müssen schon bei der Planung rausgesucht werden.
+		\item Keine Möglichkeit die ausgewählten Kunden zu exportieren. Kunden werden für den Außendienst jeweils auf Post-Its notiert. 
 	\end{itemize}
 	\item Gewünschte Verbesserung (aus Domänen-Sicht):
 	\begin{itemize}
-		\item Keine automatisch berechneten Vorschläge vom System. Vielmehr Unterstützung durch (Meta-)Daten und Visualisierung
-		\item Zusätzliche Meta-Information bei Außendiensttätigkeit wie beispielsweise:
+		\item Keine automatisch berechneten Vorschläge vom System. Vielmehr Unterstützung durch (Meta-)Daten und Visualisierung:
 		\begin{itemize}
 			\item Interessen des Kunden/Smalltalk-Themen
 			\item Berichte über Verkaufte Artikel und mögliche ergänzende Artikel
@@ -299,16 +310,16 @@ Da die Aussagen bei den Gesprächen vermutlich sehr unterschiedlich ausfallen we
 	\begin{itemize}
 		\item[] Haupttermine werden ca. 1-2 Wochen im Vorfeld evaluiert. 
 		\begin{enumerate}
-			\item Es wird geprüft ob ein wiederkehrender Termin für den Planungszeitraum vorhanden ist und dementsprechend berücksichtigt.
-			\item Des weiteren werden für die Festlegung der Termine die Datensätze des Unternehmens nach den Metriken "letzter Kundenkontakt" und Postleitzahl  gefiltert.
-			\item Aus diesen Datensätzen muss auf Basis von Domänenwissen eine Priorisierung getroffen werden
+			\item Es wird geprüft ob ein wiederkehrender Termin (im Papierkalender)für den Planungszeitraum vorhanden ist und dementsprechend berücksichtigt.
+			\item Des weiteren werden für die Festlegung der Termine die Datensätze des Unternehmens nach den Metriken letzter Kundenkontakt und Postleitzahl  gefiltert.
+			\item Aus diesen Datensätzen muss auf Basis von Domänenwissen eine Priorisierung getroffen werden. Die Kriterien der Einstufung hängt dabei von den Erfahrungen des jeweiligen Personals ab. Neben klassischen Kundendaten (wie Beispielsweise Umsatzzahlen etc.) spielen hier auch kundenspezifische Metadaten (wie Notizen über den Kunden) eine Rolle.
 			\item Auf Basis der Priorisierung werden geografisch naheliegende Kunden ausgesucht und Termine mit Ihnen vereinbart.
 		\end{enumerate}
 		\item[] Des weiteren werden Nebentermine zwischen den Hauptterminen geplant.
 		\begin{enumerate}
 			\item Dies sind beispielsweise potentielle Neukunden oder Kunden mit einer niedrigeren Priorität 
 		\end{enumerate}
-		\item[] Abschließend nach den Kundenbesuchen werden evtl. Zeitspannen für den kommenden Termin definiert
+		\item[] Abschließend nach den Kundenbesuchen werden evtl. Zeitspannen für den wiederkehrenden Termin definiert und im Papierkalender abgelegt.
 	\end{itemize}
 	
 	\item Sonderfälle des Planungs-Workflows zeigen/erklären lassen (Schritt für Schritt):
@@ -317,7 +328,13 @@ Da die Aussagen bei den Gesprächen vermutlich sehr unterschiedlich ausfallen we
 	\end{itemize}
 	\item Probleme und Engpässe des Planungs-Workflows:
 	\begin{itemize}
-		\item[] Der Zugriff auf die Firmensoftware ist von Unterwegs nur lesend möglich. Die Daten können nur aus dem Standortbüro schreibend synchronisiert werden.
+		\item Der Zugriff auf die Firmensoftware ist von Unterwegs nur lesend möglich. Die Daten können nur aus dem Standortbüro schreibend synchronisiert werden.
+		\item Keine Unterstützung für wiederkehrende Termine im System. Termine werden deswegen, außerhalb des Systems, in Papierkalendern oder Microsoft Outlook verwaltet. 
+		\item Umständliche Workflow bei der Filterung nach Priorisierung, Standort, etc. 
+		\item Fehlende Übersicht der Standorte des Kunden. Zum einen bei der Planung und zum anderen bei spontanen Änderungen oder Einschüben.
+		Aktuell behilft man sich mit Google Maps.
+		\item Keine Exportmöglichkeit der Kundendaten für eventuelle spontane Umplanung.
+		\item Keine Verwaltungsmöglichkeit für Routen, im speziellen als gedruckte Liste für den Außendienst. Aktuell wird diese Liste bei der Planung händisch mit einem Textverarbeitungsprogramm erstellt und gedruckt.
 	\end{itemize}
 	\item Gewünschte Verbesserung (aus Domänen-Sicht):
 	\begin{itemize}
