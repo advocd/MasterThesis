@@ -190,53 +190,120 @@ Basierend auf dieser Kategorisierung soll später das Konzept für den Prototype
 \end{table}
 
 
-\subsection*{Systembruch}
-\label{p1}
+\subsubsection*{Systembruch}
+\label{interviewsAnalyseSystembruch}
+Damit ist gemeint das parallel zum bestehenden System zusätzliche Drittsoftware oder gar andere Medien eingesetzt werden.
+Diese Maßnahme sind, laut den geführten Interviews, auf den Grund zurückzuführen, dass jenes bestehende System entweder nicht über die benötigte Funktionalität verfügt
+\footnote{
+	Diese Meinung stammt aus der Sicht des Personals. 
+	Ein weiteres denkbares Szenario ist, das die Funktionalität zwar gegeben ist, allerdings das Personal nicht darüber informiert beziehungsweise geschult wurde.
+	} 
+oder nur umständlich/aufwendig zu bedienen ist.
+Dabei können solche Systembrüche zu den diversen Problemen führen. 
+Mögliche Probleme können im Datenschutz
+\footnote{
+	Beispielsweise Weitergabe von Kunden/Patientendaten an Dritte.
+	}
+	, der unautorisierten Weitergabe von Firmengeheimnissen oder schlichtweg in Brüchen des Informationsmanagement liegen.  
+Bei den durchgeführten Interviews wurden folgende drei Szenarien mit Systembrüchen identifiziert:
 
-/ Externe Terminverwaltung Papierkalender (I1, I3) und Microsoft Outlook(I3)\\
-/ Routenberechnung und Standortvirtualisierung mit Google Maps (I2, I3)\\
-/ Exportieren der Kundendaten Post Its (I2) oder übertragen in Textverarbeitungsprogramme(I3)\\
+\paragraph{Termine und Kalender}
+Auf Grund der fehlenden Funktionalität Termine im bestehenden System zu verwalten wird in \nameref{anhang:interview1} beschrieben das die Terminplanung mithilfe eines Taschenkalenders bewältigt wird. 
+In \nameref{anhang:interview3} wird eine Kombination aus einem privaten Kalender in Microsoft Outlook und einem Taschenkalender verwendet. 
+Bei beiden Interviews besteht das Problem das die Termine nicht für Dritte (Beispiel: Urlaubsvertretungen, etc.) einsichtig sind.
+
+\paragraph{Routenberechnung}
+Um eine Routenberechnung zu den ausgewählten Partnerunternehmen zu optimieren wird, laut \nameref{anhang:interview2} und \nameref{anhang:interview3}, regelmäßig auf Google Maps zurückgegriffen. 
+Für diesen Zweck müssen die Kontaktdaten entweder umständlich kopiert oder von Hand übertragen werden.
+
+\paragraph{Export der Daten für den Außendienst}
+Ein weiterer Punkt für die Verwendung von Drittsoftware liegt in der Aufbereitung der Informationen für den Außendienst.
+Nachdem eine Route geplant wurde müssen wichtige Informationen, wie Beispielsweise Verkaufzahlen und ähnliches auf Papier vorliegen. 
+Für diesen Zweck werden entweder, wie in \nameref{anhang:interview2} genannt, die wichtigsten Informationen auf Post It`s übertragen oder, wie in \nameref{anhang:interview3} beschrieben, von Hand mittels kopieren und einfügen in ein Textverarbeitungsprogramme übertragen und anschließend gedruckt.
+
+\subsubsection*{Datenstrukturen}
+\label{interviewsAnalyseDatenstrukturen}
+Während im letzten Abschnitt auf die bestehenden Systembrüche eingegangen wurde, liegt der Schwerpunkt hier auf den unzureichenden Datenstrukturen und weniger auf der Funktionalität der bestehenden Systeme. 
+Dabei ist zu berücksichtigen, dass die richtige Datenstruktur eine Grundlage für die Implementierung von Funktionalitäten darstellt. 
+Bei der Analyse der Interviews sind dabei folgende Nennungen hervorgetreten:
+
+\paragraph{Termine}
+Sowohl in \nameref{anhang:interview1} wie auch in \nameref{anhang:interview3} ist es möglich Termine beziehungsweise Datums im System zu hinterlegen. 
+Allerdings handelt es sich bei den Datumsfeld, bei beiden System, ausschließlich um Textfelder. 
+Das bedeutet das man zwar das Datum angeben kann allerdings das System sehr eingeschränkt ist bei der Interaktion mit diesen Werten. 
+Somit lassen sich keine Operationen wie zum Beispiel wiederkehrende Termine erstellen (siehe \nameref{anhang:interview3}) und hat somit nur einen stark eingeschränkten Mehrwert.
 
 
-\begin{comment}
-Die Daten sind auf verschiedene Medien und Systeme verteilt. 
-Laut den Interviews sind die Datenquellen dabei nicht nur auf verschiedene Softwaresystem verteilt sondern auch auf unterschiedlichsten Medien wie Beispielsweise Taschenkalender (siehe \nameref{anhang:interview1})
-Dadurch ist keine direkte Abfrage über die internen Firmendaten möglich. 
-Das hat zur Folge das die benötigten Daten für das Filterungsverfahren mühsam, teilweise von Hand, rausgesucht werden müssen.
-\end{comment}
+\paragraph{Kundenspezifische Meta-Daten}
+Der letzte Punkt behandelt die fehlenden Datenstrukturen von kundenspezifischen Meta-Daten.
+Dieser Begriff wurde im Zuge der Interviews vom Autor geprägt und bezeichnet Daten und Informationen über Kunden, die nicht zu den klassischen Firmendaten, wie Beispielsweise Umsatzzahlen zählen. 
+Vielmehr haben diese Informationen den Charakter von firmeninternen Notizen, wie sie auch in den meisten System aktuell gehandhabt werden.
+Ein Beispiel für diese Daten wären zum Beispiel die persönlichen Interessen/Abneigung, Smalltalk-Themen und produktiv Zeiten\footnote{Beispiel: ...ist Frühaufsteher, ...Abschlüsse lassen sich am besten am Abend machen, etc.} der Kunden\_innen. 
+Wie in \nameref{anhang:interview2} \nameref{anhang:interview3} festgestellt wurde, sind diese Daten für die Personen in der Planung ein hilfreiches Werkzeug. 
+Leider ist im besten Fall bei Kundenkontakten ein allgemeines Notizfeld. 
+Ähnlich wie bei den Terminen ist es schwierig diese Daten sinnvoll zu verwenden solang sie nur als reiner Text vorliegen.
 
-\subsection*{Datenstrukturen}
-\label{p2}
-Unzureichende Unterstützung des Systems in der  Datenstruktur\\
-\\
-/ Keine Möglichkeit für Termine zu hinterlegen (I1)\\
-/ Wiederkehrende Termine (I3)\\
-/ Hinterlegung von zusätzlichen Meta-Daten (I2, I3)\\
+\subsubsection*{Routenverwaltung}
+\label{interviewsAnalyseRoutenverwaltung}
+Das Endprodukt einer Außendienstplanung stellt eine fertig gestellte Route da mit allen Daten und Informationen die der Außendienstmitarbeiter für die Durchführung benötigt.
+Leider ist in keinen der durchgeführten Interviews aktuell eine solche Funktion gegeben oder angedacht.
+Im Moment werden Aspekte der Routenverwaltung bei allen drei Interview angegeben.
+Dabei handelt es sich um die Erstellung, die Bearbeitung und das Exportieren für den Außendiensteinsatz (siehe \nameref{anhang:interview1}, \nameref{anhang:interview2} und \nameref{anhang:interview3}). 
+
+\subsubsection*{Filterungsverfahren}
+\label{interviewsAnalyseFilterungsverfahren}
+Den ersten Schritt der Planung stellt das Filtern nach relevanten Datensätzen da.
+Aktuell geschieht dies, im besten Fall, durch das definieren von verschiedenen Filtereinstellungen (Beispielsweise in pery).
+Umständlich wird es, wenn die benötigten Daten auf verschiedenen nicht mit einander verbundenen Systemen verteilt sind (siehe Abschnitt \nameref{interviewsAnalyseSystembruch}). 
+Diese Verteilung hat in der Praxis zur Folge, dass Zwischenergebnisse notiert und händisch miteinander verglichen werden müssen.
+Was wiederum zum einen umständlich und zum anderen Fehleranfällig ist, in Hinsicht darauf, dass Daten übersehen werden können (siehe \nameref{anhang:interview2} und \nameref{anhang:interview3}).
 
 
-\subsection*{Routenverwaltung}
-\label{p3}
-Keine Möglichkeit Routen zu erstellen (I1), bearbeiten (I1), Änderung der Reihenfolge -Stau, Terminverschiebung (I2) exportieren (I2, I3), dokumentieren, Datenpflege (I3), 
+\subsubsection*{Übersicht Standorte}
+\label{interviewsAnalyseStandorte}
+Bei allen Workflows spielt der Standort, der einzelnen Kunden, eine entscheidende Rolle bei der Planung.
+In den meisten Systemen ist bei jedem Kontakt eine Adresse hinterlegt und wird in Form einer Textausgabe angezeigt.
+Da in allen drei Interviews die fehlende Übersicht der jeweiligen Standorte am häufigsten angegeben wurde, sollte man die Ursachen genauer betrachten. 
+Die Nennungen wurden dabei in folgende zwei Kategorien eingeteilt:
 
-\subsection*{Filterungsverfahren}
-\label{p4}
-Suboptimale Filterungsverfahren, mehrere Filterungsschritte - PLZ (I2), Priorität (I3)
+\paragraph{Übersicht der Standorte: in der Planung}
+Nach der Filterung der Datensätze werden die Informationen meist in Tabellenform angezeigt.
+Dabei ist jeder Kunde inklusive seiner Adresse in einer Zeile aufgeführt.
+Bei keinen der Interviews wurde angegeben das außer der Adresse weitere geografische Informationen, wie beispielsweise Distanzen oder ähnliches, verfügbar sind.
+Der einzige Weg eine Reihung durchzuführen basiert entweder auf der Postleitzahl
+\footnote{
+	numerisch auf- beziehungsweise absteigend
+	} 
+(siehe \nameref{anhang:interview2}) oder auf dem Namen der Stadt
+\footnote{
+	alphabetisch auf- beziehungsweise absteigend
+	}. 
+Allerdings ist der Mehrwert einer Reihung oder Filterung nach harten Grenzen (Postleitzahlen oder Stadtnamen) oft nicht zielführend, da der geografische Kontext verloren geht.
+Dies wird an folgenden Beispiel deutlicher (siehe Abb. \ref{fig:HarteGrenzen} -  \nameref{fig:HarteGrenzen}). 
+Angenommen es gibt zwei Kunden\_innen die eine Distanz von knapp 300 Metern trennt. 
+Da sie beide durch eine Stadtgrenze getrennt sind werden sie bei der Sortierung an unterschiedlichen Stellen aufgelistet.
+Dabei gehen relevante Informationen wie zum Beispiel ein Standort der 300 Meter in der nächsten Stadt liegt schlichtweg verloren (siehe \nameref{anhang:interview1} und \nameref{anhang:interview2}). 
+ 
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\linewidth]{img/Interviews/HarteGrenzen}
+\caption[Probleme mit harten Grenzen]{Problem bei der Filterung oder Sortierung auf Basis von Ortsgrenzen und/oder Postleitzahlen (Quelle: eigene Ausarbeitung | Daten und Kartenmaterial: http://vogis.cnv.at/)}
+\label{fig:HarteGrenzen}
+\end{figure}
 
+Die Grenze der zumutbaren Übersicht wird erreicht, wenn geografische Informationen mit weiteren Faktoren, wie Kundendaten, in Kontext gesetzt werden sollen oder. 
+Dies wird aktuell in Zwischenschritten\footnote{Dabei ist die Anzahl der Zwischenschritte von der Anzahl der benötigten Faktoren abhängig} gelöst und ist zum einen Fehleranfällig und zum anderen Zeitaufwendig (siehe \nameref{anhang:interview2}).
 
-\subsection*{Übersicht Standorte}
-\label{p5}
-Keine Visualisierung von geografischen Daten\\
-\\
+\paragraph{Übersicht der Standorte: in der Durchführung}
+Ähnlich wie bei der Planung, wurden auch bei der Durchführung des Außendiensteinsatzes Defizite bei der Übersichtlichkeit der Standorte festgestellt. 
+Dies tritt vor allem dann auf wenn durch Änderungen spontan reagiert werden muss.
+Dies sind meisten Einschübe oder Änderungen von Termin während des Einsatzes (siehe \nameref{anhang:interview2}). 
+In solchen fällen muss zugig ein Ersatz gefunden werden
+Dafür bieten sich meist Kunden in der nähe an.
 / fehlende Ortskenntnisse - Vertretung (I1) \\
 / Termine einschieben (I1)\\
-/ Optimierung der Route (I1)\\
 / Welcher Kunde ist in der nähe (I2)\\
-/ kombiniert mit Kundendaten (I2)\\
-/ 
 
-\subsection*{Sonstiges}
-\label{p6}
-Umständliche Exportieren von Kundendaten
 
 \begin{comment}
 \paragraph*{1. Daten sind auf verschiedene Medien und Systeme verteilt}
@@ -321,6 +388,13 @@ Zum anderen, stellen die vorhandenen Organisationswerkzeuge nicht denn benötigt
 \label{chap:entwicklung:sec:konzept}
 
 \ideas{Konzept für die ersten Entwürfe aus den Ergebnisse der Analyse mergen}
+
+\paragraph{Eigenschaften der Routenverwaltung}
+
+Es soll Grundsätzlich möglich sein Routen im System zu erfassen und diese zu bearbeiten (siehe \nameref{anhang:interview1}).
+Desweiteren sollte sich die Reihung der Route ändern lassen um spontan auf Verkehrsstaus oder Terminverschiebungen reagieren zu können (siehe \nameref{anhang:interview2}).
+Zusätzlich dazu sollten sich die Route sowie die kunderelevanten Daten einfach exportieren und ausdrucken lassen (siehe \nameref{anhang:interview2} und \nameref{anhang:interview3}). 
+Abschließend kann, auf Basis der Routenverwaltung, ein erleichterter Zugang zu der Dokumentation des Außendiensteinsatzes geschaffen werden (siehe \nameref{anhang:interview3})
 
 \section{Design-Entwurf}
 \label{chap:entwicklung:sec:design_entwurf}
