@@ -22,9 +22,15 @@ Designentwurf
 \section{Interviews}
 \label{chap:analyse:sec:interviews}
 Dieser Teil beschäftigt sich mit der Fragestellung, wie Personen ihre Außendienstlichen Tätigkeiten organisieren, welchen Herausforderungen sie im beruflichen Alltag gegenüberstehen und welche Verbesserungen sie sich wünschen. 
-Für diesen Zweck sollen Interviews und Hand-ons  geführt werden, die sich an einem, eigens dafür erstellten, Leitfaden orientieren (siehe Anhang: \nameref{anhang:leitfaden_interviews}). 
+Für diesen Zweck wurde die Form eines Experteninterviews auf der Basis eines Leitfaden gewählt.
+Dabei liegt der Fokus des Interviews auf einem "`Klar definierte Wirklichkeitsausschnitt"' (vgl. \cite{Mayer2006}, S. 36)
+Bei diesem Wirklichkeitsausschnitt handelt es sich bei den Interviews um die Expertise der befragten Personen zu dem Prozess der Außendienstplanung.
+Bei den befragten Personen handelt es sich bei allen Interviews um Firmenkontakte des Unternehmens Perfany.
+Da die Identität der befragten Personen sowie die Unternehmen für die sie tätig sind keinen direkten Einfluss auf die Ergebnisse hat werden die entsprechenden Informationen nur umschrieben und nicht explizit genannt.\\
+\\
 Das Ziel dieser Interviews besteht darin, ein besseres Gefühl für den Ist-Zustand zu bekommen und Anhand dieser Erkenntnisse die möglichen Defizite zu analysieren.
-Des weiteren bietet der Ansatz die Möglichkeit, Verbesserungswünsche und Ideen von Personen aus d1er Domäne zu erhalten ohne das sie zuvor durch den Blick aus technischer Sicht verfälscht wurden.
+Des weiteren bietet der Ansatz die Möglichkeit, Verbesserungswünsche und Ideen von Personen aus d1er Domäne zu erhalten ohne das sie zuvor durch den Blick aus der Entwicklungssicht verfälscht wurden.
+
 
 \subsection{Ausarbeitung des Leitfadens}
 
@@ -43,6 +49,8 @@ Den Abschluss der Befragung bildet eine Selbstbeurteilung des Workflows.
 Dieser ist zum einen in Probleme und zum anderen in Wünsche unterteilt.
 Bei dem ersten Punkt wird explizit nachgefragt welche Probleme oder Engstellen die Probanden im Alltag festgestellt haben.
 Während bei dem zweiten Punkt nach den Wünschen beziehungsweise Sinnvollen Ergänzungen gefragt werden die sie sich selbst überlegt haben. 
+Dabei sind alle Fragestellungen in den Interviews als offene Fragen formuliert. 
+Dies hat den Vorteil das die befragten Personen zum einen nicht eingeschränkt werden und zum anderen ausführlich und detailliert Antworten können (vgl. \cite{Mayer2006}, S. 36).
 Die finale Version des Leitfadens kann im Anhang eingesehen werden (\nameref{anhang:leitfaden_interviews}). 
 
 
@@ -192,16 +200,16 @@ Mögliche Probleme können im Datenschutz
 	, der unautorisierten Weitergabe von Firmengeheimnissen oder schlichtweg in Brüchen des Informationsmanagement liegen.  
 Bei den durchgeführten Interviews wurden folgende drei Szenarien mit Systembrüchen identifiziert:
 
-\paragraph{Termine und Kalender}
+\paragraph{Systembruch: Termine und Kalender}
 Auf Grund der fehlenden Funktionalität Termine im bestehenden System zu verwalten wird in \nameref{anhang:interview1} beschrieben das die Terminplanung mithilfe eines Taschenkalenders bewältigt wird. 
 In \nameref{anhang:interview3} wird eine Kombination aus einem privaten Kalender in Microsoft Outlook und einem Taschenkalender verwendet. 
 Bei beiden Interviews besteht das Problem das die Termine nicht für Dritte (Beispiel: Urlaubsvertretungen, etc.) einsichtig sind.
 
-\paragraph{Routenberechnung}
+\paragraph{Systembruch: Routenberechnung}
 Um eine Routenberechnung zu den ausgewählten Partnerunternehmen zu optimieren wird, laut \nameref{anhang:interview2} und \nameref{anhang:interview3}, regelmäßig auf Google Maps zurückgegriffen. 
 Für diesen Zweck müssen die Kontaktdaten entweder umständlich kopiert oder von Hand übertragen werden.
 
-\paragraph{Export der Daten für den Außendienst}
+\paragraph{Systembruch: Export der Daten für den Außendienst}
 Ein weiterer Punkt für die Verwendung von Drittsoftware liegt in der Aufbereitung der Informationen für den Außendienst.
 Nachdem eine Route geplant wurde müssen wichtige Informationen, wie Beispielsweise Verkaufzahlen und ähnliches auf Papier vorliegen. 
 Für diesen Zweck werden entweder, wie in \nameref{anhang:interview2} genannt, die wichtigsten Informationen auf Post It`s übertragen oder, wie in \nameref{anhang:interview3} beschrieben, von Hand mittels kopieren und einfügen in ein Textverarbeitungsprogramme übertragen und anschließend gedruckt.
@@ -212,14 +220,14 @@ Während im letzten Abschnitt auf die bestehenden Systembrüche eingegangen wurd
 Dabei ist zu berücksichtigen, dass die richtige Datenstruktur eine Grundlage für die Implementierung von Funktionalitäten darstellt. 
 Bei der Analyse der Interviews sind dabei folgende Nennungen hervorgetreten:
 
-\paragraph{Termine}
+\paragraph{Datenstrukturen: Termine}
 Sowohl in \nameref{anhang:interview1} wie auch in \nameref{anhang:interview3} ist es möglich Termine beziehungsweise Datums im System zu hinterlegen. 
 Allerdings handelt es sich bei den Datumsfeld, bei beiden System, ausschließlich um Textfelder. 
 Das bedeutet das man zwar das Datum angeben kann allerdings das System sehr eingeschränkt ist bei der Interaktion mit diesen Werten. 
 Somit lassen sich keine Operationen wie zum Beispiel wiederkehrende Termine erstellen (siehe \nameref{anhang:interview3}) und hat somit nur einen stark eingeschränkten Mehrwert.
 
 
-\paragraph{Kundenspezifische Meta-Daten}
+\paragraph{Datenstrukturen: Kundenspezifische Meta-Daten}
 Der letzte Punkt behandelt die fehlenden Datenstrukturen von kundenspezifischen Meta-Daten.
 Dieser Begriff wurde im Zuge der Interviews vom Autor geprägt und bezeichnet Daten und Informationen über Kunden, die nicht zu den klassischen Firmendaten, wie Beispielsweise Umsatzzahlen zählen. 
 Vielmehr haben diese Informationen den Charakter von firmeninternen Notizen, wie sie auch in den meisten System aktuell gehandhabt werden.
@@ -251,7 +259,7 @@ In den meisten Systemen ist bei jedem Kontakt eine Adresse hinterlegt und wird i
 Da in allen drei Interviews die fehlende Übersicht der jeweiligen Standorte am häufigsten angegeben wurde, sollte man die Ursachen genauer betrachten. 
 Die Nennungen wurden dabei in folgende zwei Kategorien eingeteilt:
 
-\paragraph{Übersicht der Standorte: in der Planung}
+\paragraph{Übersicht Standorte: in der Planung}
 Nach der Filterung der Datensätze werden die Informationen meist in Tabellenform angezeigt.
 Dabei ist jeder Kunde inklusive seiner Adresse in einer Zeile aufgeführt.
 Bei keinen der Interviews wurde angegeben das außer der Adresse weitere geografische Informationen, wie beispielsweise Distanzen oder ähnliches, verfügbar sind.
@@ -279,7 +287,7 @@ Dabei gehen relevante Informationen wie zum Beispiel ein Standort der 300 Meter 
 Die Grenze der zumutbaren Übersicht wird erreicht, wenn geografische Informationen mit weiteren Faktoren, wie Kundendaten, in Kontext gesetzt werden sollen oder. 
 Dies wird aktuell in einzelnen Zwischenschritten\footnote{Dabei ist die Anzahl der Zwischenschritte von der Anzahl der benötigten Faktoren abhängig} gelöst und ist dadurch zum einen Fehleranfällig und zum anderen Zeitaufwendig (siehe \nameref{anhang:interview2}).
 
-\paragraph{Übersicht der Standorte: in der Durchführung}
+\paragraph{Übersicht Standorte: in der Durchführung}
 Ähnlich wie bei der Planung, wurden auch bei der Durchführung des Außendiensteinsatzes Defizite bei der Übersichtlichkeit der Standorte festgestellt. 
 Dies tritt vor allem dann auf, wenn auf Grund von Änderungen spontan reagiert werden muss.
 Dies sind meisten Einschübe oder Änderungen von Termin während des Einsatzes (siehe \nameref{anhang:interview2}). 
@@ -294,19 +302,48 @@ Nachdem die verschiedenen Kategorien definiert sind, werden die Probleme und Wü
 	}
 zugeteilt.
 Dabei ist es auch möglich das ein Problem/Wunsch mehreren Kategorien zugeteilt werden kann.
-Anhand dieses Verfahrens entsteht eine Gewichtung für jede Kategorie in jedem Interview mit einem ganzzahligen Wert zwischen null und vier.\footnote
-	{Der Wertebereich von null bis vier wurde vom Autor festgelegt}
+Anhand der Nennungen in den Interviews wird für jede Kategorie eine eigene Gewichtung vorgenommen.
+Die Wert der Gewichtung erstrecken sich dabei über einen ganzzahligen Wertebereich von null bis vier\footnote
+{Der Wertebereich von null bis vier wurde vom Autor festgelegt}.
 
-
-Folgende Abbildung (Abb.: \ref{fig:ProblemeInterview1} \nameref{fig:ProblemeInterview1}) zeigt die Verteilung der Probleme welche im ersten Interview genannt wurden. 
-Dabei liegt der Schwerpunkt auf der Kategorie \nameref{interviewsAnalyseStandorte} während sich die Kategorien \nameref{interviewsAnalyseSystembruch}, \nameref{interviewsAnalyseDatenstrukturen} und \nameref{interviewsAnalyseRoutenverwaltung} zu gleichen Anteilen verteilt sind.
+\subsubsection{Präsentation der Ergebnisse}
+Zum verständlichen präsentieren der Ergebnisse dienen folgende zwei Grafiken.\footnote
+	{siehe Abb. \ref{fig:KategorienGesamt} - \nameref{fig:KategorienGesamt} und Abb. \ref{fig:VerteilungNachInterview} - \nameref{fig:VerteilungNachInterview}}
+Zum einen wurden die Daten nach Kategorien gruppiert (siehe Abb. \ref{fig:KategorienGesamt} - \nameref{fig:KategorienGesamt}).
+Zum anderen wurden die Daten nach Interviews gruppiert (siehe Abb. \ref{fig:VerteilungNachInterview} - \nameref{fig:VerteilungNachInterview}).
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\linewidth]{img/Interviews/KategorienI1}
-	\caption[Probleme Interview I]{Aufteilung der Kategorien in Interview I (Quelle: eigene Ausarbeitung - weitere Informationen zu den Kategorien befinden sich im Abschnitt \nameref{AnalyseInterviews})}
-	\label{fig:ProblemeInterview1}
+	\includegraphics[width=0.9\linewidth]{img/Interviews/KategorienGesamt}
+	\caption[Verteilung der Kategorien (alle Interviews)]{Verteilung der Kategorien (alle Interviews). Quelle: eigene Ausarbeitung}
+	\label{fig:KategorienGesamt}
 \end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{img/Interviews/VerteilungNachInterview}
+	\caption[Verteilung der Kategorien in den einzelnen Interviews]{Verteilung der Kategorien in den einzelnen Interviews. Quelle: eigene Ausarbeitung.}
+	\label{fig:VerteilungNachInterview}
+\end{figure}
+
+Wenn man die Mittelwerte der Kategorien anhand aller Interviews vergleicht (siehe Abb.: \ref{fig:KategorienGesamt}) stellt sich heraus, dass die Kategorie Übersicht Standorte am meisten diskutiert wurde. 
+Anschließend folgen die Kategorien Systembruch, Routenverwaltung und Datenstruktur.
+Die am wenigsten diskutierte Kategorie ist das Filterungsverfahren. 
+Dies ist die einzige Kategorie welche nicht in allen Interviews diskutiert wurde.
+Somit ergibt sich folgende Reihung:
+
+\begin{enumerate}
+	\item Übersicht Standorte
+	\item Systembruch
+	\item Routenverwaltung
+	\item Datenstruktur
+	\item Filterungsverfahren
+\end{enumerate}
+
+Auf die Auswertung folgend wird, im kommenden Abschnitt \nameref{chap:entwicklung:sec:konzept}, die Planung für den Prototypen erstellt.
+Dabei bildet die vorliegende Auswertung, neben den Ergebnisse aus dem Kapitel \ref{chap:analyse} - \nameref{chap:analyse}, einen Grundstein für die Ausarbeitung.
+
+\newpage
 
 \begin{comment}
 \paragraph*{1. Daten sind auf verschiedene Medien und Systeme verteilt}
@@ -387,6 +424,8 @@ Zum anderen, stellen die vorhandenen Organisationswerkzeuge nicht denn benötigt
 \label{persona}
 \ideas{Entwicklung der Persona beschreiben, evtl noch in die Analyse packen}
 \end{comment}
+
+
 \section{Konzept}
 \label{chap:entwicklung:sec:konzept}
 
