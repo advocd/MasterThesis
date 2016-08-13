@@ -41,12 +41,12 @@ Neben klassischen Bewertungen bietet die Webseite auch Social Media Komponenten 
 
 \subsubsection*{Aufbau von Airbnb}
 Nachdem auf der Startseite die gewünschte Stadt in der man übernachten möchte, sowie optional das Start- und das Enddatum, ausgewählt wurden wird man auf die eigentliche Seite zur Planung weitergeleitet (siehe Abb.: \ref{fig:airbnbOverview} - \nameref{fig:airbnbOverview}).
-Die Planungsansicht unterteilt sich in die drei Bereiche Auswahlkriterien/Filter, Rasteransicht der Ergebnis sowie der Kartendarstellung.
+Die Planungsansicht unterteilt sich in die drei Bereiche \nameref{airbnb:filter}, \nameref{airbnb:gridview} sowie der \nameref{airbnb:map}.
 Die jeweiligen Bereiche sind durch unterschiedliche Farbgebungen des Hintergrundes klar voneinander abgetrennt.
 
 \paragraph{Auswahlkriterien/Filter}
 \label{airbnb:filter}
-Die Ansicht des Bereichs kann der Abb.: \ref{fig:airbnbOverview} - \nameref{fig:airbnbOverview} entnommen werden und wird durch den roten Rahmen mit der Nummerierung 1 markiert (links oben).
+Die Ansicht des Bereichs \nameref{airbnb:filter} kann der Abb.: \ref{fig:airbnbOverview} - \nameref{fig:airbnbOverview} entnommen werden und wird durch den roten Rahmen mit der Nummerierung 1 markiert (links oben).
 Durch Änderungen in diesem Bereich werden die beiden anderen Bereiche (\nameref{airbnb:gridview} und \nameref{airbnb:map}) automatisch aktualisiert. 
 Dieser Bereich ist in der Standardansicht in vier Zeilen aufgeteilt. 
 In der ersten Zeile (ganz oben) befindet sich ein Textfeld welches Standardmäßig die zuvor ausgewählte Stadt/Region anzeigt. 
@@ -67,40 +67,60 @@ Wie zuvor erwähnt, werden die einzelnen Bereiche durch die unterschiedliche Far
 Dabei befindet sich der Button Filter im grauen Bereich (\nameref{airbnb:gridview}) wenn man allerdings darauf klickt wird der expandierte Bereich in der hellen Hintergrundfarbe des \nameref{airbnb:filter}-Bereichs dargestellt.
 
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=1\linewidth]{img/StandDerTechnik/airbnbOverview}
-\caption[Übersicht: Aufbau von Airbnb]{Übersicht: Aufbau von Airbnb (Quelle: eigene Ausarbeitung | Daten und Kartenmaterial: https://www.airbnb.com/ - Stand Sommer 2016)}
-\label{fig:airbnbOverview}
-\end{figure}
-
-\paragraph{Rasteransicht der Ergebnis}
+\paragraph{Rasterdarstellung}
 \label{airbnb:gridview}
-Die Ansicht des Bereichs kann der Abb.: \ref{fig:airbnbOverview} - \nameref{fig:airbnbOverview} entnommen werden und wird durch den roten Rahmen mit der Nummerierung 2 markiert (links unten).
+Die Ansicht des Bereichs \nameref{airbnb:gridview} kann der Abb.: \ref{fig:airbnbOverview} - \nameref{fig:airbnbOverview} entnommen werden und wird durch den roten Rahmen mit der Nummerierung 2 markiert (links unten).
 Die Ergebnisse der Einstellungen, welche im Bereich \nameref{airbnb:filter} getroffen wurden, werden hier in Form von Kacheln in einer Rasteransicht dargestellt.
+Dies ist der einzige Bereich der über eine Scroll - Funktionalität verfügt.
 Den Hintergrund von jedem Ergebnis stellt ein Bild der Unterkunft da. 
 Durch die eingeblendeten Steuerelement
 	\footnote{Die Steuerelemente werden eingeblendet sobald man mit dem Cursor über das Bild geht.} 
-wird das Hintergrundbild durch andere Bilder aus der jeweiligen Galerie ersetzt. 
-Des Weiteren werden, neben dem Preis wird eine Zusammenfassung von Information  dargestellt. 
+kann das Hintergrundbild durch andere Bilder aus der jeweiligen Galerie ersetzt werden. 
+Des Weiteren werden neben dem Preis und des Profilbildes der gastgebenden Person auch die zusammengefassten Informationen der Unterkunft dargestellt. 
+Mit einem klick auf Bild öffnet sich die entsprechende Detailseite der Unterkunft. 
 
-Dabei dient eine Fotografie der Unterkunft als Hintergrund 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{img/StandDerTechnik/airbnbOverview}
+	\caption[Übersicht: Aufbau von Airbnb]{Übersicht: Aufbau von Airbnb (Quelle: eigene Ausarbeitung | Daten und Kartenmaterial: https://www.airbnb.com/ - Stand Sommer 2016)}
+	\label{fig:airbnbOverview}
+\end{figure}
 
-
-\paragraph{Kartendarstellung}\footnote{}
+\paragraph{Kartendarstellung}
 \label{airbnb:map}
-Die Ansicht des Bereichs kann der Abb.: \ref{fig:airbnbOverview} - \nameref{fig:airbnbOverview} entnommen werden und wird durch den roten Rahmen mit der Nummerierung 3 markiert (rechts).
+Die Ansicht des Bereichs \nameref{airbnb:map} kann der Abb.: \ref{fig:airbnbOverview} - \nameref{fig:airbnbOverview} entnommen werden und wird durch den roten Rahmen mit der Nummerierung 3 markiert (rechts).
+Dieser Bereich unterstützt die Anwenderinnen bei der geografischen Orientierung dadurch, das die gleichen Ergebnisse wie im Bereich \nameref{airbnb:gridview} auf einer Karte visualisiert werden.
+Dabei wird jede Unterkunft als eine eigenständige Markierung dargestellt, welche mit dem jeweiligen Preis versehen ist.
+Durch einen klick auf die Markierung öffnet sich ein Popup, in welchem ein Bild der Unterkunft
+\footnote{
+	Auch hier gibt es im Popup die Möglichkeit sich durch die Galerie zu bewegen (siehe Absatz: \nameref{airbnb:gridview}).
+	} 
+sowie der Preis und weitere Informationen dargestellt werden. 
+Wie auch im Absatz \nameref{airbnb:gridview} beschrieben lässt sich die Detailseite der Unterkunft über einen klick auf das Bild öffnen.
+Eine Farbcodierung von Informationen ist dabei nicht angedacht, alle Markierungen sind gleich eingefärbt.
+Allerdings wechselt eine Markierung die Farbe (von rot nach grau) sobald man auf ihn geklickt hat und das erscheinende Popup wieder schließt.
+Markierungen sich auf Grund der Zoomstufe überlagern werden nicht gesondert dargestellt.
+
+\subsubsection{Zusammenfassung Airbnb}
+\label{airbnb:review}
+Die Auswahlseite ist schlicht und übersichtlich gehalten wodurch die einzelnen Bereiche schnell identifiziert werden können, mit Ausnahme des Filter-Buttons (siehe Absatz: \nameref{airbnb:filter}). 
+Die Funktionalität des Preisspannen Filters ist aus meiner Sicht sofort erkenntlich gewesen und bietet auf den ersten Blick eine gute Übersicht über die Preisverteilung der Unterkünfte.
+Etwas unübersichtlich ist die \nameref{airbnb:map}, sobald mehrere Markierungen nebeneinander liegen wodurch diese (abhängig von der Zoomstufe) überlagert werden und der beschriftete Preis nicht mehr ersichtlich ist. \\
+\\
+Sehr interessant ist die Idee, die Ergebnisse auf zwei verschiedene Arten zu visualisieren (die Bereiche \nameref{airbnb:gridview} und \nameref{airbnb:map}).
+Dies ermöglicht eine Auswahl nach der geografischen Lage (\nameref{airbnb:map}) sowie nach den Bilder der Unterkunft beziehungsweise den weiteren Informationen in der \nameref{airbnb:gridview}
+Zusätzlich wurden die beiden Bereiche miteinander verknüpft. 
+Sobald man mit der Maus ein Bild in der \nameref{airbnb:gridview} berührt wird die zugehörige Markierung auf der Karte dunkelgrün hervorgehoben (siehe Abb.: \ref*{fig:airbnbDetail} - \nameref{fig:airbnbDetail}) wodurch das abwechselnde Arbeiten in beiden Bereichen vereinfacht wird.
 
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\linewidth]{img/StandDerTechnik/airbnbDetail}
-\caption[Details: Aufbau von Airbnb]{Details: Aufbau von Airbnb (Quelle: eigene Ausarbeitung | Daten und Kartenmaterial: https://www.airbnb.com/ - Stand Sommer 2016)}
+\caption[Verknüpfung der Raster- und Kartenansicht]{Verknüpfung der Raster- und Kartenansicht (Quelle: eigene Ausarbeitung | Daten und Kartenmaterial: https://www.airbnb.com/ - Stand Sommer 2016)}
 \label{fig:airbnbDetail}
 \end{figure}
 
-\subsubsection{Zusammenfassung Airbnb}
-\label{airbnb:review}
+
 
 
 \subsection{Flightradar24}
