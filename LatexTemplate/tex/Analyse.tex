@@ -27,13 +27,65 @@ Daten OSM
 \todoImprovement[]{Thema genauer ausarbeiten}
 
 
+Webgis --> Browserbasiert 
+
 \subsection{Google Maps}
 \label{chap:analyse:sec:sota:sec:google_maps}
+Mit einer Milliarde User im Monat (Stand 2012) bietet Google Maps\footnote{
+	Google Maps ist unter der Adresse https://www.google.at/maps/ zu erreichen. Die getätigten Aussagen über die Webseite beziehen sich auf den Stand von Sommer 2016.
+}ein kostenloses geografisches Werkzeug mit sehr hoher Marktverbreitung an (\cite{McClendonGoogleMapsBlog} und \cite{McClendonYoutube}). 
+Neben der Routenplanung, mit Echtzeitdaten über das Verkehrsaufkommen, bietet Google Maps auch die Funktionalität IN DER NÄHE an.
+Mit dieser Funktion lassen sich Orte anhand eines Suchbegriffes, wie beispielsweise Pizzeria, oder mittels vordefinierter Kategorien, wie zum Beispiel Restaurant, in der zuvor definierten Umgebung oder Stadt finden.
 
+
+\subsection{Aufbau von Google Maps}
+Die Darstellung von Google Maps ist optisch in zwei Teile unterteilt.
+Zum einen die ausblendbare linke Seite, welche in die Bereiche \nameref{gmapsSearch} sowie die \nameref{gmapsList} der Ergebnisse und zum anderen der größere rechte Teil, mit der\nameref{gmapsMap} (siehe Abb.: \ref{fig:googlemapOverview} - \nameref{fig:googlemapOverview}).
+Durch die blaue Hintergrundfarbe wird das \nameref{gmapsSearch} optisch von der \nameref{gmapsList} der Ergebnisse abgegrenzt.
+
+
+\paragraph{Suchfeld}
+\label{gmapsSearch}
+Die Ansicht des Bereichs \nameref{gmapsSearch} kann der Abb.: \ref{fig:googlemapOverview} - \nameref{fig:googlemapOverview} entnommen werden und wird durch den roten Rahmen mit der Nummerierung 1 markiert (links oben).
+Das Suchfeld stellt das zentrale Auswahlelement in Google Maps da. 
+Neben dem eigentlich Textfeld, wurde an dieser Stelle auch ein Button integriert, mit dessen Hilfe ein weiteres Menü erscheint. 
+Dieses Menü wird verwendet, um weitere Informationen  in der Karte ein- oder auszublenden, wie Beispielsweise die aktuelle Verkehrslage, oder allgemeine Optionen von Google Maps anzupassen wie unter anderem die Sprache.
+Bei der eigentlichen Interaktion mit dem Suchfeld steht eine Unterstützung in Form einer Textvervollständigung zu Verfügung. 
+
+\paragraph{Listendarstellung}
+\label{gmapsList}
+\nameref{fig:googlemapOverview} entnommen werden und wird durch den roten Rahmen mit der Nummerierung 2 markiert (links).
+Dieser Bereich wird für die Darstellung der Suchergebnisse verwendet, welcher Anhand der Bewertungen gefiltert werden kann.
+Jedes Ergebnis wird hier klar durch einen horizontalen Strich abgegrenzt.
+Neben dem Namen und der Straße des Eintrages werden ein Bild, die durchschnittliche Bewertung sowie die Öffnungszeiten dargestellt, vorausgesetzt die Informationen sind vorhanden.
+
+\paragraph{Kartendarstellung}
+\label{gmapsMap}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\linewidth]{img/StandDerTechnik/googlemapOverview}
+\caption[Übersicht: Aufbau von Google Maps]{Übersicht: Aufbau von Google Maps. Bei der Abb. handelt es sich um eine bearbeitet Version des Screenshots. Aus Gründen der Übersichtlichkeit wurde ein Teil der Kartenbereichs entfernt (Quelle: eigene Ausarbeitung | Daten und Kartenmaterial: https://www.google.at/maps/ - Stand Sommer 2016)}
+\label{fig:googlemapOverview}
+\end{figure}
+
+
+
+\subsection{Zusammenfassung Google Maps}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\linewidth]{img/StandDerTechnik/googlemapDetail}
+\caption[Details: Überlagerung von Markierungen auf Google Maps]{Details: Überlagerung von Markierungen auf Google Maps. Der linke Kartenausschnitt zeigt eine Vergrößerung um den Faktor Zehn gegenüber dem rechten Kartenausschnitt. Der rote Rahmen markiert das jeweils das gleiche Gebäude. (Quelle: eigene Ausarbeitung | Daten und Kartenmaterial: https://www.google.at/maps/ - Stand Sommer 2016)}
+\label{fig:googlemapDetail}
+\end{figure}
+
+
+Füge einen fehlenden Ort hinzu
 
 \subsection{Airbnb}
 Bei Airbnb handelt es sich um eine Webseite die sich auf die Vermittlung von Unterkünften spezialisiert hat\footnote{
-	Airbnb ist unter der Addresse https://www.airbnb.at zu erreichen. Die getätigten Aussagen über die Webseite beziehen sich auf den Stand von Sommer 2016.
+	Airbnb ist unter der Adresse https://www.airbnb.at zu erreichen. Die getätigten Aussagen über die Webseite beziehen sich auf den Stand von Sommer 2016.
 	}. 
 Dabei können sich gastgebende Personen registrieren und Übernachtungsmöglichkeiten von einem Zimmer bis hin zu ganzen Immobilien anbieten. 
 Anhand diverser Such- und Filterkriterien ermöglicht die Webseite den Suchenden eine passende Unterkunft zu suchen und diese über die Webseite zu reservieren.
@@ -79,13 +131,6 @@ kann das Hintergrundbild durch andere Bilder aus der jeweiligen Galerie ersetzt 
 Des Weiteren werden neben dem Preis und des Profilbildes der gastgebenden Person auch die zusammengefassten Informationen der Unterkunft dargestellt. 
 Mit einem klick auf Bild öffnet sich die entsprechende Detailseite der Unterkunft. 
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=1\linewidth]{img/StandDerTechnik/airbnbOverview}
-	\caption[Übersicht: Aufbau von Airbnb]{Übersicht: Aufbau von Airbnb (Quelle: eigene Ausarbeitung | Daten und Kartenmaterial: https://www.airbnb.com/ - Stand Sommer 2016)}
-	\label{fig:airbnbOverview}
-\end{figure}
-
 \paragraph{Kartendarstellung}
 \label{airbnb:map}
 Die Ansicht des Bereichs \nameref{airbnb:map} kann der Abb.: \ref{fig:airbnbOverview} - \nameref{fig:airbnbOverview} entnommen werden und wird durch den roten Rahmen mit der Nummerierung 3 markiert (rechts).
@@ -100,6 +145,13 @@ Wie auch im Absatz \nameref{airbnb:gridview} beschrieben lässt sich die Details
 Eine Farbcodierung von Informationen ist dabei nicht angedacht, alle Markierungen sind gleich eingefärbt.
 Allerdings wechselt eine Markierung die Farbe (von rot nach grau) sobald man auf ihn geklickt hat und das erscheinende Popup wieder schließt.
 Markierungen sich auf Grund der Zoomstufe überlagern werden nicht gesondert dargestellt.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{img/StandDerTechnik/airbnbOverview}
+	\caption[Übersicht: Aufbau von Airbnb]{Übersicht: Aufbau von Airbnb (Quelle: eigene Ausarbeitung | Daten und Kartenmaterial: https://www.airbnb.com/ - Stand Sommer 2016)}
+	\label{fig:airbnbOverview}
+\end{figure}
 
 \subsubsection{Zusammenfassung Airbnb}
 \label{airbnb:review}
