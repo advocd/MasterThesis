@@ -3,45 +3,128 @@
 \chapter{Evaluation}
 \label{chap:evalutation}
 
-\ideas{Einleitung und Fragestellung -- These und Nullthese (keine Verbesserung), Usability-Analyse (basierende auf ISO...: effektiv: konnte Problem lösen; effizient: wie schnell wurde das Problem gelöst (Dauer linear zu Schwierigkeitsgrad + Selbsteinschätzung im Fragebogen); Zufriedenheit: wie erkundbar ist das UI?)}
-
-
-
 Nachdem der Prototyp implementiert wurde, stellt sich die Frage, ob die Entwicklung und Ausarbeitung einen Mehrwert für Anwender\_innen darstellt. 
 Dies soll nun mittels der Evaluation geklärt werden.
-Für diesen Zweck sowie etwaige Schwachstellen aufzufinden soll der Prototyp im Rahmen einer Usability-Analyse auf Effektivität, Effizienz und Zufriedenstellung \cite[vgl.][Abs.: 3]{Iso9241_11} untersucht werden (siehe Absatz: \nameref{Methodik}).
-Anschließend werden die Ergebnisse der Analyse präsentiert.
-Abgeschlossen wird das Kapitel durch die Interpretation und Diskussion.
-
-
-\paragraph{Nullhypothese (H0)}
-Der Prototyp unterstützt die Anwender\_innen minimal oder nicht messbar in den Bereichen Effektivität, Effizienz und Zufriedenstellung (Die Begriffe Effektivität, Effizienz und Zufriedenstellung beziehen sich auf die Definition nach der Norm EN ISO 9241-11, \cite[vgl.][Abs.: 3]{Iso9241_11}).
-
-\paragraph{Alternativehypothese (H1)}
-Der Prototyp unterstützt die Anwender\_innen messbar in den Bereichen Effektivität, Effizienz und Zufriedenstellung (Die Begriffe Effektivität, Effizienz und Zufriedenstellung beziehen sich auf die Definition nach der Norm EN ISO 9241-11, \cite[vgl.][Abs.: 3]{Iso9241_11}).
-
+Für diesen Zweck sowie etwaige Schwachstellen aufzufinden soll der Prototyp im Rahmen einer Usability-Analyse auf Effektivität, Effizienz und Zufriedenstellung \cite[vgl.][Abs.: 3]{Iso9241_11} untersucht werden (siehe Abschnitt: \nameref{Methodik}).\\
+\\
+Der Ablauf der Usability Evaluation sieht dabei wie folgt aus.
+Der Zweck sowie die zu untersuchenden Kriterien (siehe Absatz: \nameref{Usability}) erläutert.
+Darauf folgt die Festlegung und Beschreibung der Verfahren welche zum Messen der Kriterien angewandt werden.
+Im Abschnitt \nameref{Stichproben} wird der Rahmen für die Tests sowie die Auswahl der Proband\_innen festgelegt. 
+Basierend auf den definierten Verfahren, wird im Abschnitt \nameref{Aufgabenstellung} die Erstellung und Begründung für die Auswahl des Testmaterials dargelegt, welches in der finalen Version auch im Anhang zu finden ist (siehe Anhang: \ref{anhangTestmaterial} - \nameref{anhangTestmaterial}).
+Die anschließende Dokumentation sowie die Ergebnisse der Durchführung werden im Abschnitt \nameref{Ergebnisse} aufgezeigt.
+Abschließend findet eine \nameref{InterpretationDiskussion} auf der Basis der Ergebnisse statt die unter anderen die Evaluation der \nameref{Hypothesen} klärt.
 
 \section{Methodik}
 \label{Methodik}
-\ideas{Kontext = das Szenario (Kunden aussuchen auf Basis von Kriterien); Zielgruppe}
 
-Da die Interviews im Vorfeld ergeben haben, dass jede befragte Person einen unterschiedlichen Ablauf sowie unterschidliche Werkzuege bei der Plannung der Aussendienstrouten einsetzt macht ein A/B-Test nicht sehr viel Sinn.
-Aus dem Grund viel die Entscheidung, hier einen klaren Schnitt zu den alten Systemen zu ziehen und einen allgemeinen Usability Test nach ISO XXX durchzuführen
+Da die Interviews im Vorfeld ergeben haben, dass jede befragte Person einen unterschiedlichen Ablauf sowie unterschiedliche Werkzeuge bei der Planung der Außendienstrouten einsetzt, hilft ein vergleichender Test zwischen Status Quo und Prototyp an dieser Stelle nicht weiter.
+Aus diesem Grund liegt es nahe einen klaren Schnitt zu den diversen alten Systemen zu ziehen und eine Formative Usability Evaluation\footnote{Bei der Formativen Evaluation wird anhand definierter Kriterien untersucht ob der Entwurf weiter optimiert werden kann. (vgl. \cite{Burmester}, S. 343)} nach den Kriterien der ISO 9241 durchzuführen.
+Dafür soll der Prototyp auf die folgende Hypothesen hin mit Benutzerorientierten Methoden\footnote{Dabei liegt der Fokus bei den Tests auf definierten Anwender\_innen-Gruppen. (vgl. \cite{Burmester}, S. 343)} untersucht werden.
 
 
+\subsection{Hypothesen}
+\label{Hypothesen}
+\paragraph{Nullhypothese (H0)}
+Der Prototyp unterstützt die Anwender\_innen minimal oder nicht messbar in den Bereichen Effektivität, Effizienz und Zufriedenstellung bei der Planung von Außendiensteinsätzen (Die Begriffe Effektivität, Effizienz und Zufriedenstellung beziehen sich auf die Definition nach der Norm EN ISO 9241-11, \cite[vgl.][Abs.: 3]{Iso9241_11}).
+
+\paragraph{Alternativehypothese (H1)}
+Der Prototyp unterstützt die Anwender\_innen messbar in den Bereichen Effektivität, Effizienz und Zufriedenstellung bei der Planung von Außendiensteinsätzen (Die Begriffe Effektivität, Effizienz und Zufriedenstellung beziehen sich auf die Definition nach der Norm EN ISO 9241-11, \cite[vgl.][Abs.: 3]{Iso9241_11}).
+
+
+\subsection{Exkurs Usability}  
+\label{Usability}
+Durch den sinnvollen Einsatz von Usability-Maßnahmen in der Entwicklung lässt sich die Qualität eines Produktes spürbar erhöhen.
+Neben der Steigerung der Produktivität sowie der Zufriedenheit der Anwender\_innen werden laut Burmester auch die Einschulungszeiten bei dem Produkt deutlich verringert (\cite[vgl.][352f]{Burmester}).\\
+\\
+Im deutschsprachigen Raum werden die zwei Begriffe Gebrauchstauglichkeit und Softwareergonomie in Kontext mit Usability gesetzt.
+Dabei gilt es allerdings zu beachten, dass der Begriff Softwareergonomie über den Umfang der Gebrauchstauglichkeit hinausreicht wie Beispielsweise Korrektheitsergonomie und Funktionsergonomie
+(\cite[vgl.][420]{Niegemann2008})\\
+\\
+Innerhalb dieser Arbeit wird der Begriff Usability im Kontext der Gebrauchstauglichkeit verwendet die wie folgt in der ISO 9241 definiert wurde (\cite[siehe:][Abs.: 3.1 Gebrauchstauglichkeit]{Iso9241_11}):
+
+\begin{quote}
+	"\textit{Das Ausmaß, in dem ein Produkt durch bestimmte Benutzer in einem bestimmten Nutzungskontext genutzt werden kann, um bestimmte Ziele effektiv, effizient und zufriedenstellend zu erreichen.}" 
+\end{quote}
+
+Laut dieser Definition ergibt somit die Usability-Evaluation (Gebrauchstauglichkeit) inwiefern der Prototyp (Produkt) die Anwender\_innen bei der Planung der Außendienstroute (Nutzungskontext) unterstützt.
+
+\paragraph{Effektiv}
+Die Effektivität beschreibt ob und wie exakt es möglich ist die gestellte Aufgabe innerhalb des Nutzungskontext zu lösen.
+Für diesen Zweck muss betrachtet werden inwiefern die Funktionalität des Prototyps die Anwender\_innen bei dem erreichen des Ziels, innerhalb eines definierte Szenarios unterstützt (vgl. \cite{Iso9241_11}, S. 4 sowie \cite{Burmester}, S. 325). \\
+\\
+Ein negativ Beispiel anhand des Prototyps könnte wie folgt aussehen.
+Die Aufgabenstellung verlangt, dass alle Kunden ausgewählt werden sollen die innerhalb des letzten 24 Stunden Bestellungen aufgegeben haben. 
+Wenn der Prototyp allerdings nur die Möglichkeit anbietet Kunden anzuzeigen die innerhalb der letzten Woche bestellt haben kann das Ziel nicht erfüllt werden und ist somit nicht Effizient.
+
+\paragraph{Effizient}
+Die Effizienz beschreibt wie viel Aufwand für die Lösung der Aufgabe innerhalb des Nutzungskontext nötig ist. 
+Dabei trägt neben der Funktionalität das \ac{UI} (beispielsweise die Übersichtlichkeit und Erforschbarkeit) des Prototypen eine tragende Rolle inwiefern die Anwender\_innen zügig und sicher die Aufgabe bewältigen können (vgl. \cite{Iso9241_11}, S. 4 sowie \cite{Niegemann2008}, S. 421f).\\
+\\
+Ein Beispiel anhand des Prototypen könnte wie folgt aussehen.
+Die Aufgabenstellung gibt an das ein Partnerkontakt besucht werden soll. Zusätzlich soll evaluiert werden welche weiteren Partnerkontakte sich in der nähe (ca. 1 Km) befinden, dabei sollen auch Stadtgrenzen übergreifend Adressen berücksichtigt werden (siehe Abbildung: \ref{fig:HarteGrenzen} - \nameref{fig:HarteGrenzen} in Kapitel \nameref{chap:entwicklung} für die Visualisierung des Problems).
+Durch die Bereitstellung einer Kartenansicht kann in diesem Fall die Effizient deutlich gesteigert werden. 
+
+\paragraph{Zufriedenstellend}
+Die Zufriedenstellung ist gegeben wenn die Anwender\_innen nicht durch das System behindert werden und eine positive Meinung über das Produkt haben.
+Dies ist unter anderem zu erreichen in dem die Erwartungshaltung der Anwender\_innen gegenüber dem Produkt (Funktionsumfang und \ac{UI}) erfüllt werden.
+Des weiteren ist es zu vermeiden  die Anwender\_innen durch aufwendige Dialoge oder einen unstrukturierten Aufbau des \ac{UI}'s in ihren Arbeitsfluss zu Beeinträchtigen.
+Dadurch stellt sich laut Niegemann eine subjektiv positive Haltung ein was wiederum die Grundlage für die Akzeptanz des Produktes darstellt (vgl. \cite{Iso9241_11}, S. 4 sowie \cite{Niegemann2008}, S. 422).\\
+\\
+Ein mögliches negativ Beispiel könnte das unerwartet Verhalten der Applikation sein.
+In der Kartendarstellung des Prototypen werden verschiedene Adressen auf der Karte dargestellt, dabei handelt es sich zum einen um Kunden und zum anderen um Lieferanten. 
+Wenn sich das Verhalten, bei dem Klick auf einen der Marker, für die Anwender\_innen auf eine voneinander unlogische Weise unterscheidet\footnote{Beispielsweise wird bei einem Klick auf einen Kunden ein Popup  und bei einem Lieferanten eine vollständige Detailansicht (welche die Kartenansicht ersetzt) geöffnet.} ist dies irritiert und hemmt die Anwender\_innen in ihren Arbeitsfluss.
+Was zur wiederum zur Folge hat, das sich keine Zufriedenstellung einstellt und auch keine Akzeptanz gegenüber dem Produkt etabliert.
+
+
+\paragraph{Nutzungskontext}
+
+Ein weiterer wichtiger Punkt stellt der Nutzungskontext da und definiert den Rahmen in dem die Evaluation durchgeführt wird.
+Anhand der ISO 9241 wird der Nutzungskontext wie folgt definiert (siehe \cite{Iso9241_11}, S. 4). 
+
+\begin{quote}
+\textit{"Die Benutzer, die Arbeitsaufgaben, Arbeitsmittel (Hardware, Software und Materialien) sowie die physische und soziale Umgebung, in der das Produkt genutzt wird."}
+\end{quote} 
+
+Somit wird anhand der Tests nicht eine allgemeine Gebrauchstüchtigkeit evaluiert, sondern ausschließlich die Gebrauchstüchtigkeit des Produktes für den jeweils definierten Nutzungskontext.
 
 
 
 \subsection{Verfahren}
+\label{Verfahren}
+Um den Prototypen auf die Gebrauchsfähigkeit (siehe Absatz \nameref{Usability}) hin zu untersuchen, muss geklärt werden, wie die Kriterien Effektivität, Effizienz und Zufriedenstellung sinnvoll gemessen werden können. 
+Für diesen Zweck werden an dieser Stelle die Verfahren definiert und erläutert, welche die Grundlage für die Datenerhebung darstellen.
 
-\ideas{Eyetracking und Fragebogen}
+\subsubsection{Eyetracking}
+\label{Eyetracking}
+Mit Hilfe des Eyetrackings lassen sich wichtige Punkte des \ac{UI}'s auswerten, die ohne diese Technologie nur schwer evaluierbar wären. 
+
+Wie lange und in welcher Reihenfolge wurden welche Punkte des UI betrachtet.
+
+
+
+
+(siehe: \cite{Niegemann2008}, S. 439 - Interaktionszentrierter Messansatz)
+
+
+
+\subsubsection{geführter Fragebogen}
+\label{FragebogenEvaluation}
+
+(siehe \cite{Niegemann2008}, S. 437 - Produktzentrierter Messansatz: Fragebögen und Checklisten)
+
+\ideas{Eyetracking und Fragebogen. Usability-Analyse (basierende auf ISO...: effektiv: konnte Problem lösen; effizient: wie schnell wurde das Problem gelöst (Dauer linear zu Schwierigkeitsgrad + Selbsteinschätzung im Fragebogen); Zufriedenheit: wie erkundbar ist das UI?)}
+
+Eyetracking (\cite[vgl.][S. 347f]{Burmester} und Fragebogen (\cite[vgl.][S. 348ff]{Burmester})
+
+Zufriedenheit: durch ET, Fragebogen sowie das aufzeichnen von Äußerungen (positiv wie negativ) während des Tests, dabei sollte die Äüßerung durch das Interview nach dem Test erläutert werden (vgl. \cite{Niegemann2008}, S. 422).
 
 \subsection{Stichprobenbeschreibung}
-
+\label{Stichproben}
 \ideas{Wie wurden die Personen ausgesucht}
-
+An dieser Stelle folgt die Definition des Nutzungskontext wir er im Absatz \nameref{Usability} beschrieben wurde
 \subsection{Aufgabenstellung}
-
+\label{Aufgabenstellung}
 \ideas{Beschreibung und Ausarbeitung der Aufgabenstellung -- Sowie die Überlegungen dahinter. Steigender Schwierigkeitsgrad}
 
 \section{Ergebnisse}
