@@ -95,37 +95,91 @@ Somit wird anhand der Tests nicht eine allgemeine Gebrauchstüchtigkeit evaluier
 Um den Prototypen auf die Gebrauchsfähigkeit (siehe Absatz \nameref{Usability}) hin zu untersuchen, muss geklärt werden, wie die Kriterien Effektivität, Effizienz und Zufriedenstellung sinnvoll gemessen werden können. 
 Für diesen Zweck werden an dieser Stelle die Verfahren definiert und erläutert, welche die Grundlage für die Datenerhebung darstellen.
 
-\subsubsection{Eyetracking}
-\label{Eyetracking}
-Mit Hilfe des Eyetrackings lassen sich wichtige Punkte des \ac{UI}'s auswerten, die ohne diese Technologie nur schwer evaluierbar wären. \\
-\\
-Neben der Aufzeichnung der Eingabegeräte (Maus und Tastatur) sowie den Kameraaufzeichnungen des Bildschirms und der Proband\_innen 
-Wie lange und in welcher Reihenfolge wurden welche Punkte des UI betrachtet.\\
-\\
-
-
-(siehe: \cite{Niegemann2008}, S. 439 - Interaktionszentrierter Messansatz)
-
-
-
-\subsubsection{geführter Fragebogen}
-\label{FragebogenEvaluation}
-
-(siehe \cite{Niegemann2008}, S. 437 - Produktzentrierter Messansatz: Fragebögen und Checklisten)
 
 \ideas{Eyetracking und Fragebogen. Usability-Analyse (basierende auf ISO...: effektiv: konnte Problem lösen; effizient: wie schnell wurde das Problem gelöst (Dauer linear zu Schwierigkeitsgrad + Selbsteinschätzung im Fragebogen); Zufriedenheit: wie erkundbar ist das UI?)}
 
-Eyetracking (\cite[vgl.][S. 347f]{Burmester} und Fragebogen (\cite[vgl.][S. 348ff]{Burmester})
+\paragraph{Effektiv}
 
-Zufriedenheit: durch ET, Fragebogen sowie das aufzeichnen von Äußerungen (positiv wie negativ) während des Tests, dabei sollte die Äüßerung durch das Interview nach dem Test erläutert werden (vgl. \cite{Niegemann2008}, S. 422).
+\paragraph{Effizient}
+
+\paragraph{Zufriedenstellung}
+
+\subsubsection{Eyetracking}
+\label{Eyetracking}
+
+Eyetracking gibt uns die Möglichkeit Objektive Daten über das Verhalten der Anwender im Kontext der Interaktion mit dem System zu erhalten.
+Während in Tests ohne Eyetracking meist Aufzeichnung von klassischen Benutzeraktionen wie beispielsweise Eingabegeräte (Maus und Tastatur) sowie Kameraaufzeichnungen des Bildschirms und der Proband\_innen erfasst werden, können durch Eyetracking zusätzliche Informationen wie das Verhalten evaluiert werden.
+Bei diesen zusätzlichen Messdaten geben Ausschluss darüber ob und in welcher Reihenfolge Informationen des \ac{UI}'s durch die Proband\_innen wahrgenommen wurden. (vgl. \cite{Niegemann2008}, S. 439ff und \cite{Burmester}, S. 347ff)\\
+\\
+Um die Technologie zu verstehen muss man wissen das unser Auge mit zwei Zuständen Fixation und Sukkaden arbeitet.
+Bei der Fixation blickt das Auge auf einen Punkt und es findet die Informationsverarbeitung statt. 
+Während bei der Sukkade der Blick zur nächsten Informationsquelle springt bei der Anschließend wieder eine Fixation stattfindet. (vgl. \cite{Burmester}, S. 347f)\\
+\\
+Durch diesen Effekt kann mit Hilfe des Eyetrackingssystems eine Blickabfolge erstellt und ausgewertet werden (siehe Abbildung \ref{fig:Eyetracking} - \nameref{fig:Eyetracking} - linkes Bild, Marker 1).
+Zusätzlich zu der Blickabfolge können auch sogenannte Heatmaps erstellt werden, diese visualisieren wie lang auf einen bestimmten Bereich des Monitors geblickt wurde (siehe Abbildung \ref{fig:Eyetracking} - \nameref{fig:Eyetracking} - rechtes Bild, Marker 2).
+Mithilfe der Auswertung von diesen beiden Analysen erhalten wir schlussendlich Informationen darüber welche Inhalte wie schnell und sicher beispielsweise Steuer- oder Navigationselemente gefunden wurden und ob eventuell Ablenkung stattgefunden hat. (vgl. \cite{Niegemann2008}, S. 439ff und \cite{Burmester}, S. 347ff)
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\linewidth]{img/Evaluation/Eyetracking}
+\caption[Auswertungen der Eyetrackinganalyse]{Auswertungen der Eyetrackinganalyse. Linkes Bild (Marker 1): Ansicht einer ausgewerteten Blickabfolge. Rechtes Bild (Marker 2): Ansicht einer ausgewertet Heatmap (Quelle: https://www.usability.gov/how-to-and-tools/methods/eye-tracking.html - Stand Sommer 2016)}
+\label{fig:Eyetracking}
+\end{figure}
+
+
+\subsubsection{Fragebogen}
+\label{FragebogenEvaluation}
+
+
+Während beim Eyetracking objektive Messungen  (Dauer des Ablaufs, Blickreihenfolge, etc.) durchgeführt werden stellt die Methode des Fragebogens eine Subjektive Messung da.
+Da der Faktor Zufriedenheit in erste Linie subjektiv zu messen ist besteht ein Bedarf dies zu analysieren (vgl. \cite{Ollermann2007}, S. 57).
+Zusätzlich besteht die Notwendigkeit, aus Sicht der Evaluierung, weitere Informationen (wie Beispielsweise Selbsteinschätzungen oder Anmerkungen zum Prototypen) ergänzend zum Eyetracking erheben (vgl. \cite{Laugwitz2006}, S. 127). \\
+\\
+Die Vorteile der Methode des Fragebogens liegen unter anderen in der guten Auswertbarkeit , speziell bei dem Einsatz von geschlossenen Fragen\footnote{Bei geschlossenen Fragen können die Proband\_innen ausschließlich auf vordefinierte Antworten zurückgreifen (vgl. \cite{Ollermann2007}, S. 61)}, der erhobenen Daten was auch der Grund für seine häufige Verwendung (vgl. \cite{Ollermann2007}, S. 61). 
+Bei der Erstellung des Fragebogens darauf zu achten, das es sich nicht ausschließlich um eine Ansammlung von Fragen handelt.
+Auf der anderen Seite gibt es auch Nachteile, welche unterstreichen das es sich um ein subjektives Verfahren handelt, wie Ollemannn in folgenden vier Punkten skizziert.
+Bei dem Halo-Effekt liegt eine Tendenz nahe das die Beurteilung auf Grund eines Globalen Pauschalurteils (Beispielsweise die Farbgebung) gefällt wird.
+Die Abgabe von systematisch zu positiven oder negativen Bewertungen (Milde-Härte-Fehler) oder das Gegenteil davon die Zentrale Tendenz bei dem Bewertungen im mittleren Bereich der Skala abgeben werden.
+Abschließend führt er den Primacy-Recency-Effekt auf bei der die Bewertung durch die Reihenfolge der einzelnen Fragen beeinträchtigt wird. (siehe \cite{Ollermann2007}, S. 60)
+
+Damit der Fragebogen als funktionales Werkzeug bei der Evaluierung eingesetzt werden kann empfiehlt Burmester zusätzlich die Beachtung von Gütekriterien bei der Erstellung. 
+Dabei handelt es sich sind unter anderen um das Gütekriterium der Validität\footnote{Der Fragebogen sollte darauf ausgelegt sein, dass zu messen was er vorgibt. (nach \cite{Burmester}, S. 350)}, - das Gütekriterium der Reliabilität\footnote{Ein wiederholtes Durchführen, unter den gleichen Bedingungen, soll zu dem selben Ergebnis führen. (nach \cite{Burmester}, S. 350)} und das Gütekriterium der Objektivität\footnote{Das Ergebnis ist unabhängig von der Person, welche die Untersuchung durchführt. (nach \cite{Burmester}, S. 350)}. 
+
+
+\begin{comment}
+Aufbau des Fragebogens
+\end{comment}
+Aufbau des Fragebogens:
+Personenbezogene Informationen, Alter (vgl. \cite{Ollermann2007}, S. 45) und Erfahrung (vgl. \cite{Ollermann2007}, S. 46)\\
+\\
+Fragenkatalog zur Erhebung der Usability Kriterien\\
+\\
+nach dem Test mit Hilfe einer befragenden Person durchgeführt\\
+\\
+Anmerkungen die während des Testes aufgefallen sind. sowie das aufzeichnen von Äußerungen (positiv wie negativ) während des Tests, dabei sollte die Äußerung durch das Interview nach dem Test erläutert werden (vgl. \cite{Niegemann2008}, S. 422).\\
+\\
+
+
 
 \subsection{Stichprobenbeschreibung}
 \label{Stichproben}
 \ideas{Wie wurden die Personen ausgesucht}
 An dieser Stelle folgt die Definition des Nutzungskontext wir er im Absatz \nameref{Usability} beschrieben wurde
+
+Nutzungskontext: Siehe \cite{Ollermann2007}, S. 15
+
+
+
 \subsection{Aufgabenstellung}
 \label{Aufgabenstellung}
 \ideas{Beschreibung und Ausarbeitung der Aufgabenstellung -- Sowie die Überlegungen dahinter. Steigender Schwierigkeitsgrad}
+
+Wortpaare: siehe \cite{Laugwitz2006}, S. 130 \\
+\\
+Web-spezifische Aspekte (Bildschirmgröße, etc.)- siehe \cite{Ollermann2007}, S. 40
+
+Vorbeugung von Zentraller Tendenz durch ausdrückliche Enthaltung (vgl. \cite{Ollermann2007}, S. 60)
 
 \section{Ergebnisse}
 \label{Ergebnisse}
