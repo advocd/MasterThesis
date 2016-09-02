@@ -63,7 +63,7 @@ Die Aufgabenstellung gibt an das ein Partnerkontakt besucht werden soll. Zusätz
 Durch die Bereitstellung einer Kartenansicht kann in diesem Fall die Effizient deutlich gesteigert werden. 
 
 \paragraph{Zufriedenstellend}
-Die Zufriedenstellung ist gegeben wenn die Anwender\_innen nicht durch das System behindert werden und eine positive Meinung über das Produkt haben.
+Die Zufriedenstellung ist gegeben wenn die Anwender\_innen nicht durch das System behindert werden und eine positive Meinung über das Produkt haben. (vgl. \cite{Burmester}, S. 326)
 Dies ist unter anderem zu erreichen in dem die Erwartungshaltung der Anwender\_innen gegenüber dem Produkt (Funktionsumfang und \ac{UI}) erfüllt werden.
 Des weiteren ist es zu vermeiden  die Anwender\_innen durch aufwendige Dialoge oder einen unstrukturierten Aufbau des \ac{UI}'s in ihren Arbeitsfluss zu Beeinträchtigen.
 Dadurch stellt sich laut Niegemann eine subjektiv positive Haltung ein was wiederum die Grundlage für die Akzeptanz des Produktes darstellt (vgl. \cite{Iso9241_11}, S. 4 sowie \cite{Niegemann2008}, S. 422).\\
@@ -85,21 +85,25 @@ Anhand der ISO 9241 wird der Nutzungskontext wie folgt definiert (siehe \cite{Is
 
 Somit wird anhand der Tests nicht eine allgemeine Gebrauchstüchtigkeit evaluiert, sondern ausschließlich die Gebrauchstüchtigkeit des Produktes für den jeweils definierten Nutzungskontext.
 
-
-
 \subsection{Verfahren}
 \label{Verfahren}
 Um den Prototypen auf die Gebrauchsfähigkeit (siehe Absatz \nameref{Usability}) hin zu untersuchen, muss geklärt werden, wie die Kriterien Effektivität, Effizienz und Zufriedenstellung sinnvoll gemessen werden können. 
 Für diesen Zweck werden an dieser Stelle die Verfahren definiert und erläutert, welche die Grundlage für die Datenerhebung darstellen.
 
-
-\ideas{Eyetracking und Fragebogen. Usability-Analyse (basierende auf ISO...: effektiv: konnte Problem lösen; effizient: wie schnell wurde das Problem gelöst (Dauer linear zu Schwierigkeitsgrad + Selbsteinschätzung im Fragebogen); Zufriedenheit: wie erkundbar ist das UI?)}
-
 \paragraph{Effektiv}
+In erster Linie soll die Effektivität mit Hilfe des \nameref{Eyetracking}-Verfahren ermittelt werden.
+Dabei wird in der Auswertung analysiert, ob die Testpersonen die gestellten Aufgaben mithilfe des Prototypen bewältigen konnten.
+Zu dem \nameref{Eyetracking} ergänzend erfolgt eine subjektive Einschätzung anhand eines geführten \nameref{FragebogenEvaluation}s. 
 
 \paragraph{Effizient}
+Auch im Bereich der Effizienz basiert die Analyse verstärkt auf dem \nameref{Eyetracking}-Verfahren welches durch die Erhebung des \nameref{FragebogenEvaluation}s um die persönliche Meinung sowie Anmerkungen der Testpersonen erweitert wird.
+Mit Hilfe des \nameref{Eyetracking}s soll analysiert werden ob sich die Bearbeitungsdauer der einzelnen Testfälle linear zu deren Schwierigkeitsgrad verhält. 
 
-\paragraph{Zufriedenstellung}
+\paragraph{Zufriedenstellend}
+Im Gegensatz zu der Effektiv und der Effizient verhält sich Messung der Zufriedenstellung etwas subjektiver da es kein objektives Messkriterium gibt welches evaluiert werden kann.
+Laut Burmester ist dieses Ziel erreicht wenn  die Testpersonen durch den Prototypen nicht behindert werden und sich bei ihnen ein positives Gefühl einstellt (vgl. \cite{Burmester}, S. 326). 
+Für die Analyse dieser Dimension wird zum einen Fragen im rahmen des Fragebogens gestellt und zum anderen Bemerkungen der Testpersonen während des \nameref{Eyetracking}-Tests aufgezeichnet.
+Im Anschluss an den Fragebogen soll geklärt werden, ob diese Bemerkungen einer subjektiv positiven- oder negativen Einstellung zuzuordnen sind.
 
 \subsubsection{Eyetracking}
 \label{Eyetracking}
@@ -138,24 +142,26 @@ Bei der Erstellung des Fragebogens darauf zu achten, das es sich nicht ausschlie
 Auf der anderen Seite gibt es auch Nachteile, welche unterstreichen das es sich um ein subjektives Verfahren handelt, wie Ollemannn in folgenden vier Punkten skizziert.
 Bei dem Halo-Effekt liegt eine Tendenz nahe das die Beurteilung auf Grund eines Globalen Pauschalurteils (Beispielsweise die Farbgebung) gefällt wird.
 Die Abgabe von systematisch zu positiven oder negativen Bewertungen (Milde-Härte-Fehler) oder das Gegenteil davon die Zentrale Tendenz bei dem Bewertungen im mittleren Bereich der Skala abgeben werden.
-Abschließend führt er den Primacy-Recency-Effekt auf bei der die Bewertung durch die Reihenfolge der einzelnen Fragen beeinträchtigt wird. (siehe \cite{Ollermann2007}, S. 60)
-
+Abschließend führt er den Primacy-Recency-Effekt auf bei der die Bewertung durch die Reihenfolge der einzelnen Fragen beeinträchtigt wird. (siehe \cite{Ollermann2007}, S. 60)\\
+\\
 Damit der Fragebogen als funktionales Werkzeug bei der Evaluierung eingesetzt werden kann empfiehlt Burmester zusätzlich die Beachtung von Gütekriterien bei der Erstellung. 
-Dabei handelt es sich sind unter anderen um das Gütekriterium der Validität\footnote{Der Fragebogen sollte darauf ausgelegt sein, dass zu messen was er vorgibt. (nach \cite{Burmester}, S. 350)}, - das Gütekriterium der Reliabilität\footnote{Ein wiederholtes Durchführen, unter den gleichen Bedingungen, soll zu dem selben Ergebnis führen. (nach \cite{Burmester}, S. 350)} und das Gütekriterium der Objektivität\footnote{Das Ergebnis ist unabhängig von der Person, welche die Untersuchung durchführt. (nach \cite{Burmester}, S. 350)}. 
-
+Dabei handelt es sich sind unter anderen um das Gütekriterium der Validität\footnote{Der Fragebogen sollte darauf ausgelegt sein, dass zu messen was er vorgibt. (nach \cite{Burmester}, S. 350)}, - das Gütekriterium der Reliabilität\footnote{Ein wiederholtes Durchführen, unter den gleichen Bedingungen, soll zu dem selben Ergebnis führen. (nach \cite{Burmester}, S. 350)} und das Gütekriterium der Objektivität\footnote{Das Ergebnis ist unabhängig von der Person, welche die Untersuchung durchführt. (nach \cite{Burmester}, S. 350)}. \\
+\\
 \begin{comment}
 Aufbau des Fragebogens
 \end{comment}
 Neben der Erfragung der subjektiven Meinung über das Produkt soll nach Ollermann auch Informationen über den Hintergrund der befragten Person erhoben werden.
 Um diesen Hintergrund zu protokollieren empfiehlt er folgende Aspekte zu erheben Alter, Geschlecht und Erfahrung.
-Speziell der Grad der Erfahrung stellt laut Ollermann einen "wesentlichen Einflussfaktor" für die Gebrauchstauglichkeit da. (vgl. \cite{Ollermann2007}, S. 46) \\
+Speziell der Grad der Erfahrung stellt laut Ollermann einen "wesentlichen Einflussfaktor" für die Gebrauchstauglichkeit da. (vgl. \cite{Ollermann2007}, S. 46). 
+Neben der eigentlichen Erfahrung mit dem Umgang von Pery, in welches der Prototyp eingebettet ist, stellt sich auch vergleichsweise die Frage ob und wie ausgeprägt Erfahrungen mit den Webservices vorhanden sind welche im Kapitel \nameref{chap:analyse} behandelt werden (siehe Abschnitt: \nameref{chap:analyse:sec:sota:sec:google_maps}, \nameref{Airbnb} und \nameref{Flightradar}).
 \\
-
-
-Aufbau des Fragebogens:
-Personenbezogene Informationen, Alter (vgl. \cite{Ollermann2007}, S. 45) und Erfahrung (vgl. \cite{Ollermann2007}, S. 46)\\
 \\
-Fragenkatalog zur Erhebung der Usability Kriterien\\
+In erster Linie dient der Fragebogen, wie Eingangs erwähnt, als Unterstützung für die \nameref{Eyetracking}-Tests um eine subjektive Meinung bezüglich der drei Gebrauchstauglichkeits-Dimensionen zu erheben. 
+Zum einen basiert der Fragebogen aus eigenen Fragen zum anderen in Anlehnung an standardisierten Fragebögen.
+Von den standardisierten Fragebögen handelt es sich zum einen um den Fragebogen IsoMetric S (vgl. \cite{Willumeit1993}) und zum anderen um ISONORM (vgl. \cite{Prumper1997}).
+
+Übernommen: Keine Angabe 
+\\
 \\
 nach dem Test mit Hilfe einer befragenden Person durchgeführt\\
 \\
