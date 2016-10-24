@@ -137,36 +137,6 @@ Mithilfe der Auswertung von diesen beiden Analysen erhalten wir schlussendlich I
 \end{figure}
 
 
-\paragraph{Aufbau des Eyetracking-Test}
-
-\ideas{Beschreibung und Ausarbeitung der Aufgabenstellung -- Sowie die Überlegungen dahinter. Steigender Schwierigkeitsgrad}
-
-Um ein möglichst realistisches Ergebnis der Testes für die Evaluation zu erhalten, orientiert sich der Aufbau weit möglichst an die realen Bedingungen welche im Abschnitt \nameref{Nutzungskontext} beschrieben werden.
-Beispielsweise können Abweichung bei der Größe- und Auflösung des Monitors oder des Webbrowsers in dem der Prototyp verwendet wird zu unterschiedlichen Darstellungen führen. 
-Dies kann wiederum dazu führen das weniger Informationen angezeigt werden wodurch die Effizienz eingeschränkt wird. (vgl. \cite{Ollermann2007}, S. 40)\\
-\\
-Für den Test wurde folgende Aufbau verwendet:
-\begin{enumerate}
-	\item Laptop mit installierter Tobii Software Suite\footnote{Wird verwendet um den Eyetracking Test aufzuzeichnen.}
-	\item 24 Zoll Monitor mit einer Auflösung von 1920x1080 Pixel
-	\item Mozilla Firefox Version: XXXX
-	\item Webcam mit Mikrophon für die Aufzeichnung der Testperson während des Testes
-\end{enumerate}
-
-\paragraph{Problemstellung}
-Der Test selbst ist in drei Stufen unterteilt, dabei wird bei jeder Stufe die Komplexität zum lösen der Aufgabe erhöht. 
-Anhand dieser Vorgehensweise soll anschließend in der Evaluation ermittelt werden, ob wie sich die Bearbeitungsdauer im Vergleich zur Schwierigkeit steigert unter der Berücksichtigung des Erfahrungsgrades der Testperson. 
-In jedem der drei Problemstellungen ist die Testperson angehalten eine Außendiensteinsatz zu planen. 
-Die jeweilige Schwierigkeit wird dabei durch die zusätzlichen Bedingungen definiert.\\
-\\
-Als Referenzwert dient der erste Durchgang, hier soll ausschließlich ein Kontakt gefunden und ausgewählt werden. 
-In der zweiten Aufgabe wird die Visualisierung von Informationen aus dem System benötigt. Dabei ist wiederum ein Kontakt als primäres Ziel gegeben, die Testperson soll mithilfe des Prototypen sowie den  einem zusätzlichen Auswahlkriterium von der Anweisung weitere Kontakte (sekundäre Ziele) auswählen. 
-Im Gegensatz zu den beiden vorangegangenen Aufgaben ist bei der dritten Aufgabe kein Referenzpunkt (primäres Ziel - Kontakt) angegeben. 
-Das lösen der Aufgabe besteht darin, eine Menge von potentiellen Zielen auszusuchen, welche den beiden Kriterien aus der Angabe entsprechen.\\
-\\
-Die Aufgabenstellung welches den Testpersonen ausgehändigt wird befindet sich im Anhang (siehe Abschnitt: \nameref{anhangEyetracking}).
-
-
 \subsubsection{Fragebogen}
 \label{FragebogenEvaluation}
 
@@ -184,15 +154,56 @@ Abschließend führt er den Primacy-Recency-Effekt auf bei der die Bewertung dur
 \\
 Damit der Fragebogen als funktionales Werkzeug bei der Evaluierung eingesetzt werden kann empfiehlt Burmester zusätzlich die Beachtung von Gütekriterien bei der Erstellung. 
 Dabei handelt es sich sind unter anderen um das Gütekriterium der Validität\footnote{Der Fragebogen sollte darauf ausgelegt sein, dass zu messen was er vorgibt. (nach \cite{Burmester}, S. 350)}, - das Gütekriterium der Reliabilität\footnote{Ein wiederholtes Durchführen, unter den gleichen Bedingungen, soll zu dem selben Ergebnis führen. (nach \cite{Burmester}, S. 350)} und das Gütekriterium der Objektivität\footnote{Das Ergebnis ist unabhängig von der Person, welche die Untersuchung durchführt. (nach \cite{Burmester}, S. 350)}. \\
+
+
+
+\subsection{Aufbau der Evaluation}
+Anhand der Evaluation soll zum einen Untersucht ob der Prototyp den Anforderungen der Usability-Standards (Gebrauchstauglichkeit)\footnote{Gebrauchstauglichkeit nach ISO 9241 (\cite[siehe:][Abs.: 3.1 Gebrauchstauglichkeit]{Iso9241_11})} entspricht und zum anderen wie die Testpersonen die einzelnen Darstellungsformen der Daten (Karten- und Listenansicht) einsetzen und verwenden.
+Dabei ist die Evaluation in die drei Teilbereiche Einführung, Eyetracking-Test und Fragebogen untergliedert.
+
+\paragraph{Einführung}
+Aufgrund des unterschiedlichen Wissensstände\footnote{Es wurden unter andern Personen ausgewählt die weder Erfahrung mit Pery haben und/oder in den Entstehungsprozess des Prototyps involviert waren.} der Testpersonen, ist es notwendig einen gemeinsamen Nenner zu bilden was mit Hilfe der Einführung realisiert werden soll.\\
 \\
-\begin{comment}
-Aufbau des Fragebogens
-\end{comment}
+Im ersten Teil der Einführung werden Testpersonen denen Pery fremd ist die Hintergründe und der grobe Funktionsumfang von Pery erläutert.
+Der zweite Teil beschäftigt sich damit den Testpersonen das Szenario zu erläutern. 
+Dabei wird ihnen erklärt, das Sie im Außendienst tätig sind und anhand der gegeben Aufgabenstellung sowie mit Hilfe des Prototypen eine Menge an Partner Unternehmen für  Außendiensteinsätze auswählen sollen.
+Im dritten Teil werden im groben die Funktion und die unterschiedlichen Bereiche des \ac{UI}'s vorgestellt. 
+Diese Erläuterung wird ausschließlich mündlich und nicht am Prototypen durchgeführt um Platz für eigene Erkundungsversuche beim Test einzuräumen.
+Abschließend wird die Aufgabenstellung für den Eyetracking-Test erläutert und eventuelle Unklarheiten beseitigt.
+
+
+\paragraph{Eyetracking-Test}
+Um ein möglichst realistisches Ergebnis der Testes für die Evaluation zu erhalten, orientiert sich der Aufbau weit möglichst an die realen Bedingungen welche im Abschnitt \nameref{Nutzungskontext} beschrieben werden.
+Beispielsweise können Abweichung bei der Größe- und Auflösung des Monitors oder des Webbrowsers in dem der Prototyp verwendet wird zu unterschiedlichen Darstellungen führen. 
+Dies kann wiederum dazu führen das weniger Informationen angezeigt werden wodurch die Effizienz eingeschränkt wird. (vgl. \cite{Ollermann2007}, S. 40)\\
+\\
+Für den Test wurde folgende Aufbau verwendet:
+\begin{enumerate}
+	\item Laptop mit installierter Tobii Software Suite\footnote{Wird verwendet um den Eyetracking Test aufzuzeichnen.}
+	\item 24 Zoll Monitor mit einer Auflösung von 1920x1080 Pixel
+	\item Mozilla Firefox Version: XXXX
+	\item Webcam mit Mikrophon für die Aufzeichnung der Testperson während des Testes
+\end{enumerate}
+
+Der Test selbst ist in drei Stufen unterteilt, dabei wird bei jeder Stufe die Komplexität zum lösen der Aufgabe erhöht. 
+In jedem der drei Problemstellungen ist die Testperson angehalten eine Außendiensteinsatz zu planen. 
+Die jeweilige Schwierigkeit wird dabei durch die zusätzlichen Bedingungen definiert.
+Anhand dieser Vorgehensweise soll anschließend ermittelt werden, wie sich die Bearbeitungsdauer, unter der Berücksichtigung des Erfahrungsgrades der Testperson, verhält. \\
+\\
+Als Referenzwert dient der erste Durchgang, hier soll ausschließlich ein Kontakt gefunden und ausgewählt werden. 
+In der zweiten Aufgabe wird die Visualisierung von Informationen aus dem System benötigt. 
+Dabei ist wiederum ein Kontakt, als primäres Ziel, gegeben die Testperson soll mithilfe des Prototypen und unter der Berücksichtigung von zwei Auswahlkriterium (letzte Rechnung vor dem 01.04.2016 und nicht weiter als 500 Meter Luftlinie vom primären Ziel entfernt) einen weiteren Kontakt (sekundäres Ziel) auswählen. 
+Bei der dritten Aufgabe sollen drei Unternehmen auf dem Weg von A nach B ausgewählt werden.
+Dabei ist der Start- sowie der Endpunkt definiert, die Route darf allerdings frei gewählt werden. 
+Des weiteren sind die zusätzliche Auswahlkriterien letzter Besuch vor dem 01.05.2016 sowie Jahresumsatz von mehr als 10.000 Euro.
+\\
+Die Aufgabenstellung welches den Testpersonen ausgehändigt wird befindet sich im Anhang (siehe Abschnitt: \nameref{anhangEyetracking}).
+
+\paragraph{Fragebogen}
 Neben der Erfragung der subjektiven Meinung über das Produkt soll nach Ollermann auch Informationen über den Hintergrund der befragten Person erhoben werden.
 Um diesen Hintergrund zu protokollieren empfiehlt er folgende Aspekte zu erheben Alter, Geschlecht und Erfahrung.
 Speziell der Grad der Erfahrung stellt laut Ollermann einen "wesentlichen Einflussfaktor" für die Gebrauchstauglichkeit da. (vgl. \cite{Ollermann2007}, S. 46). 
-Neben der eigentlichen Erfahrung mit dem Umgang von Pery, in welches der Prototyp eingebettet ist, stellt sich auch vergleichsweise die Frage ob und wie ausgeprägt Erfahrungen mit den Webservices vorhanden sind welche im Kapitel \nameref{chap:analyse} behandelt werden (siehe Abschnitt: \nameref{chap:analyse:sec:sota:sec:google_maps}, \nameref{Airbnb} und \nameref{Flightradar}).
-\\
+Neben der eigentlichen Erfahrung mit dem Umgang von Pery, in welches der Prototyp eingebettet ist, stellt sich auch vergleichsweise die Frage ob und wie ausgeprägt Erfahrungen mit den Webservices vorhanden sind welche im Kapitel \nameref{chap:analyse} behandelt werden (siehe Abschnitt: \nameref{chap:analyse:sec:sota:sec:google_maps}, \nameref{Airbnb} und \nameref{Flightradar}).\\
 \\
 In erster Linie dient der Fragebogen, wie Eingangs erwähnt, als Unterstützung für die \nameref{Eyetracking}-Tests um eine subjektive Meinung bezüglich der drei Gebrauchstauglichkeits-Dimensionen zu erheben. 
 Zum einen basiert der Fragebogen aus eigenen Fragen zum anderen in Anlehnung an standardisierten Fragebögen.
@@ -206,27 +217,35 @@ An dieser Stelle soll mithilfe der entsprechenden Testperson geklärt werden wod
 \\
 Der finale Fragebogen kann im Anhang (siehe Abschnitt: \nameref{anhangFragebogen}) eingesehen werden.
 
-
 \subsection{Stichprobenbeschreibung}
 \label{Stichproben}
-In Summe wurde die Evaluation mit elf Personen durchgeführt. 
-Dabei lag der mittlere Wert des Alters bei 25,5 Jahren (min: 22 Jahren, max: 29 Jahren, einmal keine Angabe). 
-Die elf Personen gaben dabei folgende Nennungen beim Geschlecht an: dreimal männlich, sechsmal weiblich sowie zweimal kein Angabe.
+In Summe wird die Evaluation mit elf Personen durchgeführt. 
+Die Dauer der vollständige Evaluation liegt im mittleren Wert bei ca. 29 Minuten\footnote{Diese gesamt Dauer bezieht sich auf den Zeitraum der Einführung, des Eyetracking-Test und des Fragebogens}.
+Dabei liegt der mittlere Wert des Alters bei 25,5 Jahren (min: 22 Jahren, max: 29 Jahren, einmal keine Angabe). 
+Die elf Personen geben dabei folgende Nennungen beim Geschlecht an: dreimal männlich, sechsmal weiblich sowie zweimal kein Angabe.
 Da der Prototyp als Erweiterung für Pery implementiert ist werden die Testpersonen, anhand Ihrer Erfahrungen im Umgang mit Pery, in drei Gruppen eingeteilt. 
-Dabei wurden die Gruppen wie folgt definiert: 
+Dabei werden die Gruppen wie folgt definiert: 
 \begin{itemize}		
 	\item Gruppe 1: keine Erfahrung mit Pery 
 	\item Gruppe 2: geringe bis mittlere Erfahrung mit Pery
 	\item Gruppe 3: ausgeprägte Erfahrung mit Pery
 \end{itemize}
-Die Zuordnung der Testpersonen zu denn entsprechenden Gruppen wurde anhand der Faktoren der durchschnittliche Verwendung von Pery (in Stunden pro Woche) sowie der Dauer (in Monaten) seit dem Pery in Verwendung ist durchgeführt.
-Anhand dieser Zuordnung ergab sich das sechs Personen der Gruppe 1, drei Personen der Gruppe 2 und zwei Personen der Gruppe 3 zugeordnet werden. 
+Die Zuordnung der Testpersonen zu denn entsprechenden Gruppen wird anhand der Faktoren der durchschnittliche Verwendung von Pery (in Stunden pro Woche) sowie der Dauer (in Monaten) seit dem Pery in Verwendung ist durchgeführt.
+Anhand dieser Zuordnung stellt sich heraus das sechs Personen der Gruppe 1, drei Personen der Gruppe 2 und zwei Personen der Gruppe 3 zugeordnet werden. 
+
 
 \section{Ergebnisse}
 \label{Ergebnisse}
 \ideas{nüchtern und ohne Interpretation}
-Die Evaluation bestand aus den drei Teilen Einführung, Eyetracking und Interview. 
-Dabei variierte der Einführungsteil je nach Hintergrund und Vorwissen der Person. 
+Anhand der Evaluation soll zum einen Untersucht ob der Prototyp den Anforderungen der Usability-Standards (Gebrauchstauglichkeit)\footnote{Gebrauchstauglichkeit nach ISO 9241 (\cite[siehe:][Abs.: 3.1 Gebrauchstauglichkeit]{Iso9241_11})} entspricht und zum anderen wie die Testpersonen die einzelnen Darstellungsformen der Daten (Karten- und Listenansicht) einsetzen und verwenden. 
+Um ein vermischen der Themen zu vermeiden werden die spezifischen Ergebnisse \nameref{ergebnis_usability} und \nameref{ergebnis_darstellungsformen} jeweils in einem separaten Absatz aufgezeigt.
+
+
+\subsection{Usability Analyse}
+\label{ergebnis_usability}
+
+\subsection{Verwendung und Einsatz der Darstellungsformen }
+\label{ergebnis_darstellungsformen}
 
 \section{Interpretation \& Diskussion}
 \label{InterpretationDiskussion}
