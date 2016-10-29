@@ -347,6 +347,7 @@ Anhand der dynamischen Webelemente (Karte zoomen und verschieben) konnten keine 
 Stattdessen wurden die Ergebnisse in erster Linie für die Analyse der \nameref{ergebnis_darstellungsformen} verwendet (siehe gleichnamigen Abschnitt). 
 
 \subsection{Anmerkungen der Testpersonen}
+\label{AnmerkungUser}
 In diesem Abschnitt sollen die Anmerkungen der Testpersonen aufgezeigt werden. 
 Während des Eyetracking-Testes wurden die Aussagen vom Testpersonal dokumentiert und im Anschluss des Fragebogens noch einmal mit den Testpersonen diskutiert.
 Für einen besseren Überblick werden die jeweiligen Antworten, je nach Intention, in die Abschnitte positives Feedback sowie Optimierungspotential unterteilt. 
@@ -368,11 +369,7 @@ Weitere fünf Testperson versuchten auf die gleiche Weise ein Unternehmen hinzuz
 	\label{fig:AddButton}
 \end{figure}
 Da der Prototyp, laut Definition, mit englischer Benutzeroberfläche implementiert wurde weicht das Datumsformat dementsprechend von dem deutschen Datumsformat ab. 
-Für 3 von 11 Testperson war das englische Datumsformat (Monat/Tag/Jahr) so irritierend das es es während des Testes angesprochen wurde.\\
-\\
-Um einen besseren Überblick bei der Planung zu erhalten gaben 3 von 11 Personen an, das sie gerne eine Filterfunktion verwenden würden.  
-Diese Filterfunktion wurde zum einen für die Karten- als auch für die Listenansicht gewünscht.
-Innerhalb der Kartenansicht sollen dabei Marker- und in der Listenansicht dementsprechend Zeilen ausgeblendet werden.
+Für 3 von 11 Testperson war das englische Datumsformat (Monat/Tag/Jahr) so irritierend das es es während des Testes angesprochen wurde.
 
 \subsection{Verwendung und Einsatz der Darstellungsformen}
 \label{ergebnis_darstellungsformen}
@@ -473,25 +470,56 @@ Bei der Analyse sind die drei Themen Hinzufügen von Unternehmen in der Listenan
 Innerhalb der Listenansicht, trat immer wieder bei den verschiedenen Testpersonen Verwirrung auf als sie sich unerwarteter Weiße in der Detailansicht des Unternehmen wiederfanden und nicht wie vermutet das entsprechende Unternehmen zur Auswahl hinzugefügt würde.
 
 \paragraph{Hintergrund}
-Dieses Erwartungshaltung ist vermutlich dem Umstand geschuldet das die betroffenen Testpersonen in ihrem geistigen Modell der Funktion . 
-Bei der Erstellung des Konzeptes wurde entschieden nur die notwendigen Informationen abzubilden. Aus dieser Motivation heraus wurde der Name des Unternehmens, in beiden Ansichten, als Link gestaltet welcher die Detailansicht aufruft, falls weitere Informationen zu dem entsprechenden Unternehmen gewünscht werden.
-Aus gründen der Konsistenz in der grafischen Oberfläche wurde der eigentliche Button, zum hinzufügen, im rechten Bereich der Zeile in der Listenansicht platziert
+Dieses Erwartungshaltung ist vermutlich dem Umstand geschuldet, das die betroffenen Testpersonen in ihrem geistigen Modell die Funktion des Hinzufügens mit dem exponiert stehenden (links in der Zeile), als Link formatierten, Unternehmensnamen assoziieren. \\
+\\
+Um dies besser zu verstehen sollte der Aufbau der Listenansicht, im speziellen die Anordnung der Elemente in einer Zeile\footnote
+{
+	Anmerkung: Jede Zeile bildet in der Listenansicht ein Unternehmen ab.
+	}
+, betrachtet werden.
+Bei der Erstellung des Konzeptes wurde entschieden nur die notwendigen Informationen abzubilden. Aus dieser Motivation heraus wurde der Name des Unternehmens, in beiden Ansichten, als Link gestaltet (siehe Abbildung: \ref{fig:AddButton} - Markierung 1) welcher die Detailansicht aufruft, falls weitere Informationen zu dem entsprechenden Unternehmen gewünscht werden.
+Desweiteren wurde, aus gründen der Konsistenz, in der Listenansicht der eigentliche Button zum hinzufügen im rechten Bereich der Zeile, innerhalb der Listenansicht, platziert (siehe Abbildung \ref{fig:AddButton} - Markierung 2). 
 \footnote{
 	Innerhalb von Pery sind Funktionen welche sich auf Zeilen in Listen beziehen (bearbeiten, löschen, etc.) rechts platziert.
 	} 
-und mit einem Plus (+) beschriftet wie auch im Popup der Kartenansicht (siehe Abbildung: \ref{fig:Add}).
-
+und mit einem Plus (+) beschriftet wie auch im Popup der Kartenansicht (siehe Abbildung: \ref{fig:Add}).\\
+\\
+Folgende Begründungen könnten die Ursache dafür sein das die Testpersonen den Link des Unternehmensnamens verwendet haben und nicht den bereitgestellten Button.
+Erstens könnte die Ursache in der Positionierung liegen. 
+Der Hinzufüge Button ist zwar nicht außerhalb des Sichtfeldes gelegen allerdings ist der Unternehmensname, mit der Positionierung als zweites Element von links, deutlich hervorstechender.
+Ein weiterer interessanter Fakt liegt darin das sich selbst versierte Pery-Nutzer\_innen beim ersten mal ähnlich verhalten haben. 
+Ein weiterer Grund könnte darin liegen, das die Testpersonen durch das erlernte Verhalten im Umgang mit Webseiten daran gewöhnt sind das ein Link (Unternehmensname) eine Funktion, im Normalfall eine Weiterleitung, ausführt.
+Zusätzlich ergaben die Gespräche mit den betroffenen Personen zum einen das der Button nicht als Markant genug wahrgenommen wurde und zum anderen das sie sich nicht im klaren waren über die Funktion. 
+Allerdings war allen Testpersonen der Verwendungszweck des Buttons innerhalb Kartenansicht sofort verständlich.\\
+\\
+Mögliche Optimierungsvorschläge könnten unter anderem eine Änderung der Position und/oder die Änderung der Beschriftung in Hinzufügen wodurch zum einen mehr Aufmerksamkeit auf den Button gelenkt wird als auch das die Bedeutung klarer wird.
 
 \begin{figure}[h]
-\centering
-\includegraphics[width=0.7\linewidth]{img/Evaluation/Userfeedback/Add}
-\caption[Vergleich: Button Karte- und Listenansicht]{Vergleich Hinzufügen von Unternehmen (Button). Markierung 1: Button im Popup der Kartenansicht, Markierung 2: Button in der Listenansicht. Die angegebenen Daten auf der Abbildung sind fiktiv. Quelle: eigene Ausarbeitung.}
-\label{fig:Add}
+	\centering
+	\includegraphics[width=0.7\linewidth]{img/Evaluation/Userfeedback/Add}
+	\caption[Vergleich: Button Karte- und Listenansicht]{Vergleich Hinzufügen von Unternehmen (Button). Markierung 1: Button im Popup der Kartenansicht, Markierung 2: Button in der Listenansicht. Die angegebenen Daten auf der Abbildung sind fiktiv. Quelle: eigene Ausarbeitung.}
+	\label{fig:Add}
 \end{figure}
 
+\subsubsection*{Datumsformat}
+Da die gesamte Benutzeroberfläche in Englisch gehalten ist war das Datumsformat dementsprechend auch in Englisch gehalten. 
+Für das Datumsformat wurde die Konstellation Monat/Tag/Jahr in Ziffern gewählt. 
+Dies hat teilweise die Testpersonen in einem solchen Ausmaß irritiert das dabei merkbar die Effizienz gelitten hat da Sie jedes mal geistig das gegebene Datum in das verwendete Datumsformat des Prototypen übertragen mussten und umgekehrt.\\
+\\
+Als möglicher Optimierungsansatz könnten die Ziffern des Monatsformates durch eine Abkürzung des Monatsnamens ersetzt werden wie Beispielsweise: Oct. 10, 2016 wodurch das verwechseln der Monats- und Tagesziffer ausgeschlossen wird.  
+
+\subsubsection*{Filterfunktion}
+Um einen besseren Überblick bei der Planung zu erhalten gaben 3 von 11 Personen an, das sie gerne eine Filterfunktion verwenden würden.  
+Diese Filterfunktion wurde zum einen für die Karten- als auch für die Listenansicht gewünscht.
+Innerhalb der Kartenansicht sollen dabei Marker- und in der Listenansicht dementsprechend Zeilen ausgeblendet werden.
+ 
 
 \subsection{Verwendung und Einsatz der Darstellungsformen}
-Die Kombination der verschiedenen Ansichten ist von den Testpersonen sehr gut angenohmen wurden.
+Die Kombination der unterschiedlichen Datenvisualisierungen (Karten- und Listenansicht) in Verbindung mit der Anreicherung der Kerndaten mit den kontextsensitiven Daten ist von den Testpersonen sehr gut angenommen und im Fragebogen bekundet wurden (siehe Abschnitt: \nameref{Ergebnisse}).
+Im speziellen beschäftigt sich dieser Abschnitt damit ob die gemessen Werte des Eyetracking Testes zu ähnlichen Ergebnissen kommen wie die subjektive Bewertung der Testpersonen.\\
+\\
+Beginnend mit der Auswertung der Verwendungsdauer ist zu sehen (siehe Abb. \ref{fig:VerwendungsdauerTrip}) das sich die Verwendungsdauer der Karten
+\\
 Je nach Aufgabenstellung nutzten Sie die für sich zum zielführendeste Ansicht und wechselten\\
 \\
 - Bearbeitungsdauer: Wächst bei allen Gruppen ähnlich an.\\
