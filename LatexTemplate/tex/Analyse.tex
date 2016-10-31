@@ -12,6 +12,8 @@ Diese Erkenntnisse können für die spätere Entwicklung  des Konzeptes als wert
 Der Schwerpunkt bei der Analyse der bestehenden Konzepten wurde auf Applikationen gelegt, welche in einem Webbrowser ausgeführt werden können, ohne weitere Software installieren zu müssen.
 Diese Kriterien wurden definiert da sie am besten das Szenario mit der Außendienstplanung widerspiegeln, welches im Prototyp implementiert werden soll.\\
 \\
+Zusätzlich zu den verfügbaren Webservice sollen hier auch Frameworks für die Implementierung des Prototypen untersucht werden. \\
+\\
 Die getätigten Aussagen über die Webseite beziehen sich, wenn nicht anders erwähnt, auf den Stand von Sommer 2016 und behandeln jeweils die Ansicht in dem Desktop-Webbrowser Google Chrome.
 
 
@@ -315,6 +317,34 @@ Zum Abschluss der Analyse sollen an dieser Stelle die Konzepte und Inspirationen
 \end{enumerate}
 
 \section{Technologien}
-\ideas{Hier noch die Evaluation der Webtechnologien berschreiben: Google Maps Api, Leaflet, etc.}
+An dieser Stelle sollen die verschiedenen Webframeworks vorgestellt werden.
+Dabei ist die Anforderung
+\subsection{Übersicht der Technologien}
 
+
+
+
+\subsubsection{OpenLayers}
+(vgl. \cite{Openlayers})
+
+\subsubsection{Leaflet.js}
+Leaflet bezeichnet sich selbst als einfache und schnelle Bibliothek um interaktive Karten für das Web zu erstellen (vgl. \cite{Leaflet}). 
+Dabei liegt der Fokus auf der einfachen und zügigen Implementierung und liegt im Funktionsumfang hinter OpenLayers (vgl.\cite{VergleichApi}).
+
+\subsubsection{Google Maps API}
+
+\subsection{Auswahl der Technologie}
+An dieser Stelle soll die Auswahl der Technologie und wie diese Entscheidung zu Stande gekommen ist begründet werden. \\
+\\
+Da es sich bei Pery um ein kommerzielles Projekt handelt das Personen nur verwenden können wenn sie einen registrierten Account besitzen werden von Seiten Google Maps erweiterte Nutzungsbedingungen geltend gemacht (vgl. \cite[Abschnitt: Can I use the Google Maps APIs on a site that is password protected?]{GoogleMapsApiUsage}). 
+Dies bedeutet zum einen das durch den Einsatz des Google Maps API laufenden Kosten entstehen können und zum anderen das das Projekt etwaigen Änderungen in den Geschäfts- bzw. Nutzungsbedingungen von Google Maps unterliegt welche im schlimmsten Fall das gesamte Projekt gefährden können.
+Aus den zuvor erwähnten Punkten sowie Aufgrund weiterer Alternativen wird auf den Einsatz der Google Maps API verzichtet.
+Leaflet.js darf unter der Voraussetzung das es in der grafischen Oberfläche genannt wird auch  kostenfrei in kommerziellen Projekten eingesetzt werden (vgl. \cite[Abschnitt: Commercial Use and Licensing]{LeafletLicense}).
+OpenLayers ist wie auch Leaflet.js unter OpenSource Lizenz gestellt und darf auch kostenfrei in kommerziellen Projekten eingesetzt werden.\\
+\\
+Bei der Wahl zwischen Leaflet.js und OpenLayers ist die Auswahl zugunsten Leaflet.js ausgefallen. 
+Leaflet.js wirkt im Gegensatz zu OpenLayers sehr übersichtlich und umgänglich in der Implementierung. 
+Dabei haben erste Versuche bestätigt das sich mit Hilfe von Leaflet.js schnell geografische Daten visualisieren lassen. 
+. 
+Der P 
 \end{document}
