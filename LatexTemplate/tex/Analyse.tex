@@ -327,15 +327,15 @@ Abschließend wird im Abschnitt \nameref{AuswahlDerTechnologie} aufgezeigt, welc
 In Hinsicht auf den ersten Entwurf des Prototypen wurde der Bedarf für folgende Anforderungen an das Framework definiert.
 \begin{enumerate}
 	\item Das Framework kann mit JavaScript verwendet werden.
-	\item Die Visualisierung der Kartenansicht sowie den geografischen Positionen (Koordinaten) soll möglichst simpel mit Hilfe des Frameworks implementiert werden.
 	\item Die Füllfarbe der Marker soll dynamisch änderbar sein.
 	\item Es soll möglich sein eigene Inhalte in diversen Kartenbereichen darzustellen wie Beispielsweise Legenden oder ähnliches.
+	\item Die Visualisierung der Kartenansicht sowie den geografischen Positionen (Koordinaten) soll möglichst simpel mit Hilfe des Frameworks implementiert werden.
 \end{enumerate}
  
 \subsection{Übersicht der Technologien}
 
-\subsubsection{OpenLayers}
-OpenLayers zählt bezüglich des Funktionsumfanges als Open Source Alternative zu dem proprietären Google Maps \ac{API} (vgl. \cite{OpenlayersInfoSheet}, und \cite{VergleichApi}).
+\subsubsection{OpenLayers 3}
+OpenLayers 3 zählt bezüglich des Funktionsumfanges als Open Source Alternative zu dem proprietären Google Maps \ac{API} (vgl. \cite{OpenlayersInfoSheet}, und \cite{VergleichApi}).
 Neben dem großem Funktionsumfang liegt ein weiterer Vorteil in der Unterstützung der verschiedensten Datenquellen (vgl. \cite{Openlayers} und \cite[Abschnitt: Data Sources]{OpenlayersInfoSheet}). 
 
 \subsubsection{Leaflet.js}
@@ -352,17 +352,28 @@ Als Kartenmaterial stehen ausschließlich die hauseigenen, von Google Maps bekan
 
 \subsection{Auswahl der Technologie}
 \label{AuswahlDerTechnologie}
-An dieser Stelle soll die Auswahl der Technologie und wie diese Entscheidung zu Stande gekommen ist begründet werden. \\
+
+Auch wenn der Punkt der Wirtschaftlichkeit nicht explizit in der \nameref{Bedarf} genannt wurde ist es doch ein nicht zu unterschätzendes Kriterium speziell im Hinblick auf das Lizenzmodell von Google Maps.
+Da es sich bei Pery um ein kommerzielles Projekt handelt das Personen nur verwenden können wenn sie einen registrierten Account besitzen, werden von Seiten Google Maps erweiterte Nutzungsbedingungen geltend gemacht (vgl. \cite[Abschnitt: Can I use the Google Maps APIs on a site that is password protected?]{GoogleMapsApiUsage}). 
+Dies bedeutet zum einen das durch den Einsatz des Google Maps API laufenden Kosten entstehen können und zum anderen das das Projekt etwaigen Änderungen in den Geschäfts- bzw. Nutzungsbedingungen von Google Maps unterliegt, welche im schlimmsten Fall das gesamte Projekt gefährden können.
+Aus den zuvor erwähnten Punkten sowie Aufgrund weiterer Alternativen wird auf den Einsatz des Google Maps API verzichtet.\\
 \\
-Da es sich bei Pery um ein kommerzielles Projekt handelt das Personen nur verwenden können wenn sie einen registrierten Account besitzen werden von Seiten Google Maps erweiterte Nutzungsbedingungen geltend gemacht (vgl. \cite[Abschnitt: Can I use the Google Maps APIs on a site that is password protected?]{GoogleMapsApiUsage}). 
-Dies bedeutet zum einen das durch den Einsatz des Google Maps API laufenden Kosten entstehen können und zum anderen das das Projekt etwaigen Änderungen in den Geschäfts- bzw. Nutzungsbedingungen von Google Maps unterliegt welche im schlimmsten Fall das gesamte Projekt gefährden können.
-Aus den zuvor erwähnten Punkten sowie Aufgrund weiterer Alternativen wird auf den Einsatz der Google Maps API verzichtet.
-Leaflet.js darf unter der Voraussetzung das es in der grafischen Oberfläche genannt wird auch  kostenfrei in kommerziellen Projekten eingesetzt werden (vgl. \cite[Abschnitt: Commercial Use and Licensing]{LeafletLicense}).
-OpenLayers ist wie auch Leaflet.js unter OpenSource Lizenz gestellt und darf auch kostenfrei in kommerziellen Projekten eingesetzt werden.\\
+Leaflet.js darf, unter der Voraussetzung das es, in der grafischen Oberfläche, Namentlich genannt wird, kostenfrei in kommerziellen Projekten eingesetzt werden (vgl. \cite[Abschnitt: Commercial Use and Licensing]{LeafletLicense}).
+OpenLayers 3 ist, wie auch Leaflet.js, als OpenSource lizenziert und darf ebenfalls kostenfrei in kommerziellen Projekten eingesetzt werden.\\
 \\
-Bei der Wahl zwischen Leaflet.js und OpenLayers ist die Auswahl zugunsten Leaflet.js ausgefallen. 
-Leaflet.js wirkt im Gegensatz zu OpenLayers sehr übersichtlich und umgänglich in der Implementierung. 
-Dabei haben erste Versuche bestätigt das sich mit Hilfe von Leaflet.js schnell geografische Daten visualisieren lassen. 
-. 
-Der P 
+Die Punkte 1 bis 3 der \nameref{Bedarf} werden sowohl von Leaflet.js als auch von OpenLayers 3 in der Basisfunktionalität unterstützt.\\
+\\
+Erste Versuche mit den beiden Frameworks haben bestätigt das OpenLayers 3 einen größeren Funktionsumfang bietet als Leaflet.js. 
+Dabei ist allerdings zu beachten, das dies nicht unbedingt notwendig für die Realisierung des Prototypen ist da beide Frameworks die \nameref{Bedarf} erfüllen. 
+Im Gegensatz zu OpenLayers 3 ist aufgefallen, das sich mit Hilfe von Leaflet.js einfacher geografische Daten visualisieren lassen.\\
+\\
+Bei der Wahl zwischen Leaflet.js und OpenLayers 3 ist die Auswahl, auf Grund von Punkt 4 der \nameref{Bedarf}, zugunsten Leaflet.js ausgefallen. 
+Ein weiterer Grund für die Auswahl ist die Motivation eigene Erfahrungen mit Leaflet.js zu sammeln, da OpenLayers 3 in vorherigen Projekten, während des Studiums, eingesetzt wurde.\\
+\\
+Dabei ist zu beachten, das es sich bei den getätigten Aussagen um die subjektive Meinung des Autors handelt, welche nicht im Generellen übernommen werden kann.
+Abschließend lässt sich noch Anmerken, das es durchaus empfehlenswert ist, sich Mittels der Implementierungen von Beispielanwendung eine eigene Meinung über die unterschiedlichen Frameworks zu bilden (siehe Beispielsweise \cite{OpenlayersExamples}, \cite{LeafletTutorials} und \cite{GoogleMapsExamples}).
+
+
+
+ 
 \end{document}
