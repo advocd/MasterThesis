@@ -317,25 +317,41 @@ Zum Abschluss der Analyse sollen an dieser Stelle die Konzepte und Inspirationen
 \end{enumerate}
 
 \section{Technologien}
-An dieser Stelle sollen die verschiedenen Webframeworks vorgestellt werden.
-Dabei werden die einzelnen Technologien hin auf ihren Funktionsumfang untersucht welcher für die Implementierung des Prototypen notwendig ist. 
-Der voraussichtliche Funktionsumfang sieht dabei wie folgt aus.
+An dieser Stelle sollen die verschiedenen Webframeworks vorgestellt werden welche bei der Visualisierung der Kartenansicht dienen können.
+Um den Rahmen der Arbeit nicht zu sprengen konzentriert sich dieser Abschnitt auf eine Auswahl von drei Frameworks.
+Dabei werden die einzelnen Technologien hin auf ihren Funktionalität im Kontext der folgenden \nameref{Bedarf} untersucht. 
+Abschließend wird im Abschnitt \nameref{AuswahlDerTechnologie} aufgezeigt, welches der drei Technologien aus welchen Gründen verwendet werden soll.
+
+\subsection{Bedarfsanforderung}
+\label{Bedarf}
+In Hinsicht auf den ersten Entwurf des Prototypen wurde der Bedarf für folgende Anforderungen an das Framework definiert.
+\begin{enumerate}
+	\item Das Framework kann mit JavaScript verwendet werden.
+	\item Die Visualisierung der Kartenansicht sowie den geografischen Positionen (Koordinaten) soll möglichst simpel mit Hilfe des Frameworks implementiert werden.
+	\item Die Füllfarbe der Marker soll dynamisch änderbar sein.
+	\item Es soll möglich sein eigene Inhalte in diversen Kartenbereichen darzustellen wie Beispielsweise Legenden oder ähnliches.
+\end{enumerate}
  
 \subsection{Übersicht der Technologien}
 
-
-
-
 \subsubsection{OpenLayers}
-(vgl. \cite{Openlayers})
+OpenLayers zählt bezüglich des Funktionsumfanges als Open Source Alternative zu dem proprietären Google Maps \ac{API} (vgl. \cite{OpenlayersInfoSheet}, und \cite{VergleichApi}).
+Neben dem großem Funktionsumfang liegt ein weiterer Vorteil in der Unterstützung der verschiedensten Datenquellen (vgl. \cite{Openlayers} und \cite[Abschnitt: Data Sources]{OpenlayersInfoSheet}). 
 
 \subsubsection{Leaflet.js}
-Leaflet bezeichnet sich selbst als einfache und schnelle Bibliothek um interaktive Karten für das Web zu erstellen (vgl. \cite{Leaflet}). 
-Dabei liegt der Fokus auf der einfachen und zügigen Implementierung und liegt im Funktionsumfang hinter OpenLayers (vgl. \cite{VergleichApi}).
+Leaflet bezeichnet sich selbst als einfache und schnelle Open Source Bibliothek um interaktive Karten für das Web zu erstellen (vgl. \cite{Leaflet}). 
+Im Gegensatz zu OpenLayers konzentriert sich Leaflet auf die Basisfunktionalität welche sich durch den Einsatz von Plugins erweitern lässt.
+Dabei ist zu beachten das sich Leaflet.js ausschließlich auf die Darstellung und Interaktion von Kartendaten beschränkt und keine \ac{GIS}-Funktionalitäten zur Verfügung stellt (vgl. \cite[Abschnitt: What Leaflet does not do]{LeafletMakeAMap}). 
 
-\subsubsection{Google Maps API}
+\subsubsection{Google Maps \ac{API}}
+Das Google Maps \ac{API} zählt aktuell als etabliertes, funktionsreiches und    komfortables Framework (vgl. \cite[Abschnitt: Google Maps]{TestingWebMapApi}).  
+Dabei ist zu beachten das es sich bei Google Maps im Gegensatz zu den beiden vorgenannten Open Source Frameworks um eine proprietäre Lösung handelt. 
+Dies hat unter anderem Auswirkungen auf das eingeschränkte beziehungsweise kostenpflichtige Lizenzmodel (vgl. \cite{GoogleMapsNutzung}) sowie die Wahlmöglichkeit des Kartenmaterials. 
+Als Kartenmaterial stehen ausschließlich die hauseigenen, von Google Maps bekannten, Darstellungsformen zur Verfügung (vgl. \cite[Abschnitt: Google Maps]{TestingWebMapApi}). 
+
 
 \subsection{Auswahl der Technologie}
+\label{AuswahlDerTechnologie}
 An dieser Stelle soll die Auswahl der Technologie und wie diese Entscheidung zu Stande gekommen ist begründet werden. \\
 \\
 Da es sich bei Pery um ein kommerzielles Projekt handelt das Personen nur verwenden können wenn sie einen registrierten Account besitzen werden von Seiten Google Maps erweiterte Nutzungsbedingungen geltend gemacht (vgl. \cite[Abschnitt: Can I use the Google Maps APIs on a site that is password protected?]{GoogleMapsApiUsage}). 
