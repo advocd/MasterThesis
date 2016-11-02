@@ -305,20 +305,34 @@ Dabei bildet die vorliegende Auswertung, neben den Ergebnissen aus Kapitel \ref{
 
 \section{Konzept}
 \label{chap:entwicklung:sec:konzept}
+Das Ziel dieses Abschnittes besteht darin ein Konzept für die erste Version des Prototypen zu entwickeln mit dem Fokus auf das definierte Szenario der Außendienstplanung. 
+Dabei ist zu beachten das anhand der ersten Implementierung des Prototypen evaluiert werden soll ob und in wie fern die zu Grunde liegende \nameref{chap:einfuehrung:sec:idee} dieser Arbeit einen Mehrwert für die Anwender\_innen bietet.
+Aus diesem Grund wurde die Entscheidung gefällt, nicht alle Kategorien aus der vorangegangen Analyse zu realisieren.
+Dabei soll der Prototyp als Grundlage zwischen dem bestehenden System (Pery) und den ausgewählten Kategorien entwickelt werden, welcher in späteren Implementierungszyklen fortlaufend erweitert werden soll.
+Auf Basis der \nameref{AnalyseInterviews}, des vorangegangen Abschnittes, wird an dieser Stelle das Grundlegende Konzept, welches für die erste Implementierung des Prototypen ausgewählt wurde, definiert. \\
+\\
+Es soll Grundsätzlich möglich sein, unterschiedliche Listen mit ausgewählten Unternehmen (Trips) im System zu erfassen und diese zu bearbeiten (siehe \nameref{anhang:interview1}).
+Dabei ist der Funktionsumfang der Liste, im ersten Schritt, auf das Hinzufügen und Löschen von Unternehmen zu der Liste sowie das Erstellen, Umbenennen und Löschen der Liste selbst limitiert.\\
+\\
+Das Problem des Systembruchs (siehe Abschnitt \nameref{interviewsAnalyseSystembruch}) soll mit durch die Implementierung des Prototyps in Pery gelöst werden. 
+Dadurch sind die grundlegenden Informationen zu den Unternehmen schon in Pery über seine \ac{ERP}/\ac{CRM} Funktionalität abgedeckt. 
+Zusätzliche Daten die für die Visualisierung notwendig sind, wie Beispielsweise Zeitpunkt des letzten Besuches, werden im Zuge der Implementierung, entweder nachgezogen oder miteinander verknüpft.
+Durch diesen Schritt soll sichergestellt werden das alle notwendigen Informationen in Pery abrufbar sind und somit kein Wechsel zwischen verschiedenen Systemen notwendig ist.\\
+\\
+Ein weiterer oft genannter Punkt der Analyse ist die Übersicht der Standorte von  Unternehmen. 
+Dabei sollen die Unternehmensdaten sowohl auf einer Karte als auch klassisch in einer Liste dargestellt werden. 
+Es handelt sich bei den verschiedenen Ansichten immer um die gleichen Informationen welche jedoch unterschiedlich visualisiert werden.
+Dabei ist besonderes darauf zu achten das der Wechsel zwischen den Ansichten reibungslos abläuft und keinen nennenswerten Mehraufwand darstellt.
+Das hinzufügen von Unternehmen zur aktiven Tripliste soll dabei, auf eine ähnliche Vorgehensweise, von beiden Ansichten möglich sein. 
+Mithilfe dieser Schrittes können die Anwender\_innen selbst entscheiden welche Ansicht das beste Werkzeug darstellt um ihre Anforderungen zu meistern.
 
-\ideas{Konzept für die ersten Entwürfe aus den Ergebnissen der Analyse mergen}
-
-\paragraph{Eigenschaften der Routenverwaltung}
-
-Es soll Grundsätzlich möglich sein, Routen im System zu erfassen und diese zu bearbeiten (siehe \nameref{anhang:interview1}).
-Desweiteren sollte sich die Reihung der Route ändern lassen, um spontan auf Verkehrsstaus oder Terminverschiebungen reagieren zu können (siehe \nameref{anhang:interview2}).
-Zusätzlich dazu sollten sich die Route sowie die kundenrelevanten Daten einfach exportieren und ausdrucken lassen (siehe \nameref{anhang:interview2} und \nameref{anhang:interview3}). 
-Abschließend kann auf Basis der Routenverwaltung ein erleichterter Zugang zu der Dokumentation des Außendiensteinsatzes geschaffen werden (siehe \nameref{anhang:interview3})
 
 \section{Design-Entwurf}
 \label{chap:entwicklung:sec:design_entwurf}
 
-merken der Kartenposition
+/ merken der Kartenposition
+/ englische Interface
+/ visualisierung der Daten
 
 \ideas{Dokumentation des Entwicklungsprozesse vom \nameref{chap:entwicklung:sec:konzept} zum \nameref{chap:entwicklung:sec:design_entwurf:sub:mockUps} \\
 	\\
@@ -337,47 +351,21 @@ merken der Kartenposition
 
 \ideas{Definition auf welche Ziele hingearbeitet werden soll - Einfluss der Erkenntnisse aus Abschnitt: \nameref{chap:entwicklung:sec:konzept}}
 
-\begin{comment}
-Um die Ziele der Gestaltung definieren zu können muss zuerst analysiert werden, wie die Zielgruppe ihre Wünsche und Erwartungen an die Applikation definiert.\\
-
 \subsubsection*{Ziel: Übersichtlichkeit}
 \label{subsub:ziel_uebersichtlichkeit}
-Eine klare und aufgeräumte Oberfläche ist notwendig, um die Unterstützung der Benutzer zu maximieren. 
-Dazu zählt das Aufteilen der Inhalte in sinnvolle und logische Gruppen unter der Berücksichtigung der Arbeitsabläufe.
+Um die Übersichtlichkeit des Prototypen zu steigern ist eine klare und aufgeräumte Oberfläche notwendig. 
+Aus diesem Grund müssen die Inhalte, unter der Berücksichtigung der Arbeitsabläufe, in sinnvolle und logische Gruppen aufgeteilt werden. 
+Zusätzlich wird darauf wert gelegt markante Elemente wie Farben oder fettgedruckten Text dezent einzusetzen. 
 
 
 \subsubsection*{Ziel: Vertraute Umgebung}
 \label{subsub:ziel_vertraute_umgebung}
-Durch das Erzeugen einer vertrauten Umgebung sollen die Nutzer bekannte Elemente ihrer Plattform in der Applikation wiedererkennen.
-Dadurch sollen die Einarbeitungszeiten in die Applikation minimiert, sowie der Wiedererkennungswert von plattformtypischen Elementen wie beispielsweise die Navigation durch das Programm, maximiert werden.
+Durch das gestalten einer, für die Anwender\_innen, vertrauten Umgebung soll der Wiedererkennungswert von erlernten Verhalten maximiert und die Einarbeitungszeiten minimiert werden.
+
+
 Es wird versucht, dass die Benutzer jeder Zeit das Gefühl haben, dass sie das Programm vollständig kontrollieren.
 Dadurch soll den Nutzern die Angst genommen werden "`etwas falsches zu machen"'.
 Für die Realisierung dieses Zieles muss sich die Applikation an dem Standartverhalten der jeweiligen Plattform orientieren.
-\newpage
-\end{comment}
-
-
-\subsection{Mock-Ups - Prototyp Entwicklung}
-\label{chap:entwicklung:sec:design_entwurf:sub:mockUps}
-
-\ideas{Dokumentation der Entstehung sowie Überlegungen des ersten Prototypen}
-
-\begin{comment}
-Um schon in einem frühen Stadium des Entwicklungsprozesses\\ Rückmeldungen über die Bedienbarkeit des Programmes zu erhalten, empfiehlt es sich, in die Entwicklung von Mock-ups zu investieren.
-Unter Mock-Ups versteht man einen nicht funktionellen Prototypen. 
-Dies bedeutet, dass der Prototyp nicht programmiert, sondern mit einem Bildbearbeitungsprogramm erzeugt wird.
-Dabei wird für jede Ansicht ein eigener Prototyp "`gezeichnet"'. 
-Anschließend werden mit Personen aus der Zielgruppe die einzelnen Szenarios der Applikation simuliert. 
-Während des Testes sollen die NutzerInnen den Ablauf des Programmes, die erwarteten ihrer Ergebnis von Interaktionen sowie ihre Emotionen so detailliert wie möglich kommentieren.  
-Mithilfe des Testes lässt sich feststellen, wie schlüssig die Arbeitsabläufe sind, ob die Funktionalität der Oberfläche verständlich ist und ob die Reaktionen des Programmes mit den Erwartungen der Benutzer übereinstimmen. 
-Der Prozess des \texttt{Paper Prototyping} sollte nicht einmalig, sondern in Form eines iterativen Entwicklungsprozess durchgeführt werden. 
-Dies bedeutet, dass auf der Basis der erhaltenen Rückmeldungen die Mock-Ups optimiert und die Test wiederholt werden.
-Der Test kann als positiv betrachtet werden, wenn die Rückmeldungen der Probanden mit den zuvor definierten Design-Zielen (siehe Abschnitt: \nameref{sub:ziele_der_gestaltung}) übereinstimmen.\\
-\\
-Die Mock-Ups der Beispiel-Applikationen befinden sich im Anhang:  \nameref{chap:diagramme_und_bilder} unter dem Abschnitt: \nameref{sec:mock_ups}. 
-\end{comment}
-
-\newpage
 
 
 
