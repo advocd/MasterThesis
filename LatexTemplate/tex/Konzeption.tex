@@ -330,26 +330,8 @@ Mithilfe dieser Schrittes können die Anwender\_innen selbst entscheiden welche 
 \section{Design-Entwurf}
 \label{chap:entwicklung:sec:design_entwurf}
 
-/ merken der Kartenposition
-/ englische Interface
-/ visualisierung der Daten
-
-\ideas{Dokumentation des Entwicklungsprozesse vom \nameref{chap:entwicklung:sec:konzept} zum \nameref{chap:entwicklung:sec:design_entwurf:sub:mockUps} \\
-	\\
-	Entwicklung nach "'user centered design"
-	\\
-	UI-Design Studie: 
-	\begin{itemize}
-		\item Welche Darstellung unterstützt den/die Anwender\_in am ehesten
-		\item Map- vs. List-View (evtl. weitere Darstellungsmöglichkeiten)
-		\item Sinnvolle Visualisierung von Prioritäten 
-		\item Auswahl basierte Darstellung für UI 
-	\end{itemize}}
-
 \subsection{Ziele der Gestaltung}
 \label{chap:entwicklung:sec:design_entwurf:subs:ziele_der_gestaltung}
-
-\ideas{Definition auf welche Ziele hingearbeitet werden soll - Einfluss der Erkenntnisse aus Abschnitt: \nameref{chap:entwicklung:sec:konzept}}
 
 \subsubsection*{Ziel: Übersichtlichkeit}
 \label{subsub:ziel_uebersichtlichkeit}
@@ -361,13 +343,36 @@ Zusätzlich wird darauf wert gelegt markante Elemente wie Farben oder fettgedruc
 \subsubsection*{Ziel: Vertraute Umgebung}
 \label{subsub:ziel_vertraute_umgebung}
 Durch das gestalten einer, für die Anwender\_innen, vertrauten Umgebung soll der Wiedererkennungswert von erlernten Verhalten maximiert und die Einarbeitungszeiten minimiert werden.
+Dabei sollen die Anwender\_innen das Bewusstsein entwickeln, dass sie das Programm in jeder Situation kontrollieren sowie das mögliche Fehler leicht zu korrigieren sind.
 
 
-Es wird versucht, dass die Benutzer jeder Zeit das Gefühl haben, dass sie das Programm vollständig kontrollieren.
-Dadurch soll den Nutzern die Angst genommen werden "`etwas falsches zu machen"'.
-Für die Realisierung dieses Zieles muss sich die Applikation an dem Standartverhalten der jeweiligen Plattform orientieren.
 
+\subsection{Mock-Ups - Prototyp Entwicklung}
+\label{chap:entwicklung:sec:design_entwurf:sub:mockUps}
+Auf Basis des Konzeptes und unter der Berücksichtigung der zuvor definierten Gestaltungsziele soll an dieser Stelle ein erster Entwurf für den Prototyp aufgezeigt werden.\\
+\\
+Grundsätzlich ist der Prototyp, ähnlich wie die zuvor betrachteten Webservices Google Maps und Airbnb, in drei Bereiche aufgeteilt welche jeweils ein eigenständigen Aufgabenspektrum abdecken. (siehe Abb.: \ref{fig:prototypMockup}). 
+Die Entscheidung sich an den bekannten Webservices zu orientieren ist bewusst gefällt wurden um den Anwender\_innen den Eindruck einer bekannten Umgebung zu vermitteln.\\
+\\
+Im oberen Bereich befindet sich der Navigationsbereich des Prototypen (siehe Abb.: \ref{fig:prototypMockup} - Markierung 1). 
+Dieser Bereich dient zum einen als Orientierungshilfe in dem er die Anwender\_innen informiert welche Funktionalität des Prototypen sie aktuell verwenden.\footnote{Im diesem Fall ist das die Funktionalität Edit Trip.}
+Desweiteren besteht die Möglichkeit in diesem Bereich zwischen den verschiedenen Ansichten (Karten- und Listenansicht) umzuschalten.\\
+\\
+Der linke Bereich wurde für die Darstellung der Ergebnisse reserviert (siehe Abb.: \ref{fig:prototypMockup} - Markierung 2). 
+Hier befinden sich alle Unternehmen, jedes als einzelnes Element, welche zuvor in der Karten- oder Listen Ansicht ausgewählt wurden.
+Dabei ist anzumerken das dieser Bereich, unabhängig von dem Wechseln zwischen den verschieden Ansichten, immer angezeigt wird. \\
+\\
+Im rechten Bereich ist der Platz für den Container mit den austauschbaren Darstellungen reserviert (siehe Abb.: \ref{fig:prototypMockup} - Markierung 3). 
+An dieser Stelle wird, je nach Auswahl, die Karten- oder Listenansicht angezeigt.
+Dabei werden, an dieser Stelle, immer die gleichen Daten allerdings auf unterschiedliche Weise dargestellt.
+Unabhängig von der ausgewählten Ansicht lassen sich die ausgewählten Unternehmen zur Trip Liste (linker Bereich) hinzufügen.
 
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\linewidth]{img/Mockups/prototypMockup}
+\caption[Mockup des Prototyps]{Mockup des Prototyps. Markierung 1: Navigationsbereich, Markierung 2: Ergebnisse - Trip Liste, Markierung 3: Container für die umschaltbare Darstellung der Karten- und Listenansicht.}
+\label{fig:prototypMockup}
+\end{figure}
 
 
 \end{document}
