@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="MasterThesis" version="4">
+  <OBJECT>
+    <ID name="MasterThesis" mc="Standard.Project" uid="40641e28-3b24-4823-9930-a90d4bf016c3"/>
+    <ATTRIBUTES>
+      <ATT name="ProjectContext"></ATT>
+      <ATT name="ProjectDescr"></ATT>
+      <ATT name="Name"><![CDATA[MasterThesis]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="Model">
+        <COMPID name="masterthesis" mc="Standard.Package" uid="4a550b9a-5ba4-4ba8-b612-5c2c1ff62483"/>
+        <COMPID name="Django" mc="Standard.Package" uid="73cc8ef7-4be4-4449-b866-4ad8db2bb607"/>
+      </COMP>
+      <COMP relation="DiagramRoot">
+        <COMPID name="MasterThesis" mc="Infrastructure.DiagramSet" uid="337d62c7-ee3f-432b-b10d-3bf333a828cf"/>
+      </COMP>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

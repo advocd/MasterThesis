@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="MasterThesis" version="4">
+  <OBJECT>
+    <ID name="MasterThesis" mc="Infrastructure.DiagramSet" uid="337d62c7-ee3f-432b-b10d-3bf333a828cf"/>
+    <PID name="MasterThesis" mc="Standard.Project" uid="40641e28-3b24-4823-9930-a90d4bf016c3"/>
+    <ATTRIBUTES>
+      <ATT name="Name"><![CDATA[MasterThesis]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES></DEPENDENCIES>
+  </OBJECT>
+</EXT>

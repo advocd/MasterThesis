@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="masterthesis" version="4">
+  <OBJECT>
+    <ID name="masterthesis" mc="Standard.Package" uid="4a550b9a-5ba4-4ba8-b612-5c2c1ff62483"/>
+    <PID name="MasterThesis" mc="Standard.Project" uid="40641e28-3b24-4823-9930-a90d4bf016c3"/>
+    <ATTRIBUTES>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[masterthesis]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES></DEPENDENCIES>
+  </OBJECT>
+</EXT>
