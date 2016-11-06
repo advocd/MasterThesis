@@ -36,6 +36,25 @@ Im speziellen spielen die Frameworks Django
 \label{chap:implementierung:sec:details}
 \ideas{Besondere Aspekte etc. der Implementierung aufzeigen - mit Relevanz zum Kapitel \nameref{chap:entwicklung}}
 
+\subsection{Implementierung Serverseite}
+Anhand des Sequenzdiagrammes (siehe Abbildung \ref{fig:RenderPrototypMap}) soll ein  Überblick über den Standardablauf auf der Serverseite vermittelt werden. 
+Sobald die Anwender\_innen im  Prototyp auf edit trip klicken wird die Anfrage vom Webserver an die Admin-Seite des Trips (TripAdmin) weitergeleitet (siehe Abbildung \ref{fig:RenderPrototypMap} - 1. request). 
+Dort wird anhand der planning Trip Action die entsprechende View (TripBase) geladen (siehe Abbildung \ref{fig:RenderPrototypMap} - 1.1).
+Dabei wird im ersten Schritt die Funktion prepare aufgerufen (siehe Abbildung \ref{fig:RenderPrototypMap} - 1.1.1) in welcher hauptsächlich die \ac{AJAX}-Funktionalität aktiviert wird.
+Im zweiten Schritt wird die Hauptfunktion render_output in der TripBase ausgeführt  (siehe Abbildung \ref{fig:RenderPrototypMap} - 1.1.2).
+Darin werden alle Objekte der Klasse Tripstation, mittels der \ac{DB}-Abstraktion, geladen welche zum aktuellen Trip gehören. 
+Anschließend 
+
+/admin
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\linewidth]{img/Implementierung/RenderPrototypMap}
+\caption[k]{Sequenzdiagramm: Übersicht der Implementierung (Serverseitig).}
+\label{fig:RenderPrototypMap}
+\end{figure}
+
+
+\subsection{Probleme bei der Implementierung}
 / Probleme
 / SVG -- dyn. Marker
 \end{document}
