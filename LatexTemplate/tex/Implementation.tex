@@ -32,15 +32,15 @@ Ergänzend zu Python wird auf der Seite des Clients teilweise Java Script einges
 \subsection*{Webframeworks}
 Im speziellen spielen die Frameworks Django 
 
-/url conf
 /admin
 /view
-
+/templates
 \section{Details zur Implementierung}
 \label{chap:implementierung:sec:details}
 \ideas{Besondere Aspekte etc. der Implementierung aufzeigen - mit Relevanz zum Kapitel \nameref{chap:entwicklung}}
 
 \subsection{Implementierung Serverseite}
+\label{implServer}
 Anhand des Sequenzdiagrammes (siehe Abbildung \ref{fig:Overview}) soll ein  Überblick über den Standardablauf auf der Serverseite vermittelt werden. 
 Sobald die Anwender\_innen im  Prototyp auf den Link edit trip klicken wird eine  Anfrage an den Webserver gesendet.
 Der Webserver bereitet die erhaltenen Daten auf und leitet sie an die Admin-Seite des Trips (TripAdmin) weiter (siehe Abbildung \ref{fig:Overview} - 1.1 request). 
@@ -121,6 +121,104 @@ Anschließend werden die PartnerAddresses Objekte aus der Datenbank geladen und 
 \end{figure}
 
 \subsection{Implementierung Clientseite}
+Bei der Realisierung des Prototypen diente der zuvor angefertigte Mockup als Orientierung. 
+Demnach wurde der Prototyp ebenfalls in die drei Teile Kopfbereich, Tripliste und Container für die diversen Ansichten unterteilt (siehe Abbildung \ref{fig:prototypMockup}).
+
+
+\subsubsection*{Kopfbereich}
+Wie zuvor im Prototyp erwähnt soll dieser Bereich der Orientierung und Navigation dienen.
+Bei der Realisierung des Prototypen wird dabei die Vorlage des Mockups übernommen.
+Im linken Bereich wird dargestellt welche Funktion des Prototypen gerade genutzt wird.
+	\footnote{Aktuell ist für den Prototyp nur die Funktionalität Trips zu bearbeiten verfügbar.}
+Im rechten Bereich ist der Button hinterlegt mit welchem zwischen der Karten- und Listenansicht gewechselt werden kann.
+
+\subsubsection*{Tripliste}
+Der linke Hauptbereich ist für die Tripliste reserviert.
+Im oberen Teil wird der Name des zu bearbeitenden Trips angezeigt.
+Wenn die Kartenansicht geöffnet ist, befindet sich im Fußbereich ein Button mit dem die Karte so eingestellt wird, das alle ausgewählten Unternehmen auf einen Blick sichtbar sind.
+Die restliche Höhe des Browsers genutzt um, ähnlich wie im Mockup, die bereits ausgewählten Unternehmen, als separate Elemente innerhalb der Liste, darzustellen.
+Wenn die Höhe des Browserfensters nicht ausreicht um alle Unternehmen in der Liste darzustellen so wird diese scrollbar.
+Jedes Element in der Liste enthält einen Button mit dessen Hilfe es aus der Liste gelöscht werden kann, was mittels eines \ac{AJAX}-Aufrufs an den Server realisiert wird. 
+Wenn die Kartenansicht geöffnet ist, wird bei einem Klick auf das Element in der Tripliste die Karte auf den entsprechenden Marker zentriert.
+Unabhängig davon welche Ansicht in Verwendung ist wird die Tripliste immer dargestellt.
+
+\subsubsection*{Container für Ansichten}
+Der rechte Hauptbereich wird für die Darstellung der verschiedenen Ansichten verwendet. 
+Durch einen Klick auf den Button im Kopfbereich lassen diese sich umschalten.
+Nach dem laden der Seite oder dem ändern der Fenstergröße wird, mittels Javascript, die Breite und Höhe für den Bereich neu berechnet damit die maximal verfügbare Größe gegeben ist. 
+
+\subsubsection*{Listenansicht}
+Die Listenansicht wurde in Form einer Tabelle realisiert.
+Innerhalb der Listenansicht wird jedes Unternehmen in einer Zeile dargestellt.
+Die jeweiligen Werte des Unternehmens werden dabei in den Spalten angezeigt.
+In der Kopfzeile der Tabelle befinden sich die Beschriftung der Spalten.
+Durch einen Klick auf eine Zelle in der Kopfzeile werden die Inhalte der Tabelle auf- beziehungsweise absteigend sortiert.
+Im Gegensatz zur der Kartenansicht werden hier alle Ranks (letzter Besuch, Gesamtumsatz, etc.) des Unternehmens angezeigt. 
+Jeder Zeile (Unternehmen) hat zusätzlich zwei ausführbare Interaktionsmöglichkeiten.
+Die erste befindet sich in der zweiten Spalte und wird als Link mit dem Namen des Unternehmens angezeigt. 
+Durch einen Klick wird die Detailseite des Unternehmens im Pery, als neuen Tab, geöffnet um weiter Recherchen anzustellen ohne die aktuelle Position in der Listenansicht zu verlieren.
+Die zweite Funktionalität befindet sich in der letzten Spalte und bietet die Möglichkeit das jeweilige Unternehmen zu der Tripliste hinzuzufügen.
+Dafür wurde an dieser Stelle ein Link hinterlegt der via \ac{AJAX}-Aufrufs realisiert wurde.
+Im Sinne der Konsistenz wurde zum einen die Position ganz rechts definiert
+	\footnote{Bei allen Listenansichten in Pery sind Bearbeitungsfunktionen, wie löschen oder hinzufügen, am rechten Rand des jeweiligen Elements positioniert.}
+sowie das die Beschriftung der Hinzufügen- und Löschen-Funktionen im Prototyp (Karten- und Listenansicht) mit den Symbolen Plus (+) und Minus (-) durchgeführt wird.
+
+\subsubsection*{Kartenansicht} 
+Innerhalb der Kartenansicht werden die Unternehmen als Marker auf der Karte dargestellt. 
+Zusätzlich zu der Visualisierung der jeweiligen Standorte wurde im Konzept definiert das die Marker mit Hilfe eines Farbcodes weitere Informationen transportieren.
+Diese Informationen sollen die Anwender\_innen bei der Auswahl der Unternehmen für die Tripliste unterstützen.
+Die Kartenansicht selbst wird dabei, aufgrund der Entscheidung im Abschnitt \nameref{AuswahlDerTechnologie}, zu Großteilen mit Hilfe des Frameworks Leaflet.js realisiert.
+Dabei besteht die Kartenansicht aus folgenden Bereichen beziehungsweise Schichten.
+
+\paragraph{Kartenmaterial}
+Für die Wahl des Kartenmaterials wurde bewusst auf Farben verzichtet und eine Karte in Graustufen ausgewählt. 
+Dies ist zum einen dem der Übersichtlickeit (siehe Abschnitt \nameref{chap:entwicklung:sec:design_entwurf:subs:ziele_der_gestaltung}) geschuldet und zum anderen um eine Einfärbung der Marker besser hervorzuheben.
+Das Kartenmaterial ist kein Bestandteil von Leaflet.js wodurch auf Angebote von Dritten zurückgegriffen werden muss.
+Für diesen Zweck wurde das Kartenmaterial toner-lite von Stamen.com ausgewählt
+	\footnote{Das Kartenmaterial ist Online verfügbar unter: http://maps.stamen.com/toner-lite/}  
+welches auf den Daten von \ac{OSM} basiert (\cite[vgl.][]{Stamen}). 
+
+
+\paragraph{Visualisierung der Standorte}
+Die Hauptaufgabe der Kartenansicht liegt in der Darstellung der Unternehmensstandorte.
+Anhand der geografischen Koordinaten (Position in Breiten- und Längengrad) visualisiert Leaflet.js die Unternehmen auf dem zuvor definierten Kartenmaterial. 
+Nach dem Laden der Seite wird die Karte mittels des Leaflet.js Elements L.map und diversen Parametern wie dem darzustellenden Kartenausschnitt, Zoomfaktors sowie dem zum verwendenden Kartenmaterial initialisiert.
+Wenn die Initialisierung der Karte abgeschlossen ist werden mittels Javascript, die einzelnen Unternehmen aus dem Response des Servers gelesen. 
+Anschließend wird für jedes Unternehmen ein Element L.marker, mit den Koordinaten Lat und Lon als Parameter erstellt, und zur Karte hinzugefügt. \\
+\\
+Über die Grundfunktionalität hinaus werden die Marker allerdings noch wie folgt angepasst.
+Erstens wird die Farbe des Markers passend zum gewählten Rank (Gesamtumsatz, letzer Besuch, etc.) gesetzt.
+Zweitens soll, wenn der Marker schon auf der Tripliste ist, die Reihenfolgennummer im Marker angezeigt werden.
+Wenn eine Überlagerung von mehreren Markern auftritt, beispielsweise durch das Hinauszoomen, werden Marker die eine Nummer haben in den Vordergrund geholt um sicherzustellen das sie nicht übersehen werden.
+Sollten mehrerer Unternehmen eine identische Adresse besitzen, wird dies schon vom Server geändert bevor die Daten an den Browser ausgeliefert werden.
+Dabei wird ein Marker auf die korrekte Position gesetzt, und die restlichen Marker minimal verschoben darum positioniert.
+In diesem Fall erhalten die verschobenen Marker eine alternative Form (Kreis).
+
+\paragraph{Steuerung der Kartenansicht}
+Anstelle des Mausrades können auch der Plus und Minus Button zum Zoomen der Karte verwendet werden.
+Der Kartenausschnitt selbst wird mit der Maus verschoben.
+Bei jeder Änderung an der Karte, wie beispielsweise Zoom oder verschieben des Ausschnittes, werden die Information asynchron an den Server gesendet und gespeichert.
+Dadurch ist sichergestellt das beim wiederholten aufrufen der Kartenansicht die Karte im gleichen Zustand ist wie beim verlassen.
+
+\paragraph{Rank-Bereich und Legende}
+Im unteren rechten Bereich der Kartenansicht überlagert der Rank Bereich die Karte\footnote{Weitere Informationen über Rank und Range befinden sich im Abschnitt \nameref{implServer} - \nameref{Rank}}.
+Dieser besteht zum einen aus der Liste von verfügbaren Rank's sowie einer Legende über die unterschiedlichen Abstufung (Range's) des aktiven Rank.
+Der aktuell gewählte Rank ist anhand der Formatierung in der Liste gekennzeichnet. 
+Wenn ein anderer Rank gewählt werden soll reicht ein Klick auf ein Element in dieser Liste und die entsprechenden Daten werden vom Server abgerufen. 
+Nach Erhalt des Response wird die Rank-Legende sowie die Füllfarbe der Marker anhand der neuen Daten angepasst.
+Die Rank-Legende dient der Orientierung der Anwender\_innen. 
+Dabei ist jeder Rank in die entsprechenden Range's unterteilt.
+Neben der Farbe des Range's wird auch der entsprechende Wertebereich abgebildet.
+Somit ist ersichtlich welche Füllfarbe der Marker welchen Wertebereich darstellt.
+
+\paragraph{Popup}
+In der Kartenansicht können zusätzliche Informationen zu einem Unternehmen abgerufen über das Popup transportiert werden.
+Durch einen Klick auf einen Marker in der Karte öffnet sich das dazugehörig Popup, durch einen klick außerhalb des Popup's schließt es sich wieder. 
+Als Überschrift wird der Name des Unternehmens verwendet der, ebenfalls wie in der Listenansicht, einen Link zu der Detailseite des Unternehmens darstellt. 
+Unter der Überschrift befindet sich die Liste mit allen verfügbaren Rank's und den entsprechenden Unternehmenswerten. 
+Somit lassen sich alle kontextabhängigen Werte (Rank's) eines Unternehmens schnell anzeigen ohne den aktiven Rank (Einfärbung der Marker) zu ändern. 
+Im unteren Bereich des Popup befindet sich der Aktionsbutton, mit dem sich das Unternehmen, je nach Status, zur Tripliste hinzufügen oder entfernen lässt.
+Analog zur Listenansicht ist der Button mit einem plus (+) oder (-) beschriftet.
 
 \subsection{Probleme bei der Implementierung}
 / Probleme
