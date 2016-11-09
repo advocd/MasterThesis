@@ -3,23 +3,11 @@
 \chapter{Implementierung}
 \label{chap:implementierung}
 
-\ideas{Recherche, Auswahl und Implementierung der Standorterfassung von Mitarbeiter\_innen ... Anpassung des bestehenden Systems - eventuell eigener Abschnitt}
-
- - Datenstrukturen schaffen\\
- - GIS Daten besorgen\\
- - Implementierung der Listenansicht\\
- - Implementierung der Kartenansicht\\
- - No Scroll\\
- - Standort speichern\\
- \\
- - Herausforderungen\\
- / Leaflet.js - Popups, individuelle Marker mit Zahlen
-
-
 \section{Spezifikation}
 \label{chap:implementierung:sec:spezifikation}
-\ideas{Beschreibung welche Technologien warum eingesetzt werden sowie die Rahmenbedingungen der Implementierung (Hardware, Software, etc.)}
-Im Zuge der vorangegangen Analysen sowie verschiedenen Rahmenbedingung werden folgende Technologien für die Implementierung eingesetzt. 
+Wie zuvor im Kapitel \nameref{chap:entwicklung} schon definiert wurde soll der Prototyp, in Form einer Web-Applikation, in die bestehende Lösung Pery integriert werden.
+Dadurch kann, aufgrund der Abhängigkeit zu Pery, nur eine vollständige Kompatiblität zu der aktuellen Versionen des Webbrowsers Mozilla Firefox und Google Chrome gewährleistet werden.   
+Im Zuge der vorangegangen Analysen sowie verschiedenen Rahmenbedingung werden  folgende Technologien für die Implementierung eingesetzt. 
 
 \subsection*{Programmiersprachen}
 Grundsätzlich wird der Prototyp auf Serverseite mit Python in der Version 2.7 realisiert. 
@@ -31,10 +19,10 @@ Ergänzend zu Python wird auf der Seite des Clients teilweise Java Script einges
 
 \subsection*{Webframeworks}
 Im speziellen spielen die Frameworks Django 
+\ideas{Was ist Django und wie funktioniert es. Schwerpunkt auf: DB Abstraktion, Admin, View, Templates, Render Engine}
 
-/admin
-/view
-/templates
+\ideas{nochmal kurz info zu Leaflet.js}
+
 \section{Details zur Implementierung}
 \label{chap:implementierung:sec:details}
 \ideas{Besondere Aspekte etc. der Implementierung aufzeigen - mit Relevanz zum Kapitel \nameref{chap:entwicklung}}
@@ -220,7 +208,5 @@ Somit lassen sich alle kontextabhängigen Werte (Rank's) eines Unternehmens schn
 Im unteren Bereich des Popup befindet sich der Aktionsbutton, mit dem sich das Unternehmen, je nach Status, zur Tripliste hinzufügen oder entfernen lässt.
 Analog zur Listenansicht ist der Button mit einem plus (+) oder (-) beschriftet.
 
-\subsection{Probleme bei der Implementierung}
-/ Probleme
-/ SVG -- dyn. Marker
+
 \end{document}
