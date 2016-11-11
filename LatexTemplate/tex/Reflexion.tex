@@ -5,9 +5,11 @@
 
 \label{chap:reflexion:sec:zusammenfassung}
 
+\begin{comment}
 \ideas{Interviews: mehr Personen anderer Modus?}
 \ideas{Evaluation Gruppeneinteilung, Modus}
 \ideas{Leaflet.js}
+\end{comment}
 
 
 Das Ziel dieses Kapitels liegt darin die Erkenntnisse zusammenzufassen und die Vorgehensweise kritisch zu hinterfragen.
@@ -16,6 +18,77 @@ Darauf folgt ein Überblick der Evaluation und über welchen Mehrwert der Protot
 Ergänzend dazu werden anschließend die gewonnen Erkenntnisse im Einsatz der Karten- und Listenansicht in Kombination mit kontextsensitiven Informationen aufgezeigt.
 Abgeschlossen wird das Kapitel durch einen Ausblick auf die weiteren Entwicklungsmöglichkeiten und Potentiale des Prototypen. 
 
+\section{Zusammenfassung}
+Die Motivation dieser Arbeit besteht darin die Planung bei der Ressourceneinteilung zu optimieren, konkret an dem Beispiel der Außendienstplanung. 
+Auf Grund von Gesprächen erfuhr ich wie Umständlich die Planung von Außendiensttätigkeiten, mit den zur Verfügung stehenden Mitteln ist und setzte mir das Ziel zu untersuchen wie diese Arbeit erleichtert und optimiert werden kann.\\
+\\
+Anhand erster Überlegungen wurde eine Problemstellung aufgesetzt welche für den weiteren Vorgang der Arbeit als Grundlage dienen soll.
+Dabei muss beachtet werden das es sich bei der Problemstellung (siehe Gleichnamigen Abschnitt im Kapitel Einführung) um reine Annahmen handelt, da der Autor keine eigene Erfahrungen auf dem Gebiet der Außendienstplanung besitzt.\\
+\\
+Mittels der Annahmen aus der Problemstellung wurden erste Lösungsansätze entwickelt um zu erfahren ob und wie diese hypothetischen Problem lösbar sind.
+Darauf hin wurde untersucht wie etablierte Webseiten, mit einem ähnlichen Aufgabengebiet, ihre Informationen visualisieren und was sie den Nutzer\_innen für Möglichkeiten bieten (siehe Kapitel \nameref{chap:analyse}). 
+Zusätzlich zu den bestehenden Lösungen wurden technischen Möglichkeiten betrachtet mit dessen Hilfe sich ein Prototyp realisieren lässt.
+Anhand der Bedarfsanforderung (siehe gleichnamigen Abschnitt) wurde für diesen Zweck Leaflet.js, aufgrund der Abdeckung der Anforderung sowie seiner einfachen Verwendungsweise und, ausgewählt (siehe Abschnitt \nameref{AuswahlDerTechnologie}).\\
+\\
+Anhand der erarbeiteten Erkenntnisse wurden gezielte Interviews mit Fachpersonen aus dem Außendienst durchgeführt um zu erfahren wie ihre Aufgabenstellungen im Alltag aussehen und auf welche Weise und mit welchen Werkzeugen sie diese bewältigen (siehe Abschnitt \nameref{chap:analyse:sec:interviews}). 
+Anhand der Ergebnisse aus den Interviews wurden die zuvor getroffenen Annahmen größtenteils bestätigt (siehe Abschnitt \nameref{AnalyseInterviews}).
+Dabei ist anzumerken das die Interviews mit nur drei Personen durchgeführt wurden. 
+Dies bot zwar einen Einblick in die Arbeitswelt der Außerdienststellung aber stellt kein repräsentativen Querschnitt da.
+Ergänzend zu den Interviews hätte ein Beobachten der befragten Personen beim ausüben ihrer Tätigkeit sicherlich auch einen objektiveren Blick in die Domäne geboten.\\
+\\
+Bei der \nameref{chap:implementierung} wurde für die Entwicklung der Serverseite  das Webframework Django eingesetzt welches in der Programmiersprache Python entwickelt wurde. 
+Wie zuvor erwähnt, wurde auf der Clientseite das Framework Leaflet.js für das Webmapping eingesetzt.
+Leider stellte sich während der Implementierung heraus das die Flexibilität von Leaflet.js nicht den Ansprüchen des Prototypen genügte.
+Speziell bei der Anpassbarkeit der Marker musste nachgebessert werden. 
+Wie im Abschnitt \nameref{ImplVisualStandorte} beschrieben wurde besteht die Notwendigkeit das die Marker in unterschiedlichen Formen (Pin und Kreis) sowie Farben dargestellt werden sollen.
+Um eine bestmögliche Flexibilität zu erhalten wurde die Leaflet.js Marker durch  
+eigene \ac{SVG}-Marker ersetzt.
+Dies bringt den Vorteil mit sich das dynamisch Größe, Form und Farbe geändert werden können und somit die oben genannten Designentscheidungen realisiert werden können.\\
+\\
+Nach der Fertigstellung des Prototyps wurde mithilfe der Evaluation die Gebrauchstauglichkeit untersucht sowie die Art und Weise wie die Testpersonen die verschiedenen Ansichten verwenden (siehe Kapitel \nameref{chap:evalutation}).  
+Für diesen Zweck wurde ein Eyetracking Test erstellt in dem die Testpersonen, mithilfe des Prototypen, drei Trips planten (siehe Abschnitt: \nameref{Verfahren}). 
+Dabei wurden die elf Testpersonen anhand ihrer Erfahrung mit Pery in drei Testgruppen eingeteilt (siehe Abschnitt \nameref{Stichproben}). 
+Leider konnte keine Einteilung der Testgruppen aufgrund des Erfahrungsgrades der Außerdienststellung erstellt werden da leider keine entsprechenden Personen bei dem Test anwesend sein konnten.
+Im Anschluss des Eyetracking Tests wurde mit Hilfe eines Fragebogens die Erhebung der Gebrauchstauglichkeit durchgeführt, welche der Prototyp positiv abschließen konnte (siehe Abschnitt \nameref{Ergebnisse}). \\
+\\
+Auf der Basis der Daten welche während des Eyetracking aufgezeichnet wurden fand eine Untersuchung statt die klären sollte wie die Karten- und Listenansicht im Testszenario verwendet wurden.
+Diese Auswertung ergab das die Kartenansicht nicht die klassische Listenansicht ersetzt sondern vielmehr eine sinnvolle Ergänzung darstellt.
+Des weiteren ist die Wahl der Ansicht von der Aufgabenstellung abhängig.
+Bei Aufgaben die nach einem spezifischen Attribut (Gesamtumsatz oder letzter Besuch) fragten welches kein geografischen Kontext (...ist in der nähe von X) hat wurde in erster Linie die Listenansicht verwendet.
+Im Gegensatz dazu wurde mehrheitlich die Kartenansicht bei Aufgaben verwendet in denen geografisches Wissen (...in der nähe von) und nur ein zusätzliches Attribute (Gesamtumsatz oder letzter Besuch) definiert wurden.
+Dies ist dem Umstand geschuldet, dass in der Kartenansicht neben dem Standort nur ein zusätzliches Attribute anhand der Füllfarbe des Markers visualisiert wird.
+Es konnte beobachtet werden, das die Testpersonen komplexere Aufgabenstellungen in einfacherer Teilprobleme zerlegten und diese durch die abwechselnde Verwendung der Karten- und Listenansicht lösten.\\
+\\
+Anhand der folgenden Punkte wird aufgezeigt welche Vorteile der aktuelle Stand des Prototyps gegenüber den Workflows aufzeigt welche in der Domänenanalyse erfasst wurden (siehe Abschnitt \nameref{AnalyseInterviews}).
+Mittels der angepassten Datenstruktur und der Implementierung der Listen- und Kartenansicht (Übersicht der Standorte) sind die meisten Ursachen welche als Grund für den Systembruch angegeben wurden behoben.
+Durch die Zentralisierung wie auch die Verknüpfung der Daten (Kontextsensitivität) müssen keine Daten mehr in externe Systeme übertragen werden wodurch eine Steigerung der Effektivität wie auch die Effizienz erzielt wird.
+Zusätzlich verbessert sich die Datenqualität für die Auswahl da etwaige Übertragungsfehler hinfällig sind.
+Diese Punkte spiegeln sich im Ergebnis des Eyetracking Tests wieder indem jede der elf Testperson alle Aufgabenstellungen korrekt gelöst hat (siehe Abschnitte \nameref{Ergebnisse}).
+
+\section{Ausblick}
+\label{chap:reflexion:sec:ausblick}
+
+ 
+\ideas{further research, etc. kommt hier rein. Evtl. 3D Darstellung, Anreichern vs. Filtern, Punkte clustern}
+
+\subsection{Prototyp}
+Neben den Anpassungen welche bei der Usability Analyse festgestellt wurden wie Beispielsweise eine Suchfunktion in der Kartenansicht (siehe gleichnamigen Abschnitt) und im Zuge eines Redesign-Prozess nachgezogen werden gibt es noch weitere Themen für die Erweiterung des Prototypen.
+
+\paragraph{Überlagern der Marker}
+Im aktuellen Stand des Prototypen, 
+Bei einer niedrigen Zoomstufe der Kartenansicht, beispielsweise durch Herrauszoomen, überlagern sich die Marker gegenseitig, was wiederum eine Interaktion mit Ihnen deutlich erschwert und die Übersicht einschränkt.
+Anhand des clientseitigen Java Scripts werden Marker, welche ein Unternehmen repräsentieren das auf der Trip-Liste steht in der Z-Achse bevorzugt
+/redesign\\
+/Usability\\
+/ Suchfunktion
+/ Martker Clustern
+/ Weiterer Ausbau zum Framework
+/ Addressen valedieren
+
+\subsection{Kontextsensitive Daten und Darstellungsformen}
+Ergänzend zu den geplanten Erweiterungen des Prototypen sollen nun weiterführenden Ideen aufgezeigt welche im Zuge der Arbeit entstanden sind.
+
+\begin{comment}
 \subsection*{Motivation und erste Überlegungen}
 Die Motivation dieser Arbeit besteht darin die Planung bei der Ressourceneinteilung zu optimieren, konkret an dem Beispiel der Außendienstplanung. 
 Auf Grund von Gesprächen erfuhr ich wie Umständlich die Planung von Außendiensttätigkeiten, mit den zur Verfügung stehenden Mitteln ist und setzte mir das Ziel zu untersuchen wie diese Arbeit erleichtert und optimiert werden kann.\\
@@ -53,6 +126,12 @@ Für diesen Zweck wird untersucht ob sich die
 \\
 / Was bringen die Ergebnisse unabhängig des Prototypes\\
 
+\ideas{Weitere Erkenntnise oder Ideen: intelligenter Einsatz von Karten\\
+	- Das Medium und seine Interaktion besser ausnutzen, nicht nur statische Elemenente --> Bsp in der Validierung und Korrektur von Adressen\\
+	- kreatives kombinieren von Daten\\
+	- Auf Übersättigung achten --> Tufte Powerpoint Präsentationen\\
+	- hinterfragen von klassischen Darstellungsformen --> Gefahr der Akzeptanz\\
+	- Dynamische Daten -> Positionsdaten von Mitarbeitern --> Risiken im Datenschutz}
 
 Leider konnte im Zuge dieser Arbeit keine Allumfassende Lösung Entwickelt werden die alle Bedürfnisse 
 
@@ -63,20 +142,7 @@ Leider konnte im Zuge dieser Arbeit keine Allumfassende Lösung Entwickelt werde
 \ideas{Resümee... was ist gut was ist schlecht gelaufen, was würde ich anders machen. \\
 - Auswahl des Webmapping
 }
-
-\section{Ausblick}
-\label{chap:reflexion:sec:ausblick}
-
-\ideas{further research, etc. kommt hier rein. Evtl. 3D Darstellung, Anreichern vs. Filtern, Punkte clustern}
-- siehe Fragebogen
-- Suchfunktion
-- Ausbauen zum Framework
-\begin{comment}
-	Überlegenswert wäre auch der Einsatz aus der Kombination 3D Modellen und eines Graphens. 
-	Dadurch erweitert sich die Darstellung aus dem zwei Dimmensinalen Raum (Karte) hin zu einem dreidimmensionalen Raum in dem Informationen genauer abgebildet werden können\\
-	\\
-	/aufwand\\
-	/nutzen
 \end{comment}
+
 
 \end{document}
