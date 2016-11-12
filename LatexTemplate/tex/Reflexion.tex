@@ -68,24 +68,35 @@ Diese Punkte spiegeln sich im Ergebnis des Eyetracking Tests wieder indem jede d
 \section{Ausblick}
 \label{chap:reflexion:sec:ausblick}
 
- 
-\ideas{further research, etc. kommt hier rein. Evtl. 3D Darstellung, Anreichern vs. Filtern, Punkte clustern}
-
-\subsection{Prototyp}
 Neben den Anpassungen welche bei der Usability Analyse festgestellt wurden wie Beispielsweise eine Suchfunktion in der Kartenansicht (siehe gleichnamigen Abschnitt) und im Zuge eines Redesign-Prozess nachgezogen werden gibt es noch weitere Themen für die Erweiterung des Prototypen.
 
 \paragraph{Überlagern der Marker}
 Im aktuellen Stand des Prototypen, 
 Bei einer niedrigen Zoomstufe der Kartenansicht, beispielsweise durch Herrauszoomen, überlagern sich die Marker gegenseitig, was wiederum eine Interaktion mit Ihnen deutlich erschwert und die Übersicht einschränkt.
-Anhand des clientseitigen Java Scripts werden Marker, welche ein Unternehmen repräsentieren das auf der Trip-Liste steht in der Z-Achse bevorzugt
-/redesign\\
-/Usability\\
-/ Suchfunktion
-/ Martker Clustern
-/ Weiterer Ausbau zum Framework
-/ Addressen valedieren
+Anhand des clientseitigen Java Scripts werden Marker, welche ein Unternehmen repräsentieren das auf der Trip-Liste steht, in der Z-Achse hervorgehoben das sie möglichst nicht überlagert werden.
+Dieses Vorgehen ist zwar hinreichend für den Testaufbau, da der simulierte Einzugsbereich geografisch auf Vorarlberg/Österreich begrenzt war, genügt allerdings nicht den Ansprüchen unter realen Bedingungen.
+Eine Möglichkeit ist die Marker, je nach Zoomstufe, auf Stadt-, Regions- und Landesebene in Clustern zusammenzufassen wodurch ein besserer Überblick entsteht.
+Dabei besteht allerdings wieder die Gefahr, dass die Nähe zwischen angrenzenden Markern verloren geht wenn sie sich in unterschiedlichen Clusterbereichen befinden (siehe Abschnitt \nameref{interviewsAnalyseStandorte} im Kapitel \nameref{chap:entwicklung}).
+Die Funktionalität um Cluster zu erstellen ist nicht im Funktionsumfang des Leaflet.js Frameworks enthalten.
+Durch das integrieren von verfügbaren Modulen, wie beispielsweise Leaflet.markercluster\footnote{Siehe Projektseite: https://github.com/Leaflet/Leaflet.markercluster}, lässt sich die Cluster-Funktionalität leicht nachziehen.
 
-\subsection{Kontextsensitive Daten und Darstellungsformen}
+\paragraph{Framework}
+In der nahen Zukunft ist angedacht, die Funktionalität kontextsensitive Daten auf einer Kartenansicht darzustellen in Form eines Frameworks ausgebaut werden soll.
+Mithilfe des Frameworks soll den Entwickler\_innen ein Werkzeug bereitgestellt werden, mit dessen Hilfe sie einfach und komfortabel Views mit der Funktionalität einer Kartenansicht bereichern können.
+Durch die Modularität des Frameworks können sie frei entscheiden in welchem Umfang sie die Kartenfunktionalität einsetzen wollen.
+Diese Entscheidungen reichen über Steuer - und Informatationsmöglichkeiten bis hin ob kontextsensitive Daten verwendet werden sollen.
+Wenn kontextsensitive Daten eingesetzt werden, so kann definiert werden welche Attribute von welchen Instanzen benötigt sind.
+Zusätzlich soll auch die Form in der die Visualisierung stattfinden soll anpassbar sein.
+Aktuell Vorstellungen reichen von vollständige Seiten (wie im Prototyp) bis hin zur Darstellung in Popups.  
+Für die Verwendung des Frameworks ist schon der erste Einsatz definiert wurden.
+Dabei soll untersucht werden ob eine Kartenansicht beim validieren von Adressen (nachdem sie geändert wurden) nützlich ist.
+Neben dem reinen Darstellen der Adresse auf einer zoombaren Karte, soll die Adresse auch mittels des Markers angepasst werden können. 
+  
+
+\subsection*{Kontextsensitive Daten und Darstellungsformen}
+Die Visualisierung von Daten auf Karten ist keine neue Form der Unterstützung in der Ressourceneinteilung. 
+Im speziellen sind an dieser Stelle im militärischen Umfeld die \ac{C2}-Systeme sowie ähnliche \ac{GIS}-Werkzeuge im Katastrophenschutz hervorzuheben.
+
 Ergänzend zu den geplanten Erweiterungen des Prototypen sollen nun weiterführenden Ideen aufgezeigt welche im Zuge der Arbeit entstanden sind.
 
 \begin{comment}
