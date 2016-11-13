@@ -12,16 +12,34 @@ Im Zuge der vorangegangen Analysen, sowie verschiedenen Rahmenbedingung werden d
 \subsection*{Programmiersprachen}
 Grundsätzlich wird der Prototyp auf Serverseite mit Python in der Version 2.7 realisiert. 
 Dabei handelt es sich viel mehr um eine Vorgabe, da der Prototyp innerhalb des bestehenden Systems Pery integriert wird. Pery selbst wird mithilfe des Webframeworks Django entwickelt, welches in Python geschrieben ist.
-Bei Python handelt es sich um 
-\ideas{kurze Info über Python und seine Besonderheiten}
-
-Ergänzend zu Python wird clientseitig teilweise Java Script eingesetzt. 
+Bei Python handelt es sich um eine interpretierte höhere Programmiersprache welche dynamisch und stark typisiert ist (\cite[vgl.][]{PythonTyped}).
+Dabei besteht ein Ziel der Sprache in der guten Lesbarkeit des Quellcodes. 
+Im Gegensatz zu anderen Programmiersprachen, wie beispielsweise Java, wird die Strukturierung des Quellcodes mithilfe von Einrückungen anstatt geschweiften Klammern realisiert.
+Der große Umfang der Standartbibliothek von Python soll die zügige Implementierung von Projekten unterstützen und kann beliebig selbst oder mittels eines Paketmanagers erweitert werden. (\cite[vgl.][]{PythonDoc} \cite[sowie ][- sekundär Quelle]{PythonStackoverflow})\\
+\\
+Ergänzend zu Python wird clientseitig teilweise Java Script in Verbindung mit dem JQuery Framework eingesetzt. 
 
 \subsection*{Webframeworks}
-Im speziellen spielen die Frameworks Django 
-\ideas{Was ist Django und wie funktioniert es. Schwerpunkt auf: DB Abstraktion, Admin, View, Templates, Render Engine}
+Neben dem Leaflet.js (siehe Abschnitt \nameref{sotaTechnologien}), welches zum realisieren der Kartenansicht verwendet wird, ist das gesamte Backend von Pery, in dem der Prototyp eingebettet wird, mit Hilfe des Django Frameworks implementiert. 
+Bei Django handelt es sich um ein Open-Source Webframework welches anhand der model-view-controller Architektur (\cite[vgl.][]{DjangoMVC}) in Python implementiert ist und über eine Datenbank Abstraktion verfügt. (\cite[vgl.][]{DjangoDoc} \cite[sowie][- sekundär Quelle]{DjangoStackoverflow})\\
+\\
+Um später die Implementierung besser zu verstehen soll an dieser Stelle grob die Funktionsweise des Django Frameworks aufgezeigt werden (siehe Abb.: \ref{fig:MTV_Django}).
+Anhand der angeforderten \ac{URL} wird mittels der \ac{URL Conf} ausgewertet welche View initialisiert wird.
+Innerhalb der View wird die entsprechende Logik implementiert.
+Mittels der Datenbank Abstraktion lädt die View ihre benötigten Objekte aus der Datenbank.
+Die Darstellung der Daten wird von der View mittels Templates definiert. 
+Diese Templates bestehen aus \ac{HTML} Code sowie Tags und Filters. 
+Dabei können Templates auch im Sinne der Wiederverwertbarkeit geschachtelt eingesetzt werden. 
+Mit Hilfe der Tags können die Daten, welche von der View an das Render Engine übergeben wurden, in den \ac{HTML} Code integriert werden.
+Durch die Verwendung des Render-Prozess werden die Templates in \ac{HTML} Dokumente übersetzt und in einen vollständigen Response eingebettet welcher über den Webserver an den Browser ausgeliefert wird. (\cite[vgl.][]{DjangoDoc}
 
-\ideas{nochmal kurz info zu Leaflet.js}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.7\linewidth]{img/Implementierung/MTV_Django}
+\caption[k]{Übersicht der Funktionsweise des Djang-Frameworks. Quelle: Von Stefano Probst - Mit Graphviz erstellt, CC BY-SA 3.0 at, https://commons.wikimedia.org/w/index.php?curid=31084766}
+\label{fig:MTV_Django}
+\end{figure}
+
 
 \section{Details zur Implementierung}
 \label{chap:implementierung:sec:details}
