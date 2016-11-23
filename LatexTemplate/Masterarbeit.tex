@@ -1,5 +1,5 @@
 \documentclass[a4paper,12pt]{report}
-
+\usepackage[a4paper, includeheadfoot, top=2.5cm, bottom=2.5cm, left=3.5cm, right=2.5cm]{geometry}
 \pagestyle{headings}
 \usepackage{mathtools}
 \usepackage{amsmath}    % need for subequations
@@ -110,25 +110,23 @@
 \subfile{./tex/testDeckblatt.tex}
 
 \pagenumbering{gobble} % used to prevent the page numbering 
-
-% Abstracts
-\subfile{./tex/Zusammenfassung.tex}
-
-\subfile{./tex/Abstract.tex}
 \subfile{./tex/StatuoryDeclaration.tex}
 \newpage		% damit die StatuoryDeclaration.tex keine Seitennummerierung hat
+% Abstracts
+\pagenumbering{Roman}
+\setcounter{page}{3}
+\subfile{./tex/Zusammenfassung.tex}
+\subfile{./tex/Abstract.tex}
 
 % Statuory Declaration
 %\statuoryDeclaration
 
-
-
-
 \tableofcontents % add table of contents
-
+\listoffigures
+\subfile{./util/acronyms.tex}
 %\subfile{./tex/Todoist.tex}
 %\listoftodos	% http://mirror.easyname.at/ctan/macros/latex/contrib/todonotes/todonotes.pdf
-
+\newpage
 \pagenumbering{arabic} %Start page numbering
 %The order of the chapters used
 
@@ -138,8 +136,6 @@
 \subfile{./tex/Implementation.tex}
 \subfile{./tex/Evaluation.tex}
 \subfile{./tex/Reflexion.tex}
-
-\subfile{./util/acronyms.tex}
 
 \nocite{*}					%sonja style
 \printbibliography			%sonja style
