@@ -12,121 +12,114 @@
 \end{comment}
 
 
-Das Ziel dieses Kapitels liegt darin die Erkenntnisse zusammenzufassen und die Vorgehensweise kritisch zu hinterfragen.
-Für diesen Zweck wird noch einmal ein Blick auf den Entstehungsprozess und die Motivation des Prototypen geworfen.
-Darauf folgt ein Überblick der Evaluation und über welchen Mehrwert der Prototyp, im Hinblick auf das Anwendungsszenario verfügt.
-Ergänzend dazu wird anschließend ein Ausblick auf die weiteren Entwicklungsmöglichkeiten und Potentiale des Prototypen geboten. 
-Abgeschlossen wird das Kapitel durch das Aufzeigen der Erkenntnisse welche in Bezug auf Darstellungsformen und kontextsensitiven Informationen gesammelt wurden.
+Das Ziel dieses Kapitels liegt darin die Erkenntnisse der Arbeit zusammenzufassen und die Vorgehensweise kritisch zu hinterfragen.
+Zu diesem Zweck wird noch einmal ein Blick auf die Motivation und den Entstehungsprozess des Prototypen geworfen.
+Darauf folgt ein Überblick der Evaluation und über Mehrwert des Prototypen in Hinblick auf das Anwendungsszenario.
+Ergänzend dazu wird ein Ausblick auf die weiteren Entwicklungsmöglichkeiten und Potentiale des Prototypen geboten. 
+Abgeschlossen wird das Kapitel durch eine Zusammenfassung der Erkenntnisse, welche in Bezug auf Darstellungsformen und kontextsensitiven Informationen gesammelt wurden.
 
 
 
 \section{Zusammenfassung}
-Die Motivation dieser Arbeit besteht darin die Planung bei der Ressourceneinteilung zu optimieren, konkret an dem Beispiel der Außendienstplanung. 
-Auf Grund von Gesprächen erfuhr ich wie Umständlich die Planung von Außendiensttätigkeiten, mit den zur Verfügung stehenden Mitteln ist und setzte mir das Ziel zu untersuchen wie diese Arbeit erleichtert und optimiert werden kann.\\
+Die Motivation dieser Arbeit besteht darin, die Planung bei der Ressourceneinteilung zu optimieren, konkret an dem Beispiel der Außendienstplanung. 
+Durch Gespräche mit Domänenexpert\_innen wurde aufgezeigt, wie umständlich die Planung von Außendiensttätigkeiten mit den zur Verfügung stehenden Mitteln ist. Das Ziel dieser Arbeit ist es zu untersuchen, wie diese Planungsarbeit durch den Prototypen erleichtert und optimiert werden kann.\\
 \\
-Anhand erster Überlegungen wurde eine Problemstellung aufgesetzt welche für den weiteren Vorgang der Arbeit als Grundlage dienen soll.
-Dabei muss beachtet werden das es sich bei der Problemstellung (siehe Gleichnamigen Abschnitt im Kapitel Einführung) um reine Annahmen handelt, da der Autor keine eigene Erfahrungen auf dem Gebiet der Außendienstplanung besitzt.\\
+Anhand erster Überlegungen wurde eine Problemstellung entworfen, welche für den weiteren Vorgang der Arbeit als Grundlage dienen soll.
+Beim Entwurf der Problemstellung (siehe gleichnamigen Abschnitt im Kapitel Einführung) wurden Annahmen auf Basis der Gespräche gemacht, da der Autor keine eigene Erfahrungen auf dem Gebiet der Außendienstplanung besitzt.\\
 \\
-Mittels der Annahmen aus der Problemstellung wurden erste Lösungsansätze entwickelt um zu erfahren ob und wie diese hypothetischen Problem lösbar sind.
-Darauf hin wurde untersucht wie etablierte Webseiten, mit einem ähnlichen Aufgabengebiet, ihre Informationen visualisieren und was sie den Nutzer\_innen für Möglichkeiten bieten (siehe Kapitel \nameref{chap:analyse}). 
-Zusätzlich zu den bestehenden Lösungen wurden technischen Möglichkeiten betrachtet mit dessen Hilfe sich ein Prototyp realisieren lässt.
-Anhand der Bedarfsanforderung (siehe gleichnamigen Abschnitt) wurde für diesen Zweck Leaflet.js, aufgrund der Abdeckung der Anforderung sowie seiner einfachen Verwendungsweise und, ausgewählt (siehe Abschnitt \nameref{AuswahlDerTechnologie}).\\
+Mittels der Annahmen aus der Problemstellung wurden erste Lösungsansätze entwickelt, um zu erfahren ob und wie diese hypothetischen Probleme lösbar sind.
+Es wurde untersucht wie etablierte Webseiten mit einem ähnlichen Aufgabengebiet, ihre Informationen visualisieren und was sie den Nutzer\_innen für Möglichkeiten bieten (siehe Kapitel \nameref{chap:analyse}). 
+Zusätzlich zu den bestehenden Lösungen wurden technische Möglichkeiten untersucht mit deren Hilfe ein Prototyp realisiert werden kann.
+Anhand der Bedarfsanforderung (siehe gleichnamigen Abschnitt) wurde für diesen Zweck Leaflet.js, aufgrund der Abdeckung der Anforderungen sowie seiner einfachen Verwendungsweise, ausgewählt.  (siehe Abschnitt \nameref{AuswahlDerTechnologie}).\\
 \\
-Anhand der erarbeiteten Erkenntnisse wurden gezielte Interviews mit Fachpersonen aus dem Außendienst durchgeführt um zu erfahren wie ihre Aufgabenstellungen im Alltag aussehen und auf welche Weise und mit welchen Werkzeugen sie diese bewältigen (siehe Abschnitt \nameref{chap:analyse:sec:interviews}). 
+Anhand der erarbeiteten Erkenntnisse wurden gezielte Interviews mit Fachpersonen aus dem Außendienst durchgeführt um zu erfahren, wie ihre Aufgabenstellungen im Alltag aussehen und auf welche Weise und mit welchen Werkzeugen sie diese bewältigen (siehe Abschnitt \nameref{chap:analyse:sec:interviews}). 
 Anhand der Ergebnisse aus den Interviews wurden die zuvor getroffenen Annahmen größtenteils bestätigt (siehe Abschnitt \nameref{AnalyseInterviews}).
-Dabei ist anzumerken das die Interviews mit nur drei Personen durchgeführt wurden. 
-Dies bot zwar einen Einblick in die Arbeitswelt der Außerdienststellung aber stellt kein repräsentativen Querschnitt da.
-Ergänzend zu den Interviews hätte ein Beobachten der befragten Personen beim ausüben ihrer Tätigkeit sicherlich auch einen objektiveren Blick in die Domäne geboten.\\
+Dabei ist anzumerken, dass die Interviews mit nur drei Personen durchgeführt wurden. 
+Dies bietet zwar einen Einblick in die Arbeitswelt der Außerdienstplanung, stellt aber keinen repräsentativen Querschnitt da.
+Ergänzend zu den Interviews hätte ein Beobachten der befragten Personen beim Ausüben ihrer Tätigkeit sicherlich auch einen besseren Einblick in die Domäne geboten.\\
 \\
-Bei der \nameref{chap:implementierung} wurde für die Entwicklung der Serverseite  das Webframework Django eingesetzt welches in der Programmiersprache Python entwickelt wurde. 
+Bei der \nameref{chap:implementierung} wurde für die Entwicklung der Serverseite  das Webframework Django eingesetzt, welches in der Programmiersprache Python entwickelt wurde. 
 Wie zuvor erwähnt, wurde auf der Clientseite das Framework Leaflet.js für das Webmapping eingesetzt.
-Leider stellte sich während der Implementierung heraus das die Flexibilität von Leaflet.js nicht den Ansprüchen des Prototypen genügte.
+Leider stellte sich während der Implementierung heraus, dass die Flexibilität von Leaflet.js nicht den Ansprüchen des Prototypen genügte.
 Speziell bei der Anpassbarkeit der Marker musste nachgebessert werden. 
-Wie im Abschnitt \nameref{ImplVisualStandorte} beschrieben wurde besteht die Notwendigkeit das die Marker in unterschiedlichen Formen (Pin und Kreis) sowie Farben dargestellt werden sollen.
-Um eine bestmögliche Flexibilität zu erhalten wurde die Leaflet.js Marker durch  
+Wie im Abschnitt \nameref{ImplVisualStandorte} beschrieben wurde, besteht die Notwendigkeit, dass die Marker in unterschiedlichen Formen (Pin und Kreis) und Farben dargestellt werden sollen.
+Um eine bestmögliche Flexibilität zu erzielen wurde die Leaflet.js Marker durch  
 eigene \ac{SVG}-Marker ersetzt.
-Dies bringt den Vorteil mit sich das dynamisch Größe, Form und Farbe geändert werden können und somit die oben genannten Designentscheidungen realisiert werden können.\\
+Dies bringt den Vorteil mit sich, dass dynamisch Größe, Form und Farbe geändert und somit die oben genannten Designentscheidungen realisiert werden können.\\
 \\
-Nach der Fertigstellung des Prototyps wurde mithilfe der Evaluation die Gebrauchstauglichkeit untersucht sowie die Art und Weise wie die Testpersonen die verschiedenen Ansichten verwenden (siehe Kapitel \nameref{chap:evalutation}).  
-Für diesen Zweck wurde ein Eyetracking Test erstellt in dem die Testpersonen, mithilfe des Prototypen, drei Trips planten (siehe Abschnitt: \nameref{Verfahren}). 
+Nach der Fertigstellung des Prototyps wurde mithilfe der Evaluation die Gebrauchstauglichkeit sowie die Art und Weise wie die Testpersonen die verschiedenen Ansichten verwenden untersucht (siehe Kapitel \nameref{chap:evalutation}).  
+Für diesen Zweck wurde ein Eyetracking Test durchgeführt, in dem die Testpersonen, mithilfe des Prototypen, drei Trips planten (siehe Abschnitt: \nameref{Verfahren}). 
 Dabei wurden die elf Testpersonen anhand ihrer Erfahrung mit Pery in drei Testgruppen eingeteilt (siehe Abschnitt \nameref{Stichproben}). 
-Leider konnte keine Einteilung der Testgruppen aufgrund des Erfahrungsgrades der Außerdienststellung erstellt werden da leider keine entsprechenden Personen bei dem Test anwesend sein konnten.
-Im Anschluss des Eyetracking Tests wurde mit Hilfe eines Fragebogens die Erhebung der Gebrauchstauglichkeit durchgeführt, welche der Prototyp positiv abschließen konnte (siehe Abschnitt \nameref{Ergebnisse}). \\
+Leider konnte keine Einteilung der Testgruppen aufgrund des Erfahrungsgrades in der Außerdienststellung erstellt werden, da keine entsprechenden Personen bei dem Test anwesend sein konnten.
+Im Anschluss an den Eyetracking Test wurde mit Hilfe eines Fragebogens eine Erhebung über die Gebrauchstauglichkeit des Prototypen durchgeführt, bei der positive Ergebnisse erzielt wurden (siehe Abschnitt \nameref{Ergebnisse}). \\
 \\
-Auf der Basis der Daten welche während des Eyetracking aufgezeichnet wurden fand eine Untersuchung statt die klären sollte wie die Karten- und Listenansicht im Testszenario verwendet wurden.
-Diese Auswertung ergab das die Kartenansicht nicht die klassische Listenansicht ersetzt sondern vielmehr eine sinnvolle Ergänzung darstellt.
-Des weiteren ist die Wahl der Ansicht von der Aufgabenstellung abhängig.
-Bei Aufgaben die nach einem spezifischen Attribut (Gesamtumsatz oder letzter Besuch) fragten welches kein geografischen Kontext (...ist in der nähe von X) hat wurde in erster Linie die Listenansicht verwendet.
-Im Gegensatz dazu wurde mehrheitlich die Kartenansicht bei Aufgaben verwendet in denen geografisches Wissen (...in der nähe von) und nur ein zusätzliches Attribute (Gesamtumsatz oder letzter Besuch) definiert wurden.
-Dies ist dem Umstand geschuldet, dass in der Kartenansicht neben dem Standort nur ein zusätzliches Attribute anhand der Füllfarbe des Markers visualisiert wird.
-Es konnte beobachtet werden, das die Testpersonen komplexere Aufgabenstellungen in einfacherer Teilprobleme zerlegten und diese durch die abwechselnde Verwendung der Karten- und Listenansicht lösten.\\
+Auf der Basis der Daten, welche während des Eyetracking aufgezeichnet wurden, fand eine Untersuchung statt, die klären sollte wie die Karten- und Listenansicht in den Testszenarien verwendet wurden.
+Diese Auswertung ergab, dass die Kartenansicht nicht die klassische Listenansicht ersetzt, sondern vielmehr eine sinnvolle Ergänzung darstellt.
+Des Weiteren ist die Wahl der Ansicht von der Komplexität der Aufgabenstellung abhängig.
+Bei Aufgaben, die nach einem spezifischen Attribut (Gesamtumsatz oder letzter Besuch) fragten, welches kein geografischen Kontext (...ist in der Nähe von ...) hat, wurde in erster Linie die Listenansicht verwendet.
+Am Häufigsten wurde die Kartenansicht bei Aufgaben verwendet, in denen geografisches Wissen (...in der Nähe von ...) und nur ein zusätzliches Attribut (Gesamtumsatz oder letzter Besuch) definiert wurden.
+Dies ist dem Umstand geschuldet, dass in der Kartenansicht neben dem Standort nur eines der zusätzlichen Attribute anhand der Füllfarbe des Markers gleichzeitig visualisiert wird.
+Es konnte beobachtet werden, dass die Testpersonen komplexere Aufgabenstellungen in einfachere Teilprobleme zerlegten und diese durch die abwechselnde Verwendung der Karten- und Listenansicht lösten.\\
 \\
-Anhand der folgenden Punkte wird aufgezeigt welche Vorteile der aktuelle Stand des Prototyps gegenüber den Workflows aufzeigt welche in der Domänenanalyse erfasst wurden (siehe Abschnitt \nameref{AnalyseInterviews}).
-Mittels der angepassten Datenstruktur und der Implementierung der Listen- und Kartenansicht (Übersicht der Standorte) sind die meisten Ursachen welche als Grund für den Systembruch angegeben wurden behoben.
-Durch die Zentralisierung wie auch die Verknüpfung der Daten (Kontextsensitivität) müssen keine Daten mehr in externe Systeme übertragen werden wodurch eine Steigerung der Effektivität wie auch die Effizienz erzielt wird.
-Zusätzlich verbessert sich die Datenqualität für die Auswahl da etwaige Übertragungsfehler hinfällig sind.
-Diese Punkte spiegeln sich im Ergebnis des Eyetracking Tests wieder indem jede der elf Testperson alle Aufgabenstellungen korrekt gelöst hat (siehe Abschnitte \nameref{Ergebnisse}).
+Anhand der folgenden Punkte wird aufgezeigt welche Vorteile der aktuelle Stand des Prototyps gegenüber den bisherigen Workflows bietet, welche in der Domänenanalyse erfasst wurden (siehe Abschnitt \nameref{AnalyseInterviews}).
+\begin{itemize}
+	\item[] Mittels der angepassten Datenstruktur und der Implementierung der Listen- und Kartenansicht (Übersicht der Standorte) sind die meisten Ursachen, welche als Grund für einen Systembruch angegeben wurden, behoben.
+	\item[] Durch die Zentralisierung und die Verknüpfung der Daten (Kontextsensitivität) müssen keine Daten mehr in externe Systeme übertragen werden, wodurch eine Steigerung der Effektivität wie auch die Effizienz erzielt wird.
+	\item[] Es verbessert sich die Datenqualität für die Auswahl, da etwaige Übertragungsfehler hinfällig sind.
+\end{itemize}
+
+Diese Punkte spiegeln sich im Ergebnis des Eyetracking Tests wieder, in dem jede der elf Testperson alle Aufgabenstellungen korrekt gelöst hat (siehe Abschnitte \nameref{Ergebnisse}).
 
 \section{Ausblick}
 \label{chap:reflexion:sec:ausblick}
 
-Neben den Anpassungen welche bei der Usability Analyse festgestellt wurden wie Beispielsweise eine Suchfunktion in der Kartenansicht (siehe gleichnamigen Abschnitt) und im Zuge eines Redesign-Prozess nachgezogen werden gibt es noch weitere Themen für die Erweiterung des Prototypen.
+Neben den Möglichkeiten für Anpassungen, welche bei der Usability Analyse festgestellt wurden, wie beispielsweise eine Suchfunktion in der Kartenansicht (siehe gleichnamigen Abschnitt) und die im Zuge eines Redesign-Prozess nachgezogen werden, werden nachfolgend weitere Vorschläge für die Erweiterung des Prototypen behandelt.
 
 \paragraph{Überlagern der Marker}
-Im aktuellen Stand des Prototypen, 
-Bei einer niedrigen Zoomstufe der Kartenansicht, beispielsweise durch Herrauszoomen, überlagern sich die Marker gegenseitig, was wiederum eine Interaktion mit Ihnen deutlich erschwert und die Übersicht einschränkt.
-Anhand des clientseitigen Java Scripts werden Marker, welche ein Unternehmen repräsentieren das auf der Trip-Liste steht, in der Z-Achse hervorgehoben das sie möglichst nicht überlagert werden.
-Dieses Vorgehen ist zwar hinreichend für den Testaufbau, da der simulierte Einzugsbereich geografisch auf Vorarlberg/Österreich begrenzt war, genügt allerdings nicht den Ansprüchen unter realen Bedingungen.
-Eine Möglichkeit ist die Marker, je nach Zoomstufe, auf Stadt-, Regions- und Landesebene in Clustern zusammenzufassen wodurch ein besserer Überblick entsteht.
-Dabei besteht allerdings wieder die Gefahr, dass die Nähe zwischen angrenzenden Markern verloren geht wenn sie sich in unterschiedlichen Clusterbereichen befinden (siehe Abschnitt \nameref{interviewsAnalyseStandorte} im Kapitel \nameref{chap:entwicklung}).
-Die Funktionalität um Cluster zu erstellen ist nicht im Funktionsumfang des Leaflet.js Frameworks enthalten.
-Durch das integrieren von verfügbaren Modulen, wie beispielsweise Leaflet.markercluster\footnote{Siehe Projektseite: https://github.com/Leaflet/Leaflet.markercluster}, lässt sich die Cluster-Funktionalität leicht nachziehen.
+Bei einer niedrigen Zoomstufe in der Kartenansicht durch Herauszoomen, überlagern sich die Marker, was wiederum eine Interaktion mit Ihnen deutlich erschwert und die Übersicht einschränkt.
+Anhand des clientseitigen JavaScript Codes werden Marker, welche ein Unternehmen repräsentieren, das bereits auf der Trip-Liste steht, in der Z-Achse hervorgehoben, sodass sie möglichst nicht überlagert werden.
+Dieses Vorgehen ist zwar hinreichend für den Testaufbau, da der simulierte Einzugsbereich geografisch auf Vorarlberg/Österreich begrenzt ist, genügt das nicht den Ansprüchen unter realen Bedingungen.
+Eine Möglichkeit ist es die Marker, je nach Zoomstufe, auf Stadt-, Regions- und Landesebene in Clustern zusammenzufassen, wodurch ein besserer Überblick entsteht.
+Dabei besteht allerdings die Gefahr, dass die Nähe zwischen angrenzenden Markern in der Darstellung verloren geht, wenn sie sich in unterschiedlichen Clusterbereichen befinden (siehe Abschnitt \nameref{interviewsAnalyseStandorte} im Kapitel \nameref{chap:entwicklung}).
+Die Funktionalität zur Erstellung von Clustern ist nicht im Funktionsumfang des Leaflet.js Frameworks enthalten.
+Durch die Integration von verfügbaren Modulen, wie beispielsweise Leaflet.markercluster\footnote{Siehe Projektseite: https://github.com/Leaflet/Leaflet.markercluster}, lässt sich die Cluster-Funktionalität nachziehen.
 
 \paragraph{Framework}
-In der nahen Zukunft ist angedacht, die Funktionalität kontextsensitive Daten auf einer Kartenansicht darzustellen in Form eines Frameworks ausgebaut werden soll.
-Mithilfe des Frameworks soll den Entwickler\_innen ein Werkzeug bereitgestellt werden, mit dessen Hilfe sie einfach und komfortabel Views mit der Funktionalität einer Kartenansicht bereichern können.
-Durch die Modularität des Frameworks können sie frei entscheiden in welchem Umfang sie die Kartenfunktionalität einsetzen wollen.
-Diese Entscheidungen reichen über Steuer - und Informatationsmöglichkeiten bis hin ob kontextsensitive Daten verwendet werden sollen.
-Wenn kontextsensitive Daten eingesetzt werden, so kann definiert werden welche Attribute von welchen Instanzen benötigt sind.
-Zusätzlich soll auch die Form in der die Visualisierung stattfinden soll anpassbar sein.
-Aktuell Vorstellungen reichen von vollständige Seiten (wie im Prototyp) bis hin zur Darstellung in Popups.  
-Für die Verwendung des Frameworks ist schon der erste Einsatz definiert wurden.
-Dabei soll untersucht werden ob eine Kartenansicht beim validieren von Adressen (nachdem sie geändert wurden) nützlich ist.
-Neben dem reinen Darstellen der Adresse auf einer zoombaren Karte, soll die Adresse auch mittels des Markers angepasst werden können. 
-  
+In der nahen Zukunft ist angedacht, die Funktionalität kontextsensitive Daten auf der Kartenansicht darzustellen in Form eines Frameworks auszubauen.
+Mithilfe des Frameworks soll Entwickler\_innen ein Werkzeug bereitgestellt werden, mit dessen Hilfe sie einfach und komfortabel Views um die Funktionalität einer Kartenansicht erweitern können.
+Durch die Modularität des Frameworks können sie frei entscheiden in welchem Umfang die Kartenansicht eingesetzt werden soll.
+Diese Modularität reicht von Steuer- und Informationsmöglichkeiten bis hin zur Entscheidung ob kontextsensitive Daten verwendet bzw. dargestellt werden sollen.
+Wenn kontextsensitive Daten eingesetzt werden, so kann definiert werden welche Attribute von welchen Objekten benötigt werden.
+Zusätzlich soll auch die Form, in der die Visualisierung stattfinden soll, anpassbar sein, wobei die Möglichkeiten von vollständigen Seiten (wie im Prototyp) bis hin zur Darstellung in Popups reichen können.  
+\\
+\\
+In einem ersten Einsatz des Frameworks soll die Kartenansicht beim Validieren von Adressen (nachdem sie geändert wurden) verwendet werden. 
+Neben der reinen Darstellung der Adresse auf einer zoombaren Karte, soll die Adresse auch mittels des Markers angepasst werden können. 
 
 \subsection*{Daten und Darstellungsformen}
-Grundsätzlich haben die Interviews ergeben das es Optimierungsbedarf für unterstützende Systeme im Bereich der Entscheidungsfindung gibt, was allerdings nicht bedeutet das es dafür keine Werkzeuge gibt.
-Einzelne Punkte warum die bestehenden Werkzeug nicht verwendet beziehungsweise ersetzt werden wurden in dieser Arbeit untersucht und versucht zu lösen.
+Die Interviews haben ergeben, dass es Optimierungsbedarf für unterstützende Systeme im Bereich der Entscheidungsfindung gibt, was allerdings nicht bedeutet das es dafür keine Werkzeuge gibt.
+Einzelne Punkte, warum die bestehenden Werkzeug nicht verwendet bzw. ersetzt werden, wurden in dieser Arbeit untersucht und versucht zu lösen.
 \footnote{Die jeweiligen Aussagen der Domänenexperten\_innen können dem Abschnitt \nameref{UebersichtDerInterviews} im Kapitel \nameref{chap:entwicklung} entnommen werden.}.
-Vielmehr soll an dieser Stelle weiterführende Gedanken bezüglich dem Einsatz von kontextsensitiven Daten und alternativen Darstellungsformen aufgezeigt werden.\\
+An dieser Stelle sollen weiterführende Gedanken bezüglich des Einsatzes von kontextsensitiven Daten und alternativen Darstellungsformen aufgezeigt werden.\\
 \\
-Anhand der Evaluation stellte sich heraus das die Beziehung zwischen den verfügbaren Daten und der Visualisierung von essentiell Art sind.
-Auf der einen Seite ist die Visualisierung von der Verfügbarkeit sowie durchdachten Auswahl der ihr zugrunde liegenden Daten abhängig, auf der andere Seite sind Daten welche den den Anwender\_innen nicht sinnvoll dargestellt werden nicht sehr nützlich. 
-Im Zuge dieser Arbeit wurden Überlegungen angestellt wie diese Beziehung optimiert werden kann. \\
+Anhand der Evaluation stellte sich heraus, dass die gegenseitige Beziehung zwischen den verfügbaren Daten und der Visualisierung essentiell ist.
+Die Visualisierung ist von der Verfügbarkeit und der durchdachten Auswahl, der ihr zugrunde liegenden Daten abhängig, während Daten, welche nicht sinnvoll dargestellt werden nicht nützlich sind. 
+Im Zuge dieser Arbeit wurden Überlegungen angestellt, wie diese Beziehung optimiert werden kann. \\
 \\
-Auf der Seite der Daten wurden dabei der Ansatz verfolgt bestehende Daten sinnvoll miteinander zu verknüpfen um ihren Informationsgehalt zu steigern. 
+Es wurde der Ansatz verfolgt bestehende Daten sinnvoll miteinander zu verknüpfen um ihren Informationsgehalt zu steigern. 
 Dafür wurden bestehende Datenstrukturen erweitert und teilweise neu geschaffen (siehe Abschnitt \nameref{Rank} im Kapitel \nameref{chap:implementierung}).\\
 \\
-Auf der Seite der Darstellungsformen wurde überlegt welche Darstellungsart die klassische textuelle Darstellung in Tabellenform ergänzen kann.
+In Bezug auf Darstellungsformen wurde überlegt, welche Darstellungsarten die klassische textuelle Darstellung in Tabellenform ergänzen können.
 Anhand des definierten Szenarios der Außendienstplanung lag der Einsatz einer Kartenansicht nahe.
-Dies bedeutet allerdings nicht das die Wahl der Kartendarstellung immer zielführend ist. 
-Im speziellen sollte je nach Anwendungsfall abgewogen werden ob und welche Darstellungsform eine alternative Darstellungsform zu Text oder Tabellen darstellt.\\
+Dies bedeutet allerdings nicht das die Wahl der Kartendarstellung immer zielführend ist - es sollte je nach Anwendungsfall abgewogen werden ob und welche Darstellungsform eine Alternative zu Text oder Tabellen darstellt.\\
 \\
-Wenn die Entscheidung getroffen wurde, das alternative oder ergänzende Darstellungsformen zum Einsatz kommen so empfiehlt es sich zu überlegen ob den Anwender\_innen eine Auswahlmöglichkeit zur Verfügung zu stellen. 
-Bei den Tests des Prototyps ist aufgefallen, das eine Testperson alle Trips ausschließlich mit der Listenansicht plante. \\
-\\
-Wie die Evaluation andeuten lässt, ist mit dem Prototyp ein erster Schritt in eine zielführende Richtung getätigt wurden.
+Wenn die Entscheidung getroffen wurde, dass alternative oder ergänzende Darstellungsformen zum Einsatz kommen, so empfiehlt es sich zu überlegen, ob den Anwender\_innen eine Auswahlmöglichkeit zur Verfügung gestellt werden soll. 
+Unterstrichen wird dies durch die Tests mit dem Prototypen, bei dem eine Testperson alle Trips ausschließlich mit der Listenansicht plante, während alle anderen beide Ansichten verwendeten. \\
+\\[1.5cm]
+%\section{Wacken ist vorbei.}
+Wie in der Evaluation bereits angedeutet, ist mit dem Prototyp ein erster Schritt in eine zielführende Richtung getätigt worden.
 Anhand der weiteren Entwicklungen und den Untersuchungen, welche mithilfe des ausgebauten Frameworks (siehe vorherigen Abschnitt) durchgeführt werden, wird sich zeigen ob diese Überlegungen von den Anwender\_innen akzeptiert werden und sich zu einem sinnvollen Werkzeug manifestiert.
 
-
-
-
-
-
-
-
-Ergänzend zu den geplanten Erweiterungen des Prototypen sollen nun weiterführenden Ideen aufgezeigt welche im Zuge der Arbeit entstanden sind.
 
 \begin{comment}
 \subsection*{Motivation und erste Überlegungen}
