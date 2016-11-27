@@ -21,7 +21,7 @@ Ergänzend zu Python wird clientseitig teilweise Java Script in Verbindung mit d
 
 \subsection*{Webframeworks}
 Neben Leaflet.js (siehe Abschnitt \nameref{sotaTechnologien}), welches zur Realisierung der Kartenansicht verwendet wird, ist das gesamte Backend von Pery, in dem der Prototyp eingebettet wird, mit Hilfe des Django Frameworks implementiert. 
-Bei Django handelt es sich um ein Open-Source Webframework, welches basierend auf der Model-View-Controller Architektur (\cite[vgl.][]{DjangoMVC}) in Python implementiert ist und über eine eigene Lösung zur Datenbank-Abstraktion verfügt. (\cite[vgl.][]{DjangoDoc} \cite[sowie][- sekundär Quelle]{DjangoStackoverflow})\\
+Bei Django handelt es sich um ein Open Source Webframework, welches basierend auf der Model-View-Controller Architektur (\cite[vgl.][]{DjangoMVC}) in Python implementiert ist und über eine eigene Lösung zur Datenbankabstraktion verfügt. (\cite[vgl.][]{DjangoDoc} \cite[sowie][- sekundär Quelle]{DjangoStackoverflow})\\
 \\
 Um später die Implementierung besser zu verstehen soll an dieser Stelle grob die Funktionsweise des Django Frameworks aufgezeigt werden (siehe Abb.: \ref{fig:MTV_Django}).
 Anhand der angeforderten \ac{URL} wird mittels der \ac{URL Conf} ausgewertet welche View zu initialisieren ist.
@@ -30,12 +30,12 @@ der Datenbank Abstraktion werden die benötigten Objekte aus der Datenbank gelad
 Die Darstellung der Daten wird von der View mittels Templates definiert, die  aus \ac{HTML} Code sowie Tags und Filters bestehen. 
 Dabei können Templates auch im Sinne der Wiederverwertbarkeit geschachtelt eingesetzt werden. 
 Mit Hilfe der Tags können die Daten, welche von der View an das Render Engine übergeben wurden, in den \ac{HTML} Code integriert werden.
-Durch die Verwendung des Render-Prozesses werden die Templates in \ac{HTML} Dokumente übersetzt und in einen vollständigen Response eingebettet, welcher über den Webserver an den Browser ausgeliefert wird. (\cite[vgl.][]{DjangoDoc}
+Durch die Verwendung des Render-Prozesses werden die Templates in \ac{HTML} Dokumente übersetzt und in einen vollständigen Response eingebettet, welcher über den Webserver an den Webbrowser ausgeliefert wird. (\cite[vgl.][]{DjangoDoc}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.7\linewidth]{img/Implementierung/MTV_Django}
-\caption[k]{Übersicht der Funktionsweise des Djang-Frameworks. Quelle: Von Stefano Probst - Mit Graphviz erstellt, CC BY-SA 3.0 at, https://commons.wikimedia.org/w/index.php?curid=31084766}
+\caption[k]{Übersicht der Funktionsweise des Django-Frameworks. Quelle: Von Stefano Probst - Mit Graphviz erstellt, CC BY-SA 3.0 at, https://commons.wikimedia.org/w/index.php?curid=31084766}
 \label{fig:MTV_Django}
 \end{figure}
 
@@ -47,20 +47,19 @@ Bei der Implementierung wird unterschieden zwischen clientseitiger und serversei
 
 \subsection{Implementierung Clientseite}
 Bei der Realisierung des Prototypen diente der zuvor angefertigte Mock-Up (siehe \nameref{chap:entwicklung:sec:design_entwurf:sub:mockUps}) als Orientierung. 
-Demnach wurde der Prototyp in drei Bereiche unterteilt: Kopfbereich, Tripliste links und Container für die diversen Ansichten rechts (siehe Abbildung \ref{fig:prototypMockup}).
+Demnach wurde der Prototyp in drei Bereiche unterteilt: Kopfbereich, Tripliste links und Container für die diversen Ansichten rechts. (siehe Abbildung \ref{fig:prototypMockup})
 
 
 \subsubsection*{Kopfbereich}
-Wie zuvor im Abschnitt Mock-Up (\nameref{chap:entwicklung:sec:design_entwurf:sub:mockUps}) erwähnt dient dieser Bereich der Orientierung und Navigation.
-Im linken Bereich wird dargestellt, welche Funktion des Prototypen gerade genutzt wird.
-\footnote{Aktuell ist für den Prototyp nur die Funktionalität Trips zu bearbeiten verfügbar.}
+Wie zuvor im Abschnitt Mockup (\nameref{chap:entwicklung:sec:design_entwurf:sub:mockUps}) erwähnt dient dieser Bereich der Orientierung und Navigation.
+Im linken Bereich wird dargestellt, welche Funktion des Prototypen gerade genutzt wird\footnote{Aktuell ist für den Prototyp nur die Funktionalität Trips zu bearbeiten verfügbar.}.
 Im rechten Bereich ist der Button hinterlegt, mit welchem zwischen der Karten- und Listenansicht gewechselt werden kann.
 
 \subsubsection*{Tripliste}
 Der linke Interaktionsbereich, unterhalb des Kopfbereichs, ist für die Tripliste reserviert.
 Im oberen Teil wird der Name des zu bearbeitenden Trips angezeigt.
 Wenn die Kartenansicht geöffnet ist, befindet sich im Fußbereich ein Button mit dem der Kartenausschnitt so skaliert bzw. verschoben wird, dass alle ausgewählten Unternehmen darauf sichtbar sind.
-Die restliche Höhe des Browsers wird genutzt um die Stationen als separate Elemente innerhalb der Liste darzustellen.
+Die restliche Höhe des Webbrowsers wird genutzt um die Stationen als separate Elemente innerhalb der Liste darzustellen.
 Wenn die Höhe des Browserfensters nicht ausreicht um alle Unternehmen in der Liste darzustellen so wird diese scrollbar.
 Jedes Element in der Liste enthält einen Button mit dessen Hilfe es aus der Liste entfernt werden kann, was mittels eines \ac{AJAX}-Aufrufs an den Server realisiert wird. 
 Wenn die Kartenansicht geöffnet ist, wird bei einem Klick auf das Element in der Tripliste die Karte auf den entsprechenden Marker zentriert.
@@ -107,8 +106,8 @@ Die Hauptaufgabe der Kartenansicht liegt in der Darstellung der Unternehmensstan
 Anhand der geografischen Koordinaten (Position in Breiten- und Längengrad) visualisiert Leaflet.js die Unternehmen auf der zuvor definierten Karte. 
 Nach dem Laden der Seite wird die Karte mittels des Leaflet.js-Elements L.map und diversen Parametern, wie dem darzustellenden Kartenausschnitt oder Zoomfaktors initialisiert.
 Wenn die Initialisierung der Karte abgeschlossen ist werden mittels Javascript, die einzelnen Unternehmen aus dem Response des Servers gelesen. 
-Es wird für jedes Unternehmen ein Element L.marker, aufgrund der Parameter Lat und Lon, erstellt und zur Karte hinzugefügt. \\
-\\
+Es wird für jedes Unternehmen ein Element L.marker, aufgrund der Parameter Lat und Lon, erstellt und zur Karte hinzugefügt.
+\newpage
 Darüber hinaus haben Marker folgende Eigenschaften:
 \begin{itemize}
 	\item Marker werden passend zum gewählten Rank (z.B. Gesamtumsatz, letzer Besuch, etc.) eingefärbt.
@@ -157,7 +156,7 @@ Innerhalb der View werden bis zur Rücksendung der Antwort (Response) an den Web
 Dabei wird in der Funktion prepare die \ac{AJAX}-Funktionalität aktiviert.
 Die benötigten Daten werden in der Funktion render\_output (siehe Absatz \nameref{renderOutput}) aus der Datenbank geladen und entsprechend vorbereitet bis sie anschließend an die Funktion render\_to\_response oder über das \ac{AJAX}-Framework (nicht in der Abbildung) an den Webserver weitergeleitet werden.
 In der Funktion render\_to\_response werden die definierten Templates anhand der erhaltenen Daten, mithilfe des Django-Frameworks, in das \ac{HTML}-Format übertragen und in einen Response eingebettet.
-Abschließend wird der generierte Response an den Webserver weitergegeben, der ihn schlussendlich an den Web Browser ausliefert.
+Abschließend wird der generierte Response an den Webserver weitergegeben, der ihn schlussendlich an den Webbrowser ausliefert.
 
 
 \begin{figure}[h]
@@ -175,7 +174,6 @@ Beginnend mit dem Auslesen des PresentationMode aus dem Request, welcher als Par
 Sollte das Auslesen nicht möglich sein, weil der Trip beispielsweise das erste Mal aufgerufen wird, so wird standardmäßig die Kartenansicht verwendet.
 Sollte es sich bei dem Request um einen \ac{AJAX}-Aufruf handeln, so wird dieser je nach Bedarf abgewickelt und als Response an den Webserver zurück geschickt.
 Anschließend werden mittels der Datenbankabstraktion alle Tripstations\footnote{Tripstations sind Unternehmen bzw. Stationen welche bereits dem Trip hinzugefügt wurden.} geladen (siehe Abbildung \ref{fig:Overview} - 2. bis 2.3).
-
 Je nachdem welcher Präsentationsmodus ausgewählt wurde wird entweder die Kartenansicht (siehe \nameref{PERYMapTrip}) oder die Listenansicht (siehe \nameref{PERYListTrip}).
 
 \paragraph{Rank}
