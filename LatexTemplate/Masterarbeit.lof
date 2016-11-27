@@ -20,7 +20,7 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7}{\ignorespaces abstrakter Planungsworkflow}}{24}{figure.caption.44}
+\contentsline {figure}{\numberline {7}{\ignorespaces Abstrakter Planungsworkflow}}{24}{figure.caption.44}
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {8}{\ignorespaces Probleme mit harten Grenzen}}{28}{figure.caption.51}
 \defcounter {refsection}{0}\relax 
@@ -32,13 +32,13 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {12}{\ignorespaces k}}{36}{figure.caption.63}
+\contentsline {figure}{\numberline {12}{\ignorespaces Funktionsweise des Django-Frameworks}}{36}{figure.caption.63}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {13}{\ignorespaces k}}{41}{figure.caption.76}
+\contentsline {figure}{\numberline {13}{\ignorespaces Sequenzdiagramm: Request bis Response}}{41}{figure.caption.76}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {14}{\ignorespaces k}}{42}{figure.caption.79}
+\contentsline {figure}{\numberline {14}{\ignorespaces Klassendiagramm: PeryDataRank}}{42}{figure.caption.79}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {15}{\ignorespaces k}}{44}{figure.caption.82}
+\contentsline {figure}{\numberline {15}{\ignorespaces Sequenzdiagramm: Ablauf der Funktion render\_output}}{44}{figure.caption.82}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
@@ -73,5 +73,7 @@
 \contentsline {figure}{\numberline {27}{\ignorespaces Prototyp mit Kartenansicht}}{89}{figure.caption.129}
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {28}{\ignorespaces Prototyp mit Listenansicht}}{90}{figure.caption.130}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {29}{\ignorespaces Prototyp: Detailansichten}}{90}{figure.caption.131}
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
