@@ -1,0 +1,259 @@
+<!--Template for the Map View-->
+<div id="mapid" ></div>
+
+
+<style>
+    .leaflet-div-icon {
+	background: transparent;
+	border: none;
+}
+
+.leaflet-marker-icon{
+    float: left;
+    position: absolute;
+	top: -42px;
+    left: -13.125px;
+}
+
+.leaflet-marker-icon .number{
+	position: relative;
+	top: -42px;
+	font-size: 12px;
+	width: 25px;
+	text-align: center;
+}
+
+.svg-marker {
+    height: 41px;
+}
+
+.svg-marker div {
+    height: 35px;
+}
+
+.svg-marker-number{
+    z-index: 10000 !important;
+}
+
+.svg-marker-color-default{
+    fill: #71A9F7;
+}
+
+.legend {
+    line-height: 18px;
+    color: #555;
+}
+.legend i {
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-right: 8px;
+    opacity: 0.9;
+}
+
+</style>
+
+
+<script type="text/javascript">
+    var markers = {};
+
+    // Initialize the map object
+    var mymap = new L.Map('mapid', {
+        // Some basic options to keep the map still and prevent
+        // the user from zooming and such.
+        scrollWheelZoom: true,
+        touchZoom: false,
+        doubleClickZoom: true,
+        zoomControl: true,
+        dragging: true
+    });
+        // Prep the background tile layer
+        var stamenUrl = 'http://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png';
+        var stamenAttribution = 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>.';
+        var stamenLayer = new L.TileLayer(stamenUrl, {maxZoom: 16, attribution: stamenAttribution});
+
+        // Set the center of the map to the user history from last view or, if not exist to Vorarlber/Austria
+        {% if self.map_data_lat and self.map_data_lng %}
+            var center = new L.LatLng({{ self.map_data_lat }}, {{ self.map_data_lng }})
+        {% else %}
+            var center = new L.LatLng(47.42555, 9.65587);
+        {% endif %}
+
+        // Set the map zoom to the user history from last view or, if not exist to default value
+        {% if self.map_data_zoom %}
+            mymap.setView(center, {{ self.map_data_zoom }})
+        {% else %}
+            mymap.setView(center, 16);
+        {% endif %}
+
+        // Load the background tiles
+        mymap.addLayer(stamenLayer);
+
+        // If activate show the scale
+        {% if self.SHOW_SCALE %}
+            L.control.scale({position: "bottomleft", imperial: false}).addTo(mymap);
+        {% endif %}
+
+        // If activated show the links to switch thru th available Ranks
+        {% if self.SHOW_RANK_SWITCH %}
+            addRankSwitch();
+        {% endif %}
+
+        // Create the Rank link list
+        function addRankSwitch(){
+            var rankActions = L.control({position: 'topright'});
+            rankActions.onAdd = function(mymap){
+                var div = L.DomUtil.create('div', 'info legend');
+                div.innerHTML += '{{ self.render_ranks_switch|safe }}';
+                return div;
+            };
+            rankActions.addTo(mymap);
+        };
+
+        // If activated show the Rank Legend
+        {% if self.SHOW_LEGEND and self.rank_dict %}
+            addLegend();
+        {% endif %}
+
+        // Create the Rank legend
+        function addLegend(){
+            var legend = L.control({position: 'bottomright'});
+            legend.onAdd = function(mymap){
+                var div = L.DomUtil.create('div', 'info legend');
+
+                div.innerHTML += '{{ self.render_legend|safe }}';
+
+                return div;
+            };
+        legend.addTo(mymap);
+        };
+
+
+    // create the point's from the received data
+    {% for point in self.data_points %}
+        var icon = L.divIcon({
+        className: 'svg-marker',
+        html: '{{ point.get_html_for_svg_icon|escapejs }}',
+        iconSize: null,
+        iconAnchor: null
+        });
+
+        var marker = L.marker([{{ point.lat|unlocalize }}, {{ point.lon|unlocalize }}], {
+            icon: icon}).addTo(mymap);
+        markers['{{ point.id }}'] = marker;
+
+        $parentDiv = $("#number-{{ point.id }}").parent(".svg-marker");
+        $parentDiv.attr("id", "{{ point.id }}");
+        // If Point on Trip List display the number
+        {% if point.number %}
+            $parentDiv.addClass("svg-marker-number");
+        {% endif %}
+
+        $('body').append('<div id="popup-content-{{ point.id }}" style="display: none;" >{{ point.popup }}</div>')
+    {% endfor %}
+
+    // Remove the numbers of all Point Markers
+    function clearNumbers(){
+        $(".number").each(function(index){
+            $(this).html('');
+
+            $(this).parent(".svg-marker").removeClass("svg-marker-number");
+        })
+    }
+
+    // Update the numbers of all Point Markers
+    function updateNumbers(para){
+        clearNumbers();
+        var array = para.split(',');
+        array.forEach(function(elem, index){
+            var identifier = '.leaflet-marker-icon#' + elem + ' .number';
+            $('.leaflet-marker-icon#' + elem + ' .number').html(index+1)
+            $('.leaflet-marker-icon#' + elem).addClass("svg-marker-number")
+
+        });
+    }
+
+    function centerToMarkers(ids){
+        /**
+         * autozoom and center the map to the selected points.
+         * The given array contains the ids of the selected markers
+         * (e.g. [8, 9, 22]
+         * @param {Array} ids
+         */
+        var tripMarkers = [];
+        for (var i = 0; i < ids.length; i++){
+            tripMarkers.push(markers[ids[i]]);
+        }
+        var group = new L.featureGroup(tripMarkers);
+        mymap.fitBounds(group.getBounds(), {padding: [50, 50]});
+
+    }
+
+    function centerToMarker(id){
+            var marker = markers[id];
+            mymap.setView(marker._latlng, 16);
+    }
+
+    function resizePeryMap(){
+        $(window).resize();
+    }
+
+    $(document).ready(function(){
+        $('#mapid').height($(window).height() - $('#layout-top').outerHeight(true) - $('#divFooter').outerHeight(true) - 30 );
+        mymap.invalidateSize(false);
+
+        $('.leaflet-marker-icon').qtip({
+                show: 'click',
+                hide: 'click',
+                content: {
+                    text: function(event, api){
+                        return $("#popup-content-" + $(this).attr('id'));
+                    }
+                },
+                style: {
+                    classes: 'qtip-bootstrap'
+                }
+            });
+
+        function onMapClick(e){
+            $('.qtip:visible').qtip('hide');
+        }
+
+        // for debugging
+        function getMapStates(){
+            var myMapState = "lat" + mymap.getCenter().lat + "|lng" + mymap.getCenter().lng + "|zoom" + mymap.getZoom();
+            return myMapState
+        }
+
+        // Hide Popup if map start moving
+        function onMapMoveStart(e){
+            $('.qtip:visible').qtip('hide');
+        }
+
+        // Send Map Data to server for saving the user history
+        function onMapMoveEnd(e){
+            var map_state = getMapStates();
+
+            var csrftoken = $.cookie('csrftoken');
+            $.post("/admin/updatemapdata/", {csrfmiddlewaretoken: csrftoken, "mapstate": map_state})
+        }
+
+        function clickPeryMapElemCenterTo(){
+            centerToMarker($(this).attr("data-pery_trip_elem_id"));
+        }
+
+        mymap.on('click', onMapClick);
+        mymap.on('movestart', onMapMoveStart);
+        mymap.on('moveend', onMapMoveEnd);
+        mymap.on('zoomstart', onMapZoomStart);
+        mymap.on('zoomend', onMapZoomEnd);
+        $(document).on('click', '.pery-map-elem-center-to', clickPeryMapElemCenterTo );
+    });
+
+    $(window).resize(function(){
+        console.log('call: resize in map')
+        $('#mapid').height($(window).height() - $('#layout-top').outerHeight(true) - $('#divFooter').outerHeight(true) - 30 - getExternalOffset());
+        mymap.invalidateSize(false);
+    });
+
+</script>

@@ -1,0 +1,50 @@
+<!--Template for the popup's into the map view-->
+<style>
+    .pery-map-popup-table {
+        margin-top: 10px;
+        margin-bottom: 15px;
+    }
+
+    .pery-map-popup-table-elem {
+        text-align: right;
+    }
+
+</style>
+
+<div class="pery-map-popup" id="pery-popup-{{ addr.pk }}">
+    <p><strong>{% if number %}{{ number }}. Station: {% endif %}<a target="_blank" href="{{ addr.admin_url }}">{{ addr.partner }}</a></strong></p>
+    <p>{{ addr }}</p>
+
+    <!--create table for the context sensitive data of a item-->
+    <table class="pery-map-popup-table">
+        <tr>
+            <td>
+                last invoice:
+            </td>
+            <td class="pery-map-popup-table-elem">
+                {% if addr.partner.sales_last_invoice %}{{ addr.partner.sales_last_invoice|date:"SHORT_DATE_FORMAT" }}{% else %}---{% endif %}
+            </td>
+
+        </tr>
+        <tr>
+            <td >total turnover:</td>
+            <td class="pery-map-popup-table-elem">{{ addr.partner.sales_total_turnover }} {{ addr.partner.default_currency.iso_code }}</td>
+        </tr>
+        <tr>
+            <td>last visit:</td>
+            <td class="pery-map-popup-table-elem">{% if addr.partner.sales_last_visit %}{{ addr.partner.sales_last_visit|date:"SHORT_DATE_FORMAT"  }}{% else %}---{% endif %}</td>
+        </tr>
+        <tr>
+            <td>last year turnover</td>
+            <td class="pery-map-popup-table-elem">{{ addr.partner.sales_last_year_turnover }} {{ addr.partner.default_currency.iso_code }}</td>
+        </tr>
+    </table>
+
+    <!--Create dynamic button to add/remove the point to the trip list-->
+    {% if number %}
+        <div><a  href="?action=remove_from_list&pk={{ addr.pk }}" class="pery-ajax2-href-post btn btn-danger">-</a></div>
+    {% else %}
+        <div><a href="?action=add_to_list&pk={{ addr.pk }}" class="pery-ajax2-href-post btn btn-success">+</a></div>
+    {% endif %}
+
+</div>

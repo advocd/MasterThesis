@@ -1,0 +1,101 @@
+<!--Main Template-->
+<!--This template will be rendered from the view and include the other templates e.g. trip list or map view-->
+{% extends 'admin/base_site.html' %}
+{% block content %}
+
+    <style>
+
+        html {
+            padding-bottom: 10px;
+        }
+
+        #pery-map-menu {
+            height: 40px;
+            margin-left: 5px;;
+        }
+
+        #pery-map-menu-header {
+            font-weight: bold;
+            font-size: 18px;
+            color: #666;
+            margin-top: 19px;
+        }
+
+        #pery-map-menu-btn{
+            float: right;
+            margin-bottom: 5px;
+        }
+
+        #view-container{
+            clear: both;
+            display: flex;
+        }
+
+        #view-content{
+            order: 2;
+            flex-grow: 1;
+        }
+
+        #planninglist{
+            order: 1;
+            width: 300px;
+            float: left;
+            border: 1px solid #cecece;
+            padding: 5px 5px 5px 5px;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+
+        #mapid {
+            border: 1px solid #cecece;
+            height: 650px;
+            height: 99%;
+        }
+
+    </style>
+
+    <link rel="stylesheet" href="/static/third_party/leaflet/leaflet.css" />
+    <script src="/static/third_party/leaflet/leaflet.js"></script>
+
+    <div id="pery-map-menu">
+        <span id="pery-map-menu-header">Edit Trip</span>
+        <span id="pery-map-menu-btn">
+            <!--create dynamic button to switch between the list and map view-->
+            {% if presantation_mode == 'peryMap' %}
+                <a href="?action=get_list_view" class="btn btn-default">switch to list</a>
+            {% else %}
+                <a href="?action=get_map_view" class="btn btn-default">switch to map</a>
+            {% endif %}
+        </span>
+
+    </div>
+    <div id="view-container">
+        <!--render trip list into div-->
+        <div id="planninglist">
+            {% include 'admin/erp/trip/planning_list.html' %}
+        </div>
+        <div id="view-content">
+            <!--render list- or map view into div-->
+            <div id="display-content">
+                {{ my_presantation.render }}
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        <!--calculate maximal height for map without scrolling-->
+        function getExternalOffset(e){
+            return $('#view-content').outerHeight(true) + $('#pery-map-menu').outerHeight(true) - $('#mapid').outerHeight(true) ;
+        }
+
+        $(document).ready(function(){
+            console.log('call: planning ready');
+            $("#tabs").tabs();
+            $("#mapid").height($('#mapid').outerHeight(true) - getExternalOffset());
+
+
+        });
+    </script>
+
+{% endblock %}

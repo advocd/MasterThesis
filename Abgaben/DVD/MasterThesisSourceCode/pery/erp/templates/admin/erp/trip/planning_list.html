@@ -1,0 +1,46 @@
+<!--Template for the trip list-->
+<h2>Trip: {{ self.obj }}</h2>
+{% if trip_stations %}
+    <table>
+    {% for station in trip_stations %}
+        <tr>
+            <td>
+                <div class="pery-map-elem-center-to" data-pery_trip_elem_id="{{ station.address.pk }}">
+                    <p>
+                        <strong>{{ station.ordering }}. Station:</strong> {{ station.address }}
+                    </p>
+                </div>
+            </td>
+            <td>
+                <!--Create remove button to trip list element-->
+                <!--use pery ajax lib by adding the pery-ajax2-href-post class to the link-->
+                <a href="?action=remove_from_list&pk={{ station.address.pk }}" class="pery-ajax2-href-post btn btn-danger">-</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+    <!--Add show all on map button if the map view is the current view-->
+    {% if presantation_mode == 'peryMap' %}
+        <div>
+            <button id="btn-pery-trips-all" style="margin-top: 10px">show all on map</button>
+        </div>
+    {% endif %}
+
+{% else %}
+    <p>sorry, there are no tripstations at the moment</p>
+{% endif %}
+
+
+<script>
+    $('#btn-pery-trips-all').click(function(){
+        var tripIds = [];
+
+        // add function to center the map to the chosen trip list item
+       $('.pery-map-elem-center-to').each(function(){
+           tripIds.push($(this).attr('data-pery_trip_elem_id'));
+       });
+        centerToMarkers(tripIds);
+    });
+</script>
+
+
