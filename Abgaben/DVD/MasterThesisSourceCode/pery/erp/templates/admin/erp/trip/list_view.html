@@ -1,0 +1,59 @@
+<!--Template for the list view-->
+<style>
+    #peryMapListTable {
+        border: 1px solid #cecece;
+        padding: 5px 5px 5px 5px;
+    }
+</style>
+
+<table id="peryMapListTable" class="tablesorter table" style="width: 100%">
+    <thead>
+        <tr>
+            <th>Number on List</th>
+            <th>Partner</th>
+            <th>Address</th>
+            <th>Zip</th>
+            <th>City</th>
+            <th>Total Turnover</th>
+            <th>Turnover last Year</th>
+            <th>Last Invoice</th>
+            <th>Last Visit</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for point in self.table_data %}
+            <tr>
+                <!--if element on the triplist display the number on list-->
+                <td>{% if point.pery_map_trip_number %}
+                        {{ point.pery_map_trip_number }}</td>
+                    {% endif %}
+                <td> <a target="_blank" href="{{ point.admin_url }}">{{ point.partner }}</a></td>
+                <td>{{ point.address }}</td>
+                <td>{{ point.zip }}</td>
+                <td>{{ point.city }}</td>
+                <td>{{ point.partner.sales_total_turnover }} {{ point.partner.default_currency.iso_code }}</td>
+                <td>{{ point.partner.sales_last_year_turnover }} {{ point.partner.default_currency.iso_code }}</td>
+                <td>{{ point.partner.sales_last_invoice|date:"SHORT_DATE_FORMAT" }}</td>
+                <td>{{ point.partner.sales_last_visit|date:"SHORT_DATE_FORMAT" }}</td>
+
+                <!--create dynamic button for add or remove element from trip list-->
+                <td>
+                    {% if point.pery_map_trip_number %}
+                        <a href="?action=remove_from_list&pk={{ point.pk }}" class="pery-ajax2-href-post">-</a>
+                    {% else %}
+                        <a href="?action=add_to_list&pk={{ point.pk }}" class="pery-ajax2-href-post">+</a>
+                    {% endif %}
+                </td>
+            </tr>
+
+    {% endfor %}
+</tbody>
+</table>
+
+    <!--include tablesorter js to sort table by column-->
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#peryMapListTable").tablesorter();
+        })
+    </script>

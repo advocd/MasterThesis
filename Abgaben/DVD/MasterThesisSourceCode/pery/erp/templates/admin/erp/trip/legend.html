@@ -1,0 +1,36 @@
+<!--template for the rank legend and navigation -->
+<table>
+    <!--creates the link list with available ranks-->
+    {% for rank in rank_list %}
+        <tr>
+            <td style="text-align: right;" colspan="5">
+                <a href="?action=change_rank&name={{ rank.name }}" class="pery-ajax2-href-post">
+                    <span {% if rank.is_active %}style="font-weight: bold; text-decoration: underline;" {% endif %}>{{ rank.display_filter_name }}</span>
+               </a>
+
+            </td>
+        </tr>
+    {% endfor %}
+
+    <!--create the legend of the values from the active rank-->
+    {% for key, value in rank_dict.items %}
+        <tr>
+            <td>
+                <i style="background:{{value.color}}"></i>
+            </td>
+
+            {% if value.label %}
+                <td>
+                    {{ value.label }}
+                </td>
+            {% else %}
+                <td>
+                    {{ value.min }}
+                </td>
+                <td>
+                    {{ value.max }}
+                </td>
+            {% endif %}
+        </tr>
+    {% endfor %}
+</table>
